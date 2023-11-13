@@ -192,7 +192,7 @@ export function BadgeTemplatesIssueForm({
                       <Button
                         variant={"outline"}
                         className={cn(
-                          "flex justify-start font-normal",
+                          "flex  justify-start font-normal",
                           !field.value && "opacity-50"
                         )}
                       >
@@ -214,7 +214,7 @@ export function BadgeTemplatesIssueForm({
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
-                  <PopoverContent className=" p-0" align="start">
+                  <PopoverContent className="p-0" align="start">
                     <Calendar
                       mode="single"
                       selected={field.value}
@@ -235,9 +235,13 @@ export function BadgeTemplatesIssueForm({
             name="expirationType"
             render={({ field }) => (
               <FormItem className="flex flex-col mb-4">
-                <FormLabel className="mb-2">Expiration</FormLabel>
+                <FormLabel>Expiration</FormLabel>
                 <FormControl>
-                  <RadioGroup className="flex " {...field}>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    className="flex "
+                  >
                     <FormItem className="flex items-center space-x-2 mr-2">
                       <FormControl>
                         <RadioGroupItem
@@ -307,14 +311,11 @@ export function BadgeTemplatesIssueForm({
                         </Button>
                       </FormControl>
                     </PopoverTrigger>
-                    <PopoverContent className=" p-0" align="start">
+                    <PopoverContent className="p-0" align="start">
                       <Calendar
                         mode="single"
                         selected={field.value}
                         onSelect={field.onChange}
-                        disabled={(date) =>
-                          date > new Date() || date < new Date("1900-01-01")
-                        }
                         initialFocus
                       />
                     </PopoverContent>
