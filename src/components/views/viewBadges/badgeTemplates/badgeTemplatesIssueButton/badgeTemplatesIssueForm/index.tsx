@@ -51,7 +51,7 @@ const badgeTemplatesIssueSchema = z.object({
   emailLanguage: z.string(),
   issuerEarnerId: z.string(),
   groupTag: z.string(),
-  country: z.string(),
+  countryTeritory: z.string(),
   stateProvince: z.string(),
 });
 
@@ -85,7 +85,7 @@ export function BadgeTemplatesIssueForm({
             name="issuerProfile"
             render={({ field }) => (
               <FormItem className="flex flex-col mb-4">
-                <FormLabel>IssuerProfile</FormLabel>
+                <FormLabel>Issuer Profile</FormLabel>
                 <Select onValueChange={field.onChange}>
                   <FormControl>
                     <SelectTrigger
@@ -280,7 +280,7 @@ export function BadgeTemplatesIssueForm({
               name="expirationDate"
               render={({ field }) => (
                 <FormItem className="flex flex-col mb-4">
-                  <FormLabel>Exporation Date</FormLabel>
+                  <FormLabel>Expiration Date</FormLabel>
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -410,16 +410,16 @@ export function BadgeTemplatesIssueForm({
 
           <FormField
             control={form.control}
-            name="country"
+            name="countryTeritory"
             render={({ field }) => (
               <FormItem className="flex flex-col mb-4">
-                <FormLabel>Country</FormLabel>
+                <FormLabel>Country / Teritory</FormLabel>
                 <Select onValueChange={field.onChange}>
                   <FormControl>
                     <SelectTrigger
                       className={cn(!field.value && "text-muted-foreground")}
                     >
-                      <SelectValue placeholder="Select language" />
+                      <SelectValue placeholder="Select country" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -440,7 +440,7 @@ export function BadgeTemplatesIssueForm({
             name="stateProvince"
             render={({ field }) => (
               <FormItem className="flex flex-col mb-4">
-                <FormLabel>State/Province</FormLabel>
+                <FormLabel>State / Province</FormLabel>
                 <FormControl>
                   <Input type="text" {...field} />
                 </FormControl>
@@ -450,7 +450,7 @@ export function BadgeTemplatesIssueForm({
           />
 
           <Separator className="my-6" />
-          <div className="text-sm font-bold mb-6">
+          <div className="text-sm font-bold mb-4">
             <span>Add evidence</span>
           </div>
 
