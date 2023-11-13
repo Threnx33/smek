@@ -20,6 +20,7 @@ import {
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { FilterButton } from "@/components/reusables/filterButton";
 import { BadgeTemplatesTable } from "./badgeTemplatesTable";
+import { BadgeTemplatesIssueButton } from "./badgeTemplatesIssueButton";
 
 interface BadgeTemplatesProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -86,7 +87,7 @@ export function BadgeTemplates<TData, TValue>({
             Create Template
           </Button>
 
-          <Button className="mr-3">Issue Badge</Button>
+          <BadgeTemplatesIssueButton />
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
