@@ -20,8 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
-const countries = ["Romania", "Netherlands", "Germany"];
+import { COUNTRIES } from "@/components/constants";
 
 // Extend the schema for the registration form
 const registerFormSchema = z.object({
@@ -152,7 +151,7 @@ export function UserRegisterForm({
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {countries.map((country) => (
+                    {COUNTRIES.map((country) => (
                       <SelectItem value={country} key={country}>
                         {country}
                       </SelectItem>

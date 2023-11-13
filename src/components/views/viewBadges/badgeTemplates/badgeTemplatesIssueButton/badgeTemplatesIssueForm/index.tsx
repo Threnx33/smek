@@ -30,10 +30,17 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  BADGES,
+  COUNTRIES,
+  EMAIL_LANGUAGES,
+  ISSUER_PROFILES,
+} from "@/components/constants";
 
 const badgeTemplatesIssueSchema = z.object({
-  issuerProfile: z.any(),
-  badge: z.any(),
+  issuerProfile: z.string(),
+  badge: z.string(),
   firstName: z.string().min(1, "First name is required."),
   middleName: z.string().optional(),
   lastName: z.string().min(1, "Last name is required."),
@@ -41,11 +48,11 @@ const badgeTemplatesIssueSchema = z.object({
   expirationType: z.enum(["noExpiration", "expiresOn"]),
   expirationDate: z.date().optional(),
   emailNotifications: z.boolean().optional(),
-  emailLanguage: z.string().optional(),
+  emailLanguage: z.string(),
   issuerEarnerId: z.string(),
-  groupTag: z.string().optional(),
-  country: z.string().optional(),
-  stateProvince: z.string().optional(),
+  groupTag: z.string(),
+  country: z.string(),
+  stateProvince: z.string(),
 });
 
 const defaultIssueValues: Partial<BadgeTemplatesIssueSchema> = {};
@@ -63,19 +70,10 @@ export function BadgeTemplatesIssueForm({
     defaultValues: defaultIssueValues,
   });
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [issuerProfiles, setIssuerProfiles] = useState([]);
-  const [badges, setBadges] = useState([]);
-
   const expirationType = form.watch("expirationType");
 
   async function onSubmit(data: BadgeTemplatesIssueSchema) {
-    setIsLoading(true);
     console.log(data);
-
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
   }
 
   return (
@@ -97,7 +95,7 @@ export function BadgeTemplatesIssueForm({
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {issuerProfiles.map((issuerProfile) => (
+                    {ISSUER_PROFILES.map((issuerProfile) => (
                       <SelectItem value={issuerProfile} key={issuerProfile}>
                         {issuerProfile}
                       </SelectItem>
@@ -112,7 +110,7 @@ export function BadgeTemplatesIssueForm({
             control={form.control}
             name="badge"
             render={({ field }) => (
-              <FormItem className="flex flex-col mb-8">
+              <FormItem className="flex flex-col mb-4">
                 <FormLabel>Badge</FormLabel>
                 <Select onValueChange={field.onChange}>
                   <FormControl>
@@ -123,7 +121,7 @@ export function BadgeTemplatesIssueForm({
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {badges.map((badge) => (
+                    {BADGES.map((badge) => (
                       <SelectItem value={badge} key={badge}>
                         {badge}
                       </SelectItem>
@@ -134,8 +132,8 @@ export function BadgeTemplatesIssueForm({
               </FormItem>
             )}
           />
-          <Separator className="mb-6" />
 
+          <Separator className="my-6" />
           <div className="text-sm font-bold flex justify-between mb-6">
             <span>Earner Information</span>
             <img className="h-4 w-4" src="/arrowDown.svg" alt="ArrowDownIcon" />
@@ -242,7 +240,7 @@ export function BadgeTemplatesIssueForm({
                     defaultValue={field.value}
                     className="flex "
                   >
-                    <FormItem className="flex items-center space-x-2 mr-2">
+                    <FormItem className="flex items-center space-x-2 space-y-0 mr-2">
                       <FormControl>
                         <RadioGroupItem
                           className={`${
@@ -256,7 +254,7 @@ export function BadgeTemplatesIssueForm({
                       </FormControl>
                       <Label htmlFor="r1">No expiration</Label>
                     </FormItem>
-                    <FormItem className="flex items-center space-x-2">
+                    <FormItem className="flex items-center space-x-2 space-y-0">
                       <FormControl>
                         <RadioGroupItem
                           className={`${
@@ -325,7 +323,166 @@ export function BadgeTemplatesIssueForm({
               )}
             />
           )}
-          <Separator className="mb-6" />
+
+          <Separator className="my-6" />
+          <div className="text-sm font-bold flex justify-between mb-6">
+            <span>Badge Options</span>
+            <img className="h-4 w-4" src="/arrowDown.svg" alt="ArrowDownIcon" />
+          </div>
+
+          <FormField
+            control={form.control}
+            name="emailNotifications"
+            render={({ field }) => (
+              <FormItem className="mb-4">
+                <div className="text-sm font-semibold">Email Notifications</div>
+                <div className="flex flex-row space-x-2 items-center">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel>
+                    Suppress Skillquiver email notifications
+                  </FormLabel>
+                </div>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <Separator className="my-6" />
+
+          <FormField
+            control={form.control}
+            name="emailLanguage"
+            render={({ field }) => (
+              <FormItem className="flex flex-col mb-4">
+                <FormLabel>Email Language</FormLabel>
+                <Select onValueChange={field.onChange}>
+                  <FormControl>
+                    <SelectTrigger
+                      className={cn(!field.value && "text-muted-foreground")}
+                    >
+                      <SelectValue placeholder="Select language" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {EMAIL_LANGUAGES.map((emailLanguage) => (
+                      <SelectItem value={emailLanguage} key={emailLanguage}>
+                        {emailLanguage}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="issuerEarnerId"
+            render={({ field }) => (
+              <FormItem className="flex flex-col mb-4">
+                <FormLabel>Issuer Earner ID</FormLabel>
+                <FormControl>
+                  <Input type="text" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="groupTag"
+            render={({ field }) => (
+              <FormItem className="flex flex-col mb-4">
+                <FormLabel>Group Tag</FormLabel>
+                <FormControl>
+                  <Input type="text" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="country"
+            render={({ field }) => (
+              <FormItem className="flex flex-col mb-4">
+                <FormLabel>Country</FormLabel>
+                <Select onValueChange={field.onChange}>
+                  <FormControl>
+                    <SelectTrigger
+                      className={cn(!field.value && "text-muted-foreground")}
+                    >
+                      <SelectValue placeholder="Select language" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {COUNTRIES.map((country) => (
+                      <SelectItem value={country} key={country}>
+                        {country}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="stateProvince"
+            render={({ field }) => (
+              <FormItem className="flex flex-col mb-4">
+                <FormLabel>State/Province</FormLabel>
+                <FormControl>
+                  <Input type="text" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <Separator className="my-6" />
+          <div className="text-sm font-bold mb-6">
+            <span>Add evidence</span>
+          </div>
+
+          <div className="flex mb-6">
+            <Button variant="outline">
+              <img className="h-5 w-5 mr-1" src="/link.svg" alt="exportIcon" />
+              URL
+            </Button>
+            <Button variant="outline">
+              <img className="h-5 w-5 mr-1" src="/text.svg" alt="textIcon" />
+              Text
+            </Button>
+            <Button variant="outline">
+              <img
+                className="h-5 w-5 mr-1"
+                src="/export.svg"
+                alt="exportIcon"
+              />
+              Upload
+            </Button>
+            <Button variant="outline">
+              <img
+                className="h-5 w-5 mr-1"
+                src="/personalCard.svg"
+                alt="PersonalCardIcon"
+              />
+              ID
+            </Button>
+            <Button variant="outline">
+              <img className="h-5 w-5 mr-1" src="/dots.svg" alt="dotsIcon" />
+            </Button>
+          </div>
         </form>
       </Form>
     </div>

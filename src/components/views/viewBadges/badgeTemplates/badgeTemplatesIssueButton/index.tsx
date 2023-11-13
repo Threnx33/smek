@@ -10,7 +10,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { BadgeTemplatesIssueForm } from "./badgeTemplatesIssueForm";
-// import { BadgeTemplatesIssueForm } from "./badgeTemplatesIssueForm";
 
 export function BadgeTemplatesIssueButton() {
   return (
@@ -18,11 +17,9 @@ export function BadgeTemplatesIssueButton() {
       <SheetTrigger asChild>
         <Button className="mr-3">Issue Badge</Button>
       </SheetTrigger>
-      <SheetContent>
-        <SheetHeader className="mb-9">
-          <SheetTitle className="font-bold text-2xl mb-6">
-            Issue Badge
-          </SheetTitle>
+      <SheetContent className="w-1/2 overflow-auto">
+        <SheetHeader className="mb-6">
+          <SheetTitle className="font-bold text-2xl ">Issue Badge</SheetTitle>
           <SheetDescription className="font-semibold text-foreground text-xs">
             Complete the information below to issue this badge.
           </SheetDescription>
