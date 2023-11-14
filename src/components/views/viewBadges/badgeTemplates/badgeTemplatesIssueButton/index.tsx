@@ -26,6 +26,7 @@ export function BadgeTemplatesIssueButton() {
         </SheetHeader>
 
         <BadgeTemplatesIssueForm />
+
         <SheetFooter>
           <SheetClose asChild>
             <div className="space-x-2">
