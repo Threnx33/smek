@@ -21,6 +21,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { COUNTRIES } from "@/components/constants";
+import CustomSelect from "@/components/reusables/customSelect";
+import { CustomInput } from "@/components/reusables/customInput";
 
 // Extend the schema for the registration form
 const registerFormSchema = z.object({
@@ -76,94 +78,45 @@ export function UserRegisterForm({
     <div className={className} {...props}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="firstName"
-            render={({ field }) => (
-              <FormItem className="mb-4">
-                <FormLabel>
-                  First name<span className="text-sm text-cRed">*</span>
-                </FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="First name"
+            type="text"
+            mandatory
           />
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="lastName"
-            render={({ field }) => (
-              <FormItem className="mb-4">
-                <FormLabel>
-                  Last name<span className="text-sm text-cRed">*</span>
-                </FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Last name"
+            type="text"
+            mandatory
           />
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="email"
-            render={({ field }) => (
-              <FormItem className="mb-4">
-                <FormLabel>
-                  Email address<span className="text-sm text-cRed">*</span>
-                </FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Email address"
+            type="text"
+            mandatory
           />
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="password"
-            render={({ field }) => (
-              <FormItem className="mb-4">
-                <FormLabel>
-                  Password<span className="text-sm text-cRed">*</span>
-                </FormLabel>
-                <FormControl>
-                  <Input type="password" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Password"
+            type="password"
+            mandatory
           />
           <FormField
             control={form.control}
             name="country"
             render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>
-                  Country<span className="text-sm text-cRed">*</span>
-                </FormLabel>
-                <Select onValueChange={field.onChange}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select country" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {COUNTRIES.map((country) => (
-                      <SelectItem
-                        className="cursor-pointer"
-                        value={country}
-                        key={country}
-                      >
-                        {country}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
+              <CustomSelect
+                label="Country"
+                placeholder="Select country"
+                items={COUNTRIES}
+                field={field}
+                mandatory
+              />
             )}
           />
           <FormField

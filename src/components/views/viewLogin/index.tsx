@@ -7,6 +7,7 @@ export function ViewLogin() {
   return (
     <>
       <AuthWrapper>
+        <h2 className="text-2xl font-bold mb-6">Sign In</h2>
         <UserLoginForm />
         <p className="text-center mt-4 text-xs font-medium">
           Don't have an account?{" "}

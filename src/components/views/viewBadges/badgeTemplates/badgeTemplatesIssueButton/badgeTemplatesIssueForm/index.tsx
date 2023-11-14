@@ -38,6 +38,7 @@ import {
   ISSUER_PROFILES,
 } from "@/components/constants";
 import CustomSelect from "@/components/reusables/customSelect";
+import { CustomInput } from "@/components/reusables/customInput";
 
 const badgeTemplatesIssueSchema = z.object({
   issuerProfile: z.string(),
@@ -112,45 +113,25 @@ export function BadgeTemplatesIssueForm({
             <img className="h-4 w-4" src="/arrowDown.svg" alt="ArrowDownIcon" />
           </div>
 
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="firstName"
-            render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>First Name</FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="First Name"
+            type="text"
           />
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="middleName"
-            render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>Middle Name</FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Middle Name"
+            type="text"
           />
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="lastName"
-            render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>Last Name</FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Last Name"
+            type="text"
           />
+
           <FormField
             control={form.control}
             name="dateIssued"
@@ -362,32 +343,17 @@ export function BadgeTemplatesIssueForm({
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="issuerEarnerId"
-            render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>Issuer Earner ID</FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Issuer Earner ID"
+            type="text"
           />
-
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="groupTag"
-            render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>Group Tag</FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Group Tag"
+            type="text"
           />
 
           <FormField
@@ -421,18 +387,11 @@ export function BadgeTemplatesIssueForm({
             )}
           />
 
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="stateProvince"
-            render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>State / Province</FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="State / Province"
+            type="text"
           />
 
           <Separator className="my-6" />

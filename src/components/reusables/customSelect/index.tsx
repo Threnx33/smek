@@ -23,17 +23,22 @@ type CustomSelectProps = {
     value?: string;
     onChange: (value: string) => void;
   };
+  mandatory?: boolean;
 };
 
-const CustomSelect: React.FC<CustomSelectProps> = ({
+export const CustomSelect: React.FC<CustomSelectProps> = ({
   label,
   placeholder,
   items,
   field,
+  mandatory,
 }) => {
   return (
     <FormItem className="flex flex-col mb-4">
-      <FormLabel>{label}</FormLabel>
+      <FormLabel>
+        {label}
+        {mandatory && <span className="text-sm text-cRed">*</span>}
+      </FormLabel>
       <Select onValueChange={field.onChange}>
         <FormControl>
           <SelectTrigger
