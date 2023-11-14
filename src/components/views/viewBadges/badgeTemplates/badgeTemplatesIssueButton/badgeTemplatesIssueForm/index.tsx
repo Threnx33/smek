@@ -37,6 +37,7 @@ import {
   EMAIL_LANGUAGES,
   ISSUER_PROFILES,
 } from "@/components/constants";
+import CustomSelect from "@/components/reusables/customSelect";
 
 const badgeTemplatesIssueSchema = z.object({
   issuerProfile: z.string(),
@@ -87,52 +88,24 @@ export function BadgeTemplatesIssueForm({
             control={form.control}
             name="issuerProfile"
             render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>Issuer Profile</FormLabel>
-                <Select onValueChange={field.onChange}>
-                  <FormControl>
-                    <SelectTrigger
-                      className={cn(!field.value && "text-muted-foreground")}
-                    >
-                      <SelectValue placeholder="Select issuer profile" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {ISSUER_PROFILES.map((issuerProfile) => (
-                      <SelectItem value={issuerProfile} key={issuerProfile}>
-                        {issuerProfile}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
+              <CustomSelect
+                label="Issuer Profile"
+                placeholder="Select issuer profile"
+                items={ISSUER_PROFILES}
+                field={field}
+              />
             )}
           />
           <FormField
             control={form.control}
             name="badge"
             render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>Badge</FormLabel>
-                <Select onValueChange={field.onChange}>
-                  <FormControl>
-                    <SelectTrigger
-                      className={cn(!field.value && "text-muted-foreground")}
-                    >
-                      <SelectValue placeholder="Select badge to issue" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {BADGES.map((badge) => (
-                      <SelectItem value={badge} key={badge}>
-                        {badge}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
+              <CustomSelect
+                label="Badge"
+                placeholder="Select badge to issue"
+                items={BADGES}
+                field={field}
+              />
             )}
           />
 
@@ -350,7 +323,7 @@ export function BadgeTemplatesIssueForm({
           )}
 
           <Separator className="my-6" />
-          <div className="text-sm font-bold flex justify-between mb-6">
+          <div className="text-sm font-bold flex justify-between mb-4">
             <span>Badge Options</span>
             {isBadgeOptionsExtended ? (
               <img
@@ -380,9 +353,9 @@ export function BadgeTemplatesIssueForm({
                 name="emailNotifications"
                 render={({ field }) => (
                   <FormItem className="mb-4">
-                    <div className="text-sm font-semibold">
+                    <FormLabel className="text-sm font-semibold">
                       Email Notifications
-                    </div>
+                    </FormLabel>
                     <div className="flex flex-row space-x-2 items-center">
                       <FormControl>
                         <Checkbox
@@ -422,7 +395,11 @@ export function BadgeTemplatesIssueForm({
                       </FormControl>
                       <SelectContent>
                         {EMAIL_LANGUAGES.map((emailLanguage) => (
-                          <SelectItem value={emailLanguage} key={emailLanguage}>
+                          <SelectItem
+                            className="cursor-pointer"
+                            value={emailLanguage}
+                            key={emailLanguage}
+                          >
                             {emailLanguage}
                           </SelectItem>
                         ))}
@@ -478,7 +455,11 @@ export function BadgeTemplatesIssueForm({
                       </FormControl>
                       <SelectContent>
                         {COUNTRIES.map((country) => (
-                          <SelectItem value={country} key={country}>
+                          <SelectItem
+                            className="cursor-pointer"
+                            value={country}
+                            key={country}
+                          >
                             {country}
                           </SelectItem>
                         ))}
