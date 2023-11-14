@@ -152,7 +152,11 @@ export function UserRegisterForm({
                   </FormControl>
                   <SelectContent>
                     {COUNTRIES.map((country) => (
-                      <SelectItem value={country} key={country}>
+                      <SelectItem
+                        className="cursor-pointer"
+                        value={country}
+                        key={country}
+                      >
                         {country}
                       </SelectItem>
                     ))}

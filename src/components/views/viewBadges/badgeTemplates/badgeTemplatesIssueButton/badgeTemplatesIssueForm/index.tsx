@@ -1,4 +1,4 @@
-import { HTMLAttributes, useState } from "react";
+import { HTMLAttributes, useEffect, useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -37,6 +37,7 @@ import {
   EMAIL_LANGUAGES,
   ISSUER_PROFILES,
 } from "@/components/constants";
+import CustomSelect from "@/components/reusables/customSelect";
 
 const badgeTemplatesIssueSchema = z.object({
   issuerProfile: z.string(),
@@ -70,7 +71,7 @@ export function BadgeTemplatesIssueForm({
     defaultValues: defaultIssueValues,
   });
 
-  const expirationType = form.watch("expirationType");
+  const expirationTypeWatch = form.watch("expirationType", "noExpiration");
 
   async function onSubmit(data: BadgeTemplatesIssueSchema) {
     console.log(data);
@@ -84,52 +85,24 @@ export function BadgeTemplatesIssueForm({
             control={form.control}
             name="issuerProfile"
             render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>Issuer Profile</FormLabel>
-                <Select onValueChange={field.onChange}>
-                  <FormControl>
-                    <SelectTrigger
-                      className={cn(!field.value && "text-muted-foreground")}
-                    >
-                      <SelectValue placeholder="Select issuer profile" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {ISSUER_PROFILES.map((issuerProfile) => (
-                      <SelectItem value={issuerProfile} key={issuerProfile}>
-                        {issuerProfile}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
+              <CustomSelect
+                label="Issuer Profile"
+                placeholder="Select issuer profile"
+                items={ISSUER_PROFILES}
+                field={field}
+              />
             )}
           />
           <FormField
             control={form.control}
             name="badge"
             render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>Badge</FormLabel>
-                <Select onValueChange={field.onChange}>
-                  <FormControl>
-                    <SelectTrigger
-                      className={cn(!field.value && "text-muted-foreground")}
-                    >
-                      <SelectValue placeholder="Select badge to issue" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {BADGES.map((badge) => (
-                      <SelectItem value={badge} key={badge}>
-                        {badge}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
+              <CustomSelect
+                label="Badge"
+                placeholder="Select badge to issue"
+                items={BADGES}
+                field={field}
+              />
             )}
           />
 
@@ -237,14 +210,14 @@ export function BadgeTemplatesIssueForm({
                 <FormControl>
                   <RadioGroup
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
+                    defaultValue={expirationTypeWatch}
                     className="flex "
                   >
                     <FormItem className="flex items-center space-x-2 space-y-0 mr-2">
                       <FormControl>
                         <RadioGroupItem
                           className={`${
-                            expirationType === "noExpiration"
+                            expirationTypeWatch === "noExpiration"
                               ? "border-checked text-checked"
                               : ""
                           }`}
@@ -258,7 +231,7 @@ export function BadgeTemplatesIssueForm({
                       <FormControl>
                         <RadioGroupItem
                           className={`${
-                            expirationType === "expiresOn"
+                            expirationTypeWatch === "expiresOn"
                               ? "border-checked text-checked"
                               : ""
                           }`}
@@ -274,7 +247,7 @@ export function BadgeTemplatesIssueForm({
             )}
           />
 
-          {expirationType === "expiresOn" && (
+          {expirationTypeWatch === "expiresOn" && (
             <FormField
               control={form.control}
               name="expirationDate"
@@ -325,7 +298,7 @@ export function BadgeTemplatesIssueForm({
           )}
 
           <Separator className="my-6" />
-          <div className="text-sm font-bold flex justify-between mb-6">
+          <div className="text-sm font-bold flex justify-between mb-4">
             <span>Badge Options</span>
             <img className="h-4 w-4" src="/arrowDown.svg" alt="ArrowDownIcon" />
           </div>
@@ -335,7 +308,9 @@ export function BadgeTemplatesIssueForm({
             name="emailNotifications"
             render={({ field }) => (
               <FormItem className="mb-4">
-                <div className="text-sm font-semibold">Email Notifications</div>
+                <FormLabel className="text-sm font-semibold">
+                  Email Notifications
+                </FormLabel>
                 <div className="flex flex-row space-x-2 items-center">
                   <FormControl>
                     <Checkbox
@@ -365,12 +340,19 @@ export function BadgeTemplatesIssueForm({
                     <SelectTrigger
                       className={cn(!field.value && "text-muted-foreground")}
                     >
-                      <SelectValue placeholder="Select language" />
+                      <SelectValue
+                        placeholder="Select language"
+                        defaultValue={field.value}
+                      />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
                     {EMAIL_LANGUAGES.map((emailLanguage) => (
-                      <SelectItem value={emailLanguage} key={emailLanguage}>
+                      <SelectItem
+                        className="cursor-pointer"
+                        value={emailLanguage}
+                        key={emailLanguage}
+                      >
                         {emailLanguage}
                       </SelectItem>
                     ))}
@@ -424,7 +406,11 @@ export function BadgeTemplatesIssueForm({
                   </FormControl>
                   <SelectContent>
                     {COUNTRIES.map((country) => (
-                      <SelectItem value={country} key={country}>
+                      <SelectItem
+                        className="cursor-pointer"
+                        value={country}
+                        key={country}
+                      >
                         {country}
                       </SelectItem>
                     ))}
@@ -452,36 +438,6 @@ export function BadgeTemplatesIssueForm({
           <Separator className="my-6" />
           <div className="text-sm font-bold mb-4">
             <span>Add evidence</span>
-          </div>
-
-          <div className="flex mb-6">
-            <Button variant="outline">
-              <img className="h-5 w-5 mr-1" src="/link.svg" alt="exportIcon" />
-              URL
-            </Button>
-            <Button variant="outline">
-              <img className="h-5 w-5 mr-1" src="/text.svg" alt="textIcon" />
-              Text
-            </Button>
-            <Button variant="outline">
-              <img
-                className="h-5 w-5 mr-1"
-                src="/export.svg"
-                alt="exportIcon"
-              />
-              Upload
-            </Button>
-            <Button variant="outline">
-              <img
-                className="h-5 w-5 mr-1"
-                src="/personalCard.svg"
-                alt="PersonalCardIcon"
-              />
-              ID
-            </Button>
-            <Button variant="outline">
-              <img className="h-5 w-5 mr-1" src="/dots.svg" alt="dotsIcon" />
-            </Button>
           </div>
         </form>
       </Form>
