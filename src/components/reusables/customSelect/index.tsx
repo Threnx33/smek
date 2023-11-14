@@ -1,4 +1,3 @@
-import React from "react";
 import {
   FormControl,
   FormField,
@@ -14,50 +13,54 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 
-type CustomSelectProps = {
+type CustomSelectProps<T extends FieldValues> = {
+  form: UseFormReturn<T>;
+  name: Path<T>;
   label: string;
   placeholder: string;
   items: string[];
-  field: {
-    value?: string;
-    onChange: (value: string) => void;
-  };
   mandatory?: boolean;
 };
 
-export const CustomSelect: React.FC<CustomSelectProps> = ({
+export function CustomSelect<T extends FieldValues>({
+  form,
+  name,
   label,
   placeholder,
   items,
-  field,
   mandatory,
-}) => {
+}: CustomSelectProps<T>) {
   return (
-    <FormItem className="flex flex-col mb-4">
-      <FormLabel>
-        {label}
-        {mandatory && <span className="text-sm text-cRed">*</span>}
-      </FormLabel>
-      <Select onValueChange={field.onChange}>
-        <FormControl>
-          <SelectTrigger
-            className={cn(!field.value && "text-muted-foreground")}
-          >
-            <SelectValue placeholder={placeholder} />
-          </SelectTrigger>
-        </FormControl>
-        <SelectContent>
-          {items.map((item) => (
-            <SelectItem className="cursor-pointer" value={item} key={item}>
-              {item}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-      <FormMessage />
-    </FormItem>
+    <FormField
+      control={form.control}
+      name={name}
+      render={({ field }) => (
+        <FormItem className="flex flex-col mb-4">
+          <FormLabel>
+            {label}
+            {mandatory && <span className="text-sm text-cRed">*</span>}
+          </FormLabel>
+          <Select onValueChange={field.onChange}>
+            <FormControl>
+              <SelectTrigger
+                className={cn(!field.value && "text-muted-foreground")}
+              >
+                <SelectValue placeholder={placeholder} />
+              </SelectTrigger>
+            </FormControl>
+            <SelectContent>
+              {items.map((item) => (
+                <SelectItem className="cursor-pointer" value={item} key={item}>
+                  {item}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
   );
-};
-
-export default CustomSelect;
+}

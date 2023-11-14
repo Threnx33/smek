@@ -7,28 +7,26 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { FieldValues, Path, UseFormReturn } from "react-hook-form"; // Import necessary types
+import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 
-// Define a generic type that extends from UseFormReturn
-type CustomInputProps<TFormValues extends FieldValues> = {
-  form: UseFormReturn<TFormValues>;
-  name: Path<TFormValues>;
+type CustomInputProps<T extends FieldValues> = {
+  form: UseFormReturn<T>;
+  name: Path<T>; //keyof T | string
   label: string;
   type: string;
   mandatory?: boolean;
 };
 
-// Your CustomInput component now is a generic React Functional Component
-export function CustomInput<TFormValues extends FieldValues>({
+export function CustomInput<T extends FieldValues>({
   form,
   name,
   label,
   type,
   mandatory,
-}: CustomInputProps<TFormValues>) {
+}: CustomInputProps<T>) {
   return (
     <FormField
-      control={form.control} // We get the control object from the form prop
+      control={form.control}
       name={name}
       render={({ field }) => (
         <FormItem className="flex flex-col mb-4">

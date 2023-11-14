@@ -1,6 +1,5 @@
 import { HTMLAttributes, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -13,16 +12,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { COUNTRIES } from "@/components/constants";
-import CustomSelect from "@/components/reusables/customSelect";
 import { CustomInput } from "@/components/reusables/customInput";
+import { CustomSelect } from "@/components/reusables/customSelect";
 
 // Extend the schema for the registration form
 const registerFormSchema = z.object({
@@ -106,18 +98,13 @@ export function UserRegisterForm({
             type="password"
             mandatory
           />
-          <FormField
-            control={form.control}
+          <CustomSelect
+            form={form}
             name="country"
-            render={({ field }) => (
-              <CustomSelect
-                label="Country"
-                placeholder="Select country"
-                items={COUNTRIES}
-                field={field}
-                mandatory
-              />
-            )}
+            label="Country"
+            placeholder="Select country"
+            items={COUNTRIES}
+            mandatory
           />
           <FormField
             control={form.control}

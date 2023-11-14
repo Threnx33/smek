@@ -1,4 +1,4 @@
-import { HTMLAttributes, useEffect, useState } from "react";
+import { HTMLAttributes } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,15 +10,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
@@ -37,8 +29,8 @@ import {
   EMAIL_LANGUAGES,
   ISSUER_PROFILES,
 } from "@/components/constants";
-import CustomSelect from "@/components/reusables/customSelect";
 import { CustomInput } from "@/components/reusables/customInput";
+import { CustomSelect } from "@/components/reusables/customSelect";
 
 const badgeTemplatesIssueSchema = z.object({
   issuerProfile: z.string(),
@@ -82,29 +74,19 @@ export function BadgeTemplatesIssueForm({
     <div className={className} {...props}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
+          <CustomSelect
+            form={form}
             name="issuerProfile"
-            render={({ field }) => (
-              <CustomSelect
-                label="Issuer Profile"
-                placeholder="Select issuer profile"
-                items={ISSUER_PROFILES}
-                field={field}
-              />
-            )}
+            label="Issuer Profile"
+            placeholder="Select issuer profile"
+            items={ISSUER_PROFILES}
           />
-          <FormField
-            control={form.control}
+          <CustomSelect
+            form={form}
             name="badge"
-            render={({ field }) => (
-              <CustomSelect
-                label="Badge"
-                placeholder="Select badge to issue"
-                items={BADGES}
-                field={field}
-              />
-            )}
+            label="Badge"
+            placeholder="Select badge to issue"
+            items={BADGES}
           />
 
           <Separator className="my-6" />
@@ -310,39 +292,14 @@ export function BadgeTemplatesIssueForm({
 
           <Separator className="my-6" />
 
-          <FormField
-            control={form.control}
+          <CustomSelect
+            form={form}
             name="emailLanguage"
-            render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>Email Language</FormLabel>
-                <Select onValueChange={field.onChange}>
-                  <FormControl>
-                    <SelectTrigger
-                      className={cn(!field.value && "text-muted-foreground")}
-                    >
-                      <SelectValue
-                        placeholder="Select language"
-                        defaultValue={field.value}
-                      />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {EMAIL_LANGUAGES.map((emailLanguage) => (
-                      <SelectItem
-                        className="cursor-pointer"
-                        value={emailLanguage}
-                        key={emailLanguage}
-                      >
-                        {emailLanguage}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Email Language"
+            placeholder="Select language"
+            items={EMAIL_LANGUAGES}
           />
+
           <CustomInput
             form={form}
             name="issuerEarnerId"
@@ -356,35 +313,12 @@ export function BadgeTemplatesIssueForm({
             type="text"
           />
 
-          <FormField
-            control={form.control}
+          <CustomSelect
+            form={form}
             name="countryTeritory"
-            render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>Country / Teritory</FormLabel>
-                <Select onValueChange={field.onChange}>
-                  <FormControl>
-                    <SelectTrigger
-                      className={cn(!field.value && "text-muted-foreground")}
-                    >
-                      <SelectValue placeholder="Select country" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {COUNTRIES.map((country) => (
-                      <SelectItem
-                        className="cursor-pointer"
-                        value={country}
-                        key={country}
-                      >
-                        {country}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Country / Teritory"
+            placeholder="Select country"
+            items={COUNTRIES}
           />
 
           <CustomInput
