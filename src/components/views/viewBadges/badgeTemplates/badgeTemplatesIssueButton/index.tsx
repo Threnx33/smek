@@ -27,6 +27,32 @@ export function BadgeTemplatesIssueButton() {
 
         <BadgeTemplatesIssueForm />
 
+        <div className="flex mb-6 space-x-2">
+          <Button variant="outline" className="p-3">
+            <img className="h-5 w-5 mr-1" src="/link.svg" alt="exportIcon" />
+            URL
+          </Button>
+          <Button variant="outline" className="p-3">
+            <img className="h-5 w-5 mr-1" src="/text.svg" alt="textIcon" />
+            Text
+          </Button>
+          <Button variant="outline" className="p-3">
+            <img className="h-5 w-5 mr-1" src="/export.svg" alt="exportIcon" />
+            Upload
+          </Button>
+          <Button variant="outline" className="p-2">
+            <img
+              className="h-5 w-5 mr-1"
+              src="/personalCard.svg"
+              alt="PersonalCardIcon"
+            />
+            ID
+          </Button>
+          <Button variant="outline" className="p-2.5">
+            <img className="h-5 w-5 mr-1" src="/dots.svg" alt="dotsIcon" />
+          </Button>
+        </div>
+
         <SheetFooter>
           <SheetClose asChild>
             <div className="space-x-2">

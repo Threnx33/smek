@@ -1,4 +1,4 @@
-import { HTMLAttributes, useState } from "react";
+import { HTMLAttributes, useEffect, useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -74,11 +74,19 @@ export function BadgeTemplatesIssueForm({
   const [isEarnerInfoExtended, setIsEarnerInfoExtended] = useState(true);
   const [isBadgeOptionsExtended, setIsBadgeOptionsExtended] = useState(true);
 
-  const expirationType = form.watch("expirationType", "noExpiration");
+  const expirationTypeWatch = form.watch("expirationType", "noExpiration");
+  const emailLanguageWatch = form.watch("emailLanguage");
+  const countryTeritoryWatch = form.watch("countryTeritory");
 
   async function onSubmit(data: BadgeTemplatesIssueSchema) {
     console.log(data);
   }
+
+  useEffect(() => {
+    setInterval(() => {
+      console.log(form.getValues("emailLanguage"));
+    }, 5000);
+  }, []);
 
   return (
     <div className={className} {...props}>
@@ -233,14 +241,14 @@ export function BadgeTemplatesIssueForm({
                     <FormControl>
                       <RadioGroup
                         onValueChange={field.onChange}
-                        defaultValue={expirationType}
+                        defaultValue={expirationTypeWatch}
                         className="flex "
                       >
                         <FormItem className="flex items-center space-x-2 space-y-0 mr-2">
                           <FormControl>
                             <RadioGroupItem
                               className={`${
-                                expirationType === "noExpiration"
+                                expirationTypeWatch === "noExpiration"
                                   ? "border-checked text-checked"
                                   : ""
                               }`}
@@ -254,7 +262,7 @@ export function BadgeTemplatesIssueForm({
                           <FormControl>
                             <RadioGroupItem
                               className={`${
-                                expirationType === "expiresOn"
+                                expirationTypeWatch === "expiresOn"
                                   ? "border-checked text-checked"
                                   : ""
                               }`}
@@ -270,7 +278,7 @@ export function BadgeTemplatesIssueForm({
                 )}
               />
 
-              {expirationType === "expiresOn" && (
+              {expirationTypeWatch === "expiresOn" && (
                 <FormField
                   control={form.control}
                   name="expirationDate"
@@ -450,7 +458,10 @@ export function BadgeTemplatesIssueForm({
                             !field.value && "text-muted-foreground"
                           )}
                         >
-                          <SelectValue placeholder="Select country" />
+                          <SelectValue
+                            placeholder="Select country"
+                            defaultValue={countryTeritoryWatch}
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -492,31 +503,6 @@ export function BadgeTemplatesIssueForm({
           </div>
         </form>
       </Form>
-      <div className="flex mb-6 space-x-2">
-        <Button variant="outline" className="p-3">
-          <img className="h-5 w-5 mr-1" src="/link.svg" alt="exportIcon" />
-          URL
-        </Button>
-        <Button variant="outline" className="p-3">
-          <img className="h-5 w-5 mr-1" src="/text.svg" alt="textIcon" />
-          Text
-        </Button>
-        <Button variant="outline" className="p-3">
-          <img className="h-5 w-5 mr-1" src="/export.svg" alt="exportIcon" />
-          Upload
-        </Button>
-        <Button variant="outline" className="p-2">
-          <img
-            className="h-5 w-5 mr-1"
-            src="/personalCard.svg"
-            alt="PersonalCardIcon"
-          />
-          ID
-        </Button>
-        <Button variant="outline" className="p-2.5">
-          <img className="h-5 w-5 mr-1" src="/dots.svg" alt="dotsIcon" />
-        </Button>
-      </div>
     </div>
   );
 }
