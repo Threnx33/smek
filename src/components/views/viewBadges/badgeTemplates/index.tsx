@@ -83,8 +83,8 @@ export function BadgeTemplates<TData, TValue>({
             <Button className="mr-3">
               <img
                 className="h-5 w-5 mr-2"
-                src="/addSquare.svg"
-                alt="addSquareIcon"
+                src="/addSquareWhite.svg"
+                alt="addSquareWhiteIcon"
               />
               Create Template
             </Button>

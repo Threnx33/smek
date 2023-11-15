@@ -12,6 +12,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+const criteriaSchema = z.object({
+  criteriaType: z.string(),
+  criteriaDescription: z.string(),
+  criteriaURL: z.string().url(),
+});
+
 const createBadgeTemplateSchema = z.object({
   badgeName: z.string().min(1, "Badge name required"),
   description: z.string(),
@@ -21,9 +27,7 @@ const createBadgeTemplateSchema = z.object({
   time: z.string(),
   cost: z.string(),
   displayAttributes: z.boolean().optional(),
-  criteriaType: z.string(),
-  criteriaDescription: z.string(),
-  criteriaURL: z.string(),
+  criterias: z.array(criteriaSchema),
 });
 
 const defaultValues: Partial<CreateBadgeTemplateSchema> = {};
@@ -80,7 +84,7 @@ export function ViewCreateBadgeTemplate() {
             </div>
 
             <Form {...form}>
-              <form>
+              <form className="flex flex-col">
                 <CustomInput
                   form={form}
                   name="badgeName"
@@ -152,7 +156,8 @@ export function ViewCreateBadgeTemplate() {
                   label="Display attributes on the public view of this badge"
                 />
 
-                <FormCardWrap title="Criteria">
+                <div className="text-lg font-bold mb-2">Criteria</div>
+                <FormCardWrap>
                   <CustomSelect
                     form={form}
                     name="criteriaType"
@@ -174,6 +179,15 @@ export function ViewCreateBadgeTemplate() {
                     placeholder="https://"
                   />
                 </FormCardWrap>
+
+                <Button className="ml-auto" variant="outline">
+                  <img
+                    className="h-5 w-5 mr-2"
+                    src="/addSquare.svg"
+                    alt="AddSquareIcon"
+                  />
+                  <span>Add Criteria</span>
+                </Button>
               </form>
             </Form>
           </div>
