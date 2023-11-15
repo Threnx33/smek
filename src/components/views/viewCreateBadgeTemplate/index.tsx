@@ -219,7 +219,7 @@ export function ViewCreateBadgeTemplate() {
                 />
 
                 <div className="text-lg font-bold mb-2">Criteria</div>
-                {criteriaFields.map((field, index) => (
+                {/* {criteriaFields.map((field, index) => (
                   <FormCardWrap className="flex flex-col" key={field.id}>
                     <CustomSelect
                       form={form}
@@ -250,7 +250,7 @@ export function ViewCreateBadgeTemplate() {
                       Remove Criteria
                     </Button>
                   </FormCardWrap>
-                ))}
+                ))} */}
                 <Button
                   type="button"
                   className="ml-auto mb-6"
@@ -266,10 +266,56 @@ export function ViewCreateBadgeTemplate() {
                 </Button>
 
                 <div className="text-lg font-bold mb-2">Skills</div>
-                <FormCardWrap className="flex flex-col">da</FormCardWrap>
+                <FormCardWrap className="flex flex-col">
+                  <input
+                    className="border p-2 mb-1"
+                    type="text"
+                    placeholder="Type in skills"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        appendSkill({
+                          id: skillFields.length.toString(),
+                          skill: e.currentTarget.value,
+                        });
+                        e.currentTarget.value = "";
+                      }
+                    }}
+                  />
+
+                  <div className="mb-4">
+                    {skillFields.map((field, index) => (
+                      <div
+                        key={field.id}
+                        className="inline-flex items-center m-1"
+                      >
+                        <span className="border px-4 py-2.5 space-x-2 select-none font-semibold flex rounded-3xl bg-cLightGreyBg">
+                          <span>{field.skill}</span>
+                          <img
+                            className="cursor-pointer"
+                            onClick={() => removeSkill(index)}
+                            src="/closeCircle.svg"
+                            alt="CloseCircleIcon"
+                          />
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="text-sm font-bold">Suggested Skills</div>
+                  <div className="text-sm mb-4">
+                    Skillquiver can generate a list of skills based on your
+                    template's description and earning criteria. Using these
+                    skills ensures your credential connects to meaningful
+                    opportunities for your earners
+                  </div>
+                  <Button className="w-fit" variant="outline" type="button">
+                    Suggest skills
+                  </Button>
+                </FormCardWrap>
 
                 <div className="text-lg font-bold mb-2">Standards</div>
-                {standardFields.map((field, index) => (
+                {/* {standardFields.map((field, index) => (
                   <FormCardWrap className="flex flex-col" key={field.id}>
                     <CustomInput
                       form={form}
@@ -312,7 +358,7 @@ export function ViewCreateBadgeTemplate() {
                     alt="AddSquareIcon"
                   />
                   <span>Add Standard</span>
-                </Button>
+                </Button> */}
               </form>
             </Form>
           </div>
