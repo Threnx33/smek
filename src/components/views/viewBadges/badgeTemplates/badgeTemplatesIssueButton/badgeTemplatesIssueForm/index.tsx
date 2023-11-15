@@ -2,27 +2,9 @@ import { HTMLAttributes } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { Separator } from "@/components/ui/separator";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
-import { format } from "date-fns";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
+
 import {
   BADGES,
   COUNTRIES,
@@ -33,6 +15,7 @@ import { CustomInput } from "@/components/reusables/customInput";
 import { CustomSelect } from "@/components/reusables/customSelect";
 import { CustomCheckbox } from "@/components/reusables/customCheckbox";
 import { CustomCalendar } from "@/components/reusables/customCalendar";
+import { CustomRadioGroup } from "@/components/reusables/customRadioGroup";
 
 const badgeTemplatesIssueSchema = z.object({
   issuerProfile: z.string(),
@@ -65,6 +48,11 @@ export function BadgeTemplatesIssueForm({
     resolver: zodResolver(badgeTemplatesIssueSchema),
     defaultValues: defaultIssueValues,
   });
+
+  const expirationTypeItems = [
+    { value: "noExpiration", label: "No expiration" },
+    { value: "expiresOn", label: "Expires on" },
+  ];
 
   const expirationTypeWatch = form.watch("expirationType", "noExpiration");
 
@@ -125,50 +113,12 @@ export function BadgeTemplatesIssueForm({
             }
           />
 
-          <FormField
-            control={form.control}
+          <CustomRadioGroup
+            form={form}
             name="expirationType"
-            render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>Expiration</FormLabel>
-                <FormControl>
-                  <RadioGroup
-                    onValueChange={field.onChange}
-                    defaultValue={expirationTypeWatch}
-                    className="flex "
-                  >
-                    <FormItem className="flex items-center space-x-2 space-y-0 mr-2">
-                      <FormControl>
-                        <RadioGroupItem
-                          className={`${
-                            expirationTypeWatch === "noExpiration"
-                              ? "border-checked text-checked"
-                              : ""
-                          }`}
-                          value="noExpiration"
-                          id="r1"
-                        />
-                      </FormControl>
-                      <Label htmlFor="r1">No expiration</Label>
-                    </FormItem>
-                    <FormItem className="flex items-center space-x-2 space-y-0">
-                      <FormControl>
-                        <RadioGroupItem
-                          className={`${
-                            expirationTypeWatch === "expiresOn"
-                              ? "border-checked text-checked"
-                              : ""
-                          }`}
-                          value="expiresOn"
-                          id="r2"
-                        />
-                      </FormControl>
-                      <Label htmlFor="r2">Expires on</Label>
-                    </FormItem>
-                  </RadioGroup>
-                </FormControl>
-              </FormItem>
-            )}
+            label="Expiration"
+            items={expirationTypeItems}
+            defaultValue="noExpiration"
           />
 
           {expirationTypeWatch === "expiresOn" && (

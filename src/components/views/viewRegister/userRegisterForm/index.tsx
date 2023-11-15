@@ -23,7 +23,9 @@ const registerFormSchema = z.object({
   firstName: z.string().min(1, "First name is required."),
   lastName: z.string().min(1, "Last name is required."),
   email: z.string().email("Invalid email address."),
-  country: z.string().refine((value) => value, "Invalid country selection."),
+  country: z
+    .string()
+    .refine((value) => COUNTRIES.includes(value), "Invalid country selection."),
   password: z
     .string()
     .min(4, "Password must be at least 4 characters.")
@@ -120,24 +122,26 @@ export function UserRegisterForm({
             control={form.control}
             name="terms"
             render={({ field }) => (
-              <FormItem className="flex flex-row space-x-2 items-center mb-4">
-                <FormControl>
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-                <span className="leading-[0.9rem]">
-                  <FormLabel>I agree to the </FormLabel>
-                  <TextMainWrapper className="cursor-pointer">
-                    Terms of Service
-                  </TextMainWrapper>
-                  <FormLabel> and </FormLabel>
-                  <TextMainWrapper className="cursor-pointer">
-                    Privacy Policy
-                  </TextMainWrapper>
-                  <span className="text-cRed">*</span>
-                </span>
+              <FormItem>
+                <div className="flex flex-row space-x-2 items-center mb-4">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <span className="leading-[0.9rem]">
+                    <FormLabel>I agree to the </FormLabel>
+                    <TextMainWrapper className="cursor-pointer">
+                      Terms of Service
+                    </TextMainWrapper>
+                    <FormLabel> and </FormLabel>
+                    <TextMainWrapper className="cursor-pointer">
+                      Privacy Policy
+                    </TextMainWrapper>
+                    <span className="text-cRed">*</span>
+                  </span>
+                </div>
                 <FormMessage />
               </FormItem>
             )}
