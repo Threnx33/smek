@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { UserRegisterForm } from "./userRegisterForm";
-import { AuthWrapper } from "@/components/reusables/authWrapper";
-import { TextMainWrapper } from "@/components/reusables/textMainWrapper";
+import { AuthWrapper } from "@/components/reusables/authWrap";
+import { TextMainWrap } from "@/components/reusables/textMainWrap";
 
 export function ViewRegister() {
   return (
@@ -12,7 +12,7 @@ export function ViewRegister() {
         <p className="text-center mt-4 text-xs font-medium">
           Already have an account?{" "}
           <Link to="/">
-            <TextMainWrapper>Login</TextMainWrapper>
+            <TextMainWrap>Login</TextMainWrap>
           </Link>
         </p>
       </AuthWrapper>

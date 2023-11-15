@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { PasswordResetForm } from "./passwordResetForm";
-import { AuthWrapper } from "@/components/reusables/authWrapper";
-import { TextMainWrapper } from "@/components/reusables/textMainWrapper";
+import { AuthWrapper } from "@/components/reusables/authWrap";
+import { TextMainWrap } from "@/components/reusables/textMainWrap";
 
 export function ViewPasswordReset() {
   return (
@@ -16,7 +16,7 @@ export function ViewPasswordReset() {
         <p className="text-center mt-4 text-xs font-medium">
           Remembered password?{" "}
           <Link to="/">
-            <TextMainWrapper>Login</TextMainWrapper>
+            <TextMainWrap>Login</TextMainWrap>
           </Link>
         </p>
       </AuthWrapper>

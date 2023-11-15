@@ -16,7 +16,7 @@ import { COUNTRIES } from "@/components/constants";
 import { CustomInput } from "@/components/reusables/customInput";
 import { CustomSelect } from "@/components/reusables/customSelect";
 import { CustomCheckbox } from "@/components/reusables/customCheckbox";
-import { TextMainWrapper } from "@/components/reusables/textMainWrapper";
+import { TextMainWrap } from "@/components/reusables/textMainWrap";
 
 // Extend the schema for the registration form
 const registerFormSchema = z.object({
@@ -132,13 +132,13 @@ export function UserRegisterForm({
                   </FormControl>
                   <span className="leading-[0.9rem]">
                     <FormLabel>I agree to the </FormLabel>
-                    <TextMainWrapper className="cursor-pointer">
+                    <TextMainWrap className="cursor-pointer">
                       Terms of Service
-                    </TextMainWrapper>
+                    </TextMainWrap>
                     <FormLabel> and </FormLabel>
-                    <TextMainWrapper className="cursor-pointer">
+                    <TextMainWrap className="cursor-pointer">
                       Privacy Policy
-                    </TextMainWrapper>
+                    </TextMainWrap>
                     <span className="text-cRed">*</span>
                   </span>
                 </div>

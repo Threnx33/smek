@@ -3,7 +3,7 @@ import { CustomInput } from "@/components/reusables/customInput";
 import { CustomRadioGroup } from "@/components/reusables/customRadioGroup";
 import { CustomSelect } from "@/components/reusables/customSelect";
 import { CustomTextarea } from "@/components/reusables/customTextarea";
-import { TextMainWrapper } from "@/components/reusables/textMainWrapper";
+import { TextMainWrap } from "@/components/reusables/textMainWrap";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { MainWrapper } from "@/components/uiComponents/mainWrapper";
@@ -41,7 +41,7 @@ export function ViewCreateBadgeTemplate() {
       <div className="flex flex-col items-center">
         <div className="w-7/12">
           <div className="flex justify-between">
-            <span className="text-2xl font-bold mb-5 ">
+            <span className="text-2xl font-bold mb-5">
               Create Badge Template
             </span>
             <div className="space-x-2">
@@ -109,10 +109,7 @@ export function ViewCreateBadgeTemplate() {
                   Attributes improve your badge’s overall discoverability, as
                   well as the likelihood it will be recommended to Skillquiver
                   users. Learn more about attributes{" "}
-                  <TextMainWrapper className="cursor-pointer">
-                    here
-                  </TextMainWrapper>
-                  .
+                  <TextMainWrap className="cursor-pointer">here</TextMainWrap>.
                 </div>
 
                 <CustomSelect

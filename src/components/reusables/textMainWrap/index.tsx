@@ -1,11 +1,11 @@
 import React, { ReactNode } from "react";
 
-interface TextMainWrapperProps extends React.HTMLProps<HTMLSpanElement> {
+interface TextMainWrapProps extends React.HTMLProps<HTMLSpanElement> {
   children: ReactNode;
   className?: string; // This makes the className prop optional
 }
 
-export const TextMainWrapper: React.FC<TextMainWrapperProps> = ({
+export const TextMainWrap: React.FC<TextMainWrapProps> = ({
   children,
   className,
   ...props
