@@ -55,7 +55,7 @@ export function PasswordResetForm({
             label="Email address"
             type="text"
           />
-          <Button type="submit" className="w-full mt-6" disabled={isLoading}>
+          <Button type="submit" className="w-full mt-4" disabled={isLoading}>
             {isLoading ? "<Loading Icon>" : "Send Instructions"}
           </Button>
         </form>

@@ -15,6 +15,8 @@ import {
 import { COUNTRIES } from "@/components/constants";
 import { CustomInput } from "@/components/reusables/customInput";
 import { CustomSelect } from "@/components/reusables/customSelect";
+import { CustomCheckbox } from "@/components/reusables/customCheckbox";
+import { TextMainWrapper } from "@/components/reusables/textMainWrapper";
 
 // Extend the schema for the registration form
 const registerFormSchema = z.object({
@@ -106,9 +108,17 @@ export function UserRegisterForm({
             items={COUNTRIES}
             mandatory
           />
+
+          <CustomCheckbox
+            form={form}
+            name="news"
+            label="Send me occasional news and update on professional growth
+            opportunities"
+          />
+
           <FormField
             control={form.control}
-            name="news"
+            name="terms"
             render={({ field }) => (
               <FormItem className="flex flex-row space-x-2 items-center mb-4">
                 <FormControl>
@@ -117,36 +127,22 @@ export function UserRegisterForm({
                     onCheckedChange={field.onChange}
                   />
                 </FormControl>
-                <FormLabel>
-                  Send me occasional news and update on professional growth
-                  opportunities
-                </FormLabel>
+                <span className="leading-[0.9rem]">
+                  <FormLabel>I agree to the </FormLabel>
+                  <TextMainWrapper className="cursor-pointer">
+                    Terms of Service
+                  </TextMainWrapper>
+                  <FormLabel> and </FormLabel>
+                  <TextMainWrapper className="cursor-pointer">
+                    Privacy Policy
+                  </TextMainWrapper>
+                  <span className="text-cRed">*</span>
+                </span>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="terms"
-            render={({ field }) => (
-              <FormItem className=" mb-4">
-                <div className="flex flex-row space-x-2 items-center">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormLabel>
-                    I agree to the Terms of Service and Privacy Policy
-                    <span className="text-sm text-cRed">*</span>
-                  </FormLabel>
-                </div>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit" className="w-full mt-6" disabled={isLoading}>
+          <Button type="submit" className="w-full mt-4" disabled={isLoading}>
             {isLoading && "<Loading Icon>"} Create Account
           </Button>
         </form>

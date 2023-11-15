@@ -31,6 +31,7 @@ import {
 } from "@/components/constants";
 import { CustomInput } from "@/components/reusables/customInput";
 import { CustomSelect } from "@/components/reusables/customSelect";
+import { CustomCheckbox } from "@/components/reusables/customCheckbox";
 
 const badgeTemplatesIssueSchema = z.object({
   issuerProfile: z.string(),
@@ -266,28 +267,11 @@ export function BadgeTemplatesIssueForm({
             <img className="h-4 w-4" src="/arrowDown.svg" alt="ArrowDownIcon" />
           </div>
 
-          <FormField
-            control={form.control}
+          <CustomCheckbox
+            form={form}
             name="emailNotifications"
-            render={({ field }) => (
-              <FormItem className="mb-4">
-                <FormLabel className="text-sm font-semibold">
-                  Email Notifications
-                </FormLabel>
-                <div className="flex flex-row space-x-2 items-center">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormLabel>
-                    Suppress Skillquiver email notifications
-                  </FormLabel>
-                </div>
-                <FormMessage />
-              </FormItem>
-            )}
+            title="Email Notifications"
+            label="Suppress Skillquiver email notifications"
           />
 
           <Separator className="my-6" />
