@@ -1,13 +1,13 @@
 type formCardProps = {
   title: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
-export function formCardWrap({ title, children }: formCardProps) {
+export function FormCardWrap({ title, children }: formCardProps) {
   return (
     <div>
-      <div className="font-bold mb-2">{title}</div>
-      <div className="px-6 py-4">{children}</div>
+      <div className="text-lg font-bold mb-2">{title}</div>
+      <div className="p-6 border rounded-md ">{children}</div>
     </div>
   );
 }

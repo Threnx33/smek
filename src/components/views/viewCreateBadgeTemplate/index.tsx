@@ -3,6 +3,7 @@ import { CustomInput } from "@/components/reusables/customInput";
 import { CustomRadioGroup } from "@/components/reusables/customRadioGroup";
 import { CustomSelect } from "@/components/reusables/customSelect";
 import { CustomTextarea } from "@/components/reusables/customTextarea";
+import { FormCardWrap } from "@/components/reusables/formCardWrap";
 import { TextMainWrap } from "@/components/reusables/textMainWrap";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -20,6 +21,9 @@ const createBadgeTemplateSchema = z.object({
   time: z.string(),
   cost: z.string(),
   displayAttributes: z.boolean().optional(),
+  criteriaType: z.string(),
+  criteriaDescription: z.string(),
+  criteriaURL: z.string(),
 });
 
 const defaultValues: Partial<CreateBadgeTemplateSchema> = {};
@@ -88,23 +92,23 @@ export function ViewCreateBadgeTemplate() {
                   name="description"
                   label="Description"
                   placeholder="Type in badge description"
-                  className="mb-6"
+                  className="mb-8"
                 />
 
-                <div className="font-bold">Earn This Badge</div>
+                <div className="text-lg font-bold">Earn This Badge</div>
                 <div className="text-sm mb-2">
                   Display a button on this template that directly connects
                   skillquiver users with the opportunity to earn this badge.
                 </div>
                 <CustomRadioGroup
-                  className="mb-6"
+                  className="mb-8"
                   form={form}
                   name="earnBadge"
                   items={expirationTypeItems}
                   defaultValue={"true"}
                 />
 
-                <div className="font-bold">Attributes</div>
+                <div className="text-lg font-bold">Attributes</div>
                 <div className="text-sm mb-4">
                   Attributes improve your badge’s overall discoverability, as
                   well as the likelihood it will be recommended to Skillquiver
@@ -142,10 +146,34 @@ export function ViewCreateBadgeTemplate() {
                 />
 
                 <CustomCheckbox
+                  className="mb-8"
                   form={form}
                   name="displayAttributes"
                   label="Display attributes on the public view of this badge"
                 />
+
+                <FormCardWrap title="Criteria">
+                  <CustomSelect
+                    form={form}
+                    name="criteriaType"
+                    label="Criteria Type"
+                    placeholder="Select one"
+                    items={[]}
+                  />
+                  <CustomTextarea
+                    form={form}
+                    name="criteriaDescription"
+                    label="Description"
+                    placeholder="Type in criteria description"
+                  />
+                  <CustomInput
+                    form={form}
+                    name="criteriaURL"
+                    label="URL to Activity"
+                    type="text"
+                    placeholder="https://"
+                  />
+                </FormCardWrap>
               </form>
             </Form>
           </div>
