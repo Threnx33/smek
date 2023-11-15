@@ -12,6 +12,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { CustomInput } from "@/components/reusables/customInput";
 
 const passwordResetFormSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -48,20 +49,13 @@ export function PasswordResetForm({
     <div className={className} {...props}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="email"
-            render={({ field }) => (
-              <FormItem className="mb-4">
-                <FormLabel>Email address</FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Email address"
+            type="text"
           />
-          <Button type="submit" className="w-full mt-6" disabled={isLoading}>
+          <Button type="submit" className="w-full mt-4" disabled={isLoading}>
             {isLoading ? "<Loading Icon>" : "Send Instructions"}
           </Button>
         </form>

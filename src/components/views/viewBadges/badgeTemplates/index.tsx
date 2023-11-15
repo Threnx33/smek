@@ -21,6 +21,7 @@ import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { FilterButton } from "@/components/reusables/filterButton";
 import { BadgeTemplatesTable } from "./badgeTemplatesTable";
 import { BadgeTemplatesIssueButton } from "./badgeTemplatesIssueButton";
+import { Link } from "react-router-dom";
 
 interface BadgeTemplatesProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -78,14 +79,16 @@ export function BadgeTemplates<TData, TValue>({
         </div>
 
         <div className="flex items-center">
-          <Button className="mr-3">
-            <img
-              className="h-5 w-5 mr-2"
-              src="/addSquare.svg"
-              alt="addSquareIcon"
-            />
-            Create Template
-          </Button>
+          <Link to="create-badge">
+            <Button className="mr-3">
+              <img
+                className="h-5 w-5 mr-2"
+                src="/addSquare.svg"
+                alt="addSquareIcon"
+              />
+              Create Template
+            </Button>
+          </Link>
 
           <BadgeTemplatesIssueButton />
 

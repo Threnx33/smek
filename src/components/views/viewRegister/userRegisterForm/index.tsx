@@ -1,6 +1,5 @@
 import { HTMLAttributes, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -13,21 +12,20 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { COUNTRIES } from "@/components/constants";
+import { CustomInput } from "@/components/reusables/customInput";
+import { CustomSelect } from "@/components/reusables/customSelect";
+import { CustomCheckbox } from "@/components/reusables/customCheckbox";
+import { TextMainWrapper } from "@/components/reusables/textMainWrapper";
 
 // Extend the schema for the registration form
 const registerFormSchema = z.object({
   firstName: z.string().min(1, "First name is required."),
   lastName: z.string().min(1, "Last name is required."),
   email: z.string().email("Invalid email address."),
-  country: z.string().refine((value) => value, "Invalid country selection."),
+  country: z
+    .string()
+    .refine((value) => COUNTRIES.includes(value), "Invalid country selection."),
   password: z
     .string()
     .min(4, "Password must be at least 4 characters.")
@@ -76,137 +74,79 @@ export function UserRegisterForm({
     <div className={className} {...props}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="firstName"
-            render={({ field }) => (
-              <FormItem className="mb-4">
-                <FormLabel>
-                  First name<span className="text-sm text-cRed">*</span>
-                </FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="First name"
+            type="text"
+            mandatory
           />
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="lastName"
-            render={({ field }) => (
-              <FormItem className="mb-4">
-                <FormLabel>
-                  Last name<span className="text-sm text-cRed">*</span>
-                </FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Last name"
+            type="text"
+            mandatory
           />
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="email"
-            render={({ field }) => (
-              <FormItem className="mb-4">
-                <FormLabel>
-                  Email address<span className="text-sm text-cRed">*</span>
-                </FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Email address"
+            type="text"
+            mandatory
           />
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="password"
-            render={({ field }) => (
-              <FormItem className="mb-4">
-                <FormLabel>
-                  Password<span className="text-sm text-cRed">*</span>
-                </FormLabel>
-                <FormControl>
-                  <Input type="password" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Password"
+            type="password"
+            mandatory
           />
-          <FormField
-            control={form.control}
+          <CustomSelect
+            form={form}
             name="country"
-            render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>
-                  Country<span className="text-sm text-cRed">*</span>
-                </FormLabel>
-                <Select onValueChange={field.onChange}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select country" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {COUNTRIES.map((country) => (
-                      <SelectItem
-                        className="cursor-pointer"
-                        value={country}
-                        key={country}
-                      >
-                        {country}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Country"
+            placeholder="Select country"
+            items={COUNTRIES}
+            mandatory
           />
-          <FormField
-            control={form.control}
+
+          <CustomCheckbox
+            form={form}
             name="news"
-            render={({ field }) => (
-              <FormItem className="flex flex-row space-x-2 items-center mb-4">
-                <FormControl>
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-                <FormLabel>
-                  Send me occasional news and update on professional growth
-                  opportunities
-                </FormLabel>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Send me occasional news and update on professional growth
+            opportunities"
           />
+
           <FormField
             control={form.control}
             name="terms"
             render={({ field }) => (
-              <FormItem className=" mb-4">
-                <div className="flex flex-row space-x-2 items-center">
+              <FormItem>
+                <div className="flex flex-row space-x-2 items-center mb-4">
                   <FormControl>
                     <Checkbox
                       checked={field.value}
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
-                  <FormLabel>
-                    I agree to the Terms of Service and Privacy Policy
-                    <span className="text-sm text-cRed">*</span>
-                  </FormLabel>
+                  <span className="leading-[0.9rem]">
+                    <FormLabel>I agree to the </FormLabel>
+                    <TextMainWrapper className="cursor-pointer">
+                      Terms of Service
+                    </TextMainWrapper>
+                    <FormLabel> and </FormLabel>
+                    <TextMainWrapper className="cursor-pointer">
+                      Privacy Policy
+                    </TextMainWrapper>
+                    <span className="text-cRed">*</span>
+                  </span>
                 </div>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full mt-6" disabled={isLoading}>
+          <Button type="submit" className="w-full mt-4" disabled={isLoading}>
             {isLoading && "<Loading Icon>"} Create Account
           </Button>
         </form>

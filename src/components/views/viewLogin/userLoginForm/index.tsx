@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { TextMainWrapper } from "@/components/reusables/textMainWrapper";
+import { CustomInput } from "@/components/reusables/customInput";
 
 const accountFormSchema = z.object({
   email: z.string().email(),
@@ -66,31 +67,17 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
     <div className={className} {...props}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="email"
-            render={({ field }) => (
-              <FormItem className="mb-4">
-                <FormLabel>Email address</FormLabel>
-                <FormControl>
-                  <Input type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Email address"
+            type="text"
           />
-          <FormField
-            control={form.control}
+          <CustomInput
+            form={form}
             name="password"
-            render={({ field }) => (
-              <FormItem className="mb-4">
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input type="password" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Password"
+            type="password"
           />
           <div className="flex items-center justify-between ">
             <FormField

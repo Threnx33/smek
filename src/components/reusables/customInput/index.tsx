@@ -1,26 +1,45 @@
 import React from "react";
 import {
   FormControl,
+  FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 
-type CustomSelectProps = {
+type CustomInputProps<T extends FieldValues> = {
+  form: UseFormReturn<T>;
+  name: Path<T>; //keyof T | string
   label: string;
+  type: string;
+  mandatory?: boolean;
 };
 
-const CustomSelect: React.FC<CustomSelectProps> = ({ label }) => {
+export function CustomInput<T extends FieldValues>({
+  form,
+  name,
+  label,
+  type,
+  mandatory,
+}: CustomInputProps<T>) {
   return (
-    <FormItem className="flex flex-col mb-4">
-      <FormLabel>{label}</FormLabel>
-      <FormControl>
-        <Input type="text" />
-      </FormControl>
-      <FormMessage />
-    </FormItem>
+    <FormField
+      control={form.control}
+      name={name}
+      render={({ field }) => (
+        <FormItem className="flex flex-col mb-4">
+          <FormLabel>
+            {label}
+            {mandatory && <span className="text-cRed ">*</span>}
+          </FormLabel>
+          <FormControl>
+            <Input type={type} {...field} />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
   );
-};
-
-export default CustomSelect;
+}
