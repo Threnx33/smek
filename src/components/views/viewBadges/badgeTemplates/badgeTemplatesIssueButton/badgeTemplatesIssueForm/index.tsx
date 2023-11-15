@@ -32,6 +32,7 @@ import {
 import { CustomInput } from "@/components/reusables/customInput";
 import { CustomSelect } from "@/components/reusables/customSelect";
 import { CustomCheckbox } from "@/components/reusables/customCheckbox";
+import { CustomCalendar } from "@/components/reusables/customCalendar";
 
 const badgeTemplatesIssueSchema = z.object({
   issuerProfile: z.string(),
@@ -115,56 +116,15 @@ export function BadgeTemplatesIssueForm({
             type="text"
           />
 
-          <FormField
-            control={form.control}
+          <CustomCalendar
+            form={form}
             name="dateIssued"
-            render={({ field }) => (
-              <FormItem className="flex flex-col mb-4">
-                <FormLabel>Date issued</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant={"outline"}
-                        className={cn(
-                          "flex  justify-start font-normal",
-                          !field.value && "opacity-50"
-                        )}
-                      >
-                        <img
-                          src="/calendar.svg"
-                          alt="CalendarIcon"
-                          className="h-4 w-4  mr-2"
-                        />
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <span>Pick a date</span>
-                        )}
-                        <img
-                          src="/arrowDown.svg"
-                          alt="ArrowDownIcon"
-                          className="h-4 w-4 ml-auto"
-                        />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={field.value}
-                      onSelect={field.onChange}
-                      disabled={(date) =>
-                        date > new Date() || date < new Date("1900-01-01")
-                      }
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Date issued"
+            disabledFunction={(date) =>
+              date > new Date() || date < new Date("1900-01-01")
+            }
           />
+
           <FormField
             control={form.control}
             name="expirationType"
@@ -212,52 +172,10 @@ export function BadgeTemplatesIssueForm({
           />
 
           {expirationTypeWatch === "expiresOn" && (
-            <FormField
-              control={form.control}
+            <CustomCalendar
+              form={form}
               name="expirationDate"
-              render={({ field }) => (
-                <FormItem className="flex flex-col mb-4">
-                  <FormLabel>Expiration Date</FormLabel>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <FormControl>
-                        <Button
-                          variant={"outline"}
-                          className={cn(
-                            "flex justify-start font-normal",
-                            !field.value && "opacity-50"
-                          )}
-                        >
-                          <img
-                            src="/calendar.svg"
-                            alt="CalendarIcon"
-                            className="h-4 w-4  mr-2"
-                          />
-                          {field.value ? (
-                            format(field.value, "PPP")
-                          ) : (
-                            <span>Pick a date</span>
-                          )}
-                          <img
-                            src="/arrowDown.svg"
-                            alt="ArrowDownIcon"
-                            className="h-4 w-4 ml-auto"
-                          />
-                        </Button>
-                      </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className="p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={field.value}
-                        onSelect={field.onChange}
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
-                  <FormMessage />
-                </FormItem>
-              )}
+              label="Expiration Date"
             />
           )}
 
