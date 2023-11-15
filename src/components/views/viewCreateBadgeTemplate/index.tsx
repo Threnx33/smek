@@ -7,10 +7,13 @@ import { FormCardWrap } from "@/components/reusables/formCardWrap";
 import { TextMainWrap } from "@/components/reusables/textMainWrap";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { MainWrapper } from "@/components/uiComponents/mainWrapper";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { z } from "zod";
 
 const criteriaSchema = z.object({
@@ -19,7 +22,9 @@ const criteriaSchema = z.object({
   criteriaURL: z.string().url(),
 });
 
-const skillSchema = z.string();
+const skillSchema = z.object({
+  skillName: z.string(),
+});
 
 const standardSchema = z.object({
   standardName: z.string(),
@@ -101,6 +106,16 @@ export function ViewCreateBadgeTemplate() {
     });
   };
 
+  const handleSkillEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      appendSkill({
+        skillName: e.currentTarget.value,
+      });
+      e.currentTarget.value = "";
+    }
+  };
+
   useEffect(() => {
     addCriteria();
     addStandard();
@@ -115,7 +130,9 @@ export function ViewCreateBadgeTemplate() {
               Create Badge Template
             </span>
             <div className="space-x-2">
-              <Button variant="outline">Cancel</Button>
+              <Link to="/badges">
+                <Button variant="outline">Cancel</Button>
+              </Link>
               <Button variant="outline">Save as draft</Button>
               <Button>Publish template</Button>
             </div>
@@ -219,7 +236,7 @@ export function ViewCreateBadgeTemplate() {
                 />
 
                 <div className="text-lg font-bold mb-2">Criteria</div>
-                {/* {criteriaFields.map((field, index) => (
+                {criteriaFields.map((field, index) => (
                   <FormCardWrap className="flex flex-col" key={field.id}>
                     <CustomSelect
                       form={form}
@@ -241,16 +258,18 @@ export function ViewCreateBadgeTemplate() {
                       type="text"
                       placeholder="https://"
                     />
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      className="ml-auto text-cRed hover:text-cRed-accent hover:bg-background"
-                      onClick={() => removeCriteria(index)}
-                    >
-                      Remove Criteria
-                    </Button>
+                    {criteriaFields.length <= 1 ? null : (
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        className="ml-auto text-cRed hover:text-cRed-accent hover:bg-background"
+                        onClick={() => removeCriteria(index)}
+                      >
+                        Remove Criteria
+                      </Button>
+                    )}
                   </FormCardWrap>
-                ))} */}
+                ))}
                 <Button
                   type="button"
                   className="ml-auto mb-6"
@@ -267,39 +286,40 @@ export function ViewCreateBadgeTemplate() {
 
                 <div className="text-lg font-bold mb-2">Skills</div>
                 <FormCardWrap className="flex flex-col">
-                  <input
-                    className="border p-2 mb-1"
+                  <Label className="mb-2" htmlFor="skills">
+                    Add skills
+                  </Label>
+                  <Input
+                    id="skills"
+                    className="border p-2 mb-2"
                     type="text"
                     placeholder="Type in skills"
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        e.preventDefault();
-                        appendSkill({
-                          id: skillFields.length.toString(),
-                          skill: e.currentTarget.value,
-                        });
-                        e.currentTarget.value = "";
-                      }
-                    }}
+                    onKeyDown={(e) => handleSkillEnter(e)}
                   />
 
-                  <div className="mb-4">
-                    {skillFields.map((field, index) => (
-                      <div
-                        key={field.id}
-                        className="inline-flex items-center m-1"
-                      >
-                        <span className="border px-4 py-2.5 space-x-2 select-none font-semibold flex rounded-3xl bg-cLightGreyBg">
-                          <span>{field.skill}</span>
-                          <img
-                            className="cursor-pointer"
-                            onClick={() => removeSkill(index)}
-                            src="/closeCircle.svg"
-                            alt="CloseCircleIcon"
-                          />
-                        </span>
+                  <div className="mb-6">
+                    {!skillFields.length ? (
+                      <div className="text-sm font-semibold">
+                        You must add at least 3 skills.
                       </div>
-                    ))}
+                    ) : (
+                      skillFields.map((field, index) => (
+                        <div
+                          key={field.id}
+                          className="inline-flex items-center m-1"
+                        >
+                          <span className="border px-4 py-2 space-x-2 select-none text-sm font-semibold flex rounded-3xl bg-cLightGreyBg">
+                            <span>{field.skillName}</span>
+                            <img
+                              className="cursor-pointer"
+                              onClick={() => removeSkill(index)}
+                              src="/closeCircle.svg"
+                              alt="CloseCircleIcon"
+                            />
+                          </span>
+                        </div>
+                      ))
+                    )}
                   </div>
 
                   <div className="text-sm font-bold">Suggested Skills</div>
@@ -315,9 +335,10 @@ export function ViewCreateBadgeTemplate() {
                 </FormCardWrap>
 
                 <div className="text-lg font-bold mb-2">Standards</div>
-                {/* {standardFields.map((field, index) => (
+                {standardFields.map((field, index) => (
                   <FormCardWrap className="flex flex-col" key={field.id}>
                     <CustomInput
+                      autoFocus={false}
                       form={form}
                       name={`standards.${index}.standardName`}
                       label="Standard Name"
@@ -336,14 +357,16 @@ export function ViewCreateBadgeTemplate() {
                       label="Description"
                       placeholder="Type in standard description"
                     />
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      className="ml-auto text-cRed hover:text-cRed-accent hover:bg-background"
-                      onClick={() => removeStandards(index)}
-                    >
-                      Remove Standard
-                    </Button>
+                    {standardFields.length <= 1 ? null : (
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        className="ml-auto text-cRed hover:text-cRed-accent hover:bg-background"
+                        onClick={() => removeStandards(index)}
+                      >
+                        Remove Standard
+                      </Button>
+                    )}
                   </FormCardWrap>
                 ))}
                 <Button
@@ -358,13 +381,15 @@ export function ViewCreateBadgeTemplate() {
                     alt="AddSquareIcon"
                   />
                   <span>Add Standard</span>
-                </Button> */}
+                </Button>
               </form>
             </Form>
           </div>
 
           <div className="ml-auto space-x-2 mb-6">
-            <Button variant="outline">Cancel</Button>
+            <Link to="/badges">
+              <Button variant="outline">Cancel</Button>
+            </Link>
             <Button variant="outline">Save as draft</Button>
             <Button>Publish template</Button>
           </div>
