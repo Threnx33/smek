@@ -19,6 +19,14 @@ const criteriaSchema = z.object({
   criteriaURL: z.string().url(),
 });
 
+const skillSchema = z.string();
+
+const standardSchema = z.object({
+  standardName: z.string(),
+  standardURL: z.string().url(),
+  standardDescription: z.string(),
+});
+
 const createBadgeTemplateSchema = z.object({
   badgeName: z.string().min(1, "Badge name required"),
   description: z.string(),
@@ -29,6 +37,8 @@ const createBadgeTemplateSchema = z.object({
   cost: z.string(),
   displayAttributes: z.boolean().optional(),
   criterias: z.array(criteriaSchema),
+  skills: z.array(skillSchema),
+  standards: z.array(standardSchema),
 });
 
 const expirationTypeItems = [
@@ -46,23 +56,60 @@ export function ViewCreateBadgeTemplate() {
     defaultValues: defaultValues,
   });
 
-  const { fields, append, remove } = useFieldArray({
+  const {
+    fields: criteriaFields,
+    append: appendCriteria,
+    remove: removeCriteria,
+  } = useFieldArray({
     control: form.control,
     name: "criterias",
   });
 
+  const {
+    fields: skillFields,
+    append: appendSkill,
+    remove: removeSkill,
+  } = useFieldArray({
+    control: form.control,
+    name: "skills",
+  });
+
+  const {
+    fields: standardFields,
+    append: appendStandards,
+    remove: removeStandards,
+  } = useFieldArray({
+    // Add this line
+    control: form.control,
+    name: "standards",
+  });
+
   const addCriteria = () => {
-    append({ criteriaType: "", criteriaDescription: "", criteriaURL: "" });
+    appendCriteria({
+      criteriaType: "",
+      criteriaDescription: "",
+      criteriaURL: "",
+    });
+  };
+
+  const addStandard = () => {
+    // Add this function
+    appendStandards({
+      standardName: "",
+      standardDescription: "",
+      standardURL: "",
+    });
   };
 
   useEffect(() => {
     addCriteria();
+    addStandard();
   }, []);
 
   return (
     <MainWrapper>
       <div className="flex flex-col items-center">
-        <div className="w-7/12">
+        <div className="flex flex-col w-7/12">
           <div className="flex justify-between">
             <span className="text-2xl font-bold mb-5">
               Create Badge Template
@@ -74,7 +121,7 @@ export function ViewCreateBadgeTemplate() {
             </div>
           </div>
 
-          <div className="bg-white p-7 rounded">
+          <div className="bg-white p-7 rounded mb-6">
             <div className="text-xl font-bold mb-5 ">Basics</div>
             <div className="flex justify-between items-center mb-6">
               <img
@@ -172,7 +219,7 @@ export function ViewCreateBadgeTemplate() {
                 />
 
                 <div className="text-lg font-bold mb-2">Criteria</div>
-                {fields.map((field, index) => (
+                {criteriaFields.map((field, index) => (
                   <FormCardWrap className="flex flex-col" key={field.id}>
                     <CustomSelect
                       form={form}
@@ -198,16 +245,15 @@ export function ViewCreateBadgeTemplate() {
                       type="button"
                       variant="ghost"
                       className="ml-auto text-cRed hover:text-cRed-accent hover:bg-background"
-                      onClick={() => remove(index)}
+                      onClick={() => removeCriteria(index)}
                     >
                       Remove Criteria
                     </Button>
                   </FormCardWrap>
                 ))}
-
                 <Button
                   type="button"
-                  className="ml-auto"
+                  className="ml-auto mb-6"
                   variant="outline"
                   onClick={() => addCriteria()}
                 >
@@ -218,8 +264,63 @@ export function ViewCreateBadgeTemplate() {
                   />
                   <span>Add Criteria</span>
                 </Button>
+
+                <div className="text-lg font-bold mb-2">Skills</div>
+                <FormCardWrap className="flex flex-col">da</FormCardWrap>
+
+                <div className="text-lg font-bold mb-2">Standards</div>
+                {standardFields.map((field, index) => (
+                  <FormCardWrap className="flex flex-col" key={field.id}>
+                    <CustomInput
+                      form={form}
+                      name={`standards.${index}.standardName`}
+                      label="Standard Name"
+                      type="text"
+                    />
+                    <CustomInput
+                      form={form}
+                      name={`standards.${index}.standardURL`}
+                      label="URL to Activity"
+                      type="text"
+                      placeholder="https://"
+                    />
+                    <CustomTextarea
+                      form={form}
+                      name={`standards.${index}.standardDescription`}
+                      label="Description"
+                      placeholder="Type in standard description"
+                    />
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      className="ml-auto text-cRed hover:text-cRed-accent hover:bg-background"
+                      onClick={() => removeStandards(index)}
+                    >
+                      Remove Standard
+                    </Button>
+                  </FormCardWrap>
+                ))}
+                <Button
+                  type="button"
+                  className="ml-auto mb-6"
+                  variant="outline"
+                  onClick={() => addStandard()}
+                >
+                  <img
+                    className="h-5 w-5 mr-2"
+                    src="/addSquare.svg"
+                    alt="AddSquareIcon"
+                  />
+                  <span>Add Standard</span>
+                </Button>
               </form>
             </Form>
+          </div>
+
+          <div className="ml-auto space-x-2 mb-6">
+            <Button variant="outline">Cancel</Button>
+            <Button variant="outline">Save as draft</Button>
+            <Button>Publish template</Button>
           </div>
         </div>
       </div>
