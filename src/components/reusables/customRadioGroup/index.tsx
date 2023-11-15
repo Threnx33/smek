@@ -14,6 +14,7 @@ type CustomRadioGroupProps<T extends FieldValues> = {
   items: { value: string; label: string }[];
   defaultValue: string;
   label?: string;
+  className?: string;
 };
 
 export function CustomRadioGroup<T extends FieldValues>({
@@ -22,13 +23,14 @@ export function CustomRadioGroup<T extends FieldValues>({
   items,
   defaultValue,
   label,
+  className,
 }: CustomRadioGroupProps<T>) {
   return (
     <FormField
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem className="flex flex-col mb-4">
+        <FormItem className={`flex flex-col mb-4 ${className}`}>
           {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
             <RadioGroup
@@ -37,7 +39,10 @@ export function CustomRadioGroup<T extends FieldValues>({
               className="flex"
             >
               {items.map((item) => (
-                <FormItem className="flex items-center space-x-2 space-y-0 mr-2">
+                <FormItem
+                  key={item.value}
+                  className="flex items-center space-x-2 space-y-0 mr-2"
+                >
                   <FormControl>
                     <RadioGroupItem value={item.value} id={item.value} />
                   </FormControl>

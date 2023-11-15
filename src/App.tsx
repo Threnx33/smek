@@ -4,7 +4,7 @@ import { ViewLogin } from "@/components/views/viewLogin";
 import { ViewRegister } from "./components/views/viewRegister";
 import { ViewPasswordReset } from "./components/views/viewPasswordReset";
 import { drawerListItems } from "./components/uiComponents/drawer/drawerList/drawerListItems";
-import { ViewCreateBadge } from "./components/views/viewCreateBadge";
+import { ViewCreateBadgeTemplate } from "./components/views/viewCreateBadgeTemplate";
 
 function App() {
   const drawerRoutes = drawerListItems.map((item) => (
@@ -21,8 +21,8 @@ function App() {
           <Route path="/password-reset" element={<ViewPasswordReset />}></Route>
           {drawerRoutes}
           <Route
-            path="/badges/create-badge"
-            element={<ViewCreateBadge />}
+            path="/badges/create-badge-template"
+            element={<ViewCreateBadgeTemplate />}
           ></Route>
         </Routes>
       </BrowserRouter>

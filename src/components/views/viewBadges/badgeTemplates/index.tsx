@@ -79,7 +79,7 @@ export function BadgeTemplates<TData, TValue>({
         </div>
 
         <div className="flex items-center">
-          <Link to="create-badge">
+          <Link to="create-badge-template">
             <Button className="mr-3">
               <img
                 className="h-5 w-5 mr-2"
