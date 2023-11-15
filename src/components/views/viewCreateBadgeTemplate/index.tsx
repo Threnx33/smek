@@ -9,7 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { MainWrapper } from "@/components/uiComponents/mainWrapper";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
 
 const criteriaSchema = z.object({
@@ -30,6 +31,11 @@ const createBadgeTemplateSchema = z.object({
   criterias: z.array(criteriaSchema),
 });
 
+const expirationTypeItems = [
+  { value: "yes", label: "Yes" },
+  { value: "no", label: "No" },
+];
+
 const defaultValues: Partial<CreateBadgeTemplateSchema> = {};
 
 type CreateBadgeTemplateSchema = z.infer<typeof createBadgeTemplateSchema>;
@@ -39,10 +45,19 @@ export function ViewCreateBadgeTemplate() {
     resolver: zodResolver(createBadgeTemplateSchema),
     defaultValues: defaultValues,
   });
-  const expirationTypeItems = [
-    { value: "yes", label: "Yes" },
-    { value: "no", label: "No" },
-  ];
+
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: "criterias",
+  });
+
+  const addCriteria = () => {
+    append({ criteriaType: "", criteriaDescription: "", criteriaURL: "" });
+  };
+
+  useEffect(() => {
+    addCriteria();
+  }, []);
 
   return (
     <MainWrapper>
@@ -157,30 +172,45 @@ export function ViewCreateBadgeTemplate() {
                 />
 
                 <div className="text-lg font-bold mb-2">Criteria</div>
-                <FormCardWrap>
-                  <CustomSelect
-                    form={form}
-                    name="criteriaType"
-                    label="Criteria Type"
-                    placeholder="Select one"
-                    items={[]}
-                  />
-                  <CustomTextarea
-                    form={form}
-                    name="criteriaDescription"
-                    label="Description"
-                    placeholder="Type in criteria description"
-                  />
-                  <CustomInput
-                    form={form}
-                    name="criteriaURL"
-                    label="URL to Activity"
-                    type="text"
-                    placeholder="https://"
-                  />
-                </FormCardWrap>
+                {fields.map((field, index) => (
+                  <FormCardWrap className="flex flex-col" key={field.id}>
+                    <CustomSelect
+                      form={form}
+                      name={`criterias.${index}.criteriaType`}
+                      label="Criteria Type"
+                      placeholder="Select one"
+                      items={[]}
+                    />
+                    <CustomTextarea
+                      form={form}
+                      name={`criterias.${index}.criteriaDescription`}
+                      label="Description"
+                      placeholder="Type in criteria description"
+                    />
+                    <CustomInput
+                      form={form}
+                      name={`criterias.${index}.criteriaURL`}
+                      label="URL to Activity"
+                      type="text"
+                      placeholder="https://"
+                    />
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      className="ml-auto text-cRed hover:text-cRed-accent hover:bg-background"
+                      onClick={() => remove(index)}
+                    >
+                      Remove Criteria
+                    </Button>
+                  </FormCardWrap>
+                ))}
 
-                <Button className="ml-auto" variant="outline">
+                <Button
+                  type="button"
+                  className="ml-auto"
+                  variant="outline"
+                  onClick={() => addCriteria()}
+                >
                   <img
                     className="h-5 w-5 mr-2"
                     src="/addSquare.svg"
