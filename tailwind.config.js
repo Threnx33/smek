@@ -65,6 +65,7 @@ module.exports = {
         },
         cRed: {
           DEFAULT: "hsl(var(--c-red))",
+          accent: "hsl(var(--c-red-accent))",
         },
         cLightGreyBg: {
           DEFAULT: "hsl(var(--c-light-grey-bg))",

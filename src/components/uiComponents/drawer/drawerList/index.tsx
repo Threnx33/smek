@@ -12,14 +12,14 @@ export function DrawerList() {
             key={item.label}
             to={item.to}
             className={`flex items-center m-2 px-4 py-4 rounded-lg  ${
-              location.pathname === item.to
+              location.pathname.includes(item.to)
                 ? "bg-main text-white hover:bg-main-accent"
                 : "hover:bg-accent"
             }`}
           >
             <img
               src={`/drawerIcons/${
-                location.pathname === item.to ? "accent" : "simple"
+                location.pathname.includes(item.to) ? "accent" : "simple"
               }/${item.iconName}.svg`}
               className="h-5 w-5"
               alt={`${item.label} icon`}

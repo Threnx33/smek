@@ -1,11 +1,11 @@
 import { ModeToggle } from "@/components/mode-toggle";
 import { AuthSideSheet } from "../authSideSheet";
 
-type AuthWrapperProps = {
+type AuthWrapProps = {
   children?: React.ReactNode;
 };
 
-export function AuthWrapper({ children }: AuthWrapperProps) {
+export function AuthWrap({ children }: AuthWrapProps) {
   return (
     <>
       <ModeToggle />

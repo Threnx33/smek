@@ -79,12 +79,12 @@ export function BadgeTemplates<TData, TValue>({
         </div>
 
         <div className="flex items-center">
-          <Link to="create-badge">
+          <Link to="create-badge-template">
             <Button className="mr-3">
               <img
                 className="h-5 w-5 mr-2"
-                src="/addSquare.svg"
-                alt="addSquareIcon"
+                src="/addSquareWhite.svg"
+                alt="addSquareWhiteIcon"
               />
               Create Template
             </Button>

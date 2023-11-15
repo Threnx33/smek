@@ -14,7 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { TextMainWrapper } from "@/components/reusables/textMainWrapper";
+import { TextMainWrap } from "@/components/reusables/textMainWrap";
 import { CustomInput } from "@/components/reusables/customInput";
 
 const accountFormSchema = z.object({
@@ -97,9 +97,9 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
               )}
             />
             <Link to="/password-reset">
-              <TextMainWrapper className="text-sm font-medium">
+              <TextMainWrap className="text-sm font-medium">
                 Forgot your password?
-              </TextMainWrapper>
+              </TextMainWrap>
             </Link>
           </div>
           <Button
