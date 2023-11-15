@@ -51,7 +51,11 @@ const expirationTypeItems = [
   { value: "no", label: "No" },
 ];
 
-const defaultValues: Partial<CreateBadgeTemplateSchema> = {};
+const defaultValues: Partial<CreateBadgeTemplateSchema> = {
+  criterias: [{ criteriaType: "", criteriaDescription: "", criteriaURL: "" }],
+  skills: [],
+  standards: [{ standardName: "", standardDescription: "", standardURL: "" }],
+};
 
 type CreateBadgeTemplateSchema = z.infer<typeof createBadgeTemplateSchema>;
 
@@ -84,7 +88,6 @@ export function ViewCreateBadgeTemplate() {
     append: appendStandards,
     remove: removeStandards,
   } = useFieldArray({
-    // Add this line
     control: form.control,
     name: "standards",
   });
@@ -98,7 +101,6 @@ export function ViewCreateBadgeTemplate() {
   };
 
   const addStandard = () => {
-    // Add this function
     appendStandards({
       standardName: "",
       standardDescription: "",
@@ -115,11 +117,6 @@ export function ViewCreateBadgeTemplate() {
       e.currentTarget.value = "";
     }
   };
-
-  useEffect(() => {
-    addCriteria();
-    addStandard();
-  }, []);
 
   return (
     <MainWrapper>
@@ -338,7 +335,6 @@ export function ViewCreateBadgeTemplate() {
                 {standardFields.map((field, index) => (
                   <FormCardWrap className="flex flex-col" key={field.id}>
                     <CustomInput
-                      autoFocus={false}
                       form={form}
                       name={`standards.${index}.standardName`}
                       label="Standard Name"
