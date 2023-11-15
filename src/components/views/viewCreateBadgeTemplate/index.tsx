@@ -176,7 +176,7 @@ export function ViewCreateBadgeTemplate() {
                 />
 
                 <div className="text-lg font-bold">Earn This Badge</div>
-                <div className="text-sm mb-2">
+                <div className="text-sm mb-2 ">
                   Display a button on this template that directly connects
                   skillquiver users with the opportunity to earn this badge.
                 </div>
@@ -282,7 +282,7 @@ export function ViewCreateBadgeTemplate() {
                 </Button>
 
                 <div className="text-lg font-bold mb-2">Skills</div>
-                <FormCardWrap className="flex flex-col">
+                <FormCardWrap className="flex flex-col mb-6">
                   <Label className="mb-2" htmlFor="skills">
                     Add skills
                   </Label>
