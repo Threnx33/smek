@@ -90,7 +90,7 @@ export const TEMPLATES: Template[] = [
   // },
 ];
 
-export const COLUMNS: ColumnDef<Template>[] = [
+export const TEMPLATES_COLUMNS: ColumnDef<Template>[] = [
   {
     id: "select",
     header: ({ table }) => (

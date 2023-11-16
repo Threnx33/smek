@@ -1,11 +1,11 @@
 import { Drawer } from "../drawer";
 import TopBar from "../topBar";
 
-type MainWrapperProps = {
+type MainWrapProps = {
   children?: React.ReactNode;
 };
 
-export function MainWrapper({ children }: MainWrapperProps) {
+export function MainWrap({ children }: MainWrapProps) {
   return (
     <div className="flex flex-row">
       <Drawer />

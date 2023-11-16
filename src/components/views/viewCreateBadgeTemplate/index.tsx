@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { MainWrapper } from "@/components/uiComponents/mainWrapper";
+import { MainWrap } from "@/components/uiComponents/MainWrap";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
@@ -120,7 +120,7 @@ export function ViewCreateBadgeTemplate() {
   };
 
   return (
-    <MainWrapper>
+    <MainWrap>
       <div className="flex flex-col items-center">
         <div className="flex flex-col w-7/12">
           <div className="flex justify-between">
@@ -411,6 +411,6 @@ export function ViewCreateBadgeTemplate() {
           </div>
         </div>
       </div>
-    </MainWrapper>
+    </MainWrap>
   );
 }
