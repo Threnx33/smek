@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MainWrapper } from "@/components/uiComponents/mainWrapper";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
+import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { z } from "zod";
@@ -64,6 +64,7 @@ export function ViewCreateBadgeTemplate() {
     resolver: zodResolver(createBadgeTemplateSchema),
     defaultValues: defaultValues,
   });
+  const [suggestionFailed, setSuggestionFailed] = useState(false);
 
   const {
     fields: criteriaFields,
@@ -193,7 +194,7 @@ export function ViewCreateBadgeTemplate() {
                   Attributes improve your badge’s overall discoverability, as
                   well as the likelihood it will be recommended to Skillquiver
                   users. Learn more about attributes{" "}
-                  <TextMainWrap className="cursor-pointer">here</TextMainWrap>.
+                  <TextMainWrap>here</TextMainWrap>.
                 </div>
 
                 <CustomSelect
@@ -282,7 +283,7 @@ export function ViewCreateBadgeTemplate() {
                 </Button>
 
                 <div className="text-lg font-bold mb-2">Skills</div>
-                <FormCardWrap className="flex flex-col mb-6">
+                <FormCardWrap className=" mb-6">
                   <Label className="mb-2" htmlFor="skills">
                     Add skills
                   </Label>
@@ -319,14 +320,33 @@ export function ViewCreateBadgeTemplate() {
                     )}
                   </div>
 
-                  <div className="text-sm font-bold">Suggested Skills</div>
-                  <div className="text-sm mb-4">
-                    Skillquiver can generate a list of skills based on your
-                    template's description and earning criteria. Using these
-                    skills ensures your credential connects to meaningful
-                    opportunities for your earners
-                  </div>
-                  <Button className="w-fit" variant="outline" type="button">
+                  <div className="text-sm font-bold mb-1">Suggested Skills</div>
+                  {suggestionFailed ? (
+                    <>
+                      <div className="text-xs text-cRed mb-1">
+                        We couldn't find any skills for your template. This is
+                        usually due to a lack of data. Try updating your
+                        template description.
+                      </div>
+                      <TextMainWrap className="text-xs block mb-4">
+                        Need help?
+                      </TextMainWrap>
+                    </>
+                  ) : (
+                    <div className="text-sm mb-4">
+                      Skillquiver can generate a list of skills based on your
+                      template's description and earning criteria. Using these
+                      skills ensures your credential connects to meaningful
+                      opportunities for your earners
+                    </div>
+                  )}
+
+                  <Button
+                    onClick={() => setSuggestionFailed((prev) => !prev)}
+                    className="w-fit"
+                    variant="outline"
+                    type="button"
+                  >
                     Suggest skills
                   </Button>
                 </FormCardWrap>

@@ -132,13 +132,9 @@ export function UserRegisterForm({
                   </FormControl>
                   <span className="leading-[0.9rem]">
                     <FormLabel>I agree to the </FormLabel>
-                    <TextMainWrap className="cursor-pointer">
-                      Terms of Service
-                    </TextMainWrap>
+                    <TextMainWrap>Terms of Service</TextMainWrap>
                     <FormLabel> and </FormLabel>
-                    <TextMainWrap className="cursor-pointer">
-                      Privacy Policy
-                    </TextMainWrap>
+                    <TextMainWrap>Privacy Policy</TextMainWrap>
                     <span className="text-cRed">*</span>
                   </span>
                 </div>

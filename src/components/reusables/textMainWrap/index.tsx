@@ -10,7 +10,7 @@ export const TextMainWrap: React.FC<TextMainWrapProps> = ({
   className,
   ...props
 }) => {
-  const combinedClassName = `text-main hover:text-main-accent ${
+  const combinedClassName = `text-main hover:text-main-accent cursor-pointer ${
     className || ""
   }`;
 
