@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { drawerListItems } from "./drawerListItems";
+import { DRAWER_LIST_ITEMS } from "./drawerListItems";
 
 export function DrawerList() {
   const location = useLocation();
@@ -7,7 +7,7 @@ export function DrawerList() {
   return (
     <div className="flex flex-col">
       <nav className="mt-2">
-        {drawerListItems.map((item) => (
+        {DRAWER_LIST_ITEMS.map((item) => (
           <Link
             key={item.label}
             to={item.to}

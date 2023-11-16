@@ -9,9 +9,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { BadgeTemplatesIssueForm } from "./badgeTemplatesIssueForm";
+import { BadgesTemplatesIssueForm } from "./badgesTemplatesIssueForm";
 
-export function BadgeTemplatesIssueButton() {
+export function BadgesTemplatesIssueButton() {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -25,7 +25,7 @@ export function BadgeTemplatesIssueButton() {
           </SheetDescription>
         </SheetHeader>
 
-        <BadgeTemplatesIssueForm />
+        <BadgesTemplatesIssueForm />
 
         <div className="flex mb-6 space-x-2">
           <Button variant="outline" className="p-3">

@@ -3,12 +3,12 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ViewLogin } from "@/components/views/viewLogin";
 import { ViewRegister } from "./components/views/viewRegister";
 import { ViewPasswordReset } from "./components/views/viewPasswordReset";
-import { drawerListItems } from "./components/uiComponents/drawer/drawerList/drawerListItems";
 import { ViewCreateBadgeTemplate } from "./components/views/viewCreateBadgeTemplate";
-import { BADGE_MENU_TABS } from "./components/views/viewBadges/badgeMenuTabs";
+import { DRAWER_LIST_ITEMS } from "./components/uiComponents/drawer/drawerList/drawerListItems";
+import { BADGE_MENU_TABS } from "./components/views/viewBadges/badgesMenuTabs";
 
 function App() {
-  const drawerRoutes = drawerListItems.map((item) => (
+  const drawerRoutes = DRAWER_LIST_ITEMS.map((item) => (
     <Route key={item.to} path={item.to} element={item.component} />
   ));
   const badgesMenuTabsRoutes = BADGE_MENU_TABS.map((item) => (
@@ -26,7 +26,7 @@ function App() {
           {drawerRoutes}
           {badgesMenuTabsRoutes}
           <Route
-            path="/badges/create-badge-template"
+            path="/badges/templates/create"
             element={<ViewCreateBadgeTemplate />}
           ></Route>
         </Routes>

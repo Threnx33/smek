@@ -7,22 +7,23 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { FilterButton } from "@/components/reusables/filterButton";
-import { BadgeTemplatesIssueButton } from "./badgeTemplatesIssueButton";
 import { Link } from "react-router-dom";
 import {
   TableDataProps,
   useCustomTable,
 } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "../../../reusables/customTable";
+import { BadgesWrap } from "@/components/uiComponents/badgesWrap";
+import { BadgesTemplatesIssueButton } from "./badgesTemplatesIssueButton";
 
-export function BadgeTemplates<TData, TValue>({
+export function ViewBadgesTemplates<TData, TValue>({
   columns,
   data,
 }: TableDataProps<TData, TValue>) {
   const table = useCustomTable({ columns, data });
 
   return (
-    <div>
+    <BadgesWrap>
       <div className="flex justify-between pb-6">
         <div className="flex items-center">
           <SearchBarChip
@@ -35,7 +36,7 @@ export function BadgeTemplates<TData, TValue>({
         </div>
 
         <div className="flex items-center">
-          <Link to="create-badge-template">
+          <Link to="create">
             <Button className="mr-3">
               <img
                 className="h-5 w-5 mr-2"
@@ -46,7 +47,7 @@ export function BadgeTemplates<TData, TValue>({
             </Button>
           </Link>
 
-          <BadgeTemplatesIssueButton />
+          <BadgesTemplatesIssueButton />
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -78,6 +79,6 @@ export function BadgeTemplates<TData, TValue>({
       </div>
 
       <CustomTable table={table} />
-    </div>
+    </BadgesWrap>
   );
 }

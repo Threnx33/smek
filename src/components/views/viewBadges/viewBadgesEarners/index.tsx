@@ -5,15 +5,16 @@ import {
   useCustomTable,
 } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
+import { BadgesWrap } from "@/components/uiComponents/badgesWrap";
 
-export function BadgeEarners<TData, TValue>({
+export function ViewBadgesEarners<TData, TValue>({
   columns,
   data,
 }: TableDataProps<TData, TValue>) {
   const table = useCustomTable({ columns, data });
 
   return (
-    <div>
+    <BadgesWrap>
       <div className="flex items-center mb-6">
         <SearchBarChip
           table={table}
@@ -25,6 +26,6 @@ export function BadgeEarners<TData, TValue>({
       </div>
 
       <CustomTable table={table} />
-    </div>
+    </BadgesWrap>
   );
 }

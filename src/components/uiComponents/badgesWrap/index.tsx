@@ -1,9 +1,16 @@
-import { BADGE_MENU_TABS, TabType } from "./badgeMenuTabs";
 import { useState } from "react";
+import { MainWrap } from "../MainWrap";
 import { TabsChip } from "@/components/reusables/tabsChip";
-import { MainWrap } from "@/components/uiComponents/mainWrap";
+import {
+  BADGE_MENU_TABS,
+  TabType,
+} from "@/components/views/viewBadges/badgesMenuTabs";
 
-export function ViewBadges() {
+type BadgesWrapProps = {
+  children?: React.ReactNode;
+};
+
+export function BadgesWrap({ children }: BadgesWrapProps) {
   const [currentTab, setCurrentTab] = useState<TabType>(BADGE_MENU_TABS[0]);
 
   return (
@@ -14,7 +21,7 @@ export function ViewBadges() {
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
       />
-      <div className="bg-white p-5 rounded">{currentTab.component}</div>
+      <div className="bg-white p-5 rounded">{children}</div>
     </MainWrap>
   );
 }
