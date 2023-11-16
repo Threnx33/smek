@@ -18,7 +18,7 @@ export function StatusChip({ text }: StatusChipProps) {
         src={
           text === "Published" || text === "Accepted"
             ? "/tickCircleGreen.svg"
-            : "tickCircleRed.svg"
+            : "/tickCircleRed.svg"
         }
         alt="tickCircleIcon"
       />

@@ -1,5 +1,8 @@
 import { Separator } from "@/components/ui/separator";
-import { TabType, TabsType } from "@/components/views/viewBadges/badgeMenuTabs";
+import {
+  TabType,
+  TabsType,
+} from "@/components/views/viewBadges/badgesMenuTabs";
 import { Link } from "react-router-dom";
 
 type TabsChipProps = {
@@ -15,7 +18,7 @@ export function TabsChip({ tabs, currentTab, setCurrentTab }: TabsChipProps) {
         {tabs.map((item) => (
           <Link key={item.label} to={item.to}>
             <span
-              className={`text-sm font-semibold border-offse cursor-pointer select-none ${
+              className={`text-sm font-semibold cursor-pointer select-none ${
                 currentTab.label === item.label
                   ? "text-main  underline-offset-[1rem] underline decoration-2 "
                   : ""

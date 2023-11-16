@@ -30,7 +30,7 @@ export const TEMPLATES: Template[] = [
     templateName: "Foundation of Leadership - International",
     imgSrc: "/tableImg.png",
     status: "Published",
-    updated: Date.now(),
+    updated: new Date("May 6, 2023").getTime(),
     issued: 56,
   },
   {
@@ -38,7 +38,7 @@ export const TEMPLATES: Template[] = [
     templateName: "Foundation of Leadership 101-2 Certificate",
     imgSrc: "/tableImg.png",
     status: "Published",
-    updated: Date.now(),
+    updated: new Date("Oct 3, 2022").getTime(),
     issued: 78,
   },
   {
@@ -46,7 +46,7 @@ export const TEMPLATES: Template[] = [
     templateName: "Foundation of Leadership 101-1 Certificate",
     imgSrc: "/tableImg.png",
     status: "Declined",
-    updated: Date.now() - 1000 * 60 * 60 * 24 * 30,
+    updated: new Date("Oct 3, 2022").getTime(),
     issued: 0,
   },
   {
@@ -54,7 +54,7 @@ export const TEMPLATES: Template[] = [
     templateName: "Executive Leadership 301 (EXEC301)",
     imgSrc: "/tableImg.png",
     status: "Published",
-    updated: Date.now(),
+    updated: new Date("Jan 31, 2022").getTime(),
     issued: 24,
   },
   {
@@ -62,7 +62,7 @@ export const TEMPLATES: Template[] = [
     templateName: "Advanced Leadership 202 (ADV202)",
     imgSrc: "/tableImg.png",
     status: "Published",
-    updated: Date.now(),
+    updated: new Date("Jan 31, 2022").getTime(),
     issued: 5,
   },
   {
@@ -70,7 +70,7 @@ export const TEMPLATES: Template[] = [
     templateName: "Advanced Leadership 201 (ADV201)",
     imgSrc: "/tableImg.png",
     status: "Declined",
-    updated: Date.now(),
+    updated: new Date("Jan 31, 2022").getTime(),
     issued: 0,
   },
   {
@@ -78,14 +78,14 @@ export const TEMPLATES: Template[] = [
     templateName: "Foundation of Leadership 102 (FOL102)",
     imgSrc: "/tableImg.png",
     status: "Published",
-    updated: Date.now(),
+    updated: new Date("Jan 31, 2022").getTime(),
     issued: 19,
   },
   // {
   //   id: "728ed59f",
   //   templateName: "Foundation of Leadership - International",
   //   status: "Published",
-  //   updated: Date.now(),
+  //   updated: new Date("Jan 31, 2022").getTime(),
   //   issued: 56,
   // },
 ];

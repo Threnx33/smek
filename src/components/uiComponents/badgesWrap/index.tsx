@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { MainWrap } from "../MainWrap";
+import { useEffect, useState } from "react";
+import { MainWrap } from "../mainWrap";
 import { TabsChip } from "@/components/reusables/tabsChip";
 import {
   BADGE_MENU_TABS,
@@ -12,6 +12,13 @@ type BadgesWrapProps = {
 
 export function BadgesWrap({ children }: BadgesWrapProps) {
   const [currentTab, setCurrentTab] = useState<TabType>(BADGE_MENU_TABS[0]);
+
+  useEffect(() => {
+    const newTab = BADGE_MENU_TABS.find((tab) => tab.to === location.pathname);
+    if (newTab) {
+      setCurrentTab(newTab);
+    }
+  }, []);
 
   return (
     <MainWrap>
