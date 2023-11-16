@@ -1,5 +1,4 @@
 import { ColumnDef } from "@tanstack/react-table";
-
 import { MoreHorizontal } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -14,10 +13,12 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Status, StatusChip } from "@/components/reusables/statusChip";
 import { formatDate } from "@/components/utility/dateFormat";
+import { HeaderSortButton } from "@/components/reusables/headerSortButton";
 
 type Template = {
   id: string;
   templateName: string;
+  imgSrc: string;
   status: Status;
   updated: number;
   issued: number;
@@ -27,6 +28,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed52f",
     templateName: "Foundation of Leadership - International",
+    imgSrc: "/tableImg.png",
     status: "Published",
     updated: Date.now(),
     issued: 56,
@@ -34,6 +36,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed53f",
     templateName: "Foundation of Leadership 101-2 Certificate",
+    imgSrc: "/tableImg.png",
     status: "Published",
     updated: Date.now(),
     issued: 78,
@@ -41,6 +44,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed54f",
     templateName: "Foundation of Leadership 101-1 Certificate",
+    imgSrc: "/tableImg.png",
     status: "Declined",
     updated: Date.now() - 1000 * 60 * 60 * 24 * 30,
     issued: 0,
@@ -48,6 +52,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed55f",
     templateName: "Executive Leadership 301 (EXEC301)",
+    imgSrc: "/tableImg.png",
     status: "Published",
     updated: Date.now(),
     issued: 24,
@@ -55,6 +60,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed56f",
     templateName: "Advanced Leadership 202 (ADV202)",
+    imgSrc: "/tableImg.png",
     status: "Published",
     updated: Date.now(),
     issued: 5,
@@ -62,6 +68,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed57f",
     templateName: "Advanced Leadership 201 (ADV201)",
+    imgSrc: "/tableImg.png",
     status: "Declined",
     updated: Date.now(),
     issued: 0,
@@ -69,6 +76,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed58f",
     templateName: "Foundation of Leadership 102 (FOL102)",
+    imgSrc: "/tableImg.png",
     status: "Published",
     updated: Date.now(),
     issued: 19,
@@ -108,7 +116,11 @@ export const COLUMNS: ColumnDef<Template>[] = [
     cell: ({ row }) => {
       return (
         <span className="flex flex-row items-center">
-          <img className="h-10 w-10 mr-2" src="/tableImg.png" alt="tableImg" />
+          <img
+            className="h-10 w-10 mr-2"
+            src={row.original.imgSrc}
+            alt="TemplateImage"
+          />
           {row.getValue("templateName")}
         </span>
       );
@@ -116,14 +128,18 @@ export const COLUMNS: ColumnDef<Template>[] = [
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: ({ column }) => {
+      return <HeaderSortButton column={column} name="Status" />;
+    },
     cell: ({ row }) => {
       return <StatusChip text={row.getValue("status")} />;
     },
   },
   {
     accessorKey: "updated",
-    header: "Updated",
+    header: ({ column }) => {
+      return <HeaderSortButton column={column} name="Updated" />;
+    },
     cell: ({ row }) => {
       return formatDate(row.getValue("updated"));
     },
@@ -150,11 +166,11 @@ export const COLUMNS: ColumnDef<Template>[] = [
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(payment.id)}
             >
-              Copy payment ID
+              Do something
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem>Do something2</DropdownMenuItem>
+            <DropdownMenuItem>Do something3</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

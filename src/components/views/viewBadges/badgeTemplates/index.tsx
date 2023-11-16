@@ -1,15 +1,3 @@
-import * as React from "react";
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -19,45 +7,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { FilterButton } from "@/components/reusables/filterButton";
-import { BadgeTemplatesTable } from "./badgeTemplatesTable";
 import { BadgeTemplatesIssueButton } from "./badgeTemplatesIssueButton";
 import { Link } from "react-router-dom";
-
-interface BadgeTemplatesProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
-}
+import {
+  TableDataProps,
+  useCustomTable,
+} from "@/components/reusables/useCustomTable";
+import { CustomTable } from "../../../reusables/customTable";
 
 export function BadgeTemplates<TData, TValue>({
   columns,
   data,
-}: BadgeTemplatesProps<TData, TValue>) {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = React.useState({});
-
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    onSortingChange: setSorting,
-    getSortedRowModel: getSortedRowModel(),
-    onColumnFiltersChange: setColumnFilters,
-    getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-    },
-  });
+}: TableDataProps<TData, TValue>) {
+  const table = useCustomTable({ columns, data });
 
   return (
     <div>
@@ -115,7 +77,7 @@ export function BadgeTemplates<TData, TValue>({
         </div>
       </div>
 
-      <BadgeTemplatesTable table={table} />
+      <CustomTable table={table} />
     </div>
   );
 }

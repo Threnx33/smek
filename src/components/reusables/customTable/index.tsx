@@ -9,13 +9,11 @@ import {
 } from "@/components/ui/table";
 import { Table as ReactTable, flexRender } from "@tanstack/react-table";
 
-interface BadgeTemplatesTableProps<TData> {
+interface CustomTableProps<TData> {
   table: ReactTable<TData>;
 }
 
-export function BadgeTemplatesTable<TData>({
-  table,
-}: BadgeTemplatesTableProps<TData>) {
+export function CustomTable<TData>({ table }: CustomTableProps<TData>) {
   return (
     <>
       <div className="mb-2 font-semibold">

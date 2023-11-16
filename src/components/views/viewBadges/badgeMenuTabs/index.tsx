@@ -1,3 +1,4 @@
+import { BadgeEarners } from "../badgeEarners";
 import { BadgeTemplates } from "../badgeTemplates";
 import { COLUMNS, TEMPLATES } from "../badgeTemplates/data";
 
@@ -15,7 +16,7 @@ export const BADGE_MENU_TABS: TabsType = [
   },
   {
     label: "Earners",
-    component: <BadgeTemplates columns={COLUMNS} data={TEMPLATES} />,
+    component: <BadgeEarners columns={COLUMNS} data={TEMPLATES} />,
   },
   {
     label: "Recommendations",
