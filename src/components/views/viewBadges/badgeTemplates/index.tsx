@@ -64,17 +64,11 @@ export function BadgeTemplates<TData, TValue>({
       <div className="flex justify-between pb-6">
         <div className="flex items-center">
           <SearchBarChip
+            table={table}
             className="mr-3"
             placeholder="Search templates"
-            value={
-              (table.getColumn("templateName")?.getFilterValue() as string) ??
-              ""
-            }
-            handleOnChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              table.getColumn("templateName")?.setFilterValue(e.target.value)
-            }
+            searchBy="templateName"
           />
-
           <FilterButton />
         </div>
 
@@ -122,29 +116,6 @@ export function BadgeTemplates<TData, TValue>({
       </div>
 
       <BadgeTemplatesTable table={table} />
-
-      <div className="flex items-center justify-end space-x-2 ">
-        <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
-      </div>
     </div>
   );
 }
