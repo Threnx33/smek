@@ -11,7 +11,9 @@ export function MainWrap({ children }: MainWrapProps) {
       <Drawer />
       <div className="w-full flex flex-col">
         <TopBar />
-        <div className="bg-cLightGreyBg px-6 py-4 h-full">{children}</div>
+        <div className="flex flex-col h-full bg-cLightGreyBg px-6 py-4 ">
+          {children}
+        </div>
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ export function ViewBadgesTemplates<TData, TValue>({
 
   return (
     <BadgesWrap>
-      <div className="flex justify-between pb-6">
+      <div className="flex justify-between mb-6">
         <div className="flex items-center">
           <SearchBarChip
             table={table}

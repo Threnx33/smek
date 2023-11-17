@@ -84,6 +84,15 @@ export const TEMPLATES: Template[] = [
   // {
   //   id: "728ed59f",
   //   templateName: "Foundation of Leadership - International",
+  //   imgSrc: "/tableImg.png",
+  //   status: "Published",
+  //   updated: new Date("Jan 31, 2022").getTime(),
+  //   issued: 56,
+  // },
+  // {
+  //   id: "728ed60f",
+  //   templateName: "Foundation of Leadership - International",
+  //   imgSrc: "/tableImg.png",
   //   status: "Published",
   //   updated: new Date("Jan 31, 2022").getTime(),
   //   issued: 56,
@@ -115,7 +124,7 @@ export const TEMPLATES_COLUMNS: ColumnDef<Template>[] = [
     header: "Template Name",
     cell: ({ row }) => {
       return (
-        <span className="flex flex-row items-center">
+        <span className="flex flex-row items-center ">
           <img
             className="h-10 w-10 mr-2"
             src={row.original.imgSrc}
