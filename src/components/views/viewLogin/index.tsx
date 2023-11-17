@@ -16,7 +16,7 @@ export function ViewLogin() {
           </Link>
         </p>
         <div className="text-center mt-4">
-          <Link to="/badges">
+          <Link to="/badges/templates">
             <TextMainWrap>Enter</TextMainWrap>
           </Link>
         </div>

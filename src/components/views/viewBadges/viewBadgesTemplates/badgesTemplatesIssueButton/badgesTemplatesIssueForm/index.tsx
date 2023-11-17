@@ -40,7 +40,7 @@ type BadgeTemplatesIssueSchema = z.infer<typeof badgeTemplatesIssueSchema>;
 
 interface BadgeTemplatesIssueProps extends HTMLAttributes<HTMLDivElement> {}
 
-export function BadgeTemplatesIssueForm({
+export function BadgesTemplatesIssueForm({
   className,
   ...props
 }: BadgeTemplatesIssueProps) {

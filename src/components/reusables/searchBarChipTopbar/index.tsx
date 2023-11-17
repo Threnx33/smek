@@ -1,19 +1,16 @@
 import { Input } from "@/components/ui/input";
-import { Table as ReactTable } from "@tanstack/react-table";
 
-type SearchBarChipProps<TData> = {
-  table: ReactTable<TData>;
+type SearchBarChipTopbar = {
   placeholder: string;
-  searchBy: string;
+  handleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
 };
 
-export function SearchBarChip<TData>({
-  table,
+export function SearchBarChipTopbar({
   placeholder,
-  searchBy,
+  handleOnChange,
   className,
-}: SearchBarChipProps<TData>) {
+}: SearchBarChipTopbar) {
   return (
     <div className={`flex border rounded-xl py-0.5 shadow-sm ${className}`}>
       <button className="flex items-center px-4 self-stretch">
@@ -27,9 +24,7 @@ export function SearchBarChip<TData>({
         type="text"
         className="px-3 h-9 py-0 w-80 rounded-xl border-none"
         placeholder={placeholder}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          table.getColumn(searchBy)?.setFilterValue(e.target.value)
-        }
+        onChange={handleOnChange}
       />
     </div>
   );

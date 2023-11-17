@@ -1,5 +1,4 @@
 import { ColumnDef } from "@tanstack/react-table";
-
 import { MoreHorizontal } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -14,10 +13,12 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Status, StatusChip } from "@/components/reusables/statusChip";
 import { formatDate } from "@/components/utility/dateFormat";
+import { HeaderSortButton } from "@/components/reusables/headerSortButton";
 
 type Template = {
   id: string;
   templateName: string;
+  imgSrc: string;
   status: Status;
   updated: number;
   issued: number;
@@ -27,62 +28,78 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed52f",
     templateName: "Foundation of Leadership - International",
+    imgSrc: "/tableImg.png",
     status: "Published",
-    updated: Date.now(),
+    updated: new Date("May 6, 2023").getTime(),
     issued: 56,
   },
   {
     id: "728ed53f",
     templateName: "Foundation of Leadership 101-2 Certificate",
+    imgSrc: "/tableImg.png",
     status: "Published",
-    updated: Date.now(),
+    updated: new Date("Oct 3, 2022").getTime(),
     issued: 78,
   },
   {
     id: "728ed54f",
     templateName: "Foundation of Leadership 101-1 Certificate",
+    imgSrc: "/tableImg.png",
     status: "Declined",
-    updated: Date.now() - 1000 * 60 * 60 * 24 * 30,
+    updated: new Date("Oct 3, 2022").getTime(),
     issued: 0,
   },
   {
     id: "728ed55f",
     templateName: "Executive Leadership 301 (EXEC301)",
+    imgSrc: "/tableImg.png",
     status: "Published",
-    updated: Date.now(),
+    updated: new Date("Jan 31, 2022").getTime(),
     issued: 24,
   },
   {
     id: "728ed56f",
     templateName: "Advanced Leadership 202 (ADV202)",
+    imgSrc: "/tableImg.png",
     status: "Published",
-    updated: Date.now(),
+    updated: new Date("Jan 31, 2022").getTime(),
     issued: 5,
   },
   {
     id: "728ed57f",
     templateName: "Advanced Leadership 201 (ADV201)",
+    imgSrc: "/tableImg.png",
     status: "Declined",
-    updated: Date.now(),
+    updated: new Date("Jan 31, 2022").getTime(),
     issued: 0,
   },
   {
     id: "728ed58f",
     templateName: "Foundation of Leadership 102 (FOL102)",
+    imgSrc: "/tableImg.png",
     status: "Published",
-    updated: Date.now(),
+    updated: new Date("Jan 31, 2022").getTime(),
     issued: 19,
   },
   // {
   //   id: "728ed59f",
   //   templateName: "Foundation of Leadership - International",
+  //   imgSrc: "/tableImg.png",
   //   status: "Published",
-  //   updated: Date.now(),
+  //   updated: new Date("Jan 31, 2022").getTime(),
+  //   issued: 56,
+  // },
+  // {
+  //   id: "728ed60f",
+  //   templateName: "Foundation of Leadership - International",
+  //   imgSrc: "/tableImg.png",
+  //   status: "Published",
+  //   updated: new Date("Jan 31, 2022").getTime(),
   //   issued: 56,
   // },
 ];
 
-export const COLUMNS: ColumnDef<Template>[] = [
+export const TEMPLATES_COLUMNS: ColumnDef<Template>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -107,8 +124,12 @@ export const COLUMNS: ColumnDef<Template>[] = [
     header: "Template Name",
     cell: ({ row }) => {
       return (
-        <span className="flex flex-row items-center">
-          <img className="h-10 w-10 mr-2" src="/tableImg.png" alt="tableImg" />
+        <span className="flex flex-row items-center ">
+          <img
+            className="h-10 w-10 mr-2"
+            src={row.original.imgSrc}
+            alt="TemplateImage"
+          />
           {row.getValue("templateName")}
         </span>
       );
@@ -116,14 +137,18 @@ export const COLUMNS: ColumnDef<Template>[] = [
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: ({ column }) => {
+      return <HeaderSortButton column={column} name="Status" />;
+    },
     cell: ({ row }) => {
       return <StatusChip text={row.getValue("status")} />;
     },
   },
   {
     accessorKey: "updated",
-    header: "Updated",
+    header: ({ column }) => {
+      return <HeaderSortButton column={column} name="Updated" />;
+    },
     cell: ({ row }) => {
       return formatDate(row.getValue("updated"));
     },
@@ -150,11 +175,11 @@ export const COLUMNS: ColumnDef<Template>[] = [
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(payment.id)}
             >
-              Copy payment ID
+              Do something
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem>Do something2</DropdownMenuItem>
+            <DropdownMenuItem>Do something3</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
