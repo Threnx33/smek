@@ -22,6 +22,12 @@ export function ViewBadgesTemplates<TData, TValue>({
 }: TableDataProps<TData, TValue>) {
   const table = useCustomTable({ columns, data });
 
+  const emptyText = (
+    <div className="text-cMediumGrey">
+      No badge template created yet. Create your first badge template
+    </div>
+  );
+
   return (
     <BadgesWrap>
       <div className="flex justify-between mb-6">
@@ -78,7 +84,11 @@ export function ViewBadgesTemplates<TData, TValue>({
         </div>
       </div>
 
-      <CustomTable table={table} />
+      <CustomTable
+        table={table}
+        emptyImgName="emptyTemplates"
+        emptyText={emptyText}
+      />
     </BadgesWrap>
   );
 }

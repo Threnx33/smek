@@ -2,6 +2,17 @@ import { EARNERS, EARNERS_COLUMNS } from "../viewBadgesEarners/data";
 import { TEMPLATES_COLUMNS, TEMPLATES } from "../viewBadgesTemplates/data";
 import { ViewBadgesTemplates } from "../viewBadgesTemplates";
 import { ViewBadgesEarners } from "../viewBadgesEarners";
+import { ViewBadgesRecommendations } from "../viewBadgesRecomendations";
+import {
+  RECOMMENDATIONS,
+  RECOMMENDATIONS_COLUMNS,
+} from "../viewBadgesRecomendations/data";
+import { ViewBadgesCollections } from "../viewBadgesCollections";
+import {
+  COLLECTIONS,
+  COLLECTIONS_COLUMNS,
+} from "../viewBadgesCollections/data";
+import { ViewBadgesIssue } from "../viewBadgesIssue";
 
 export type TabType = {
   to: string;
@@ -25,31 +36,25 @@ export const BADGE_MENU_TABS: TabsType = [
     component: <ViewBadgesEarners columns={EARNERS_COLUMNS} data={EARNERS} />,
   },
   {
-    to: "/badges/templates",
+    to: "/badges/recommendations",
     label: "Recommendations",
     component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
+      <ViewBadgesRecommendations
+        columns={RECOMMENDATIONS_COLUMNS}
+        data={RECOMMENDATIONS}
+      />
     ),
   },
   {
-    to: "/badges/templates",
+    to: "/badges/collections",
     label: "Collections",
     component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
+      <ViewBadgesCollections columns={COLLECTIONS_COLUMNS} data={COLLECTIONS} />
     ),
   },
   {
-    to: "/badges/templates",
+    to: "/badges/issue",
     label: "Issue",
-    component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
-    ),
-  },
-  {
-    to: "/badges/templates",
-    label: "Drafts",
-    component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
-    ),
+    component: <ViewBadgesIssue />,
   },
 ];

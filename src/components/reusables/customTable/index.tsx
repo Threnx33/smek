@@ -8,12 +8,19 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Table as ReactTable, flexRender } from "@tanstack/react-table";
+import { ReactNode } from "react";
 
 interface CustomTableProps<TData> {
   table: ReactTable<TData>;
+  emptyImgName: string;
+  emptyText: ReactNode;
 }
 
-export function CustomTable<TData>({ table }: CustomTableProps<TData>) {
+export function CustomTable<TData>({
+  table,
+  emptyImgName,
+  emptyText,
+}: CustomTableProps<TData>) {
   return (
     <div className="flex flex-col flex-grow">
       {table.getRowModel().rows.length ? (
@@ -85,12 +92,13 @@ export function CustomTable<TData>({ table }: CustomTableProps<TData>) {
           </div>
         </div>
       ) : (
-        <div className="flex flex-grow justify-center items-center">
+        <div className="flex flex-col flex-grow justify-center items-center">
           <img
-            className=""
-            src="/emptyTemplates.png"
-            alt="emptyTemplatesImage"
+            className="mb-10"
+            src={`/${emptyImgName}.png`}
+            alt={`${emptyImgName}Image`}
           />
+          {emptyText}
         </div>
       )}
     </div>
