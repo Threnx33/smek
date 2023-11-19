@@ -16,6 +16,7 @@ import {
 import { CustomTable } from "../../../reusables/customTable";
 import { BadgesWrap } from "@/components/uiComponents/badgesWrap";
 import { BadgesTemplatesIssueButton } from "./badgesTemplatesIssueButton";
+import { BadgesTemplatesFilterButton } from "./badgesTemplatesFilter";
 
 export function ViewBadgesTemplates<TData, TValue>({
   columns,
@@ -39,7 +40,7 @@ export function ViewBadgesTemplates<TData, TValue>({
             placeholder="Search templates"
             searchBy="templateName"
           />
-          <FilterButton />
+          <BadgesTemplatesFilterButton />
         </div>
 
         <div className="flex items-center">

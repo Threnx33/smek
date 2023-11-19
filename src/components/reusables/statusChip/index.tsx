@@ -1,4 +1,4 @@
-export type Status = "Published" | "Accepted" | "Declined";
+export type Status = "Published" | "Accepted" | "Declined" | "Draft";
 
 type StatusChipProps = {
   text: Status;
