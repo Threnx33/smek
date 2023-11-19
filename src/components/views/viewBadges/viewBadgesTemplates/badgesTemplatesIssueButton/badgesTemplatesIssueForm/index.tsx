@@ -27,10 +27,17 @@ const badgeTemplatesIssueSchema = z.object({
   expirationType: z.enum(["noExpiration", "expiresOn"]),
   expirationDate: z.date().optional(),
   emailNotifications: z.boolean().optional(),
-  emailLanguage: z.string(),
+  emailLanguage: z
+    .string()
+    .refine(
+      (value) => EMAIL_LANGUAGES.includes(value),
+      "Invalid language selection."
+    ),
   issuerEarnerId: z.string(),
   groupTag: z.string(),
-  countryTeritory: z.string(),
+  countryTeritory: z
+    .string()
+    .refine((value) => COUNTRIES.includes(value), "Invalid country selection."),
   stateProvince: z.string(),
 });
 

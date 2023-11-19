@@ -12,7 +12,7 @@ type CustomTextareaProps<T extends FieldValues> = {
   form: UseFormReturn<T>;
   name: Path<T>;
   label: string;
-  placeholder: string;
+  placeholder?: string;
   mandatory?: boolean;
   className?: string;
 };
