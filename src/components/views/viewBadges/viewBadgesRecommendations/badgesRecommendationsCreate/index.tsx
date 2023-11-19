@@ -9,6 +9,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { BadgesRecommendationsCreateForm } from "./badgesRecommendationsCreateForm";
 
 export function BadgesRecommendationsCreate() {
   return (
@@ -32,6 +33,8 @@ export function BadgesRecommendationsCreate() {
             Complete the information below to add recommendation.
           </SheetDescription>
         </SheetHeader>
+
+        <BadgesRecommendationsCreateForm />
 
         <SheetFooter>
           <SheetClose asChild>

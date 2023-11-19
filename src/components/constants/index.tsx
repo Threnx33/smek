@@ -19,3 +19,12 @@ export const BADGES = [
 ];
 
 export const EMAIL_LANGUAGES = ["English", "Romanian", "German"];
+
+export const RECOMMENDATIONS_TYPES = [
+  "Certificate",
+  "Education",
+  "Employment",
+  "Information",
+  "Offer",
+  "Participation",
+];
