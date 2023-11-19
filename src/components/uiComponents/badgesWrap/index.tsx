@@ -11,14 +11,15 @@ type BadgesWrapProps = {
 };
 
 export function BadgesWrap({ children }: BadgesWrapProps) {
-  const [currentTab, setCurrentTab] = useState<TabType>(BADGE_MENU_TABS[0]);
+  const [currentTab, setCurrentTab] = useState<TabType>(getInitialTab);
 
-  useEffect(() => {
+  function getInitialTab() {
     const newTab = BADGE_MENU_TABS.find((tab) => tab.to === location.pathname);
     if (newTab) {
-      setCurrentTab(newTab);
+      return newTab;
     }
-  }, []);
+    return BADGE_MENU_TABS[0];
+  }
 
   return (
     <MainWrap>
