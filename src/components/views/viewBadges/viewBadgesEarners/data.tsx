@@ -42,6 +42,14 @@ export const EARNERS: Earner[] = [
     badgeStatus: "Accepted",
   },
   {
+    id: "728ed535",
+    name: "Amir, Reania",
+    badgeName: "Advanced Leadership 202 (ADV202)",
+    issuerProfile: "Student Clubs",
+    dateIssued: new Date("July 28, 2023").getTime(),
+    badgeStatus: "Declined",
+  },
+  {
     id: "728ed531",
     name: "Adama, Kara",
     badgeName: "Executive Leadership 302 (EXEC302)",
@@ -73,14 +81,7 @@ export const EARNERS: Earner[] = [
     dateIssued: new Date("April 10, 2023").getTime(),
     badgeStatus: "Accepted",
   },
-  {
-    id: "728ed535",
-    name: "Amir, Reania",
-    badgeName: "Advanced Leadership 202 (ADV202)",
-    issuerProfile: "Student Clubs",
-    dateIssued: new Date("July 28, 2023").getTime(),
-    badgeStatus: "Declined",
-  },
+
   {
     id: "728ed536",
     name: "Amir, Reania",

@@ -2,11 +2,11 @@ import { EARNERS, EARNERS_COLUMNS } from "../viewBadgesEarners/data";
 import { TEMPLATES_COLUMNS, TEMPLATES } from "../viewBadgesTemplates/data";
 import { ViewBadgesTemplates } from "../viewBadgesTemplates";
 import { ViewBadgesEarners } from "../viewBadgesEarners";
-import { ViewBadgesRecommendations } from "../viewBadgesRecomendations";
+import { ViewBadgesRecommendations } from "../viewBadgesRecommendations";
 import {
   RECOMMENDATIONS,
   RECOMMENDATIONS_COLUMNS,
-} from "../viewBadgesRecomendations/data";
+} from "../viewBadgesRecommendations/data";
 import { ViewBadgesCollections } from "../viewBadgesCollections";
 import {
   COLLECTIONS,
