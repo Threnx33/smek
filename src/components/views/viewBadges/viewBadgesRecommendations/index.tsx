@@ -12,6 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { BadgesRecommendationsCreate } from "./badgesRecommendationsCreate";
 
 export function ViewBadgesRecommendations<TData, TValue>({
   columns,
@@ -35,14 +36,7 @@ export function ViewBadgesRecommendations<TData, TValue>({
           searchBy="templateName"
         />
         <div className="flex items-center">
-          <Button className="mr-3">
-            <img
-              className="h-5 w-5 mr-2"
-              src="/addSquareWhite.svg"
-              alt="addSquareWhiteIcon"
-            />
-            Create Recommendation
-          </Button>
+          <BadgesRecommendationsCreate />
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
