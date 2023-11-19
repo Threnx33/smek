@@ -22,7 +22,7 @@ export function ViewBadgesRecommendations<TData, TValue>({
 
   const emptyText = (
     <div className="text-cMediumGrey text-center">
-      No available history data to present. Check back later.
+      No available recommendations. Check back later.
     </div>
   );
 

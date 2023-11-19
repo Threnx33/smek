@@ -41,7 +41,13 @@ const badgeTemplatesIssueSchema = z.object({
   stateProvince: z.string(),
 });
 
-const defaultIssueValues: Partial<BadgeTemplatesIssueSchema> = {};
+const defaultIssueValues: Partial<BadgeTemplatesIssueSchema> = {
+  firstName: "",
+  middleName: "",
+  lastName: "",
+  issuerEarnerId: "",
+  groupTag: "",
+};
 
 type BadgeTemplatesIssueSchema = z.infer<typeof badgeTemplatesIssueSchema>;
 
