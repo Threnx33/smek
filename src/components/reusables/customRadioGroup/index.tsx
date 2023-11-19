@@ -12,9 +12,10 @@ type CustomRadioGroupProps<T extends FieldValues> = {
   form: UseFormReturn<T>;
   name: Path<T>;
   items: { value: string; label: string }[];
-  defaultValue: string;
+  defaultValue?: string;
   label?: string;
   className?: string;
+  classNameRadio?: string;
 };
 
 export function CustomRadioGroup<T extends FieldValues>({
@@ -24,6 +25,7 @@ export function CustomRadioGroup<T extends FieldValues>({
   defaultValue,
   label,
   className,
+  classNameRadio,
 }: CustomRadioGroupProps<T>) {
   return (
     <FormField
@@ -36,7 +38,7 @@ export function CustomRadioGroup<T extends FieldValues>({
             <RadioGroup
               onValueChange={field.onChange}
               defaultValue={defaultValue}
-              className="flex"
+              className={`flex ${classNameRadio}`}
             >
               {items.map((item) => (
                 <FormItem

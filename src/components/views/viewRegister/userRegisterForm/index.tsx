@@ -12,7 +12,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { COUNTRIES } from "@/components/constants";
+import { COUNTRIES } from "@/components/constants/values";
 import { CustomInput } from "@/components/reusables/customInput";
 import { CustomSelect } from "@/components/reusables/customSelect";
 import { CustomCheckbox } from "@/components/reusables/customCheckbox";

@@ -10,7 +10,7 @@ import {
   COUNTRIES,
   EMAIL_LANGUAGES,
   ISSUER_PROFILES,
-} from "@/components/constants";
+} from "@/components/constants/values";
 import { CustomInput } from "@/components/reusables/customInput";
 import { CustomSelect } from "@/components/reusables/customSelect";
 import { CustomCheckbox } from "@/components/reusables/customCheckbox";

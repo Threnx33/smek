@@ -5,7 +5,7 @@ import {
 } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
 import { BadgesWrap } from "@/components/uiComponents/badgesWrap";
-import { Button } from "@/components/ui/button";
+import { BadgesCollectionsCreate } from "./badgesCollectionsCreate";
 
 export function ViewBadgesCollections<TData, TValue>({
   columns,
@@ -29,14 +29,7 @@ export function ViewBadgesCollections<TData, TValue>({
           searchBy="templateName"
         />
         <div className="flex items-center">
-          <Button className="mr-3">
-            <img
-              className="h-5 w-5 mr-2"
-              src="/addSquareWhite.svg"
-              alt="addSquareWhiteIcon"
-            />
-            Create Collection
-          </Button>
+          <BadgesCollectionsCreate />
         </div>
       </div>
 

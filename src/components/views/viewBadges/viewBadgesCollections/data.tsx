@@ -13,14 +13,13 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { formatDate } from "@/components/utility/dateFormat";
 import { HeaderSortButton } from "@/components/reusables/headerSortButton";
-
-type Visibility = "Private" | "Public";
+import { VisibilityType } from "@/components/constants/types";
 
 type Collection = {
   id: string;
   collection: string;
   templates: number;
-  visibility: Visibility;
+  visibility: VisibilityType;
   updated: number;
 };
 

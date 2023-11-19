@@ -4,7 +4,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "@/components/ui/form";
 
-import { CERTIFICATES, RECOMMENDATIONS_TYPES } from "@/components/constants";
+import {
+  CERTIFICATES,
+  RECOMMENDATIONS_TYPES,
+} from "@/components/constants/values";
 import { CustomSelect } from "@/components/reusables/customSelect";
 import { CustomInput } from "@/components/reusables/customInput";
 import { CustomTextarea } from "@/components/reusables/customTextarea";
@@ -56,7 +59,7 @@ export function BadgesRecommendationsCreateForm({
           form={form}
           name="certificate"
           label="Recommended Certificate"
-          placeholder="Choose certificate"
+          placeholder="Select certificate"
           items={CERTIFICATES}
         />
       );
@@ -85,7 +88,7 @@ export function BadgesRecommendationsCreateForm({
             form={form}
             name="type"
             label="Type"
-            placeholder="Choose type"
+            placeholder="Select type"
             items={RECOMMENDATIONS_TYPES}
           />
 
