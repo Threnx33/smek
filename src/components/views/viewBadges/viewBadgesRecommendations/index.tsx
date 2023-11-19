@@ -46,7 +46,7 @@ export function ViewBadgesRecommendations<TData, TValue>({
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem>
-                <div className="flex space-x-2">
+                <div className="flex space-x-2 pr-2 py-1">
                   <img className="h-5 w-5" src="/export.svg" alt="ExportIcon" />
                   <span>Export Recommendations List</span>
                 </div>

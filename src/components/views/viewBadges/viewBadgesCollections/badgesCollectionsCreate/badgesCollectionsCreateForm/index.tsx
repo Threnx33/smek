@@ -9,7 +9,6 @@ import { CustomTextarea } from "@/components/reusables/customTextarea";
 import { TEMPLATES } from "../../../viewBadgesTemplates/data";
 import { CustomSelect } from "@/components/reusables/customSelect";
 import { Separator } from "@/components/ui/separator";
-import { VisibilityType } from "@/components/constants/types";
 import { CustomRadioGroup } from "@/components/reusables/customRadioGroup";
 import { Button } from "@/components/ui/button";
 

@@ -3,6 +3,7 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
@@ -62,23 +63,22 @@ export function ViewBadgesTemplates<TData, TValue>({
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              {table
-                .getAllColumns()
-                .filter((column) => column.getCanHide())
-                .map((column) => {
-                  return (
-                    <DropdownMenuCheckboxItem
-                      key={column.id}
-                      className="capitalize"
-                      checked={column.getIsVisible()}
-                      onCheckedChange={(value) =>
-                        column.toggleVisibility(!!value)
-                      }
-                    >
-                      {column.id}
-                    </DropdownMenuCheckboxItem>
-                  );
-                })}
+              <DropdownMenuItem>
+                <div className="flex space-x-2 pr-2 py-1">
+                  <img className="h-5 w-5" src="/export.svg" alt="ExportIcon" />
+                  <span>Export Template List</span>
+                </div>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <div className="flex space-x-2 pr-2 py-1">
+                  <img
+                    className="h-5 w-5"
+                    src="/archive.svg"
+                    alt="ArchieveIcon"
+                  />
+                  <span>View Archived Templates</span>
+                </div>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
