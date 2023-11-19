@@ -1,13 +1,18 @@
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
-import { FilterButton } from "@/components/reusables/filterButton";
 import {
   TableDataProps,
   useCustomTable,
 } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
 import { BadgesWrap } from "@/components/uiComponents/badgesWrap";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { BadgesRecommendationsCreate } from "./badgesRecommendationsCreate";
 
 export function ViewBadgesRecommendations<TData, TValue>({
   columns,
@@ -31,17 +36,23 @@ export function ViewBadgesRecommendations<TData, TValue>({
           searchBy="templateName"
         />
         <div className="flex items-center">
-          <Button className="mr-3">
-            <img
-              className="h-5 w-5 mr-2"
-              src="/addSquareWhite.svg"
-              alt="addSquareWhiteIcon"
-            />
-            Create Recommendation
-          </Button>
-          <Button variant="outline" className="px-3">
-            <img className="h-5 w-5" src="/dots.svg" alt="DotsIcon" />
-          </Button>
+          <BadgesRecommendationsCreate />
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="px-3">
+                <img className="h-5 w-5" src="/dots.svg" alt="DotsIcon" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>
+                <div className="flex space-x-2">
+                  <img className="h-5 w-5" src="/export.svg" alt="ExportIcon" />
+                  <span>Export Recommendations List</span>
+                </div>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
 
