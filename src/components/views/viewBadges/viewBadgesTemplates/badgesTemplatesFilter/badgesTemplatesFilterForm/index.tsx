@@ -5,6 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "@/components/ui/form";
 import { CustomCheckboxChips } from "@/components/reusables/customRadioGroupChips";
 import { CustomCalendarExtended } from "@/components/reusables/customCalendarExtended";
+import { SheetClose, SheetFooter } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 
 const badgeTemplatesFilterSchema = z.object({
   templateState: z
@@ -56,7 +58,7 @@ export function BadgesTemplatesFilterForm({
   return (
     <div className={className} {...props}>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
           <CustomCheckboxChips
             className="mb-4"
             form={form}
@@ -77,19 +79,46 @@ export function BadgesTemplatesFilterForm({
             form={form}
             name="from"
             buttonLabel="From"
-            disabledFunction={(date) =>
-              date > new Date() || date < new Date("1900-01-01")
-            }
+            disabledFunction={(date) => {
+              const toDateValue = form.getValues("to")
+                ? form.getValues("to")
+                : null;
+
+              const isAfterToDate = toDateValue ? date > toDateValue : false;
+
+              const isOutOfRange =
+                date > new Date() || date < new Date("1900-01-01");
+
+              return isAfterToDate || isOutOfRange;
+            }}
           />
           <CustomCalendarExtended
             className="mb-6"
             form={form}
             name="to"
             buttonLabel="To"
-            disabledFunction={(date) =>
-              date > new Date() || date < new Date("1900-01-01")
-            }
+            disabledFunction={(date) => {
+              const fromDateValue = form.getValues("from")
+                ? form.getValues("from")
+                : null;
+
+              const isAfterFromDate = fromDateValue
+                ? date < fromDateValue
+                : false;
+
+              const isOutOfRange =
+                date > new Date() || date < new Date("1900-01-01");
+
+              return isAfterFromDate || isOutOfRange;
+            }}
           />
+
+          <div className="space-x-2 ml-auto">
+            <Button type="button" variant="outline">
+              Reset
+            </Button>
+            <Button type="submit">Apply</Button>
+          </div>
         </form>
       </Form>
     </div>

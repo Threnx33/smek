@@ -4,8 +4,8 @@ import { ViewLogin } from "@/components/views/viewLogin";
 import { ViewRegister } from "./components/views/viewRegister";
 import { ViewPasswordReset } from "./components/views/viewPasswordReset";
 import { ViewCreateBadgeTemplate } from "./components/views/viewBadges/viewBadgesTemplates/viewCreateBadgeTemplate";
-import { DRAWER_LIST_ITEMS } from "./components/uiComponents/drawer/drawerList/drawerListItems";
 import { BADGE_MENU_TABS } from "./components/views/viewBadges/badgesMenuTabs";
+import { DRAWER_LIST_ITEMS } from "./components/reusables/drawer/drawerList/drawerListItems";
 
 function App() {
   const drawerRoutes = DRAWER_LIST_ITEMS.map((item) => (

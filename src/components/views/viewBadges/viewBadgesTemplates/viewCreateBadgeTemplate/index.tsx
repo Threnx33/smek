@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { MainWrap } from "@/components/uiComponents/mainWrap";
+import { MainWrap } from "@/components/reusables/mainWrap";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";

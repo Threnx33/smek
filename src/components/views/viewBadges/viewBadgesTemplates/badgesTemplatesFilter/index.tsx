@@ -9,8 +9,15 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { BadgesTemplatesFilterForm } from "./badgesTemplatesFilterForm";
+import { Table } from "@tanstack/react-table";
 
-export function BadgesTemplatesFilterButton() {
+type BadgesTemplatesFilterButtonProps<TData> = {
+  table: Table<TData>;
+};
+
+export function BadgesTemplatesFilterButton<TData>({
+  table,
+}: BadgesTemplatesFilterButtonProps<TData>) {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -24,16 +31,7 @@ export function BadgesTemplatesFilterButton() {
           <SheetTitle className="font-bold text-2xl ">Filters</SheetTitle>
         </SheetHeader>
 
-        <BadgesTemplatesFilterForm />
-
-        <SheetFooter>
-          <SheetClose asChild>
-            <div className="space-x-2">
-              <Button variant="outline">Reset</Button>
-              <Button type="submit">Apply</Button>
-            </div>
-          </SheetClose>
-        </SheetFooter>
+        <BadgesTemplatesFilterForm table={table} />
       </SheetContent>
     </Sheet>
   );
