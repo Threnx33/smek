@@ -4,7 +4,7 @@ import {
   useCustomTable,
 } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
-import { BadgesWrap } from "@/components/uiComponents/badgesWrap";
+import { BadgesWrap } from "@/components/reusables/badgesWrap";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,

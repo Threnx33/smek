@@ -1,20 +1,18 @@
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
-import { FilterButton } from "@/components/reusables/filterButton";
 import { Link } from "react-router-dom";
 import {
   TableDataProps,
   useCustomTable,
 } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "../../../reusables/customTable";
-import { BadgesWrap } from "@/components/uiComponents/badgesWrap";
+import { BadgesWrap } from "@/components/reusables/badgesWrap";
 import { BadgesTemplatesIssueButton } from "./badgesTemplatesIssueButton";
 import { BadgesTemplatesFilterButton } from "./badgesTemplatesFilter";
 
@@ -40,7 +38,7 @@ export function ViewBadgesTemplates<TData, TValue>({
             placeholder="Search templates"
             searchBy="templateName"
           />
-          <BadgesTemplatesFilterButton />
+          <BadgesTemplatesFilterButton table={table} />
         </div>
 
         <div className="flex items-center">

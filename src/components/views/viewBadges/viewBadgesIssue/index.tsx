@@ -1,4 +1,4 @@
-import { BadgesWrap } from "@/components/uiComponents/badgesWrap";
+import { BadgesWrap } from "@/components/reusables/badgesWrap";
 import { Button } from "@/components/ui/button";
 import { TextMainWrap } from "@/components/reusables/textMainWrap";
 

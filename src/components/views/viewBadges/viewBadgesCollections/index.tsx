@@ -4,7 +4,7 @@ import {
   useCustomTable,
 } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
-import { BadgesWrap } from "@/components/uiComponents/badgesWrap";
+import { BadgesWrap } from "@/components/reusables/badgesWrap";
 import { BadgesCollectionsCreate } from "./badgesCollectionsCreate";
 
 export function ViewBadgesCollections<TData, TValue>({

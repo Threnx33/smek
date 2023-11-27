@@ -1,51 +1,57 @@
-import { HTMLAttributes } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "@/components/ui/form";
 import { CustomCheckboxChips } from "@/components/reusables/customRadioGroupChips";
 import { CustomCalendarExtended } from "@/components/reusables/customCalendarExtended";
+import { Button } from "@/components/ui/button";
+import { Column, Table as ReactTable } from "@tanstack/react-table";
+import { Status } from "@/components/reusables/statusChip";
 
 const badgeTemplatesFilterSchema = z.object({
-  templateState: z
-    .array(z.string())
-    .refine((value) => value.some((item) => item), {
-      message: "You have to select at least one item.",
-    }),
-  templateVisibility: z
-    .array(z.string())
-    .refine((value) => value.some((item) => item), {
-      message: "You have to select at least one item.",
-    }),
+  templateStatus: z.array(z.string()),
+  templateVisibility: z.array(z.string()),
   from: z.date().optional(),
   to: z.date().optional(),
 });
 
 const defaultFilterValues: Partial<BadgeTemplatesFilterSchema> = {
-  templateState: [],
+  templateStatus: [],
   templateVisibility: [],
 };
 
 type BadgeTemplatesFilterSchema = z.infer<typeof badgeTemplatesFilterSchema>;
 
-interface BadgeTemplatesFilterProps extends HTMLAttributes<HTMLDivElement> {}
+interface BadgeTemplatesFilterProps<TData> {
+  table: ReactTable<TData>;
+  className?: string;
+}
 
-export function BadgesTemplatesFilterForm({
+export function BadgesTemplatesFilterForm<TData>({
+  table,
   className,
-  ...props
-}: BadgeTemplatesFilterProps) {
+}: BadgeTemplatesFilterProps<TData>) {
   const form = useForm<BadgeTemplatesFilterSchema>({
     resolver: zodResolver(badgeTemplatesFilterSchema),
     defaultValues: defaultFilterValues,
   });
 
   async function onSubmit(data: BadgeTemplatesFilterSchema) {
-    console.log(data);
+    const statusColumn = table.getColumn("status") as
+      | Column<TData, Status>
+      | undefined;
+    console.log(data.templateStatus);
+    const filterValue = Array.from(data.templateStatus);
+    statusColumn?.setFilterValue(filterValue.length ? filterValue : undefined);
   }
 
-  const templateStates = [
-    { value: "published", label: "Published" },
-    { value: "draft", label: "Draft" },
+  function handleReset() {
+    table.getAllColumns().forEach((column) => column.setFilterValue(undefined));
+  }
+
+  const templateStatus = [
+    { value: "Published", label: "Published" },
+    { value: "Draft", label: "Draft" },
   ];
 
   const templateVisibility = [
@@ -54,21 +60,21 @@ export function BadgesTemplatesFilterForm({
   ];
 
   return (
-    <div className={className} {...props}>
+    <div className={className}>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
           <CustomCheckboxChips
             className="mb-4"
             form={form}
-            name="templateState"
-            label="Template state"
-            items={templateStates}
+            name="templateStatus"
+            label="Template status"
+            items={templateStatus}
           />
           <CustomCheckboxChips
             className="mb-4"
             form={form}
             name="templateVisibility"
-            label="Template Visibility"
+            label="Template visibility"
             items={templateVisibility}
           />
 
@@ -77,19 +83,46 @@ export function BadgesTemplatesFilterForm({
             form={form}
             name="from"
             buttonLabel="From"
-            disabledFunction={(date) =>
-              date > new Date() || date < new Date("1900-01-01")
-            }
+            disabledFunction={(date) => {
+              const toDateValue = form.getValues("to")
+                ? form.getValues("to")
+                : null;
+
+              const isAfterToDate = toDateValue ? date > toDateValue : false;
+
+              const isOutOfRange =
+                date > new Date() || date < new Date("1900-01-01");
+
+              return isAfterToDate || isOutOfRange;
+            }}
           />
           <CustomCalendarExtended
             className="mb-6"
             form={form}
             name="to"
             buttonLabel="To"
-            disabledFunction={(date) =>
-              date > new Date() || date < new Date("1900-01-01")
-            }
+            disabledFunction={(date) => {
+              const fromDateValue = form.getValues("from")
+                ? form.getValues("from")
+                : null;
+
+              const isAfterFromDate = fromDateValue
+                ? date < fromDateValue
+                : false;
+
+              const isOutOfRange =
+                date > new Date() || date < new Date("1900-01-01");
+
+              return isAfterFromDate || isOutOfRange;
+            }}
           />
+
+          <div className="space-x-2 ml-auto">
+            <Button onClick={handleReset} type="button" variant="outline">
+              Reset
+            </Button>
+            <Button type="submit">Apply</Button>
+          </div>
         </form>
       </Form>
     </div>

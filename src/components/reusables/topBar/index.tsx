@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NotificationCountChip } from "../../reusables/notificationCountChip";
+import { NotificationCountChip } from "../notificationCountChip";
 import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
 
 const TopBar = () => {

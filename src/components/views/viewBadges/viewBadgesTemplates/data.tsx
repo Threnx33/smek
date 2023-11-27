@@ -143,6 +143,9 @@ export const TEMPLATES_COLUMNS: ColumnDef<Template>[] = [
     cell: ({ row }) => {
       return <StatusChip text={row.getValue("status")} />;
     },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
   {
     accessorKey: "updated",
