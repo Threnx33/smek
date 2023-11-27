@@ -26,7 +26,7 @@ export function ViewBadgesCollections<TData, TValue>({
           table={table}
           className="mr-3"
           placeholder="Search collections"
-          searchBy="templateName"
+          searchBy="collection"
         />
         <div className="flex items-center">
           <BadgesCollectionsCreate />

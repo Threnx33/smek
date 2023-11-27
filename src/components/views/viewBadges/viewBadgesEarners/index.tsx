@@ -30,7 +30,7 @@ export function ViewBadgesEarners<TData, TValue>({
           table={table}
           className="mr-3"
           placeholder="Search earner name or email address"
-          searchBy="templateName"
+          searchBy="name"
         />
         <FilterButton />
       </div>
