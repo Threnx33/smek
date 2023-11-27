@@ -9,10 +9,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { BadgesTemplatesFilterForm } from "./badgesTemplatesFilterForm";
-import { Table } from "@tanstack/react-table";
+import { Table as ReactTable } from "@tanstack/react-table";
 
 type BadgesTemplatesFilterButtonProps<TData> = {
-  table: Table<TData>;
+  table: ReactTable<TData>;
 };
 
 export function BadgesTemplatesFilterButton<TData>({
