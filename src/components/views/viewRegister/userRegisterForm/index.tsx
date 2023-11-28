@@ -112,6 +112,7 @@ export function UserRegisterForm({
           />
 
           <CustomCheckbox
+            classNameLabel="text-sm font-medium"
             form={form}
             name="news"
             label="Send me occasional news and update on professional growth

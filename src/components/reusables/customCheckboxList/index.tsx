@@ -29,9 +29,7 @@ export function CustomCheckboxList<T extends FieldValues>({
       name={name}
       render={() => (
         <FormItem className={`${className}`}>
-          <div className="mb-2">
-            <FormLabel className="">{label}</FormLabel>
-          </div>
+          <FormLabel>{label}</FormLabel>
           {items.map((item) => (
             <FormField
               key={item.value}

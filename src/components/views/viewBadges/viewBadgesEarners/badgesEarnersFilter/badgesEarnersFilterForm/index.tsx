@@ -122,7 +122,7 @@ export function BadgesEarnersFilterForm<TData>({
     },
     {
       value: "revoked",
-      label: "Reveoked",
+      label: "Revoked",
     },
   ];
 
@@ -180,7 +180,9 @@ export function BadgesEarnersFilterForm<TData>({
                               id={item.value}
                             />
                           </FormControl>
-                          <Label htmlFor={item.value}>{item.label}</Label>
+                          <Label className="font-normal" htmlFor={item.value}>
+                            {item.label}
+                          </Label>
                         </FormItem>
                         {dateRangeWatch === item.value ? dateComp : null}
                       </div>
@@ -208,7 +210,7 @@ export function BadgesEarnersFilterForm<TData>({
             classNameRadio="flex flex-col space-y-1"
             form={form}
             name="expiredBadges"
-            label="ExpiredBadges"
+            label="Expired Badges"
             items={expiredBadgesItems}
             defaultValue="All"
           />

@@ -76,7 +76,7 @@ export function CustomCheckboxChips<T extends FieldValues>({
                         <FormLabel
                           htmlFor={checkboxId}
                           className={cn(
-                            "cursor-pointer",
+                            "cursor-pointer font-normal",
                             isChecked && "text-checked"
                           )}
                         >

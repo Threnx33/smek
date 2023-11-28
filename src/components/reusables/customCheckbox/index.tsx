@@ -15,6 +15,7 @@ type CustomCheckboxProps<T extends FieldValues> = {
   label: string;
   mandatory?: boolean;
   className?: string;
+  classNameLabel?: string;
 };
 
 export function CustomCheckbox<T extends FieldValues>({
@@ -24,6 +25,7 @@ export function CustomCheckbox<T extends FieldValues>({
   label,
   mandatory,
   className,
+  classNameLabel,
 }: CustomCheckboxProps<T>) {
   return (
     <FormField
@@ -41,7 +43,7 @@ export function CustomCheckbox<T extends FieldValues>({
                 onCheckedChange={field.onChange}
               />
             </FormControl>
-            <FormLabel>
+            <FormLabel className={`font-normal ${classNameLabel}`}>
               {label}
               {mandatory && <span className=" text-cRed">*</span>}
             </FormLabel>
