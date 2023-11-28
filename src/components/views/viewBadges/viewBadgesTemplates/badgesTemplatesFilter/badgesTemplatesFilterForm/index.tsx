@@ -40,7 +40,6 @@ export function BadgesTemplatesFilterForm<TData>({
     const statusColumn = table.getColumn("status") as
       | Column<TData, Status>
       | undefined;
-    console.log(data.templateStatus);
     const filterValue = Array.from(data.templateStatus);
     statusColumn?.setFilterValue(filterValue.length ? filterValue : undefined);
   }
@@ -78,7 +77,7 @@ export function BadgesTemplatesFilterForm<TData>({
             items={templateVisibility}
           />
 
-          <div className="text-sm font-semibold ">Date created</div>
+          <div className="text-sm font-medium">Date created</div>
           <CustomCalendarExtended
             form={form}
             name="from"

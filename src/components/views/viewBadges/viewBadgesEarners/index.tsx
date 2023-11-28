@@ -6,6 +6,7 @@ import {
 } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
 import { BadgesWrap } from "@/components/reusables/badgesWrap";
+import { BadgesEarnersFilterButton } from "./badgesEarnersFilter";
 
 export function ViewBadgesEarners<TData, TValue>({
   columns,
@@ -32,7 +33,7 @@ export function ViewBadgesEarners<TData, TValue>({
           placeholder="Search earner name or email address"
           searchBy="name"
         />
-        <FilterButton />
+        <BadgesEarnersFilterButton table={table}/>
       </div>
 
       <CustomTable

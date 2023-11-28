@@ -26,6 +26,7 @@ type CustomCalendarExtendedProps<T extends FieldValues> = {
   mandatory?: boolean;
 };
 
+//contains title inside the calendar button
 export function CustomCalendarExtended<T extends FieldValues>({
   form,
   name,

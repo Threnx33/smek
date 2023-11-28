@@ -48,7 +48,9 @@ export function CustomRadioGroup<T extends FieldValues>({
                   <FormControl>
                     <RadioGroupItem value={item.value} id={item.value} />
                   </FormControl>
-                  <Label htmlFor={item.value}>{item.label}</Label>
+                  <Label className="font-normal" htmlFor={item.value}>
+                    {item.label}
+                  </Label>
                 </FormItem>
               ))}
             </RadioGroup>
