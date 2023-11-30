@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +16,8 @@ import { CustomSelect } from "@/components/reusables/customSelect";
 import { CustomCheckbox } from "@/components/reusables/customCheckbox";
 import { CustomCalendar } from "@/components/reusables/customCalendar";
 import { CustomRadioGroup } from "@/components/reusables/customRadioGroup";
+import { Button } from "@/components/ui/button";
+import { BadgesTemplatesIssueFormUrl } from "./badgesTemplatesIssueFormUrl";
 
 const badgeTemplatesIssueSchema = z.object({
   issuerProfile: z.string(),
@@ -39,6 +41,10 @@ const badgeTemplatesIssueSchema = z.object({
     .string()
     .refine((value) => COUNTRIES.includes(value), "Invalid country selection."),
   stateProvince: z.string(),
+
+  urlTitle: z.string(),
+  urlURL: z.string(),
+  urlDescription: z.string(),
 });
 
 const defaultIssueValues: Partial<BadgeTemplatesIssueSchema> = {
@@ -49,7 +55,9 @@ const defaultIssueValues: Partial<BadgeTemplatesIssueSchema> = {
   groupTag: "",
 };
 
-type BadgeTemplatesIssueSchema = z.infer<typeof badgeTemplatesIssueSchema>;
+export type BadgeTemplatesIssueSchema = z.infer<
+  typeof badgeTemplatesIssueSchema
+>;
 
 interface BadgeTemplatesIssueProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -61,6 +69,7 @@ export function BadgesTemplatesIssueForm({
     resolver: zodResolver(badgeTemplatesIssueSchema),
     defaultValues: defaultIssueValues,
   });
+  const [openedCard, setOpenedCard] = useState("");
 
   const expirationTypeItems = [
     { value: "noExpiration", label: "No expiration" },
@@ -197,6 +206,68 @@ export function BadgesTemplatesIssueForm({
           <div className="text-sm font-bold mb-4">
             <span>Add evidence</span>
           </div>
+
+          <div className={`flex space-x-2 ${!openedCard ? "mb-6" : "mb-4"}`}>
+            <Button
+              type="button"
+              onClick={() => setOpenedCard("URL")}
+              variant="outline"
+              className="p-3"
+            >
+              <img className="h-5 w-5 mr-1" src="/link.svg" alt="exportIcon" />
+              URL
+            </Button>
+            <Button
+              type="button"
+              onClick={() => setOpenedCard("text")}
+              variant="outline"
+              className="p-3"
+            >
+              <img className="h-5 w-5 mr-1" src="/text.svg" alt="textIcon" />
+              Text
+            </Button>
+            <Button
+              type="button"
+              onClick={() => setOpenedCard("upload")}
+              variant="outline"
+              className="p-3"
+            >
+              <img
+                className="h-5 w-5 mr-1"
+                src="/export.svg"
+                alt="exportIcon"
+              />
+              Upload
+            </Button>
+            <Button
+              type="button"
+              onClick={() => setOpenedCard("id")}
+              variant="outline"
+              className="p-2"
+            >
+              <img
+                className="h-5 w-5 mr-1"
+                src="/personalCard.svg"
+                alt="PersonalCardIcon"
+              />
+              ID
+            </Button>
+            <Button
+              type="button"
+              onClick={() => setOpenedCard("...")}
+              variant="outline"
+              className="p-2.5"
+            >
+              <img className="h-5 w-5 mr-1" src="/dots.svg" alt="dotsIcon" />
+            </Button>
+          </div>
+
+          {openedCard === "URL" && (
+            <BadgesTemplatesIssueFormUrl
+              form={form}
+              setOpenedCard={setOpenedCard}
+            />
+          )}
         </form>
       </Form>
     </div>

@@ -15,6 +15,7 @@ type CustomTextareaProps<T extends FieldValues> = {
   placeholder?: string;
   mandatory?: boolean;
   className?: string;
+  characters?: number;
 };
 
 export function CustomTextarea<T extends FieldValues>({
@@ -24,7 +25,9 @@ export function CustomTextarea<T extends FieldValues>({
   placeholder,
   mandatory,
   className,
+  characters,
 }: CustomTextareaProps<T>) {
+  const charactersNumber = characters ?? 500;
   return (
     <FormField
       control={form.control}
@@ -43,7 +46,10 @@ export function CustomTextarea<T extends FieldValues>({
             />
           </FormControl>
           <div className="text-xs text-muted-foreground mt-1">
-            {field.value ? 500 - field.value.length : 500} characters
+            {field.value
+              ? charactersNumber - field.value.length
+              : charactersNumber}{" "}
+            characters
           </div>
           <FormMessage />
         </FormItem>

@@ -54,22 +54,6 @@ export const DRAWER_LIST_ITEMS = [
     ),
   },
   {
-    iconName: "jobBoard",
-    label: "Job Board",
-    to: "/job-board",
-    component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
-    ),
-  },
-  {
-    iconName: "academy",
-    label: "Academy",
-    to: "/academy",
-    component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
-    ),
-  },
-  {
     iconName: "analytics",
     label: "Analytics",
     to: "/analytics",

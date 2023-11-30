@@ -27,7 +27,7 @@ const badgeEarnersFilterSchema = z.object({
 });
 
 const defaultFilterValues: Partial<BadgeEarnersFilterSchema> = {
-  badgeStatus: [],
+  badgeStatus: ["all"],
 };
 
 type BadgeEarnersFilterSchema = z.infer<typeof badgeEarnersFilterSchema>;
@@ -212,7 +212,7 @@ export function BadgesEarnersFilterForm<TData>({
             name="expiredBadges"
             label="Expired Badges"
             items={expiredBadgesItems}
-            defaultValue="All"
+            defaultValue="all"
           />
 
           <Separator className="mb-4" />
@@ -224,7 +224,7 @@ export function BadgesEarnersFilterForm<TData>({
             name="templates"
             label="Templates"
             items={templatesItems}
-            defaultValue="All"
+            defaultValue="all"
           />
 
           <div className="space-x-2 ml-auto">
