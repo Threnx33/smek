@@ -9,72 +9,54 @@ export const DRAWER_LIST_ITEMS = [
     iconName: "dashboard",
     label: "Dashboard",
     to: "/dashboard",
-    component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
-    ),
+    component: <ViewBadgesTemplates />,
   },
   {
     iconName: "issuerProfiles",
     label: "Issuer Profiles",
     to: "/issuer-profiles",
-    component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
-    ),
+    component: <ViewBadgesTemplates />,
   },
   {
     iconName: "badges",
     label: "Badges",
     to: "/badges/templates",
-    component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
-    ),
+    component: <ViewBadgesTemplates />,
   },
   {
     iconName: "certificates",
     label: "Certificates",
     to: "/certificates",
-    component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
-    ),
+    component: <ViewBadgesTemplates />,
   },
   {
     iconName: "designer",
     label: "Designer",
     to: "/designer",
-    component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
-    ),
+    component: <ViewBadgesTemplates />,
   },
   {
     iconName: "verification",
     label: "Verification",
     to: "/verification",
-    component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
-    ),
+    component: <ViewBadgesTemplates />,
   },
   {
     iconName: "analytics",
     label: "Analytics",
     to: "/analytics",
-    component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
-    ),
+    component: <ViewBadgesTemplates />,
   },
   {
     iconName: "preferences",
     label: "Preferences",
     to: "/preferences",
-    component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
-    ),
+    component: <ViewBadgesTemplates />,
   },
   {
     iconName: "support",
     label: "Support",
     to: "/support",
-    component: (
-      <ViewBadgesTemplates columns={TEMPLATES_COLUMNS} data={TEMPLATES} />
-    ),
+    component: <ViewBadgesTemplates />,
   },
 ];

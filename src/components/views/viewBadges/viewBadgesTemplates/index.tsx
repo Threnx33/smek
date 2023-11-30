@@ -15,12 +15,10 @@ import { CustomTable } from "../../../reusables/customTable";
 import { BadgesWrap } from "@/components/reusables/badgesWrap";
 import { BadgesTemplatesIssueButton } from "./badgesTemplatesIssueButton";
 import { BadgesTemplatesFilterButton } from "./badgesTemplatesFilter";
+import { TEMPLATES, TEMPLATES_COLUMNS } from "./data";
 
-export function ViewBadgesTemplates<TData, TValue>({
-  columns,
-  data,
-}: TableDataProps<TData, TValue>) {
-  const table = useCustomTable({ columns, data });
+export function ViewBadgesTemplates() {
+  const table = useCustomTable({ columns: TEMPLATES_COLUMNS, data: TEMPLATES });
 
   const emptyText = (
     <div className="text-cMediumGrey">

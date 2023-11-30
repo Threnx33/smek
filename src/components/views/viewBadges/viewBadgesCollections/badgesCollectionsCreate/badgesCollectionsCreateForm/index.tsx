@@ -47,7 +47,10 @@ export function BadgesCollectionsCreateForm({
     defaultValues: defaultRecommendationValues,
   });
 
-  const table = useCustomTable({ SELECT_TEMPLATES_COLUMNS, SELECT_TEMPLATES });
+  const table = useCustomTable({
+    columns: SELECT_TEMPLATES_COLUMNS,
+    data: SELECT_TEMPLATES,
+  });
 
   const [selectOpened, setSelectOpened] = useState(false);
 
@@ -57,12 +60,15 @@ export function BadgesCollectionsCreateForm({
 
   function handleSelectCancel() {
     setSelectOpened(false);
+    table.resetRowSelection();
   }
 
   const visibilityItems = [
     { value: "public", label: "Public" },
     { value: "private", label: "Private" },
   ];
+
+  const selectedNr = table.getFilteredSelectedRowModel().rows.length;
 
   return (
     <div className={className} {...props}>
@@ -110,14 +116,22 @@ export function BadgesCollectionsCreateForm({
                 Select the templates you would like to appear in this
                 collection.
               </div>
-              <Button
-                onClick={() => setSelectOpened(true)}
-                type="button"
-                className="mb-6"
-                variant="outline"
-              >
-                Select Templates
-              </Button>
+              <div className="flex items-center mb-6 space-x-3">
+                <Button
+                  onClick={() => setSelectOpened(true)}
+                  type="button"
+                  variant="outline"
+                >
+                  Select Templates
+                </Button>
+                {selectedNr > 0 && (
+                  <div className="text-sm">
+                    {table.getFilteredSelectedRowModel().rows.length} Templates
+                    Selected
+                  </div>
+                )}
+              </div>
+
               <SheetFooter>
                 <SheetClose asChild>
                   <div className="space-x-2">
@@ -128,9 +142,10 @@ export function BadgesCollectionsCreateForm({
               </SheetFooter>
             </>
           ) : (
-            <>
+            <div className="flex flex-col">
               <BadgesCollectionsCreateFormTable table={table} />
-              <div className="space-x-2">
+
+              <div className="ml-auto space-x-2">
                 <Button
                   type="button"
                   onClick={handleSelectCancel}
@@ -138,9 +153,11 @@ export function BadgesCollectionsCreateForm({
                 >
                   Cancel
                 </Button>
-                <Button type="submit">Save</Button>
+                <Button type="button" onClick={() => setSelectOpened(false)}>
+                  Save
+                </Button>
               </div>
-            </>
+            </div>
           )}
         </form>
       </Form>

@@ -1,6 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { TEMPLATES } from "@/components/views/viewBadges/viewBadgesTemplates/data";
+import { HeaderSortButton } from "@/components/reusables/headerSortButton";
 
 type SelectTemplate = {
   id: string;
@@ -38,16 +39,18 @@ export const SELECT_TEMPLATES_COLUMNS: ColumnDef<SelectTemplate>[] = [
   },
   {
     accessorKey: "templateName",
-    header: "Template Name",
+    header: ({ column }) => {
+      return <HeaderSortButton column={column} name="Templates" />;
+    },
     cell: ({ row }) => {
       return (
         <span className="flex flex-row items-center ">
           <img
-            className="h-10 w-10 mr-2"
+            className="h-9 w-9 mr-2"
             src={row.original.imgSrc}
             alt="TemplateImage"
           />
-          {row.getValue("templateName")}
+          <span className="text-xs">{row.getValue("templateName")}</span>
         </span>
       );
     },
