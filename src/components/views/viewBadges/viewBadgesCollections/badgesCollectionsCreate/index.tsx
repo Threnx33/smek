@@ -35,15 +35,6 @@ export function BadgesCollectionsCreate() {
         </SheetHeader>
 
         <BadgesCollectionsCreateForm />
-
-        <SheetFooter>
-          <SheetClose asChild>
-            <div className="space-x-2">
-              <Button variant="outline">Cancel</Button>
-              <Button type="submit">Save</Button>
-            </div>
-          </SheetClose>
-        </SheetFooter>
       </SheetContent>
     </Sheet>
   );

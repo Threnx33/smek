@@ -223,7 +223,11 @@ export function BadgesTemplatesIssueForm({
               variant="outline"
               className="p-3"
             >
-              <img className="h-5 w-5 mr-1" src="/link.svg" alt="exportIcon" />
+              <img
+                className="h-5 w-5 mr-0.5"
+                src="/link.svg"
+                alt="exportIcon"
+              />
               URL
             </Button>
             <Button
@@ -232,7 +236,7 @@ export function BadgesTemplatesIssueForm({
               variant="outline"
               className="p-3"
             >
-              <img className="h-5 w-5 mr-1" src="/text.svg" alt="textIcon" />
+              <img className="h-5 w-5 mr-0.5" src="/text.svg" alt="textIcon" />
               Text
             </Button>
             <Button
@@ -242,7 +246,7 @@ export function BadgesTemplatesIssueForm({
               className="p-3"
             >
               <img
-                className="h-5 w-5 mr-1"
+                className="h-5 w-5 mr-0.5"
                 src="/export.svg"
                 alt="exportIcon"
               />
@@ -255,7 +259,7 @@ export function BadgesTemplatesIssueForm({
               className="p-2"
             >
               <img
-                className="h-5 w-5 mr-1"
+                className="h-5 w-5 mr-0.5"
                 src="/personalCard.svg"
                 alt="PersonalCardIcon"
               />
@@ -267,7 +271,7 @@ export function BadgesTemplatesIssueForm({
               variant="outline"
               className="p-2.5"
             >
-              <img className="h-5 w-5 mr-1" src="/dots.svg" alt="dotsIcon" />
+              <img className="h-5 w-5 mr-0.5" src="/dots.svg" alt="dotsIcon" />
             </Button>
           </div>
 
