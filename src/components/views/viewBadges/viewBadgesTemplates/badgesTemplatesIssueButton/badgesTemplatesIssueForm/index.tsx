@@ -17,7 +17,10 @@ import { CustomCheckbox } from "@/components/reusables/customCheckbox";
 import { CustomCalendar } from "@/components/reusables/customCalendar";
 import { CustomRadioGroup } from "@/components/reusables/customRadioGroup";
 import { Button } from "@/components/ui/button";
-import { BadgesTemplatesIssueFormUrl } from "./badgesTemplatesIssueFormUrl";
+import { BadgesTemplatesIssueFormUpload } from "./badgesTemplatesIssueFormUrl";
+import { BadgesTemplatesIssueFormText } from "./badgesTemplatesIssueFormText";
+import { BadgesTemplatesIssueFormUrl } from "./badgesTemplatesIssueFormUpload";
+import { BadgesTemplatesIssueFormId } from "./badgesTemplatesIssueFormId";
 
 const badgeTemplatesIssueSchema = z.object({
   issuerProfile: z.string(),
@@ -45,6 +48,12 @@ const badgeTemplatesIssueSchema = z.object({
   urlTitle: z.string(),
   urlURL: z.string(),
   urlDescription: z.string(),
+
+  textTitle: z.string(),
+  textDescription: z.string(),
+
+  idTitle: z.string(),
+  idID: z.string(),
 });
 
 const defaultIssueValues: Partial<BadgeTemplatesIssueSchema> = {
@@ -210,7 +219,7 @@ export function BadgesTemplatesIssueForm({
           <div className={`flex space-x-2 ${!openedCard ? "mb-6" : "mb-4"}`}>
             <Button
               type="button"
-              onClick={() => setOpenedCard("URL")}
+              onClick={() => setOpenedCard("Url")}
               variant="outline"
               className="p-3"
             >
@@ -219,7 +228,7 @@ export function BadgesTemplatesIssueForm({
             </Button>
             <Button
               type="button"
-              onClick={() => setOpenedCard("text")}
+              onClick={() => setOpenedCard("Text")}
               variant="outline"
               className="p-3"
             >
@@ -228,7 +237,7 @@ export function BadgesTemplatesIssueForm({
             </Button>
             <Button
               type="button"
-              onClick={() => setOpenedCard("upload")}
+              onClick={() => setOpenedCard("Upload")}
               variant="outline"
               className="p-3"
             >
@@ -241,7 +250,7 @@ export function BadgesTemplatesIssueForm({
             </Button>
             <Button
               type="button"
-              onClick={() => setOpenedCard("id")}
+              onClick={() => setOpenedCard("Id")}
               variant="outline"
               className="p-2"
             >
@@ -262,8 +271,26 @@ export function BadgesTemplatesIssueForm({
             </Button>
           </div>
 
-          {openedCard === "URL" && (
+          {openedCard === "Url" && (
             <BadgesTemplatesIssueFormUrl
+              form={form}
+              setOpenedCard={setOpenedCard}
+            />
+          )}
+          {openedCard === "Text" && (
+            <BadgesTemplatesIssueFormText
+              form={form}
+              setOpenedCard={setOpenedCard}
+            />
+          )}
+          {openedCard === "Upload" && (
+            <BadgesTemplatesIssueFormUpload
+              form={form}
+              setOpenedCard={setOpenedCard}
+            />
+          )}
+          {openedCard === "Id" && (
+            <BadgesTemplatesIssueFormId
               form={form}
               setOpenedCard={setOpenedCard}
             />

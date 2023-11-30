@@ -12,7 +12,7 @@ export default function IssueFormCardWrap({
   setOpenedCard,
 }: IssueFromCardWrapProps) {
   return (
-    <div className="p-3 border rounded-lg flex flex-col mb-6">
+    <div className="p-4 border rounded-lg flex flex-col mb-6">
       <div className="flex space-y-0 mb-4">
         <span className="font-semibold text-sm">{title}</span>
         <img

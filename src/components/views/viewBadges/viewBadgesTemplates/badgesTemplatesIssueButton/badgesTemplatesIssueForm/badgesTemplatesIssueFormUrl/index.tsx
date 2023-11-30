@@ -1,34 +1,45 @@
-import { CustomInput } from "@/components/reusables/customInput";
 import IssueFormCardWrap from "@/components/reusables/issueFormCardWrap";
 import { UseFormReturn } from "react-hook-form";
 import { BadgeTemplatesIssueSchema } from "..";
-import { CustomTextarea } from "@/components/reusables/customTextarea";
+import { useDropzone } from "react-dropzone";
 
-type BadgesTemplatesIssueFormUrlProps = {
+type BadgesTemplatesIssueFormUploadProps = {
   form: UseFormReturn<BadgeTemplatesIssueSchema>;
   setOpenedCard: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export function BadgesTemplatesIssueFormUrl({
+export function BadgesTemplatesIssueFormUpload({
   form,
   setOpenedCard,
-}: BadgesTemplatesIssueFormUrlProps) {
+}: BadgesTemplatesIssueFormUploadProps) {
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+
+  const files = acceptedFiles.map((file) => (
+    <li key={file.name}>
+      {file.name} - {file.size} bytes
+    </li>
+  ));
+
+  console.log(files);
+
   return (
-    <IssueFormCardWrap title="URL" setOpenedCard={setOpenedCard}>
-      <CustomInput form={form} name="urlTitle" label="Title" type="text" />
-      <CustomInput
-        form={form}
-        name="urlURL"
-        label="URL"
-        type="text"
-        placeholder="http://"
-      />
-      <CustomTextarea
-        form={form}
-        name="urlDescription"
-        label="Description"
-        characters={350}
-      />
+    <IssueFormCardWrap title="Upload" setOpenedCard={setOpenedCard}>
+      <div
+        {...getRootProps({ className: "dropzone" })}
+        className="border border-dashed rounded-lg bg-cLightGreyBg flex justify-center items-center py-12 mb-2 cursor-pointer"
+      >
+        <input {...getInputProps()} />
+        <p className="text-xs text-cMediumGrey">
+          Drag files here or click to upload file
+        </p>
+      </div>
+
+      {files.length > 0 && (
+        <div>
+          <div className="text-sm font-semibold">Files</div>
+          <ul className="text-xs">{files}</ul>
+        </div>
+      )}
     </IssueFormCardWrap>
   );
 }
