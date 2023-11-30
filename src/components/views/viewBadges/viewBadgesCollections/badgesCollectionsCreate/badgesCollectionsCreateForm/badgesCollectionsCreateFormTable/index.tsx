@@ -16,7 +16,7 @@ export function BadgesCollectionsCreateFormTable<TData>({
   table,
 }: BadgesCollectionsCreateFormTableProps<TData>) {
   return (
-    <div className="flex flex-col flex-grow">
+    <div className="flex flex-col flex-grow mb-4">
       <div>
         <div className="mb-2 font-semibold">
           <Table>

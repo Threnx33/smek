@@ -1,4 +1,4 @@
-import { HTMLAttributes, useState } from "react";
+import React, { HTMLAttributes, useRef, useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,7 +11,7 @@ import { CustomSelect } from "@/components/reusables/customSelect";
 import { Separator } from "@/components/ui/separator";
 import { CustomRadioGroup } from "@/components/reusables/customRadioGroup";
 import { Button } from "@/components/ui/button";
-import { SheetClose, SheetFooter } from "@/components/ui/sheet";
+import { SheetClose } from "@/components/ui/sheet";
 import { BadgesCollectionsCreateFormTable } from "./badgesCollectionsCreateFormTable";
 import { useCustomTable } from "@/components/reusables/useCustomTable";
 import {
@@ -26,11 +26,16 @@ const badgeCollectionsCreateSchema = z.object({
   collectionImage: z
     .string()
     .refine((value) => TEMPLATES_NAMES.includes(value), "Invalid image."),
-  description: z.string(),
+  description: z.string().min(1),
   visibility: z.enum(["Private", "Public"]),
 });
 
-const defaultRecommendationValues: Partial<BadgeCollectionsCreateSchema> = {};
+const defaultRecommendationValues: Partial<BadgeCollectionsCreateSchema> = {
+  collectionName: "",
+  collectionImage: "",
+  description: "",
+  visibility: "Private",
+};
 
 type BadgeCollectionsCreateSchema = z.infer<
   typeof badgeCollectionsCreateSchema
@@ -53,9 +58,11 @@ export function BadgesCollectionsCreateForm({
   });
 
   const [selectOpened, setSelectOpened] = useState(false);
+  const refClose = useRef<HTMLButtonElement>(null);
 
   async function onSubmit(data: BadgeCollectionsCreateSchema) {
     console.log(data);
+    refClose.current?.click();
   }
 
   function handleSelectCancel() {
@@ -75,7 +82,7 @@ export function BadgesCollectionsCreateForm({
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           {!selectOpened ? (
-            <>
+            <div className="flex flex-col">
               <CustomInput
                 form={form}
                 name="collectionName"
@@ -95,7 +102,7 @@ export function BadgesCollectionsCreateForm({
                 label="Description"
               />
 
-              <Separator className="my-6" />
+              <Separator className="mb-6" />
               <div className=" font-bold">Visibility</div>
               <div className="text-sm mb-4">
                 Make your collection public for earners, or private for
@@ -110,7 +117,7 @@ export function BadgesCollectionsCreateForm({
                 defaultValue="private"
               />
 
-              <Separator className="my-6" />
+              <Separator className="mb-6" />
               <div className=" font-bold">Templates</div>
               <div className="text-sm mb-4">
                 Select the templates you would like to appear in this
@@ -132,15 +139,18 @@ export function BadgesCollectionsCreateForm({
                 )}
               </div>
 
-              <SheetFooter>
-                <SheetClose asChild>
-                  <div className="space-x-2">
-                    <Button variant="outline">Cancel</Button>
-                    <Button type="submit">Save</Button>
-                  </div>
-                </SheetClose>
-              </SheetFooter>
-            </>
+              <div className="ml-auto space-x-2">
+                <Button
+                  type="button"
+                  onClick={() => refClose.current?.click()}
+                  variant="outline"
+                >
+                  Cancel
+                </Button>
+                <Button type="submit">Save</Button>
+              </div>
+              <SheetClose ref={refClose} />
+            </div>
           ) : (
             <div className="flex flex-col">
               <BadgesCollectionsCreateFormTable table={table} />
