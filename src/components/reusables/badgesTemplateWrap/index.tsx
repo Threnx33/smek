@@ -3,6 +3,8 @@ import { MainWrap } from "../mainWrap";
 import { TabsChip } from "@/components/reusables/tabsChip";
 import { TabType } from "@/components/views/viewBadges/badgesMenuTabs";
 import { BADGES_TEMPLATE_MENU_TABS } from "@/components/views/viewBadges/viewBadgesTemplates/badgesTemplateMenuTabs";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 type BadgesTemplateWrapProps = {
   children?: React.ReactNode;
@@ -10,6 +12,7 @@ type BadgesTemplateWrapProps = {
 
 export function BadgesTemplateWrap({ children }: BadgesTemplateWrapProps) {
   const [currentTab, setCurrentTab] = useState<TabType>(getInitialTab);
+  const template = useSelector((state: RootState) => state.page.template);
 
   function getInitialTab() {
     const newTab = BADGES_TEMPLATE_MENU_TABS.find(
@@ -23,7 +26,15 @@ export function BadgesTemplateWrap({ children }: BadgesTemplateWrapProps) {
 
   return (
     <MainWrap>
-      <div className="text-2xl font-bold mb-5 select-none">Badges</div>
+      <div className="flex mb-5">
+        <span className="text-cMediumGrey text-xs ">
+          Badges&nbsp;&nbsp;{">"}&nbsp;&nbsp;
+        </span>
+        <span className="text-xs"> {template?.templateName}</span>
+      </div>
+      <div className="text-2xl font-bold mb-5 select-none">
+        {template?.templateName}
+      </div>
       <TabsChip
         tabs={BADGES_TEMPLATE_MENU_TABS}
         currentTab={currentTab}

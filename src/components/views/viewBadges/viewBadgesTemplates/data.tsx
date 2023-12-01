@@ -13,6 +13,8 @@ import { Status, StatusChip } from "@/components/reusables/statusChip";
 import { formatDate } from "@/components/utility/dateFormat";
 import { HeaderSortButton } from "@/components/reusables/headerSortButton";
 import { Link } from "react-router-dom";
+import { setTemplate } from "@/redux/pageSlice";
+import { useDispatch } from "react-redux";
 
 export type Template = {
   id: string;
@@ -162,7 +164,8 @@ export const TEMPLATES_COLUMNS: ColumnDef<Template>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original;
+      const template = row.original;
+      const dispatch = useDispatch();
 
       return (
         <DropdownMenu>
@@ -174,7 +177,9 @@ export const TEMPLATES_COLUMNS: ColumnDef<Template>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <Link to="details">
-              <DropdownMenuItem>Details</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => dispatch(setTemplate(template))}>
+                Details
+              </DropdownMenuItem>
             </Link>
             <DropdownMenuItem>Insights</DropdownMenuItem>
             <DropdownMenuItem>Settings</DropdownMenuItem>

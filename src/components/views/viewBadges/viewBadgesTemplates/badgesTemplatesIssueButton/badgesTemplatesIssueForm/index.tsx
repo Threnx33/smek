@@ -1,4 +1,4 @@
-import { HTMLAttributes, useRef, useState } from "react";
+import { HTMLAttributes, useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -77,12 +77,15 @@ export type BadgeTemplatesIssueSchema = z.infer<
   typeof badgeTemplatesIssueSchema
 >;
 
-interface BadgeTemplatesIssueProps extends HTMLAttributes<HTMLDivElement> {}
+type BadgesTemplatesIssueFormProps = {
+  issuer?: string;
+  templateName?: string;
+};
 
 export function BadgesTemplatesIssueForm({
-  className,
-  ...props
-}: BadgeTemplatesIssueProps) {
+  issuer,
+  templateName,
+}: BadgesTemplatesIssueFormProps) {
   const form = useForm<BadgeTemplatesIssueSchema>({
     resolver: zodResolver(badgeTemplatesIssueSchema),
     defaultValues: defaultIssueValues,
@@ -102,26 +105,35 @@ export function BadgesTemplatesIssueForm({
     closeRef.current?.click();
   }
 
+  useEffect(() => {
+    if (issuer) form.setValue("issuerProfile", issuer);
+    if (templateName) form.setValue("badge", templateName);
+  }, []);
+
   return (
-    <div className={className} {...props}>
+    <div>
       <Form {...form}>
         <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
-          <CustomSelect
-            form={form}
-            name="issuerProfile"
-            label="Issuer Profile"
-            placeholder="Select issuer profile"
-            items={ISSUER_PROFILES}
-          />
-          <CustomSelect
-            form={form}
-            name="badge"
-            label="Badge"
-            placeholder="Select badge to issue"
-            items={BADGES}
-          />
+          {!issuer && (
+            <CustomSelect
+              form={form}
+              name="issuerProfile"
+              label="Issuer Profile"
+              placeholder="Select issuer profile"
+              items={ISSUER_PROFILES}
+            />
+          )}
+          {!templateName && (
+            <CustomSelect
+              form={form}
+              name="badge"
+              label="Badge"
+              placeholder="Select badge to issue"
+              items={BADGES}
+            />
+          )}
 
-          <Separator className="mt-2 mb-6" />
+          {!issuer && <Separator className="mt-2 mb-6" />}
           <div className="text-sm font-bold flex justify-between mb-6">
             <span>Earner Information</span>
             <img className="h-4 w-4" src="/arrowDown.svg" alt="ArrowDownIcon" />

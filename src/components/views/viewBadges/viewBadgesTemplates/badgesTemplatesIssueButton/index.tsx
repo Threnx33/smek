@@ -11,7 +11,15 @@ import {
 } from "@/components/ui/sheet";
 import { BadgesTemplatesIssueForm } from "./badgesTemplatesIssueForm";
 
-export function BadgesTemplatesIssueButton() {
+type BadgesTemplatesIssueButtonProps = {
+  issuer?: string;
+  templateName?: string;
+};
+
+export function BadgesTemplatesIssueButton({
+  issuer,
+  templateName,
+}: BadgesTemplatesIssueButtonProps) {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -25,7 +33,7 @@ export function BadgesTemplatesIssueButton() {
           </SheetDescription>
         </SheetHeader>
 
-        <BadgesTemplatesIssueForm />
+        <BadgesTemplatesIssueForm issuer={issuer} templateName={templateName} />
       </SheetContent>
     </Sheet>
   );
