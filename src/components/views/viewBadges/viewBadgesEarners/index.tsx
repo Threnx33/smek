@@ -1,18 +1,12 @@
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
-import { FilterButton } from "@/components/reusables/filterButton";
-import {
-  TableDataProps,
-  useCustomTable,
-} from "@/components/reusables/useCustomTable";
+import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
 import { BadgesWrap } from "@/components/reusables/badgesWrap";
 import { BadgesEarnersFilterButton } from "./badgesEarnersFilter";
+import { EARNERS, EARNERS_COLUMNS } from "./data";
 
-export function ViewBadgesEarners<TData, TValue>({
-  columns,
-  data,
-}: TableDataProps<TData, TValue>) {
-  const table = useCustomTable({ columns, data });
+export function ViewBadgesEarners() {
+  const table = useCustomTable({ columns: EARNERS_COLUMNS, data: EARNERS });
 
   const emptyText = (
     <div className="text-cMediumGrey text-center">
@@ -33,7 +27,7 @@ export function ViewBadgesEarners<TData, TValue>({
           placeholder="Search earner name or email address"
           searchBy="name"
         />
-        <BadgesEarnersFilterButton table={table}/>
+        <BadgesEarnersFilterButton table={table} />
       </div>
 
       <CustomTable

@@ -6,14 +6,13 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Status, StatusChip } from "@/components/reusables/statusChip";
 import { formatDate } from "@/components/utility/dateFormat";
 import { HeaderSortButton } from "@/components/reusables/headerSortButton";
+import { Link } from "react-router-dom";
 
 type Template = {
   id: string;
@@ -174,15 +173,12 @@ export const TEMPLATES_COLUMNS: ColumnDef<Template>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Do something
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Do something2</DropdownMenuItem>
-            <DropdownMenuItem>Do something3</DropdownMenuItem>
+            <Link to="details">
+              <DropdownMenuItem>Details</DropdownMenuItem>
+            </Link>
+            <DropdownMenuItem>Insights</DropdownMenuItem>
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>History</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

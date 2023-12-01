@@ -1,31 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MainWrap } from "../mainWrap";
 import { TabsChip } from "@/components/reusables/tabsChip";
-import {
-  BADGES_MENU_TABS,
-  TabType,
-} from "@/components/views/viewBadges/badgesMenuTabs";
+import { TabType } from "@/components/views/viewBadges/badgesMenuTabs";
+import { BADGES_TEMPLATE_MENU_TABS } from "@/components/views/viewBadges/viewBadgesTemplates/badgesTemplateMenuTabs";
 
-type BadgesWrapProps = {
+type BadgesTemplateWrapProps = {
   children?: React.ReactNode;
 };
 
-export function BadgesWrap({ children }: BadgesWrapProps) {
+export function BadgesTemplateWrap({ children }: BadgesTemplateWrapProps) {
   const [currentTab, setCurrentTab] = useState<TabType>(getInitialTab);
 
   function getInitialTab() {
-    const newTab = BADGES_MENU_TABS.find((tab) => tab.to === location.pathname);
+    const newTab = BADGES_TEMPLATE_MENU_TABS.find(
+      (tab) => tab.to === location.pathname
+    );
     if (newTab) {
       return newTab;
     }
-    return BADGES_MENU_TABS[0];
+    return BADGES_TEMPLATE_MENU_TABS[0];
   }
 
   return (
     <MainWrap>
       <div className="text-2xl font-bold mb-5 select-none">Badges</div>
       <TabsChip
-        tabs={BADGES_MENU_TABS}
+        tabs={BADGES_TEMPLATE_MENU_TABS}
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
       />

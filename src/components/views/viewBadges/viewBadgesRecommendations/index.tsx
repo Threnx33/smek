@@ -1,8 +1,5 @@
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
-import {
-  TableDataProps,
-  useCustomTable,
-} from "@/components/reusables/useCustomTable";
+import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
 import { BadgesWrap } from "@/components/reusables/badgesWrap";
 import { Button } from "@/components/ui/button";
@@ -13,12 +10,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { BadgesRecommendationsCreate } from "./badgesRecommendationsCreate";
+import { RECOMMENDATIONS, RECOMMENDATIONS_COLUMNS } from "./data";
 
-export function ViewBadgesRecommendations<TData, TValue>({
-  columns,
-  data,
-}: TableDataProps<TData, TValue>) {
-  const table = useCustomTable({ columns, data });
+export function ViewBadgesRecommendations() {
+  const table = useCustomTable({
+    columns: RECOMMENDATIONS_COLUMNS,
+    data: RECOMMENDATIONS,
+  });
 
   const emptyText = (
     <div className="text-cMediumGrey text-center">

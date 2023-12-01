@@ -7,10 +7,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { Link } from "react-router-dom";
-import {
-  TableDataProps,
-  useCustomTable,
-} from "@/components/reusables/useCustomTable";
+import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "../../../reusables/customTable";
 import { BadgesWrap } from "@/components/reusables/badgesWrap";
 import { BadgesTemplatesIssueButton } from "./badgesTemplatesIssueButton";

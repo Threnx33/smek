@@ -1,17 +1,15 @@
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
-import {
-  TableDataProps,
-  useCustomTable,
-} from "@/components/reusables/useCustomTable";
+import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
 import { BadgesWrap } from "@/components/reusables/badgesWrap";
 import { BadgesCollectionsCreate } from "./badgesCollectionsCreate";
+import { COLLECTIONS, COLLECTIONS_COLUMNS } from "./data";
 
-export function ViewBadgesCollections<TData, TValue>({
-  columns,
-  data,
-}: TableDataProps<TData, TValue>) {
-  const table = useCustomTable({ columns, data });
+export function ViewBadgesCollections() {
+  const table = useCustomTable({
+    columns: COLLECTIONS_COLUMNS,
+    data: COLLECTIONS,
+  });
 
   const emptyText = (
     <div className="text-cMediumGrey text-center">

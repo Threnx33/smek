@@ -4,14 +4,18 @@ import { ViewLogin } from "@/components/views/viewLogin";
 import { ViewRegister } from "./components/views/viewRegister";
 import { ViewPasswordReset } from "./components/views/viewPasswordReset";
 import { ViewCreateBadgeTemplate } from "./components/views/viewBadges/viewBadgesTemplates/viewCreateBadgeTemplate";
-import { BADGE_MENU_TABS } from "./components/views/viewBadges/badgesMenuTabs";
+import { BADGES_MENU_TABS } from "./components/views/viewBadges/badgesMenuTabs";
 import { DRAWER_LIST_ITEMS } from "./components/reusables/drawer/drawerList/drawerListItems";
+import { BADGES_TEMPLATE_MENU_TABS } from "./components/views/viewBadges/viewBadgesTemplates/badgesTemplateMenuTabs";
 
 function App() {
   const drawerRoutes = DRAWER_LIST_ITEMS.map((item) => (
     <Route key={item.to} path={item.to} element={item.component} />
   ));
-  const badgesMenuTabsRoutes = BADGE_MENU_TABS.map((item) => (
+  const badgesMenuTabsRoutes = BADGES_MENU_TABS.map((item) => (
+    <Route key={item.to} path={item.to} element={item.component} />
+  ));
+  const badgesTemplateMenuTabsRoutes = BADGES_TEMPLATE_MENU_TABS.map((item) => (
     <Route key={item.to} path={item.to} element={item.component} />
   ));
 
@@ -25,6 +29,7 @@ function App() {
           <Route path="/password-reset" element={<ViewPasswordReset />}></Route>
           {drawerRoutes}
           {badgesMenuTabsRoutes}
+          {badgesTemplateMenuTabsRoutes}
           <Route
             path="/badges/templates/create"
             element={<ViewCreateBadgeTemplate />}
