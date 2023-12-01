@@ -26,15 +26,6 @@ export function BadgesTemplatesIssueButton() {
         </SheetHeader>
 
         <BadgesTemplatesIssueForm />
-
-        <SheetFooter>
-          <SheetClose asChild>
-            <div className="space-x-2">
-              <Button variant="outline">Cancel</Button>
-              <Button type="submit">Issue</Button>
-            </div>
-          </SheetClose>
-        </SheetFooter>
       </SheetContent>
     </Sheet>
   );

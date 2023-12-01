@@ -26,7 +26,7 @@ const badgeCollectionsCreateSchema = z.object({
   collectionImage: z
     .string()
     .refine((value) => TEMPLATES_NAMES.includes(value), "Invalid image."),
-  description: z.string().min(1),
+  description: z.string(),
   visibility: z.enum(["Private", "Public"]),
 });
 

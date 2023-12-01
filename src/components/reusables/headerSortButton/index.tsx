@@ -12,6 +12,7 @@ export function HeaderSortButton<TData, TValue>({
 }: HeaderSortButton<TData, TValue>) {
   return (
     <Button
+      type="button"
       className="h-full hover:bg-inherit px-0"
       variant="ghost"
       onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}

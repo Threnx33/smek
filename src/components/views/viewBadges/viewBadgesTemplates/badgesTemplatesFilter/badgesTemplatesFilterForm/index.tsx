@@ -7,6 +7,8 @@ import { CustomCalendarExtended } from "@/components/reusables/customCalendarExt
 import { Button } from "@/components/ui/button";
 import { Column, Table as ReactTable } from "@tanstack/react-table";
 import { Status } from "@/components/reusables/statusChip";
+import { SheetClose } from "@/components/ui/sheet";
+import { useRef } from "react";
 
 const badgeTemplatesFilterSchema = z.object({
   templateStatus: z.array(z.string()),
@@ -36,16 +38,20 @@ export function BadgesTemplatesFilterForm<TData>({
     defaultValues: defaultFilterValues,
   });
 
+  const closeRef = useRef<HTMLButtonElement>(null);
+
   async function onSubmit(data: BadgeTemplatesFilterSchema) {
     const statusColumn = table.getColumn("status") as
       | Column<TData, Status>
       | undefined;
     const filterValue = Array.from(data.templateStatus);
     statusColumn?.setFilterValue(filterValue.length ? filterValue : undefined);
+    closeRef.current?.click();
   }
 
   function handleReset() {
     table.getAllColumns().forEach((column) => column.setFilterValue(undefined));
+    closeRef.current?.click();
   }
 
   const templateStatus = [
@@ -122,6 +128,7 @@ export function BadgesTemplatesFilterForm<TData>({
             </Button>
             <Button type="submit">Apply</Button>
           </div>
+          <SheetClose ref={closeRef} />
         </form>
       </Form>
     </div>

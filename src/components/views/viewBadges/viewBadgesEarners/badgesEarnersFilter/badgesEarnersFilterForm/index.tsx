@@ -16,6 +16,8 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { CustomCheckboxList } from "@/components/reusables/customCheckboxList";
 import { CustomRadioGroup } from "@/components/reusables/customRadioGroup";
+import { SheetClose } from "@/components/ui/sheet";
+import { useRef } from "react";
 
 const badgeEarnersFilterSchema = z.object({
   from: z.date().optional(),
@@ -27,7 +29,10 @@ const badgeEarnersFilterSchema = z.object({
 });
 
 const defaultFilterValues: Partial<BadgeEarnersFilterSchema> = {
+  dateRange: "dateCreated",
   badgeStatus: ["all"],
+  expiredBadges: "all",
+  templates: "all",
 };
 
 type BadgeEarnersFilterSchema = z.infer<typeof badgeEarnersFilterSchema>;
@@ -46,10 +51,16 @@ export function BadgesEarnersFilterForm<TData>({
     defaultValues: defaultFilterValues,
   });
 
-  async function onSubmit(data: BadgeEarnersFilterSchema) {}
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  async function onSubmit(data: BadgeEarnersFilterSchema) {
+    console.log(data);
+    closeRef.current?.click();
+  }
 
   function handleReset() {
     table.getAllColumns().forEach((column) => column.setFilterValue(undefined));
+    closeRef.current?.click();
   }
 
   const dateRangeWatch = form.watch("dateRange", "dateCreated");
@@ -233,6 +244,7 @@ export function BadgesEarnersFilterForm<TData>({
             </Button>
             <Button type="submit">Apply</Button>
           </div>
+          <SheetClose ref={closeRef} />
         </form>
       </Form>
     </div>

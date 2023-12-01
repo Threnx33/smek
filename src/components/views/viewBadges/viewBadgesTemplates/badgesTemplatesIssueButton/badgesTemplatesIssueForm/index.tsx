@@ -1,4 +1,4 @@
-import { HTMLAttributes, useState } from "react";
+import { HTMLAttributes, useRef, useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,35 +17,33 @@ import { CustomCheckbox } from "@/components/reusables/customCheckbox";
 import { CustomCalendar } from "@/components/reusables/customCalendar";
 import { CustomRadioGroup } from "@/components/reusables/customRadioGroup";
 import { Button } from "@/components/ui/button";
-import { BadgesTemplatesIssueFormUpload } from "./badgesTemplatesIssueFormUrl";
+import { BadgesTemplatesIssueFormUpload } from "./badgesTemplatesIssueFormUpload";
 import { BadgesTemplatesIssueFormText } from "./badgesTemplatesIssueFormText";
-import { BadgesTemplatesIssueFormUrl } from "./badgesTemplatesIssueFormUpload";
+import { BadgesTemplatesIssueFormUrl } from "./badgesTemplatesIssueFormUrl";
 import { BadgesTemplatesIssueFormId } from "./badgesTemplatesIssueFormId";
+import { SheetClose } from "@/components/ui/sheet";
 
 const badgeTemplatesIssueSchema = z.object({
   issuerProfile: z.string(),
   badge: z.string(),
-  firstName: z.string().min(1, "First name is required."),
+  firstName: z.string().min(1, "Required."),
   middleName: z.string().optional(),
-  lastName: z.string().min(1, "Last name is required."),
+  lastName: z.string().min(1, "Rquired."),
   dateIssued: z.date(),
   expirationType: z.enum(["noExpiration", "expiresOn"]),
   expirationDate: z.date().optional(),
   emailNotifications: z.boolean().optional(),
   emailLanguage: z
     .string()
-    .refine(
-      (value) => EMAIL_LANGUAGES.includes(value),
-      "Invalid language selection."
-    ),
-  issuerEarnerId: z.string(),
-  groupTag: z.string(),
+    .refine((value) => EMAIL_LANGUAGES.includes(value), "Invalid selection."),
+  issuerEarnerId: z.string().min(1, "Required."),
+  groupTag: z.string().min(1, "Required."),
   countryTeritory: z
     .string()
-    .refine((value) => COUNTRIES.includes(value), "Invalid country selection."),
+    .refine((value) => COUNTRIES.includes(value), "Invalid selection."),
   stateProvince: z.string(),
 
-  urlTitle: z.string(),
+  urlTitle: z.string().optional(),
   urlURL: z.string(),
   urlDescription: z.string(),
 
@@ -57,11 +55,22 @@ const badgeTemplatesIssueSchema = z.object({
 });
 
 const defaultIssueValues: Partial<BadgeTemplatesIssueSchema> = {
+  expirationType: "noExpiration",
   firstName: "",
   middleName: "",
   lastName: "",
   issuerEarnerId: "",
   groupTag: "",
+
+  urlTitle: "",
+  urlURL: "",
+  urlDescription: "",
+
+  textTitle: "",
+  textDescription: "",
+
+  idTitle: "",
+  idID: "",
 };
 
 export type BadgeTemplatesIssueSchema = z.infer<
@@ -79,6 +88,7 @@ export function BadgesTemplatesIssueForm({
     defaultValues: defaultIssueValues,
   });
   const [openedCard, setOpenedCard] = useState("");
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   const expirationTypeItems = [
     { value: "noExpiration", label: "No expiration" },
@@ -89,12 +99,13 @@ export function BadgesTemplatesIssueForm({
 
   async function onSubmit(data: BadgeTemplatesIssueSchema) {
     console.log(data);
+    closeRef.current?.click();
   }
 
   return (
     <div className={className} {...props}>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
           <CustomSelect
             form={form}
             name="issuerProfile"
@@ -110,7 +121,7 @@ export function BadgesTemplatesIssueForm({
             items={BADGES}
           />
 
-          <Separator className="my-6" />
+          <Separator className="mt-2 mb-6" />
           <div className="text-sm font-bold flex justify-between mb-6">
             <span>Earner Information</span>
             <img className="h-4 w-4" src="/arrowDown.svg" alt="ArrowDownIcon" />
@@ -160,7 +171,7 @@ export function BadgesTemplatesIssueForm({
             />
           )}
 
-          <Separator className="my-6" />
+          <Separator className="mt-2 mb-6" />
           <div className="text-sm font-bold flex justify-between mb-4">
             <span>Badge Options</span>
             <img className="h-4 w-4" src="/arrowDown.svg" alt="ArrowDownIcon" />
@@ -173,7 +184,7 @@ export function BadgesTemplatesIssueForm({
             label="Suppress Skillquiver email notifications"
           />
 
-          <Separator className="my-6" />
+          <Separator className="mt-2 mb-6" />
 
           <CustomSelect
             form={form}
@@ -211,7 +222,7 @@ export function BadgesTemplatesIssueForm({
             type="text"
           />
 
-          <Separator className="my-6" />
+          <Separator className="mt-2 mb-6" />
           <div className="text-sm font-bold mb-4">
             <span>Add evidence</span>
           </div>
@@ -299,6 +310,18 @@ export function BadgesTemplatesIssueForm({
               setOpenedCard={setOpenedCard}
             />
           )}
+
+          <div className="ml-auto space-x-2">
+            <Button
+              type="button"
+              onClick={() => closeRef.current?.click()}
+              variant="outline"
+            >
+              Cancel
+            </Button>
+            <Button type="submit">Issue</Button>
+          </div>
+          <SheetClose ref={closeRef} />
         </form>
       </Form>
     </div>
