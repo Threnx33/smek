@@ -14,7 +14,7 @@ import { formatDate } from "@/components/utility/dateFormat";
 import { HeaderSortButton } from "@/components/reusables/headerSortButton";
 import { Link } from "react-router-dom";
 
-type Template = {
+export type Template = {
   id: string;
   templateName: string;
   imgSrc: string;
