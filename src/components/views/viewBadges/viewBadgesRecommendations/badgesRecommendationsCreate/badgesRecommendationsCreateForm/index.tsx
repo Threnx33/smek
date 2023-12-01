@@ -14,35 +14,28 @@ import { CustomTextarea } from "@/components/reusables/customTextarea";
 import { SheetClose } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
-const badgeRecommendationsCreateSchema = z
-  .object({
-    type: z
-      .string()
-      .refine(
-        (value) => RECOMMENDATIONS_TYPES.includes(value),
-        "Invalid type."
-      ),
-    certificate: z
-      .string()
-      .refine((value) => CERTIFICATES.includes(value), "Invalid certificate.")
-      .optional(),
-    name: z.string().min(1, "Insert name.").optional(),
-    url: z.string().min(1, "Insert URL.").optional(),
-    description: z.string().optional(),
-  })
-  .refine(
-    (data) => {
-      if (data.type === "Cetificate") {
-        return data.certificate !== undefined; // Certificate must not be undefined for type 'A'
-      } else {
-        return data.name !== undefined && data.url !== undefined; // Name and URL must not be undefined for type 'B'
-      }
-    },
-    {
-      message: "Validation error based on type.", // Custom error message
-      path: [], // Specify the path of the error, if needed
-    }
-  );
+const baseSchema = z.object({
+  type: z
+    .string()
+    .refine((value) => RECOMMENDATIONS_TYPES.includes(value), "Invalid type."),
+});
+
+const certificateSchema = baseSchema.extend({
+  certificate: z
+    .string()
+    .refine((value) => CERTIFICATES.includes(value), "Invalid certificate."),
+});
+
+const nameUrlSchema = baseSchema.extend({
+  name: z.string().min(1, "Insert name."),
+  url: z.string().min(1, "Insert URL."),
+  description: z.string().optional(),
+});
+
+const badgeRecommendationsCreateSchema = z.union([
+  certificateSchema,
+  nameUrlSchema,
+]);
 
 const defaultRecommendationValues: Partial<BadgeRecommendationsCreateSchema> = {
   name: "",
@@ -115,7 +108,7 @@ export function BadgesRecommendationsCreateForm({
             label="Type"
             placeholder="Select type"
             items={RECOMMENDATIONS_TYPES}
-            // onValueChangeExtra={form.clearErrors}
+            onValueChangeExtra={form.clearErrors}
           />
 
           {renderContent()}
