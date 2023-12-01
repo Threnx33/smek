@@ -22,6 +22,7 @@ type CustomSelectProps<T extends FieldValues> = {
   placeholder: string;
   items: string[];
   mandatory?: boolean;
+  onValueChangeExtra?: () => void;
 };
 
 export function CustomSelect<T extends FieldValues>({
@@ -31,6 +32,7 @@ export function CustomSelect<T extends FieldValues>({
   placeholder,
   items,
   mandatory,
+  onValueChangeExtra,
 }: CustomSelectProps<T>) {
   return (
     <FormField
@@ -42,7 +44,14 @@ export function CustomSelect<T extends FieldValues>({
             {label}
             {mandatory && <span className="text-sm text-cRed">*</span>}
           </FormLabel>
-          <Select onValueChange={field.onChange}>
+          <Select
+            onValueChange={(e) => {
+              field.onChange(e);
+              if (onValueChangeExtra) {
+                onValueChangeExtra();
+              }
+            }}
+          >
             <FormControl>
               <SelectTrigger
                 className={cn(!field.value && "text-muted-foreground")}

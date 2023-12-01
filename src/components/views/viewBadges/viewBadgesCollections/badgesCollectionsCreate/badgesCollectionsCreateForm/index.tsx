@@ -58,11 +58,11 @@ export function BadgesCollectionsCreateForm({
   });
 
   const [selectOpened, setSelectOpened] = useState(false);
-  const refClose = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   async function onSubmit(data: BadgeCollectionsCreateSchema) {
     console.log(data);
-    refClose.current?.click();
+    closeRef.current?.click();
   }
 
   function handleSelectCancel() {
@@ -142,14 +142,14 @@ export function BadgesCollectionsCreateForm({
               <div className="ml-auto space-x-2">
                 <Button
                   type="button"
-                  onClick={() => refClose.current?.click()}
+                  onClick={() => closeRef.current?.click()}
                   variant="outline"
                 >
                   Cancel
                 </Button>
                 <Button type="submit">Save</Button>
               </div>
-              <SheetClose ref={refClose} />
+              <SheetClose ref={closeRef} />
             </div>
           ) : (
             <div className="flex flex-col">

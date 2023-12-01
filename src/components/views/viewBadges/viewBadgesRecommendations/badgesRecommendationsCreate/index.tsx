@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -35,15 +33,6 @@ export function BadgesRecommendationsCreate() {
         </SheetHeader>
 
         <BadgesRecommendationsCreateForm />
-
-        <SheetFooter>
-          <SheetClose asChild>
-            <div className="space-x-2">
-              <Button variant="outline">Cancel</Button>
-              <Button type="submit">Save</Button>
-            </div>
-          </SheetClose>
-        </SheetFooter>
       </SheetContent>
     </Sheet>
   );
