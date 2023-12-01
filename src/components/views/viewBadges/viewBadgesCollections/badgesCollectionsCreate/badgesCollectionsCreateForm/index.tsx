@@ -133,8 +133,7 @@ export function BadgesCollectionsCreateForm({
                 </Button>
                 {selectedNr > 0 && (
                   <div className="text-sm">
-                    {table.getFilteredSelectedRowModel().rows.length} Templates
-                    Selected
+                    {selectedNr} Template{selectedNr > 1 && "s"} Selected
                   </div>
                 )}
               </div>

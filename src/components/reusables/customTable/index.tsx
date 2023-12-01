@@ -21,6 +21,8 @@ export function CustomTable<TData>({
   emptyImgName,
   emptyText,
 }: CustomTableProps<TData>) {
+  const tableRows = table.getFilteredRowModel().rows.length;
+
   return (
     <div className="flex flex-col flex-grow">
       {table.getRowModel().rows.length ? (
@@ -70,8 +72,8 @@ export function CustomTable<TData>({
 
           <div className="flex items-center justify-end space-x-2 ">
             <div className="flex-1 text-sm text-muted-foreground">
-              {table.getFilteredSelectedRowModel().rows.length} of{" "}
-              {table.getFilteredRowModel().rows.length} row(s) selected.
+              {table.getFilteredSelectedRowModel().rows.length} of {tableRows}{" "}
+              row{tableRows > 1 && "s"} selected.
             </div>
             <Button
               variant="outline"
