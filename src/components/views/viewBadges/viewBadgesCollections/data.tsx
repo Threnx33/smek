@@ -6,16 +6,17 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
 import { formatDate } from "@/components/utility/dateFormat";
 import { HeaderSortButton } from "@/components/reusables/headerSortButton";
 import { VisibilityType } from "@/components/constants/types";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCollection } from "@/redux/pageSlice";
 
-type Collection = {
+export type Collection = {
   id: string;
   collection: string;
   templates: number;
@@ -84,7 +85,8 @@ export const COLLECTIONS_COLUMNS: ColumnDef<Collection>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original;
+      const collection = row.original;
+      const dispatch = useDispatch();
 
       return (
         <DropdownMenu>
@@ -95,15 +97,20 @@ export const COLLECTIONS_COLUMNS: ColumnDef<Collection>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Do something
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Do something2</DropdownMenuItem>
-            <DropdownMenuItem>Do something3</DropdownMenuItem>
+            <Link to="details">
+              <DropdownMenuItem
+                onClick={() => dispatch(setCollection(collection))}
+              >
+                Details
+              </DropdownMenuItem>
+            </Link>
+            <Link to="history">
+              <DropdownMenuItem
+                onClick={() => dispatch(setCollection(collection))}
+              >
+                History
+              </DropdownMenuItem>
+            </Link>
           </DropdownMenuContent>
         </DropdownMenu>
       );

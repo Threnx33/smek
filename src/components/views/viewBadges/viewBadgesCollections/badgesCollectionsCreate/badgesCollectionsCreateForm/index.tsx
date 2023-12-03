@@ -30,7 +30,7 @@ const badgeCollectionsCreateSchema = z.object({
   visibility: z.enum(["Private", "Public"]),
 });
 
-const defaultRecommendationValues: Partial<BadgeCollectionsCreateSchema> = {
+const defaultCollectionValues: Partial<BadgeCollectionsCreateSchema> = {
   collectionName: "",
   collectionImage: "",
   description: "",
@@ -49,7 +49,7 @@ export function BadgesCollectionsCreateForm({
 }: BadgeCollectionsCreateProps) {
   const form = useForm<BadgeCollectionsCreateSchema>({
     resolver: zodResolver(badgeCollectionsCreateSchema),
-    defaultValues: defaultRecommendationValues,
+    defaultValues: defaultCollectionValues,
   });
 
   const table = useCustomTable({
@@ -148,7 +148,7 @@ export function BadgesCollectionsCreateForm({
                 </Button>
                 <Button type="submit">Save</Button>
               </div>
-              <SheetClose ref={closeRef} />
+              {/* <SheetClose ref={closeRef} /> */}
             </div>
           ) : (
             <div className="flex flex-col">

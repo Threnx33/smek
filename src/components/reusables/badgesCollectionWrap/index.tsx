@@ -2,27 +2,27 @@ import { useState } from "react";
 import { MainWrap } from "../mainWrap";
 import { TabsChip } from "@/components/reusables/tabsChip";
 import { TabType } from "@/components/views/viewBadges/badgesMenuTabs";
-import { BADGES_TEMPLATE_MENU_TABS } from "@/components/views/viewBadges/viewBadgesTemplates/badgesTemplateMenuTabs";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { Link } from "react-router-dom";
+import { BADGES_COLLECTION_MENU_TABS } from "@/components/views/viewBadges/viewBadgesCollections/badgesCollectionMenuTabs";
 
-type BadgesTemplateWrapProps = {
+type BadgesCollectionWrapProps = {
   children?: React.ReactNode;
 };
 
-export function BadgesTemplateWrap({ children }: BadgesTemplateWrapProps) {
+export function BadgesCollectionWrap({ children }: BadgesCollectionWrapProps) {
   const [currentTab, setCurrentTab] = useState<TabType>(getInitialTab);
-  const template = useSelector((state: RootState) => state.page.template);
+  const collection = useSelector((state: RootState) => state.page.collection);
 
   function getInitialTab() {
-    const newTab = BADGES_TEMPLATE_MENU_TABS.find(
+    const newTab = BADGES_COLLECTION_MENU_TABS.find(
       (tab) => tab.to === location.pathname
     );
     if (newTab) {
       return newTab;
     }
-    return BADGES_TEMPLATE_MENU_TABS[0];
+    return BADGES_COLLECTION_MENU_TABS[0];
   }
 
   return (
@@ -36,13 +36,22 @@ export function BadgesTemplateWrap({ children }: BadgesTemplateWrapProps) {
         <span className="text-cMediumGrey text-xs ">
           &nbsp;&nbsp;{">"}&nbsp;&nbsp;
         </span>
-        <span className="text-xs"> {template?.templateName}</span>
+        <Link to="/badges/collections">
+          <span className="text-cMediumGrey text-xs cursor-pointer">
+            Collections
+          </span>
+        </Link>
+        <span className="text-cMediumGrey text-xs ">
+          &nbsp;&nbsp;{">"}&nbsp;&nbsp;
+        </span>
+        <span className="text-xs"> {collection?.collection}</span>
       </div>
+
       <div className="text-2xl font-bold mb-5 select-none">
-        {template?.templateName}
+        {collection?.collection}
       </div>
       <TabsChip
-        tabs={BADGES_TEMPLATE_MENU_TABS}
+        tabs={BADGES_COLLECTION_MENU_TABS}
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
       />
