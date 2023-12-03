@@ -12,7 +12,7 @@ import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 type BadgesTemplatesSettingsCustomRadioGroupProps<T extends FieldValues> = {
   form: UseFormReturn<T>;
   name: Path<T>;
-  items: { value: string; label: string }[];
+  items: { value: string; label: string; description?: string }[];
   defaultValue?: string;
   label?: string;
   className?: string;
@@ -54,11 +54,11 @@ export function BadgesTemplatesSettingsCustomRadioGroup<T extends FieldValues>({
                     <Label className="font-normal" htmlFor={item.value}>
                       {item.label}
                     </Label>
-                    {/* {!!item.description && (
+                    {!!item.description && (
                       <FormDescription className="whitespace-pre-line">
                         {item.description}
                       </FormDescription>
-                    )} */}
+                    )}
                   </div>
                 </FormItem>
               ))}

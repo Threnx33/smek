@@ -5,7 +5,6 @@ import { Form } from "@/components/ui/form";
 import { BadgesTemplateWrap } from "@/components/reusables/badgesTemplateWrap";
 import { Separator } from "@/components/ui/separator";
 import { COLLECTIONS } from "../../viewBadgesCollections/data";
-import { CustomSelect } from "@/components/reusables/customSelect";
 import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { CustomCheckbox } from "@/components/reusables/customCheckbox";
@@ -16,9 +15,26 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CustomRadioGroup } from "@/components/reusables/customRadioGroup";
 import { BadgesTemplatesSettingsCustomSelect } from "./badgesTemplatesSettingsCustomSelect";
 import { BadgesTemplatesSettingsCustomRadioGroup } from "./badgesTemplatesSettingsCustomRadioGroup";
+
+const SettingsSection = ({
+  titleText,
+  descriptionText,
+  children,
+}: {
+  titleText: string;
+  descriptionText: string;
+  children: React.ReactNode;
+}) => (
+  <div className="flex ">
+    <div className="mb-4">
+      <div className="text-sm font-semibold">{titleText}</div>
+      <div className="text-sm">{descriptionText}</div>
+    </div>
+    <div className="ml-auto w-[34rem]">{children}</div>
+  </div>
+);
 
 const badgesTemplateSettingsSchema = z.object({
   expiredBadges: z.string(),
@@ -91,12 +107,12 @@ export function BadgesTemplateSettings() {
     {
       value: "private",
       label: "Private",
-      // description: "Hidden from organization profile;\nnot searchable.",
+      description: "Hidden from organization profile;\nnot searchable.",
     },
     {
       value: "public",
       label: "Public",
-      // description: "Visible on organization profile;\nsearchable.",
+      description: "Visible on organization profile;\nsearchable.",
     },
   ];
 
@@ -138,24 +154,6 @@ export function BadgesTemplateSettings() {
     },
   ];
 
-  const SettingsSection = ({
-    titleText,
-    descriptionText,
-    children,
-  }: {
-    titleText: string;
-    descriptionText: string;
-    children: React.ReactNode;
-  }) => (
-    <div className="flex ">
-      <div className="mb-4">
-        <div className="text-sm font-semibold">{titleText}</div>
-        <div className="text-sm">{descriptionText}</div>
-      </div>
-      <div className="ml-auto w-[34rem]">{children}</div>
-    </div>
-  );
-
   const handleRecommendationEnter = (
     e: React.KeyboardEvent<HTMLInputElement>
   ) => {
@@ -174,22 +172,12 @@ export function BadgesTemplateSettings() {
             titleText="Template Visibility"
             descriptionText="Determine view and searchability of this credential."
           >
-            <CustomRadioGroup
-              className="mb-6"
-              classNameRadio="flex flex-col space-y-1"
-              form={form}
-              name="expiredBadges"
-              label="Expired Badges"
-              items={expiredBadgesItems}
-              defaultValue="all"
-            />
-
-            {/* <BadgesTemplatesSettingsCustomRadioGroup
+            <BadgesTemplatesSettingsCustomRadioGroup
               form={form}
               name="templateVisibility"
               items={visibilityItems}
               defaultValue="private"
-            /> */}
+            />
           </SettingsSection>
 
           <Separator className="mt-2 mb-6" />
@@ -318,6 +306,19 @@ export function BadgesTemplateSettings() {
           <SettingsSection
             titleText="Expiration Notifications"
             descriptionText="Send message to your earners who have badges expiring in 60 days."
+          >
+            <BadgesTemplatesSettingsCustomRadioGroup
+              form={form}
+              name="expirationNotifications"
+              items={yesNoItems}
+              defaultValue="yes"
+            />
+          </SettingsSection>
+
+          <Separator className="mt-2 mb-6" />
+          <SettingsSection
+            titleText="Duplicates"
+            descriptionText="Allow earners to receive multiple credentials from this template."
           >
             <BadgesTemplatesSettingsCustomRadioGroup
               form={form}
