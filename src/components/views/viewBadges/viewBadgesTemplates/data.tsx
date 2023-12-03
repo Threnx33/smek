@@ -181,9 +181,21 @@ export const TEMPLATES_COLUMNS: ColumnDef<Template>[] = [
                 Details
               </DropdownMenuItem>
             </Link>
-            <DropdownMenuItem>Insights</DropdownMenuItem>
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>History</DropdownMenuItem>
+            <Link to="insights">
+              <DropdownMenuItem onClick={() => dispatch(setTemplate(template))}>
+                Insights
+              </DropdownMenuItem>
+            </Link>
+            <Link to="settings">
+              <DropdownMenuItem onClick={() => dispatch(setTemplate(template))}>
+                Settings
+              </DropdownMenuItem>
+            </Link>{" "}
+            <Link to="history">
+              <DropdownMenuItem onClick={() => dispatch(setTemplate(template))}>
+                History
+              </DropdownMenuItem>
+            </Link>
           </DropdownMenuContent>
         </DropdownMenu>
       );

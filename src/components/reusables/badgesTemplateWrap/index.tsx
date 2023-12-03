@@ -5,6 +5,7 @@ import { TabType } from "@/components/views/viewBadges/badgesMenuTabs";
 import { BADGES_TEMPLATE_MENU_TABS } from "@/components/views/viewBadges/viewBadgesTemplates/badgesTemplateMenuTabs";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import { Link } from "react-router-dom";
 
 type BadgesTemplateWrapProps = {
   children?: React.ReactNode;
@@ -26,9 +27,14 @@ export function BadgesTemplateWrap({ children }: BadgesTemplateWrapProps) {
 
   return (
     <MainWrap>
-      <div className="flex mb-5">
+      <div className="flex mb-5 items-center">
+        <Link to="/badges/templates">
+          <span className="text-cMediumGrey text-xs cursor-pointer">
+            Badges
+          </span>
+        </Link>
         <span className="text-cMediumGrey text-xs ">
-          Badges&nbsp;&nbsp;{">"}&nbsp;&nbsp;
+          &nbsp;&nbsp;{">"}&nbsp;&nbsp;
         </span>
         <span className="text-xs"> {template?.templateName}</span>
       </div>
