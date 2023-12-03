@@ -20,7 +20,7 @@ export function TabsChip({ tabs, currentTab, setCurrentTab }: TabsChipProps) {
             <span
               className={`text-sm font-semibold cursor-pointer select-none ${
                 currentTab.label === item.label
-                  ? "text-main  underline-offset-[1rem] underline decoration-2 "
+                  ? "text-main  underline-offset-[1.1rem] underline decoration-2 "
                   : ""
               }`}
               onClick={() => setCurrentTab(item)}

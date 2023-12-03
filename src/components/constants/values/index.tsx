@@ -1,4 +1,14 @@
-export const COUNTRIES = ["Romania", "Netherlands", "Germany"];
+export const COUNTRIES = [
+  "Australia",
+  "Brazil",
+  "Canada",
+  "France",
+  "Germany",
+  "India",
+  "New Zealand",
+  "United Kingdom",
+  "United States",
+];
 
 export const ISSUER_PROFILES = [
   "Skillquiver",

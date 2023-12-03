@@ -29,7 +29,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed52f",
     templateName: "Foundation of Leadership - International",
-    imgSrc: "/tableImg.png",
+    imgSrc: "/badge.png",
     status: "Published",
     updated: new Date("May 6, 2023").getTime(),
     issued: 56,
@@ -37,7 +37,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed53f",
     templateName: "Foundation of Leadership 101-2 Certificate",
-    imgSrc: "/tableImg.png",
+    imgSrc: "/badge.png",
     status: "Published",
     updated: new Date("Oct 3, 2022").getTime(),
     issued: 78,
@@ -45,7 +45,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed54f",
     templateName: "Foundation of Leadership 101-1 Certificate",
-    imgSrc: "/tableImg.png",
+    imgSrc: "/badge.png",
     status: "Draft",
     updated: new Date("Oct 3, 2022").getTime(),
     issued: 0,
@@ -53,7 +53,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed55f",
     templateName: "Executive Leadership 301 (EXEC301)",
-    imgSrc: "/tableImg.png",
+    imgSrc: "/badge.png",
     status: "Published",
     updated: new Date("Jan 31, 2022").getTime(),
     issued: 24,
@@ -61,7 +61,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed56f",
     templateName: "Advanced Leadership 202 (ADV202)",
-    imgSrc: "/tableImg.png",
+    imgSrc: "/badge.png",
     status: "Published",
     updated: new Date("Jan 31, 2022").getTime(),
     issued: 5,
@@ -69,7 +69,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed57f",
     templateName: "Advanced Leadership 201 (ADV201)",
-    imgSrc: "/tableImg.png",
+    imgSrc: "/badge.png",
     status: "Draft",
     updated: new Date("Jan 31, 2022").getTime(),
     issued: 0,
@@ -77,7 +77,7 @@ export const TEMPLATES: Template[] = [
   {
     id: "728ed58f",
     templateName: "Foundation of Leadership 102 (FOL102)",
-    imgSrc: "/tableImg.png",
+    imgSrc: "/badge.png",
     status: "Published",
     updated: new Date("Jan 31, 2022").getTime(),
     issued: 19,
@@ -85,7 +85,7 @@ export const TEMPLATES: Template[] = [
   // {
   //   id: "728ed59f",
   //   templateName: "Foundation of Leadership - International",
-  //   imgSrc: "/tableImg.png",
+  //   imgSrc: "/badge.png",
   //   status: "Published",
   //   updated: new Date("Jan 31, 2022").getTime(),
   //   issued: 56,
@@ -93,7 +93,7 @@ export const TEMPLATES: Template[] = [
   // {
   //   id: "728ed60f",
   //   templateName: "Foundation of Leadership - International",
-  //   imgSrc: "/tableImg.png",
+  //   imgSrc: "/badge.png",
   //   status: "Published",
   //   updated: new Date("Jan 31, 2022").getTime(),
   //   issued: 56,

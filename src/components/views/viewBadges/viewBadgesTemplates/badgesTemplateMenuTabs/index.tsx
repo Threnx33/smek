@@ -1,5 +1,6 @@
 import { TabsType } from "../../badgesMenuTabs";
 import { ViewBadgesTemplatesDetails } from "../viewBadgesTemplatesDetails";
+import { ViewBadgesTemplatesInsights } from "../viewBadgesTemplatesInsights";
 
 export const BADGES_TEMPLATE_MENU_TABS: TabsType = [
   {
@@ -10,7 +11,7 @@ export const BADGES_TEMPLATE_MENU_TABS: TabsType = [
   {
     to: "/badges/templates/insights",
     label: "Insights",
-    component: <ViewBadgesTemplatesDetails />,
+    component: <ViewBadgesTemplatesInsights />,
   },
   {
     to: "/badges/templates/settings",

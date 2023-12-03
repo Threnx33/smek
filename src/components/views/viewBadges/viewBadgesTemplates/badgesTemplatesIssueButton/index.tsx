@@ -23,7 +23,7 @@ export function BadgesTemplatesIssueButton({
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="mr-3">Issue Badge</Button>
+        <Button className="mr-3">Issue {!issuer && "Badge"}</Button>
       </SheetTrigger>
       <SheetContent className="w-1/2 overflow-auto">
         <SheetHeader className="mb-6">
