@@ -6,6 +6,7 @@ import { BADGES_TEMPLATE_MENU_TABS } from "../views/viewBadges/viewBadgesTemplat
 import { ViewRegister } from "../views/viewRegister";
 import { ViewPasswordReset } from "../views/viewPasswordReset";
 import { ViewCreateBadgeTemplate } from "../views/viewBadges/viewBadgesTemplates/viewCreateBadgeTemplate";
+import { BADGES_EARNERS_MENU_TABS } from "../views/viewBadges/viewBadgesEarners/badgesEarnersMenuTabs";
 
 export function Router() {
   const drawerRoutes = DRAWER_LIST_ITEMS.map((item) => (
@@ -15,6 +16,9 @@ export function Router() {
     <Route key={item.to} path={item.to} element={item.component} />
   ));
   const badgesTemplateMenuTabsRoutes = BADGES_TEMPLATE_MENU_TABS.map((item) => (
+    <Route key={item.to} path={item.to} element={item.component} />
+  ));
+  const badgesEarnersMenuTabsRoutes = BADGES_EARNERS_MENU_TABS.map((item) => (
     <Route key={item.to} path={item.to} element={item.component} />
   ));
 
@@ -28,6 +32,7 @@ export function Router() {
         {drawerRoutes}
         {badgesMenuTabsRoutes}
         {badgesTemplateMenuTabsRoutes}
+        {badgesEarnersMenuTabsRoutes}
         <Route
           path="/badges/templates/create"
           element={<ViewCreateBadgeTemplate />}

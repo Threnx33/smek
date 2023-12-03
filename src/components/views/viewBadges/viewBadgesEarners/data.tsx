@@ -14,8 +14,11 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Status, StatusChip } from "@/components/reusables/statusChip";
 import { formatDate } from "@/components/utility/dateFormat";
 import { HeaderSortButton } from "@/components/reusables/headerSortButton";
+import { Link } from "react-router-dom";
+import { setEarner } from "@/redux/pageSlice";
+import { useDispatch } from "react-redux";
 
-type Earner = {
+export type Earner = {
   id: string;
   name: string;
   badgeName: string;
@@ -143,7 +146,8 @@ export const EARNERS_COLUMNS: ColumnDef<Earner>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original;
+      const earner = row.original;
+      const dispatch = useDispatch();
 
       return (
         <DropdownMenu>
@@ -154,15 +158,16 @@ export const EARNERS_COLUMNS: ColumnDef<Earner>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Do something
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Do something2</DropdownMenuItem>
-            <DropdownMenuItem>Do something3</DropdownMenuItem>
+            <Link to="details">
+              <DropdownMenuItem onClick={() => dispatch(setEarner(earner))}>
+                Details
+              </DropdownMenuItem>
+            </Link>
+            <Link to="history">
+              <DropdownMenuItem onClick={() => dispatch(setEarner(earner))}>
+                History
+              </DropdownMenuItem>
+            </Link>
           </DropdownMenuContent>
         </DropdownMenu>
       );

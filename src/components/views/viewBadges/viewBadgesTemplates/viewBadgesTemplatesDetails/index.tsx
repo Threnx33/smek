@@ -85,9 +85,10 @@ export function ViewBadgesTemplatesDetails() {
             {headerText("Badge Details")}
             <div className="flex space-x-6 mb-4">
               <div className="flex flex-col space-y-2 text-cMediumGrey">
-                <span>Template ID:</span> <span>Issued by:</span>
+                <span>Template ID:</span>
+                <span>Issued by:</span>
               </div>
-              <div className="flex flex-col space-y-2 font-semibold">
+              <div className="flex flex-col space-y-2 font-medium">
                 <span>21d21333-287a-4db1-a972-380a87cae516</span>
                 <span>The NSLS</span>
               </div>
