@@ -1,6 +1,4 @@
 import { BadgesTemplateWrap } from "@/components/reusables/badgesTemplateWrap";
-import { RootState } from "@/redux/store";
-import { useSelector } from "react-redux";
 import {
   Select,
   SelectContent,
@@ -11,11 +9,9 @@ import {
 import { COUNTRIES } from "@/components/constants/values";
 
 export function ViewBadgesTemplatesInsights() {
-  const template = useSelector((state: RootState) => state.page.template);
-
   return (
     <BadgesTemplateWrap>
-      <div className="flex flex-col">
+      <div className="flex flex-col flex-grow">
         <div className="ml-auto flex items-center mb-6">
           <span className="font-medium w-fit mr-10">Show results for</span>
           <div className="w-80 mr-4">
@@ -25,7 +21,9 @@ export function ViewBadgesTemplatesInsights() {
               </SelectTrigger>
               <SelectContent>
                 {COUNTRIES.map((item) => (
-                  <SelectItem value={item}>{item}</SelectItem>
+                  <SelectItem key={item} value={item}>
+                    {item}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
@@ -37,7 +35,9 @@ export function ViewBadgesTemplatesInsights() {
               </SelectTrigger>
               <SelectContent>
                 {COUNTRIES.map((item) => (
-                  <SelectItem value={item}>{item}</SelectItem>
+                  <SelectItem key={item} value={item}>
+                    {item}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
@@ -49,7 +49,9 @@ export function ViewBadgesTemplatesInsights() {
             src="/emptyIllustration.png"
             alt="emptyIllustrationImage"
           />
-          No analytics available for United States at this time.
+          <div className="text-cMediumGrey text-center">
+            No analytics available for United States at this time.
+          </div>
         </div>
       </div>
     </BadgesTemplateWrap>

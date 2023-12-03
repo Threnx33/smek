@@ -45,7 +45,7 @@ export function ViewBadgesTemplatesDetails() {
 
   return (
     <BadgesTemplateWrap>
-      <div className="flex flex-col">
+      <div className="flex flex-col text-sm">
         <div className="ml-auto flex items-center mb-6">
           <BadgesTemplatesIssueButton
             templateName={template?.templateName}

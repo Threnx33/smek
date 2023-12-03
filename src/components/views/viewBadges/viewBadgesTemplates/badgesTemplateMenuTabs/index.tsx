@@ -1,5 +1,6 @@
 import { TabsType } from "../../badgesMenuTabs";
 import { ViewBadgesTemplatesDetails } from "../viewBadgesTemplatesDetails";
+import { ViewBadgesTemplatesHistory } from "../viewBadgesTemplatesHistory";
 import { ViewBadgesTemplatesInsights } from "../viewBadgesTemplatesInsights";
 
 export const BADGES_TEMPLATE_MENU_TABS: TabsType = [
@@ -21,6 +22,6 @@ export const BADGES_TEMPLATE_MENU_TABS: TabsType = [
   {
     to: "/badges/templates/history",
     label: "History",
-    component: <ViewBadgesTemplatesDetails />,
+    component: <ViewBadgesTemplatesHistory />,
   },
 ];

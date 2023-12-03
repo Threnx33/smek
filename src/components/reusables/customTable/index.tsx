@@ -14,12 +14,14 @@ interface CustomTableProps<TData> {
   table: ReactTable<TData>;
   emptyImgName: string;
   emptyText: ReactNode;
+  noSelections?: boolean;
 }
 
 export function CustomTable<TData>({
   table,
   emptyImgName,
   emptyText,
+  noSelections,
 }: CustomTableProps<TData>) {
   const tableRows = table.getFilteredRowModel().rows.length;
 
@@ -71,10 +73,12 @@ export function CustomTable<TData>({
           </div>
 
           <div className="flex items-center justify-end space-x-2 ">
-            <div className="flex-1 text-sm text-muted-foreground">
-              {table.getFilteredSelectedRowModel().rows.length} of {tableRows}{" "}
-              row{tableRows > 1 && "s"} selected.
-            </div>
+            {!noSelections && (
+              <div className="flex-1 text-sm text-muted-foreground">
+                {table.getFilteredSelectedRowModel().rows.length} of {tableRows}{" "}
+                row{tableRows > 1 && "s"} selected.
+              </div>
+            )}
             <Button
               variant="outline"
               size="sm"
