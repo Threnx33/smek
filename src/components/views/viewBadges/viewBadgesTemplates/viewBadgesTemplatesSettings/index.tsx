@@ -3,11 +3,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "@/components/ui/form";
 import { BadgesTemplateWrap } from "@/components/reusables/badgesTemplateWrap";
-import { BadgesTemplatesSettingsCustomRadioGroup } from "./badgesTemplatesSettingsCustomRadioGroup";
 import { Separator } from "@/components/ui/separator";
 import { COLLECTIONS } from "../../viewBadgesCollections/data";
 import { CustomSelect } from "@/components/reusables/customSelect";
-import { BadgesTemplatesSettingsCustomSelect } from "./badgesTemplatesSettingsCustomSelect";
 import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { CustomCheckbox } from "@/components/reusables/customCheckbox";
@@ -19,6 +17,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CustomRadioGroup } from "@/components/reusables/customRadioGroup";
+import { BadgesTemplatesSettingsCustomSelect } from "./badgesTemplatesSettingsCustomSelect";
+import { BadgesTemplatesSettingsCustomRadioGroup } from "./badgesTemplatesSettingsCustomRadioGroup";
 
 const badgesTemplateSettingsSchema = z.object({
   expiredBadges: z.string(),
