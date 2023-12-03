@@ -31,6 +31,13 @@ export const COLLECTIONS: Collection[] = [
     visibility: "Private",
     updated: new Date("Jan 31, 2022").getTime(),
   },
+  {
+    id: "728ed53f",
+    collection: "Acuna Quintana, Lainer2",
+    templates: 0,
+    visibility: "Private",
+    updated: new Date("Jan 31, 2022").getTime(),
+  },
 ];
 
 export const COLLECTIONS_COLUMNS: ColumnDef<Collection>[] = [

@@ -7,6 +7,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { COUNTRIES } from "@/components/constants/values";
+import { cn } from "@/lib/utils";
 
 export function ViewBadgesTemplatesInsights() {
   return (

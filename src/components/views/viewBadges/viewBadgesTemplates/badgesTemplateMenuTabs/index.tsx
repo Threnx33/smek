@@ -2,7 +2,7 @@ import { TabsType } from "../../badgesMenuTabs";
 import { ViewBadgesTemplatesDetails } from "../viewBadgesTemplatesDetails";
 import { ViewBadgesTemplatesHistory } from "../viewBadgesTemplatesHistory";
 import { ViewBadgesTemplatesInsights } from "../viewBadgesTemplatesInsights";
-import { ViewBadgesTemplatesSettings } from "../viewBadgesTemplatesSettings";
+import { BadgesTemplateSettings } from "../viewBadgesTemplatesSettings";
 
 export const BADGES_TEMPLATE_MENU_TABS: TabsType = [
   {
@@ -18,7 +18,7 @@ export const BADGES_TEMPLATE_MENU_TABS: TabsType = [
   {
     to: "/badges/templates/settings",
     label: "Settings",
-    component: <ViewBadgesTemplatesSettings />,
+    component: <BadgesTemplateSettings />,
   },
   {
     to: "/badges/templates/history",

@@ -1,5 +1,6 @@
 import {
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -8,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 
-type CustomRadioGroupProps<T extends FieldValues> = {
+type BadgesTemplatesSettingsCustomRadioGroupProps<T extends FieldValues> = {
   form: UseFormReturn<T>;
   name: Path<T>;
   items: { value: string; label: string }[];
@@ -16,9 +17,10 @@ type CustomRadioGroupProps<T extends FieldValues> = {
   label?: string;
   className?: string;
   classNameRadio?: string;
+  description?: string;
 };
 
-export function CustomRadioGroup<T extends FieldValues>({
+export function BadgesTemplatesSettingsCustomRadioGroup<T extends FieldValues>({
   form,
   name,
   items,
@@ -26,7 +28,7 @@ export function CustomRadioGroup<T extends FieldValues>({
   label,
   className,
   classNameRadio,
-}: CustomRadioGroupProps<T>) {
+}: BadgesTemplatesSettingsCustomRadioGroupProps<T>) {
   return (
     <FormField
       control={form.control}
@@ -38,19 +40,26 @@ export function CustomRadioGroup<T extends FieldValues>({
             <RadioGroup
               onValueChange={field.onChange}
               defaultValue={defaultValue}
-              className={`flex ${classNameRadio}`}
+              className={`flex space-x-4 ${classNameRadio}`}
             >
               {items.map((item) => (
                 <FormItem
                   key={item.value}
-                  className="flex items-center space-x-2 space-y-0 mr-2"
+                  className="flex space-x-3 space-y-0 mr-2"
                 >
                   <FormControl>
                     <RadioGroupItem value={item.value} id={item.value} />
                   </FormControl>
-                  <Label className="font-normal" htmlFor={item.value}>
-                    {item.label}
-                  </Label>
+                  <div className="flex flex-col space-y-1">
+                    <Label className="font-normal" htmlFor={item.value}>
+                      {item.label}
+                    </Label>
+                    {/* {!!item.description && (
+                      <FormDescription className="whitespace-pre-line">
+                        {item.description}
+                      </FormDescription>
+                    )} */}
+                  </div>
                 </FormItem>
               ))}
             </RadioGroup>

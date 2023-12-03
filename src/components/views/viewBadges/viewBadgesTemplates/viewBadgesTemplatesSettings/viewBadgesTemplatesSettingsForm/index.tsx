@@ -167,94 +167,45 @@ export function BadgesTemplateSettings() {
   };
 
   return (
-    <BadgesTemplateWrap>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          <SettingsSection
-            titleText="Template Visibility"
-            descriptionText="Determine view and searchability of this credential."
-          >
-            <CustomRadioGroup
-              className="mb-6"
-              classNameRadio="flex flex-col space-y-1"
-              form={form}
-              name="expiredBadges"
-              label="Expired Badges"
-              items={expiredBadgesItems}
-              defaultValue="all"
-            />
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <SettingsSection
+          titleText="Template Visibility"
+          descriptionText="Determine view and searchability of this credential."
+        >
+          <CustomRadioGroup
+            className="mb-6"
+            classNameRadio="flex flex-col space-y-1"
+            form={form}
+            name="expiredBadges"
+            label="Expired Badges"
+            items={expiredBadgesItems}
+            defaultValue="all"
+          />
 
-            {/* <BadgesTemplatesSettingsCustomRadioGroup
+          {/* <BadgesTemplatesSettingsCustomRadioGroup
               form={form}
               name="templateVisibility"
               items={visibilityItems}
               defaultValue="private"
             /> */}
-          </SettingsSection>
+        </SettingsSection>
 
-          <Separator className="mt-2 mb-6" />
-          <SettingsSection
-            titleText="Collections"
-            descriptionText="Add this template to an existing collection."
-          >
-            <div className="flex flex-col">
-              <BadgesTemplatesSettingsCustomSelect
-                form={form}
-                name="collections"
-                placeholder="Pick a collection"
-                items={COLLECTIONS.map((c) => c.collection)}
-              />
-              <div className={`${!!collections.length && "mb-2"}`}>
-                {!!collections.length ? (
-                  collections.map((item) => (
-                    <div
-                      key={item}
-                      className="inline-flex items-center mr-2 mb-2"
-                    >
-                      <span className="border px-4 py-2 space-x-2 select-none text-sm font-medium flex rounded-3xl ">
-                        <span>{item}</span>
-                        <img
-                          className="cursor-pointer"
-                          onClick={() =>
-                            form.setValue(
-                              "collections",
-                              form
-                                .getValues("collections")
-                                .filter(
-                                  (collectionItem) => collectionItem !== item
-                                )
-                            )
-                          }
-                          src="/closeCircle.svg"
-                          alt="CloseCircleIcon"
-                        />
-                      </span>
-                    </div>
-                  ))
-                ) : (
-                  <div className="text-sm text-cMediumGrey mb-4">
-                    This template has not been added to any collections.
-                  </div>
-                )}
-              </div>
-            </div>
-          </SettingsSection>
-
-          <Separator className="mt-2 mb-6" />
-          <SettingsSection
-            titleText="Collections"
-            descriptionText="Add this template to an existing collection."
-          >
-            <Input
-              id="skills"
-              className="border mb-4"
-              type="text"
-              placeholder="Recommendations"
-              onKeyDown={(e) => handleRecommendationEnter(e)}
+        <Separator className="mt-2 mb-6" />
+        <SettingsSection
+          titleText="Collections"
+          descriptionText="Add this template to an existing collection."
+        >
+          <div className="flex flex-col">
+            <BadgesTemplatesSettingsCustomSelect
+              form={form}
+              name="collections"
+              placeholder="Pick a collection"
+              items={COLLECTIONS.map((c) => c.collection)}
             />
-            <div className={`${!!recommendations.length && "mb-2"}`}>
-              {!!recommendations.length ? (
-                recommendations.map((item) => (
+            <div className={`${!!collections.length && "mb-2"}`}>
+              {!!collections.length ? (
+                collections.map((item) => (
                   <div
                     key={item}
                     className="inline-flex items-center mr-2 mb-2"
@@ -264,8 +215,13 @@ export function BadgesTemplateSettings() {
                       <img
                         className="cursor-pointer"
                         onClick={() =>
-                          setRecommendations(
-                            recommendations.filter((x) => x !== item)
+                          form.setValue(
+                            "collections",
+                            form
+                              .getValues("collections")
+                              .filter(
+                                (collectionItem) => collectionItem !== item
+                              )
                           )
                         }
                         src="/closeCircle.svg"
@@ -276,58 +232,97 @@ export function BadgesTemplateSettings() {
                 ))
               ) : (
                 <div className="text-sm text-cMediumGrey mb-4">
-                  No recommendations have been added to this template.
+                  This template has not been added to any collections.
                 </div>
               )}
             </div>
-          </SettingsSection>
+          </div>
+        </SettingsSection>
 
-          <Separator className="mt-2 mb-6" />
-          <SettingsSection
-            titleText="Publish + Download"
-            descriptionText="Allow earners to manage their credential."
-          >
-            <CustomCheckbox
-              classNameLabel="font-medium"
-              form={form}
-              name="publishPlusDownload"
-              label="Print (simple)"
-            />
-          </SettingsSection>
+        <Separator className="mt-2 mb-6" />
+        <SettingsSection
+          titleText="Collections"
+          descriptionText="Add this template to an existing collection."
+        >
+          <Input
+            id="skills"
+            className="border mb-4"
+            type="text"
+            placeholder="Recommendations"
+            onKeyDown={(e) => handleRecommendationEnter(e)}
+          />
+          <div className={`${!!recommendations.length && "mb-2"}`}>
+            {!!recommendations.length ? (
+              recommendations.map((item) => (
+                <div key={item} className="inline-flex items-center mr-2 mb-2">
+                  <span className="border px-4 py-2 space-x-2 select-none text-sm font-medium flex rounded-3xl ">
+                    <span>{item}</span>
+                    <img
+                      className="cursor-pointer"
+                      onClick={() =>
+                        setRecommendations(
+                          recommendations.filter((x) => x !== item)
+                        )
+                      }
+                      src="/closeCircle.svg"
+                      alt="CloseCircleIcon"
+                    />
+                  </span>
+                </div>
+              ))
+            ) : (
+              <div className="text-sm text-cMediumGrey mb-4">
+                No recommendations have been added to this template.
+              </div>
+            )}
+          </div>
+        </SettingsSection>
 
-          <Separator className="mt-2 mb-6" />
-          <SettingsSection
-            titleText="Template Default Expiration"
-            descriptionText="Set a default expiration for badges issued from this template."
-          >
-            <Select defaultValue={templateDefaultExpirationItems[0].value}>
-              <SelectTrigger id="templateDefaultExpiration">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {templateDefaultExpirationItems.map((item) => (
-                  <SelectItem key={item.value} value={item.value}>
-                    {item.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </SettingsSection>
+        <Separator className="mt-2 mb-6" />
+        <SettingsSection
+          titleText="Publish + Download"
+          descriptionText="Allow earners to manage their credential."
+        >
+          <CustomCheckbox
+            classNameLabel="font-medium"
+            form={form}
+            name="publishPlusDownload"
+            label="Print (simple)"
+          />
+        </SettingsSection>
 
-          <Separator className="mt-2 mb-6" />
-          <SettingsSection
-            titleText="Expiration Notifications"
-            descriptionText="Send message to your earners who have badges expiring in 60 days."
-          >
-            <BadgesTemplatesSettingsCustomRadioGroup
-              form={form}
-              name="expirationNotifications"
-              items={yesNoItems}
-              defaultValue="yes"
-            />
-          </SettingsSection>
-        </form>
-      </Form>
-    </BadgesTemplateWrap>
+        <Separator className="mt-2 mb-6" />
+        <SettingsSection
+          titleText="Template Default Expiration"
+          descriptionText="Set a default expiration for badges issued from this template."
+        >
+          <Select defaultValue={templateDefaultExpirationItems[0].value}>
+            <SelectTrigger id="templateDefaultExpiration">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {templateDefaultExpirationItems.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </SettingsSection>
+
+        <Separator className="mt-2 mb-6" />
+        <SettingsSection
+          titleText="Expiration Notifications"
+          descriptionText="Send message to your earners who have badges expiring in 60 days."
+        >
+          <BadgesTemplatesSettingsCustomRadioGroup
+            form={form}
+            name="expirationNotifications"
+            items={yesNoItems}
+            defaultValue="yes"
+          />
+        </SettingsSection>
+      </form>
+    </Form>
   );
 }

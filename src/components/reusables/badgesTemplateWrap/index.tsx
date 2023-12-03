@@ -46,7 +46,7 @@ export function BadgesTemplateWrap({ children }: BadgesTemplateWrapProps) {
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
       />
-      <div className="bg-white flex flex-col flex-grow p-5 rounded">
+      <div className="bg-white flex flex-col flex-grow p-6 rounded">
         {children}
       </div>
     </MainWrap>
