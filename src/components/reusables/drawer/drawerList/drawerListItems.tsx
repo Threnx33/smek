@@ -1,15 +1,12 @@
 import { ViewBadgesTemplates } from "@/components/views/viewBadges/viewBadgesTemplates";
-import {
-  TEMPLATES,
-  TEMPLATES_COLUMNS,
-} from "@/components/views/viewBadges/viewBadgesTemplates/data";
+import { ViewDashboard } from "@/components/views/viewDashboard";
 
 export const DRAWER_LIST_ITEMS = [
   {
     iconName: "dashboard",
     label: "Dashboard",
     to: "/dashboard",
-    component: <ViewBadgesTemplates />,
+    component: <ViewDashboard />,
   },
   {
     iconName: "issuerProfiles",
