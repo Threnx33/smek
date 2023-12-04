@@ -148,7 +148,7 @@ export function BadgesCollectionsCreateForm({
                 </Button>
                 <Button type="submit">Save</Button>
               </div>
-              {/* <SheetClose ref={closeRef} /> */}
+              <SheetClose ref={closeRef} />
             </div>
           ) : (
             <div className="flex flex-col">

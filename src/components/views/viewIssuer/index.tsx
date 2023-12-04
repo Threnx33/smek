@@ -1,7 +1,7 @@
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
-import { BadgesCollectionsCreate } from "./badgesCollectionsCreate";
+import { IssuerCreate } from "./issuerCreate";
 import { ISSUES, ISSUES_COLUMNS } from "./data";
 import { IssuerWrap } from "./issuerWrap";
 
@@ -27,7 +27,7 @@ export function ViewIssuer() {
           searchBy="profileName"
         />
         <div className="flex items-center">
-          {/* <BadgesCollectionsCreate /> */}
+          <IssuerCreate />
         </div>
       </div>
 

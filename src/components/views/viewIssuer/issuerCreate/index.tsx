@@ -1,17 +1,14 @@
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { BadgesCollectionsCreateForm } from "./badgesCollectionsCreateForm";
+import { IssuerCreateForm } from "./issuerCreateForm";
 
-export function BadgesCollectionsCreate() {
+export function IssuerCreate() {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -21,20 +18,17 @@ export function BadgesCollectionsCreate() {
             src="/addSquareWhite.svg"
             alt="addSquareWhiteIcon"
           />
-          Create Collection
+          Create Issuer Profile
         </Button>
       </SheetTrigger>
       <SheetContent className="w-1/2 overflow-auto">
         <SheetHeader className="mb-6">
           <SheetTitle className="font-bold text-2xl ">
-            Add Collection
+            Create Issuer Profile
           </SheetTitle>
-          <SheetDescription className="font-semibold text-foreground text-xs">
-            Complete the information below to add collection.
-          </SheetDescription>
         </SheetHeader>
 
-        <BadgesCollectionsCreateForm />
+        <IssuerCreateForm />
       </SheetContent>
     </Sheet>
   );

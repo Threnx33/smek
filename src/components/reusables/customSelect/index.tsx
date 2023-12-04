@@ -22,6 +22,7 @@ type CustomSelectProps<T extends FieldValues> = {
   placeholder: string;
   items: string[];
   mandatory?: boolean;
+  className?: string;
   onValueChangeExtra?: () => void;
 };
 
@@ -32,6 +33,7 @@ export function CustomSelect<T extends FieldValues>({
   placeholder,
   items,
   mandatory,
+  className,
   onValueChangeExtra,
 }: CustomSelectProps<T>) {
   return (
@@ -39,7 +41,7 @@ export function CustomSelect<T extends FieldValues>({
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem className="flex flex-col mb-4">
+        <FormItem className={`flex flex-col mb-4 ${className}`}>
           <FormLabel>
             {label}
             {mandatory && <span className="text-sm text-cRed">*</span>}
