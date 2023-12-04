@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { SheetClose } from "@/components/ui/sheet";
 import { useDropzone } from "react-dropzone";
 import { inputStyles } from "@/components/ui/input";
+import { Issue } from "../../data";
 
 const issuerEditSchema = z.object({
   publicName: z.string().min(1, "Required"),
@@ -26,9 +27,11 @@ const defaultEditValues: Partial<IssuerEditSchema> = {
 
 type IssuerEditSchema = z.infer<typeof issuerEditSchema>;
 
-interface IssuerEditProps extends HTMLAttributes<HTMLDivElement> {}
+interface IssuerEditProps {
+  issue: Issue;
+}
 
-export function IssuerEditForm({ className, ...props }: IssuerEditProps) {
+export function IssuerEditForm({ issue }: IssuerEditProps) {
   const form = useForm<IssuerEditSchema>({
     resolver: zodResolver(issuerEditSchema),
     defaultValues: defaultEditValues,
@@ -44,7 +47,7 @@ export function IssuerEditForm({ className, ...props }: IssuerEditProps) {
   }
 
   return (
-    <div className={className} {...props}>
+    <div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="flex flex-col">
@@ -71,6 +74,7 @@ export function IssuerEditForm({ className, ...props }: IssuerEditProps) {
               name="publicName"
               label="Public Name"
               type="text"
+              defaultValue={issue.profileName}
             />
             <CustomTextarea
               form={form}

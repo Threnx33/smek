@@ -14,6 +14,7 @@ type CustomInputProps<T extends FieldValues> = {
   name: Path<T>; //keyof T | string
   label: string;
   type: string;
+  defaultValue?: string;
   placeholder?: string;
   mandatory?: boolean;
 };
@@ -23,6 +24,7 @@ export function CustomInput<T extends FieldValues>({
   name,
   label,
   type,
+  defaultValue,
   placeholder,
   mandatory,
 }: CustomInputProps<T>) {
@@ -37,7 +39,11 @@ export function CustomInput<T extends FieldValues>({
             {mandatory && <span className="text-cRed ">*</span>}
           </FormLabel>
           <FormControl>
-            <Input type={type} placeholder={placeholder} {...field} />
+            <Input
+              type={type}
+              placeholder={placeholder}
+              {...(!!defaultValue ? { defaultValue } : field)}
+            />
           </FormControl>
           <FormMessage />
         </FormItem>

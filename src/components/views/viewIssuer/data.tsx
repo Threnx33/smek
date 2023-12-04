@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { formatDate } from "@/components/utility/dateFormat";
+import { IssuerEdit } from "./issuerEdit";
 
 export type Issue = {
   id: string;
@@ -119,6 +120,7 @@ export const ISSUES_COLUMNS: ColumnDef<Issue>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
+      const issue = row.original;
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -128,7 +130,7 @@ export const ISSUES_COLUMNS: ColumnDef<Issue>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>Update DID</DropdownMenuItem>
+            <IssuerEdit issue={issue} />
             <DropdownMenuItem>Export DID</DropdownMenuItem>
             <DropdownMenuItem>Delete DID</DropdownMenuItem>
           </DropdownMenuContent>
