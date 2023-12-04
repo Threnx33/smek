@@ -1,4 +1,4 @@
-import { BadgesTemplateWrap } from "@/components/reusables/badgesTemplateWrap";
+import { BadgesTemplateWrap } from "@/components/views/viewBadges/viewBadgesTemplates/badgesTemplateWrap";
 import {
   Select,
   SelectContent,

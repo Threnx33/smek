@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
 import { TextMainWrap } from "@/components/reusables/textMainWrap";
-import { BadgesEarnerWrap } from "@/components/reusables/badgesEarnerWrap";
+import { BadgesEarnerWrap } from "@/components/views/viewBadges/viewBadgesEarners/badgesEarnerWrap";
 
 const BADGES_DETAILS_SKILLS = [
   "Communication",

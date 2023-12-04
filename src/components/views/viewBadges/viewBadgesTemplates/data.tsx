@@ -127,7 +127,7 @@ export const TEMPLATES_COLUMNS: ColumnDef<Template>[] = [
       return (
         <span className="flex flex-row items-center ">
           <img
-            className="h-10 w-10 mr-2"
+            className="h-10 w-10 mr-3"
             src={row.original.imgSrc}
             alt="TemplateImage"
           />

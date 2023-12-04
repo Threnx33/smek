@@ -2,7 +2,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "@/components/ui/form";
-import { BadgesTemplateWrap } from "@/components/reusables/badgesTemplateWrap";
+import { BadgesTemplateWrap } from "@/components/views/viewBadges/viewBadgesTemplates/badgesTemplateWrap";
 import { Separator } from "@/components/ui/separator";
 import { COLLECTIONS } from "../../viewBadgesCollections/data";
 import { useEffect, useState } from "react";

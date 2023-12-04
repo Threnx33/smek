@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MainWrap } from "../mainWrap";
+import { MainWrap } from "../../../../reusables/mainWrap";
 import { TabsChip } from "@/components/reusables/tabsChip";
 import {
   BADGES_MENU_TABS,

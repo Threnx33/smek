@@ -2,7 +2,7 @@ import { CustomTable } from "@/components/reusables/customTable";
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { TEMPLATE_HISTORIES, TEMPLATE_HISTORIES_COLUMNS } from "./data";
 import { useCustomTable } from "@/components/reusables/useCustomTable";
-import { BadgesEarnerWrap } from "@/components/reusables/badgesEarnerWrap";
+import { BadgesEarnerWrap } from "@/components/views/viewBadges/viewBadgesEarners/badgesEarnerWrap";
 
 export function ViewBadgesEarnersHistory() {
   const table = useCustomTable({

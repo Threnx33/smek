@@ -1,6 +1,6 @@
 import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
-import { BadgesCollectionWrap } from "@/components/reusables/badgesCollectionWrap";
+import { BadgesCollectionWrap } from "@/components/views/viewBadges/viewBadgesCollections/badgesCollectionWrap";
 import { Button } from "@/components/ui/button";
 import { BadgesCollectionsDetailsForm } from "./badgesCollectionsDetailsForm";
 

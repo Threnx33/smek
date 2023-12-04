@@ -1,5 +1,6 @@
 import { ViewBadgesTemplates } from "@/components/views/viewBadges/viewBadgesTemplates";
 import { ViewDashboard } from "@/components/views/viewDashboard";
+import { ViewIssuer } from "@/components/views/viewIssuer";
 
 export const DRAWER_LIST_ITEMS = [
   {
@@ -12,7 +13,7 @@ export const DRAWER_LIST_ITEMS = [
     iconName: "issuerProfiles",
     label: "Issuer Profiles",
     to: "/issuer-profiles",
-    component: <ViewBadgesTemplates />,
+    component: <ViewIssuer />,
   },
   {
     iconName: "badges",

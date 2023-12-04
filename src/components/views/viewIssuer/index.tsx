@@ -1,41 +1,41 @@
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
-import { BadgesWrap } from "@/components/views/viewBadges/viewBadgesTemplates/badgesWrap";
 import { BadgesCollectionsCreate } from "./badgesCollectionsCreate";
-import { COLLECTIONS, COLLECTIONS_COLUMNS } from "./data";
+import { ISSUES, ISSUES_COLUMNS } from "./data";
+import { IssuerWrap } from "./issuerWrap";
 
-export function ViewBadgesCollections() {
+export function ViewIssuer() {
   const table = useCustomTable({
-    columns: COLLECTIONS_COLUMNS,
-    data: COLLECTIONS,
+    columns: ISSUES_COLUMNS,
+    data: ISSUES,
   });
 
   const emptyText = (
     <div className="text-cMediumGrey text-center">
-      No available history data to present. Check back later.
+      No DID created yet. Create your first Issuer profile
     </div>
   );
 
   return (
-    <BadgesWrap>
+    <IssuerWrap>
       <div className="flex justify-between mb-6">
         <SearchBarChip
           table={table}
           className="mr-3"
-          placeholder="Search collections"
-          searchBy="collection"
+          placeholder="Search issuer profiles"
+          searchBy="profileName"
         />
         <div className="flex items-center">
-          <BadgesCollectionsCreate />
+          {/* <BadgesCollectionsCreate /> */}
         </div>
       </div>
 
       <CustomTable
         table={table}
-        emptyImgName="emptyCollections"
+        emptyImgName="emptyIssuer"
         emptyText={emptyText}
       />
-    </BadgesWrap>
+    </IssuerWrap>
   );
 }

@@ -1,4 +1,4 @@
-import { BadgesTemplateWrap } from "@/components/reusables/badgesTemplateWrap";
+import { BadgesTemplateWrap } from "@/components/views/viewBadges/viewBadgesTemplates/badgesTemplateWrap";
 import { CustomTable } from "@/components/reusables/customTable";
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { TEMPLATE_HISTORIES, TEMPLATE_HISTORIES_COLUMNS } from "./data";

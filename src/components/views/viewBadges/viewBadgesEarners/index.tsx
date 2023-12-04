@@ -1,7 +1,7 @@
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
-import { BadgesWrap } from "@/components/reusables/badgesWrap";
+import { BadgesWrap } from "@/components/views/viewBadges/viewBadgesTemplates/badgesWrap";
 import { BadgesEarnersFilterButton } from "./badgesEarnersFilter";
 import { EARNERS, EARNERS_COLUMNS } from "./data";
 

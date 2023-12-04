@@ -1,28 +1,28 @@
 import { useState } from "react";
-import { MainWrap } from "../mainWrap";
+import { MainWrap } from "../../../../reusables/mainWrap";
 import { TabsChip } from "@/components/reusables/tabsChip";
 import { TabType } from "@/components/views/viewBadges/badgesMenuTabs";
+import { BADGES_TEMPLATE_MENU_TABS } from "@/components/views/viewBadges/viewBadgesTemplates/badgesTemplateMenuTabs";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { Link } from "react-router-dom";
-import { BADGES_EARNERS_MENU_TABS } from "@/components/views/viewBadges/viewBadgesEarners/badgesEarnersMenuTabs";
 
-type BadgesEarnerWrapProps = {
+type BadgesTemplateWrapProps = {
   children?: React.ReactNode;
 };
 
-export function BadgesEarnerWrap({ children }: BadgesEarnerWrapProps) {
+export function BadgesTemplateWrap({ children }: BadgesTemplateWrapProps) {
   const [currentTab, setCurrentTab] = useState<TabType>(getInitialTab);
-  const earner = useSelector((state: RootState) => state.page.earner);
+  const template = useSelector((state: RootState) => state.page.template);
 
   function getInitialTab() {
-    const newTab = BADGES_EARNERS_MENU_TABS.find(
+    const newTab = BADGES_TEMPLATE_MENU_TABS.find(
       (tab) => tab.to === location.pathname
     );
     if (newTab) {
       return newTab;
     }
-    return BADGES_EARNERS_MENU_TABS[0];
+    return BADGES_TEMPLATE_MENU_TABS[0];
   }
 
   return (
@@ -36,22 +36,13 @@ export function BadgesEarnerWrap({ children }: BadgesEarnerWrapProps) {
         <span className="text-cMediumGrey text-xs ">
           &nbsp;&nbsp;{">"}&nbsp;&nbsp;
         </span>
-        <Link to="/badges/earners">
-          <span className="text-cMediumGrey text-xs cursor-pointer">
-            Earners
-          </span>
-        </Link>
-        <span className="text-cMediumGrey text-xs ">
-          &nbsp;&nbsp;{">"}&nbsp;&nbsp;
-        </span>
-        <span className="text-xs"> {earner?.badgeName}</span>
+        <span className="text-xs"> {template?.templateName}</span>
       </div>
-
       <div className="text-2xl font-bold mb-5 select-none">
-        {earner?.name} - {earner?.badgeName}
+        {template?.templateName}
       </div>
       <TabsChip
-        tabs={BADGES_EARNERS_MENU_TABS}
+        tabs={BADGES_TEMPLATE_MENU_TABS}
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
       />
