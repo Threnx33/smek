@@ -12,6 +12,7 @@ type CustomTextareaProps<T extends FieldValues> = {
   form: UseFormReturn<T>;
   name: Path<T>;
   label: string;
+  defaultValue?: string;
   placeholder?: string;
   mandatory?: boolean;
   className?: string;
@@ -22,6 +23,7 @@ export function CustomTextarea<T extends FieldValues>({
   form,
   name,
   label,
+  defaultValue,
   placeholder,
   mandatory,
   className,
@@ -42,7 +44,7 @@ export function CustomTextarea<T extends FieldValues>({
             <Textarea
               placeholder={placeholder}
               className="resize-none h-28 "
-              {...field}
+              {...(!!defaultValue ? { defaultValue } : field)}
             />
           </FormControl>
           <div className="text-xs text-muted-foreground mt-1">

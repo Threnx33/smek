@@ -12,18 +12,14 @@ import { SheetClose } from "@/components/ui/sheet";
 import { useDropzone } from "react-dropzone";
 import { inputStyles } from "@/components/ui/input";
 import { Issue } from "../../data";
+import { cn } from "@/lib/utils";
+import { useToast } from "@/components/ui/use-toast";
 
 const issuerEditSchema = z.object({
   publicName: z.string().min(1, "Required"),
   description: z.string(),
   didType: z.string().min(1, "Required"),
 });
-
-const defaultEditValues: Partial<IssuerEditSchema> = {
-  publicName: "",
-  description: "",
-  didType: "",
-};
 
 type IssuerEditSchema = z.infer<typeof issuerEditSchema>;
 
@@ -32,12 +28,18 @@ interface IssuerEditProps {
 }
 
 export function IssuerEditForm({ issue }: IssuerEditProps) {
+  const defaultEditValues: Partial<IssuerEditSchema> = {
+    publicName: issue.profileName,
+    description: issue.description,
+    didType: "",
+  };
   const form = useForm<IssuerEditSchema>({
     resolver: zodResolver(issuerEditSchema),
     defaultValues: defaultEditValues,
   });
 
   const closeRef = useRef<HTMLButtonElement>(null);
+  const { toast } = useToast();
 
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
 
@@ -45,6 +47,15 @@ export function IssuerEditForm({ issue }: IssuerEditProps) {
     console.log(data);
     closeRef.current?.click();
   }
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(issue.DID);
+      toast({ description: "DID coppied" });
+    } catch (err: any) {
+      toast({ description: "Couldn't copy DID" });
+    }
+  };
 
   return (
     <div>
@@ -67,7 +78,25 @@ export function IssuerEditForm({ issue }: IssuerEditProps) {
             </div>
 
             <div className="text-sm font-medium mb-2">DID</div>
-            <div className={inputStyles()}></div>
+            <div className="flex space-x-0">
+              <div
+                className={cn(
+                  inputStyles(),
+                  "mb-4 overflow-hidden text-muted-foreground rounded-r-none border-r-0"
+                )}
+              >
+                <span>{issue.DID}</span>
+              </div>
+              <div>
+                <Button
+                  type="button"
+                  className="rounded-l-none"
+                  onClick={handleCopy}
+                >
+                  Copy
+                </Button>
+              </div>
+            </div>
 
             <CustomInput
               form={form}
@@ -80,6 +109,7 @@ export function IssuerEditForm({ issue }: IssuerEditProps) {
               form={form}
               name="description"
               placeholder="This text will be inserted in the code of every credential you issue. It can be a description of your organization, address, contact information, etc."
+              defaultValue={issue.description}
               label="Description"
             />
             <CustomSelect
