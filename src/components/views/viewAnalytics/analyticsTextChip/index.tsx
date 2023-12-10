@@ -12,7 +12,7 @@ export function AnalyticsTextChip({
   return (
     <div className="flex border rounded-lg p-6 relative flex-grow">
       <img
-        className="h-5 w-5 absolute right-2 top-2"
+        className="h-5 w-5 absolute right-2 top-2 cursor-pointer"
         src="/infoCircle.svg"
         alt="InfoCircleImage"
       />
