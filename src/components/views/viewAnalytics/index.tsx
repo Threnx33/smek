@@ -10,7 +10,7 @@ export function ViewAnalyticsCertificates() {
   return (
     <TitleWithTabsWrap title="Analytics" tabs={ANALYTICS_MENU_TABS}>
       <div className="flex justify-between mb-6">
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2">
           <AnalyticsDateTabsChip />
           <Button variant="outline">
             <img
