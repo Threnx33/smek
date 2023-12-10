@@ -9,10 +9,11 @@ import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { Link } from "react-router-dom";
 import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "../../../reusables/customTable";
-import { BadgesWrap } from "@/components/views/viewBadges/viewBadgesTemplates/badgesWrap";
 import { BadgesTemplatesIssueButton } from "./badgesTemplatesIssueButton";
 import { BadgesTemplatesFilterButton } from "./badgesTemplatesFilter";
 import { TEMPLATES, TEMPLATES_COLUMNS } from "./data";
+import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
+import { BADGES_MENU_TABS } from "../badgesMenuTabs";
 
 export function ViewBadgesTemplates() {
   const table = useCustomTable({ columns: TEMPLATES_COLUMNS, data: TEMPLATES });
@@ -24,7 +25,7 @@ export function ViewBadgesTemplates() {
   );
 
   return (
-    <BadgesWrap>
+    <TitleWithTabsWrap title="Badges" tabs={BADGES_MENU_TABS}>
       <div className="flex justify-between mb-6">
         <div className="flex items-center">
           <SearchBarChip
@@ -83,6 +84,6 @@ export function ViewBadgesTemplates() {
         emptyImgName="emptyTemplates"
         emptyText={emptyText}
       />
-    </BadgesWrap>
+    </TitleWithTabsWrap>
   );
 }

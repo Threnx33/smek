@@ -1,7 +1,6 @@
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
-import { BadgesWrap } from "@/components/views/viewBadges/viewBadgesTemplates/badgesWrap";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -11,6 +10,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { BadgesRecommendationsCreate } from "./badgesRecommendationsCreate";
 import { RECOMMENDATIONS, RECOMMENDATIONS_COLUMNS } from "./data";
+import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
+import { BADGES_MENU_TABS } from "../badgesMenuTabs";
 
 export function ViewBadgesRecommendations() {
   const table = useCustomTable({
@@ -25,7 +26,7 @@ export function ViewBadgesRecommendations() {
   );
 
   return (
-    <BadgesWrap>
+    <TitleWithTabsWrap title="Badges" tabs={BADGES_MENU_TABS}>
       <div className="flex justify-between mb-6">
         <SearchBarChip
           table={table}
@@ -59,6 +60,6 @@ export function ViewBadgesRecommendations() {
         emptyImgName="emptyRecommandations"
         emptyText={emptyText}
       />
-    </BadgesWrap>
+    </TitleWithTabsWrap>
   );
 }

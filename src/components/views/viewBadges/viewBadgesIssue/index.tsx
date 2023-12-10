@@ -1,10 +1,11 @@
-import { BadgesWrap } from "@/components/views/viewBadges/viewBadgesTemplates/badgesWrap";
 import { Button } from "@/components/ui/button";
 import { TextMainWrap } from "@/components/reusables/textMainWrap";
+import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
+import { BADGES_MENU_TABS } from "../badgesMenuTabs";
 
 export function ViewBadgesIssue() {
   return (
-    <BadgesWrap>
+    <TitleWithTabsWrap title="Badges" tabs={BADGES_MENU_TABS}>
       <div className="flex justify-between mb-6">
         <div></div>
         <div className="flex items-center">
@@ -32,6 +33,6 @@ export function ViewBadgesIssue() {
           file.
         </div>
       </div>
-    </BadgesWrap>
+    </TitleWithTabsWrap>
   );
 }

@@ -1,9 +1,10 @@
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
-import { BadgesWrap } from "@/components/views/viewBadges/viewBadgesTemplates/badgesWrap";
 import { BadgesEarnersFilterButton } from "./badgesEarnersFilter";
 import { EARNERS, EARNERS_COLUMNS } from "./data";
+import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
+import { BADGES_MENU_TABS } from "../badgesMenuTabs";
 
 export function ViewBadgesEarners() {
   const table = useCustomTable({ columns: EARNERS_COLUMNS, data: EARNERS });
@@ -19,7 +20,7 @@ export function ViewBadgesEarners() {
   );
 
   return (
-    <BadgesWrap>
+    <TitleWithTabsWrap title="Badges" tabs={BADGES_MENU_TABS}>
       <div className="flex items-center mb-6">
         <SearchBarChip
           table={table}
@@ -35,6 +36,6 @@ export function ViewBadgesEarners() {
         emptyImgName="emptyEarners"
         emptyText={emptyText}
       />
-    </BadgesWrap>
+    </TitleWithTabsWrap>
   );
 }

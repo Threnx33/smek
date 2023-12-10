@@ -1,9 +1,10 @@
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
-import { BadgesWrap } from "@/components/views/viewBadges/viewBadgesTemplates/badgesWrap";
 import { BadgesCollectionsCreate } from "./badgesCollectionsCreate";
 import { COLLECTIONS, COLLECTIONS_COLUMNS } from "./data";
+import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
+import { BADGES_MENU_TABS } from "../badgesMenuTabs";
 
 export function ViewBadgesCollections() {
   const table = useCustomTable({
@@ -18,7 +19,7 @@ export function ViewBadgesCollections() {
   );
 
   return (
-    <BadgesWrap>
+    <TitleWithTabsWrap title="Badges" tabs={BADGES_MENU_TABS}>
       <div className="flex justify-between mb-6">
         <SearchBarChip
           table={table}
@@ -36,6 +37,6 @@ export function ViewBadgesCollections() {
         emptyImgName="emptyCollections"
         emptyText={emptyText}
       />
-    </BadgesWrap>
+    </TitleWithTabsWrap>
   );
 }

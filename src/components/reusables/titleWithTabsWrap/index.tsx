@@ -1,31 +1,37 @@
-import { useEffect, useState } from "react";
-import { MainWrap } from "../../../../reusables/mainWrap";
+import { useState } from "react";
 import { TabsChip } from "@/components/reusables/tabsChip";
 import {
-  BADGES_MENU_TABS,
   TabType,
+  TabsType,
 } from "@/components/views/viewBadges/badgesMenuTabs";
+import { MainWrap } from "../mainWrap";
 
-type BadgesWrapProps = {
+type TitleWithTabsWrapProps = {
   children?: React.ReactNode;
+  title: string;
+  tabs: TabsType;
 };
 
-export function BadgesWrap({ children }: BadgesWrapProps) {
+export function TitleWithTabsWrap({
+  children,
+  title,
+  tabs,
+}: TitleWithTabsWrapProps) {
   const [currentTab, setCurrentTab] = useState<TabType>(getInitialTab);
 
   function getInitialTab() {
-    const newTab = BADGES_MENU_TABS.find((tab) => tab.to === location.pathname);
+    const newTab = tabs.find((tab) => tab.to === location.pathname);
     if (newTab) {
       return newTab;
     }
-    return BADGES_MENU_TABS[0];
+    return tabs[0];
   }
 
   return (
     <MainWrap>
-      <div className="text-2xl font-bold mb-5 select-none">Badges</div>
+      <div className="text-2xl font-bold mb-5 select-none">{title}</div>
       <TabsChip
-        tabs={BADGES_MENU_TABS}
+        tabs={tabs}
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
       />
