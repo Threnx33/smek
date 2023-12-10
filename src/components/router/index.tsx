@@ -8,6 +8,7 @@ import { ViewPasswordReset } from "../views/viewPasswordReset";
 import { ViewCreateBadgeTemplate } from "../views/viewBadges/viewBadgesTemplates/viewCreateBadgeTemplate";
 import { BADGES_EARNERS_MENU_TABS } from "../views/viewBadges/viewBadgesEarners/badgesEarnersMenuTabs";
 import { BADGES_COLLECTION_MENU_TABS } from "../views/viewBadges/viewBadgesCollections/badgesCollectionMenuTabs";
+import { ANALYTICS_MENU_TABS } from "../views/viewAnalytics/analyticsMenuTabs";
 
 export function Router() {
   const drawerRoutes = DRAWER_LIST_ITEMS.map((item) => (
@@ -25,6 +26,9 @@ export function Router() {
   const badgesCollectionsMenuTabsRoutes = BADGES_COLLECTION_MENU_TABS.map(
     (item) => <Route key={item.to} path={item.to} element={item.component} />
   );
+  const analyticsMenuTabsRoutes = ANALYTICS_MENU_TABS.map((item) => (
+    <Route key={item.to} path={item.to} element={item.component} />
+  ));
 
   return (
     <BrowserRouter>
@@ -38,6 +42,7 @@ export function Router() {
         {badgesTemplateMenuTabsRoutes}
         {badgesEarnersMenuTabsRoutes}
         {badgesCollectionsMenuTabsRoutes}
+        {analyticsMenuTabsRoutes}
         <Route
           path="/badges/templates/create"
           element={<ViewCreateBadgeTemplate />}

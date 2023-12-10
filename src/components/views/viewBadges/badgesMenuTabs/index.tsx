@@ -1,8 +1,8 @@
-import { ViewBadgesTemplates } from "../viewBadgesTemplates";
 import { ViewBadgesEarners } from "../viewBadgesEarners";
 import { ViewBadgesRecommendations } from "../viewBadgesRecommendations";
 import { ViewBadgesCollections } from "../viewBadgesCollections";
 import { ViewBadgesIssue } from "../viewBadgesIssue";
+import { ViewBadgesTemplates } from "../viewBadgesTemplates";
 
 export type TabType = {
   to: string;
