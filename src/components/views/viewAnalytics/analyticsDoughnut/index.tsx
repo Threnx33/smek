@@ -6,8 +6,21 @@ import {
   Legend,
   ChartData,
   ChartOptions,
+  ChartType,
+  Plugin,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+
+interface CenterNumberPluginOptions {
+  font?: string;
+  color?: string;
+}
+
+declare module "chart.js" {
+  interface PluginOptionsByType<TType extends ChartType> {
+    centerNumber?: CenterNumberPluginOptions;
+  }
+}
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -17,7 +30,7 @@ type LegendItem = {
   color: string;
 };
 
-export const AnalyticsDoughnut: React.FC = () => {
+export const AnalyticsDoughnut = () => {
   const chartRef = useRef<ChartJS<"doughnut">>(null);
   const [legendItems, setLegendItems] = useState<LegendItem[]>([]);
 
@@ -53,25 +66,36 @@ export const AnalyticsDoughnut: React.FC = () => {
     ],
   };
 
-  const plugin = {
-    id: 'after',
-    afterDraw(chart:ChartJS<"doughnut">) {
-      const ctx = chart.ctx;
-      const width = chart.width;
-      const height = chart.height;
-      const fontSize = (height / 114).toFixed(2);
-      ctx.font = `${fontSize}em sans-serif`;
-      ctx.textBaseline = "middle";
+  const centerNumberPlugin: Plugin<"doughnut"> = {
+    id: "centerNumber",
+    afterDatasetsDraw(
+      chart: ChartJS<"doughnut">,
+      args: any,
+      options: CenterNumberPluginOptions
+    ) {
+      const {
+        ctx,
+        data,
+        chartArea: { top, bottom, left, right, width, height },
+      } = chart;
+      ctx.save();
 
-      const total = chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+      const total = data.datasets[0].data.reduce((a, b) => a + b, 0);
       const text = total.toString();
-      const textX = Math.round((width - ctx.measureText(text).width) / 2);
-      const textY = height / 2;
+      const textX = left + width / 2;
+      const textY = top + height / 2;
 
+      ctx.font = options.font || "30px Arial";
+      ctx.fillStyle = options.color || "black";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
       ctx.fillText(text, textX, textY);
+
+      ctx.restore();
     },
-    }
   };
+
+  ChartJS.register(centerNumberPlugin);
 
   const options: ChartOptions<"doughnut"> = {
     responsive: true,
@@ -84,13 +108,14 @@ export const AnalyticsDoughnut: React.FC = () => {
         display: true,
         text: "Credentials",
       },
-      
+      centerNumber: {
+        font: "550 30px Arial", // example font
+      },
     },
-    
   };
 
   return (
-    <div className="flex space-x-12 p-4">
+    <div className="flex space-x-12 p-8">
       <div className="h-52 w-52">
         <Doughnut ref={chartRef} data={data} options={options} />
       </div>
@@ -99,13 +124,13 @@ export const AnalyticsDoughnut: React.FC = () => {
           <div key={index} className="flex ">
             <span
               style={{ backgroundColor: item.color }}
-              className={` w-2 h-full rounded-full inline-block mr-4`}
+              className={` w-1 h-full rounded-full inline-block mr-4`}
             ></span>
             <div className="flex flex-col ">
               <div className="text-cMediumGrey text-xs font-medium ">
                 {item.label}
               </div>
-              <div className="text-xl font-bold">{item.data}</div>
+              <div className="text-xl font-semibold">{item.data}</div>
             </div>
           </div>
         ))}
