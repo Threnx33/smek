@@ -5,6 +5,7 @@ import { AnalyticsDateTabsChip } from "./analyticsDateTabsChip";
 import { AnalyticsDoughnut } from "./analyticsDoughnut";
 import { AnalyticsTextChip } from "./analyticsTextChip";
 import { AnalyticsLineGraph } from "./analyticsLineGraph";
+import { AnalyticsFilterButton } from "./analyticsFilter";
 
 export function ViewAnalyticsCertificates() {
   return (
@@ -20,10 +21,7 @@ export function ViewAnalyticsCertificates() {
             />
             <span>Custom date</span>
           </Button>
-          <Button variant="outline">
-            <img className="h-5 w-5 mr-2" src="/filter.svg" alt="FilterIcon" />
-            <span>Filters</span>
-          </Button>
+          <AnalyticsFilterButton />
         </div>
         <Button>Export</Button>
       </div>

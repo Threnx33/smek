@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 
-type BadgesTemplatesSettingsCustomRadioGroupProps<T extends FieldValues> = {
+type CustomRadioGroupWithDescriptionProps<T extends FieldValues> = {
   form: UseFormReturn<T>;
   name: Path<T>;
   items: { value: string; label: string; description?: string }[];
@@ -20,7 +20,7 @@ type BadgesTemplatesSettingsCustomRadioGroupProps<T extends FieldValues> = {
   description?: string;
 };
 
-export function BadgesTemplatesSettingsCustomRadioGroup<T extends FieldValues>({
+export function CustomRadioGroupWithDescription<T extends FieldValues>({
   form,
   name,
   items,
@@ -28,7 +28,7 @@ export function BadgesTemplatesSettingsCustomRadioGroup<T extends FieldValues>({
   label,
   className,
   classNameRadio,
-}: BadgesTemplatesSettingsCustomRadioGroupProps<T>) {
+}: CustomRadioGroupWithDescriptionProps<T>) {
   return (
     <FormField
       control={form.control}
@@ -55,7 +55,7 @@ export function BadgesTemplatesSettingsCustomRadioGroup<T extends FieldValues>({
                       {item.label}
                     </Label>
                     {!!item.description && (
-                      <FormDescription className="whitespace-pre-line">
+                      <FormDescription className="whitespace-pre-line text-cMediumGrey">
                         {item.description}
                       </FormDescription>
                     )}

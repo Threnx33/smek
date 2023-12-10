@@ -1,13 +1,7 @@
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Form } from "@/components/ui/form";
-import { BadgesTemplateWrap } from "@/components/views/viewBadges/viewBadgesTemplates/badgesTemplateWrap";
-import { Separator } from "@/components/ui/separator";
-import { COLLECTIONS } from "../../viewBadgesCollections/data";
-import { useEffect, useState } from "react";
-import { Input } from "@/components/ui/input";
 import { CustomCheckbox } from "@/components/reusables/customCheckbox";
+import { CustomRadioGroupWithDescription } from "@/components/reusables/customRadioGroupWithDescription";
+import { Form } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -15,8 +9,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import { BadgesTemplateWrap } from "@/components/views/viewBadges/viewBadgesTemplates/badgesTemplateWrap";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { COLLECTIONS } from "../../viewBadgesCollections/data";
 import { BadgesTemplatesSettingsCustomSelect } from "./badgesTemplatesSettingsCustomSelect";
-import { BadgesTemplatesSettingsCustomRadioGroup } from "./badgesTemplatesSettingsCustomRadioGroup";
 
 const SettingsSection = ({
   titleText,
@@ -172,7 +172,7 @@ export function BadgesTemplateSettings() {
             titleText="Template Visibility"
             descriptionText="Determine view and searchability of this credential."
           >
-            <BadgesTemplatesSettingsCustomRadioGroup
+            <CustomRadioGroupWithDescription
               form={form}
               name="templateVisibility"
               items={visibilityItems}
@@ -307,7 +307,7 @@ export function BadgesTemplateSettings() {
             titleText="Expiration Notifications"
             descriptionText="Send message to your earners who have badges expiring in 60 days."
           >
-            <BadgesTemplatesSettingsCustomRadioGroup
+            <CustomRadioGroupWithDescription
               form={form}
               name="expirationNotifications"
               items={yesNoItems}
@@ -320,7 +320,7 @@ export function BadgesTemplateSettings() {
             titleText="Duplicates"
             descriptionText="Allow earners to receive multiple credentials from this template."
           >
-            <BadgesTemplatesSettingsCustomRadioGroup
+            <CustomRadioGroupWithDescription
               form={form}
               name="expirationNotifications"
               items={yesNoItems}
