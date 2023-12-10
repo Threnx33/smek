@@ -14,6 +14,7 @@ import { Doughnut } from "react-chartjs-2";
 interface CenterNumberPluginOptions {
   font?: string;
   color?: string;
+  enabled: boolean;
 }
 
 declare module "chart.js" {
@@ -73,6 +74,7 @@ export const AnalyticsDoughnut = () => {
       args: any,
       options: CenterNumberPluginOptions
     ) {
+      if (!options.enabled) return;
       const {
         ctx,
         data,
@@ -104,18 +106,15 @@ export const AnalyticsDoughnut = () => {
       legend: {
         display: false, // Hide the default legend
       },
-      title: {
-        display: true,
-        text: "Credentials",
-      },
       centerNumber: {
+        enabled: true,
         font: "550 30px Arial", // example font
       },
     },
   };
 
   return (
-    <div className="flex space-x-12 p-8">
+    <div className="flex space-x-12 px-8 py-4">
       <div className="h-52 w-52">
         <Doughnut ref={chartRef} data={data} options={options} />
       </div>
