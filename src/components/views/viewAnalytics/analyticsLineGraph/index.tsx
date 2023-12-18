@@ -94,8 +94,27 @@ export const AnalyticsLineGraph = ({
       },
       tooltip: {
         enabled: true,
-        mode: "index" as any,
+        mode: "index",
         intersect: false,
+        backgroundColor: "hsla(220, 6%, 10%, 1)",
+        displayColors: false,
+        cornerRadius: 8,
+        yAlign: "bottom",
+        caretSize: 5,
+        bodySpacing: 4,
+        callbacks: {
+          title: function () {
+            return "Issued";
+          },
+          label: function (context: { parsed: { y: number } }) {
+            return context.parsed.y.toString();
+          },
+        },
+        titleFont: { size: 12, weight: 400 },
+        bodyFont: { size: 16, weight: 400 },
+        titleAlign: "center",
+        bodyAlign: "center",
+        padding: { x: 20, y: 8 },
       },
       datalabels: {
         display: false,
@@ -108,9 +127,9 @@ export const AnalyticsLineGraph = ({
           stepSize: step,
           callback: function (value: string | number) {
             if (typeof value === "number" && value >= 1000) {
-              return value / 1000 + "k"; // Convert to 'k' for thousands
+              return value / 1000 + "k";
             }
-            return value; // Leave other numbers as they are
+            return value;
           },
         },
         max: 6 * step,

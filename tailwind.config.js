@@ -73,6 +73,9 @@ module.exports = {
         cLightGreyStroke: {
           DEFAULT: "hsl(var(--c-light-grey-stroke))",
         },
+        cDarkGrey: {
+          DEFAULT: "hsl(var(--c-dark-grey))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
