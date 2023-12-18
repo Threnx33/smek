@@ -129,87 +129,54 @@ export function VerificationCreateForm({
             </div>
 
             {credentialsArray.fields.map((credential, i) => (
-              <div className="border rounded-lg px-4 py-3">
-                <div className="text-sm mb-2">
-                  All of the following conditions match
-                </div>
-                <div className="flex flex-col">
+              <div className="border rounded-lg px-4 py-3" key={i}>
+                <div className="flex">
+                  <div className="text-sm mb-2">
+                    All of the following conditions match
+                  </div>
                   <img
                     // onClick={() => setOpenedCard("")}
                     className="h-4 w-4 ml-auto cursor-pointer"
                     src="/closeCircle.svg"
                     alt="CloseCircleIcon"
                   />
-                  <div className="flex items-center space-x-3">
-                    {credential.attributes.map((attribute, j) => (
-                      <div className="flex items-center space-x-3">
-                        {attribute.type === "subjectID" && (
-                          <CustomSelect
-                            className="w-1/2"
-                            form={form}
-                            name={`credentials.${i}.attributes.${j}.value`}
-                            label="Subject ID"
-                            items={subjectIDItems}
-                          />
-                        )}
-
-                        {attribute.type === "credentialType" && (
-                          <CustomSelect
-                            className="w-1/2"
-                            form={form}
-                            name={`credentials.${i}.attributes.${j}.value`}
-                            label="Credential Type"
-                            items={subjectIDItems}
-                          />
-                        )}
-
-                        <CustomSelectWithLabels
+                </div>
+                <div className="flex flex-col">
+                  {credential.attributes.map((attribute, j) => (
+                    <div className="flex items-center space-x-3" key={j}>
+                      {attribute.type === "subjectID" && (
+                        <CustomSelect
                           className="w-1/2"
                           form={form}
-                          name={`credentials.${i}.attributes.${j}.matchingData`}
-                          label="Matching Data"
-                          items={matchingData}
+                          name={`credentials.${i}.attributes.${j}.value`}
+                          label="Subject ID"
+                          items={subjectIDItems}
                         />
-                      </div>
-                    ))}
+                      )}
 
-                    <CustomSelectWithLabels
-                      className="w-1/2"
-                      form={form}
-                      name="subjectMatchingData"
-                      label="Matching data"
-                      items={matchingData}
-                    />
-                    <img
-                      className="h-5 w-5 cursor-pointer"
-                      src="/trash.svg"
-                      alt="TrashIcon"
-                    />
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CustomSelect
-                      className="w-1/2"
-                      form={form}
-                      name="credentialType"
-                      label="Credential Type"
-                      items={[]}
-                    />
-                    <CustomSelectWithLabels
-                      className="w-1/2"
-                      form={form}
-                      name="credentialMatchingData"
-                      label="Matching Data"
-                      items={matchingData}
-                    />
-                    <img
-                      className="h-5 w-5 cursor-pointer"
-                      src="/trash.svg"
-                      alt="TrashIcon"
-                    />
-                  </div>
+                      {attribute.type === "credentialType" && (
+                        <CustomSelect
+                          className="w-1/2"
+                          form={form}
+                          name={`credentials.${i}.attributes.${j}.value`}
+                          label="Credential Type"
+                          items={[]}
+                        />
+                      )}
+
+                      <CustomSelectWithLabels
+                        className="w-1/2"
+                        form={form}
+                        name={`credentials.${i}.attributes.${j}.matchingData`}
+                        label="Matching Data"
+                        items={matchingData}
+                      />
+                    </div>
+                  ))}
+
                   <CustomSelect
                     form={form}
-                    name="myType"
+                    name={`credentials.${i}.myType`}
                     label="MyType"
                     items={myTypeItems}
                   />
