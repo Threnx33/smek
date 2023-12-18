@@ -8,25 +8,27 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { SelectLabel } from "@radix-ui/react-select";
 import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 
-type CustomSelectProps<T extends FieldValues> = {
+type CustomSelectWithLabelsProps<T extends FieldValues> = {
   form: UseFormReturn<T>;
   name: Path<T>;
   label: string;
   placeholder?: string;
-  items: string[];
+  items: { type: "label" | "item"; text: string }[];
   mandatory?: boolean;
   className?: string;
   onValueChangeExtra?: () => void;
 };
 
-export function CustomSelect<T extends FieldValues>({
+export function CustomSelectWithLabels<T extends FieldValues>({
   form,
   name,
   label,
@@ -35,7 +37,7 @@ export function CustomSelect<T extends FieldValues>({
   mandatory,
   className,
   onValueChangeExtra,
-}: CustomSelectProps<T>) {
+}: CustomSelectWithLabelsProps<T>) {
   return (
     <FormField
       control={form.control}
@@ -62,11 +64,26 @@ export function CustomSelect<T extends FieldValues>({
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              {items.map((item) => (
-                <SelectItem className="cursor-pointer" value={item} key={item}>
-                  {item}
-                </SelectItem>
-              ))}
+              <SelectGroup>
+                {items.map((item) =>
+                  item.type === "label" ? (
+                    <SelectLabel
+                      className="text-cMediumGrey text-xs py-1.5 pl-8 pr-2 "
+                      key={item.text}
+                    >
+                      {item.text}
+                    </SelectLabel>
+                  ) : (
+                    <SelectItem
+                      className="cursor-pointer"
+                      value={item.text}
+                      key={item.text}
+                    >
+                      {item.text}
+                    </SelectItem>
+                  )
+                )}
+              </SelectGroup>
             </SelectContent>
           </Select>
           <FormMessage />

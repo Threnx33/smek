@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -22,7 +21,7 @@ export function VerificationCreate() {
           Create Verification Template
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-1/2 overflow-auto">
+      <SheetContent className="min-w-[40rem]">
         <SheetHeader className="mb-6">
           <SheetTitle className="font-bold text-2xl ">
             Create Verification Template
