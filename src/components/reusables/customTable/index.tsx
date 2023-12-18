@@ -98,13 +98,15 @@ export function CustomTable<TData>({
           </div>
         </div>
       ) : (
-        <div className="flex flex-col flex-grow justify-center items-center">
-          <img
-            className="mb-10"
-            src={`/${emptyImgName}.png`}
-            alt={`${emptyImgName}Image`}
-          />
-          {emptyText}
+        <div className="flex flex-grow justify-center items-center">
+          <div className="flex flex-col items-center w-6/12 ">
+            <img
+              className="mb-10"
+              src={`/${emptyImgName}.png`}
+              alt={`${emptyImgName}Image`}
+            />
+            {emptyText}
+          </div>
         </div>
       )}
     </div>

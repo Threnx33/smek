@@ -2,6 +2,7 @@ import { ViewAnalyticsCertificates } from "@/components/views/viewAnalytics/view
 import { ViewBadgesTemplates } from "@/components/views/viewBadges/viewBadgesTemplates";
 import { ViewDashboard } from "@/components/views/viewDashboard";
 import { ViewIssuer } from "@/components/views/viewIssuer";
+import { ViewVerification } from "@/components/views/viewVerification";
 
 export const DRAWER_LIST_ITEMS = [
   {
@@ -38,7 +39,7 @@ export const DRAWER_LIST_ITEMS = [
     iconName: "verification",
     label: "Verification",
     to: "/verification",
-    component: <ViewBadgesTemplates />,
+    component: <ViewVerification />,
   },
   {
     iconName: "analytics",
