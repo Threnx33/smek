@@ -1,11 +1,11 @@
 import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
-import { ANALYTICS_MENU_TABS } from "./analyticsMenuTabs";
+import { ANALYTICS_MENU_TABS } from "../analyticsMenuTabs";
 import { Button } from "@/components/ui/button";
-import { AnalyticsDateTabsChip } from "./analyticsDateTabsChip";
-import { AnalyticsDoughnut } from "./analyticsDoughnut";
-import { AnalyticsTextChip } from "./analyticsTextChip";
-import { AnalyticsLineGraph } from "./analyticsLineGraph";
-import { AnalyticsFilterButton } from "./analyticsFilter";
+import { AnalyticsDateTabsChip } from "../analyticsDateTabsChip";
+import { AnalyticsDoughnut } from "../analyticsDoughnut";
+import { AnalyticsTextChip } from "../analyticsTextChip";
+import { AnalyticsLineGraph } from "../analyticsLineGraph";
+import { AnalyticsFilterButton } from "../analyticsFilter";
 
 export function ViewAnalyticsCertificates() {
   return (

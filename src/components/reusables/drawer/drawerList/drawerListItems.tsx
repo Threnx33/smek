@@ -1,4 +1,4 @@
-import { ViewAnalyticsCertificates } from "@/components/views/viewAnalytics";
+import { ViewAnalyticsCertificates } from "@/components/views/viewAnalytics/viewAnalyticsCredentials";
 import { ViewBadgesTemplates } from "@/components/views/viewBadges/viewBadgesTemplates";
 import { ViewDashboard } from "@/components/views/viewDashboard";
 import { ViewIssuer } from "@/components/views/viewIssuer";

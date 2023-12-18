@@ -1,4 +1,5 @@
-import { ViewAnalyticsCertificates } from "..";
+import { ViewAnalyticsCertificates } from "../viewAnalyticsCredentials";
+import { ViewAnalyticsTemplates } from "../viewAnalyticsTemplates";
 
 export type TabType = {
   to: string;
@@ -17,6 +18,6 @@ export const ANALYTICS_MENU_TABS: TabsType = [
   {
     to: "/analytics/templates",
     label: "Templates",
-    component: <ViewAnalyticsCertificates />,
+    component: <ViewAnalyticsTemplates />,
   },
 ];
