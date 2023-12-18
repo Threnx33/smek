@@ -21,7 +21,7 @@ export function VerificationCreate() {
           Create Verification Template
         </Button>
       </SheetTrigger>
-      <SheetContent className="min-w-[40rem]">
+      <SheetContent className="min-w-[40rem] overflow-auto">
         <SheetHeader className="mb-6">
           <SheetTitle className="font-bold text-2xl ">
             Create Verification Template

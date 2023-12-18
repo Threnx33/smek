@@ -10,8 +10,9 @@ import { SheetClose } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { CustomSelect } from "@/components/reusables/customSelect";
 import { CustomSelectWithLabels } from "@/components/reusables/customSelectWithLabels";
+import { VerificationCreateFormCredentialItem } from "./verificationCreateFormCredentialItem";
 
-const attributeSchema = z.object({
+export const attributeSchema = z.object({
   type: z.string(),
   value: z.string().min(1, "Required"),
   matchingData: z.string().min(1, "Required"),
@@ -28,21 +29,23 @@ const verificationCreateSchema = z.object({
   credentials: z.array(credentialSchema),
 });
 
+const DEFAULT_CREDENTIALS = [
+  {
+    attributes: [
+      { type: "subjectID", value: "", matchingData: "" },
+      { type: "credentialType", value: "", matchingData: "" },
+    ],
+    myType: "",
+  },
+];
+
 const defaultValues: Partial<VerificationCreateSchema> = {
   templateTitle: "",
   templatePurpose: "",
-  credentials: [
-    {
-      attributes: [
-        { type: "subjectID", value: "", matchingData: "" },
-        { type: "credentialType", value: "", matchingData: "" },
-      ],
-      myType: "",
-    },
-  ],
+  credentials: DEFAULT_CREDENTIALS,
 };
 
-type VerificationCreateSchema = z.infer<typeof verificationCreateSchema>;
+export type VerificationCreateSchema = z.infer<typeof verificationCreateSchema>;
 
 interface VerificationCreateProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -56,40 +59,11 @@ export function VerificationCreateForm({
   });
 
   const closeRef = useRef<HTMLButtonElement>(null);
-  const [openedCard, setOpenedCard] = useState(true);
 
   async function onSubmit(data: VerificationCreateSchema) {
     console.log(data);
     closeRef.current?.click();
   }
-
-  const subjectIDItems = [
-    "Credential ID",
-    "Credential Name",
-    "Credential Type",
-    "Issue Date",
-    "Expiry Date",
-    "Subject ID",
-    "Subject Name",
-    "Issuer ID",
-    "Recipient ID",
-    "Degree Name",
-    "Degree Type",
-  ];
-
-  const matchingData: { type: "label" | "item"; text: string }[] = [
-    { type: "label", text: "String, Date, Boolean or Number" },
-    { type: "item", text: "is equal to" },
-    { type: "item", text: "is not equal to" },
-    { type: "item", text: "exists" },
-  ];
-
-  const myTypeItems = [
-    "BasicCredential",
-    "UniversityDegree",
-    "ProofOfEmployment",
-    "CommercialInvoiceSchema",
-  ];
 
   const credentialsArray = useFieldArray({
     control: form.control,
@@ -122,69 +96,31 @@ export function VerificationCreateForm({
             <Separator className="mb-6 mt-2" />
 
             <div className="text-sm font-medium mb-1">Credential Requests</div>
-            <div className="text-sm mb-1">
+            <div
+              className={`text-sm mb-1 ${
+                credentialsArray.fields.length === 0 && "mb-4"
+              }`}
+            >
               A verification can return as either valid or invalid. Define what
               constitutes a valid verification. Fields must match the credential
               schema exactly.
             </div>
 
-            {credentialsArray.fields.map((credential, i) => (
-              <div className="border rounded-lg px-4 py-3" key={i}>
-                <div className="flex">
-                  <div className="text-sm mb-2">
-                    All of the following conditions match
-                  </div>
-                  <img
-                    // onClick={() => setOpenedCard("")}
-                    className="h-4 w-4 ml-auto cursor-pointer"
-                    src="/closeCircle.svg"
-                    alt="CloseCircleIcon"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  {credential.attributes.map((attribute, j) => (
-                    <div className="flex items-center space-x-3" key={j}>
-                      {attribute.type === "subjectID" && (
-                        <CustomSelect
-                          className="w-1/2"
-                          form={form}
-                          name={`credentials.${i}.attributes.${j}.value`}
-                          label="Subject ID"
-                          items={subjectIDItems}
-                        />
-                      )}
-
-                      {attribute.type === "credentialType" && (
-                        <CustomSelect
-                          className="w-1/2"
-                          form={form}
-                          name={`credentials.${i}.attributes.${j}.value`}
-                          label="Credential Type"
-                          items={[]}
-                        />
-                      )}
-
-                      <CustomSelectWithLabels
-                        className="w-1/2"
-                        form={form}
-                        name={`credentials.${i}.attributes.${j}.matchingData`}
-                        label="Matching Data"
-                        items={matchingData}
-                      />
-                    </div>
-                  ))}
-
-                  <CustomSelect
-                    form={form}
-                    name={`credentials.${i}.myType`}
-                    label="MyType"
-                    items={myTypeItems}
-                  />
-                </div>
-              </div>
+            {credentialsArray.fields.map((_, i) => (
+              <VerificationCreateFormCredentialItem
+                form={form}
+                i={i}
+                credentialsArray={credentialsArray}
+                key={i}
+              />
             ))}
 
-            <Button variant="outline" className="ml-auto">
+            <Button
+              type="button"
+              onClick={() => credentialsArray.append(DEFAULT_CREDENTIALS)}
+              variant="outline"
+              className="mb-6 ml-auto"
+            >
               Request another credential
             </Button>
 
