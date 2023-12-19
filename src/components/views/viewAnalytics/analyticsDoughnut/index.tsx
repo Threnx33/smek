@@ -1,14 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
 import {
-  Chart as ChartJS,
   ArcElement,
-  Tooltip,
-  Legend,
   ChartData,
+  Chart as ChartJS,
   ChartOptions,
   ChartType,
+  Legend,
   Plugin,
+  Tooltip,
 } from "chart.js";
+import { useEffect, useRef, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 
 interface CenterNumberPluginOptions {
@@ -109,6 +109,35 @@ export const AnalyticsDoughnut = () => {
       centerNumber: {
         enabled: true,
         font: "550 30px Arial", // example font
+      },
+      tooltip: {
+        enabled: true,
+        mode: "index",
+        backgroundColor: "hsla(220, 6%, 10%, 1)",
+        displayColors: false,
+        cornerRadius: 8,
+        caretSize: 5,
+        bodySpacing: 4,
+        callbacks: {
+          title: function (context: any) {
+            if (context.length > 0) {
+              const chart = chartRef.current;
+              if (chart) {
+                const index = context[0].dataIndex;
+                return chart.data.labels?.at(index) || "";
+              }
+            }
+            return "";
+          },
+          label: function (context: any) {
+            return context.parsed.toString();
+          },
+        },
+        titleFont: { size: 12, weight: 400 },
+        bodyFont: { size: 16, weight: 400 },
+        titleAlign: "center",
+        bodyAlign: "center",
+        padding: { x: 20, y: 8 },
       },
     },
   };
