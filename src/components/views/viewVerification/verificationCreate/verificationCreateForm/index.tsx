@@ -1,22 +1,23 @@
 import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { HTMLAttributes, useRef, useState } from "react";
+import { HTMLAttributes, useRef } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { CustomInput } from "@/components/reusables/customInput";
 import { Button } from "@/components/ui/button";
-import { SheetClose } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { CustomSelect } from "@/components/reusables/customSelect";
-import { CustomSelectWithLabels } from "@/components/reusables/customSelectWithLabels";
+import { SheetClose } from "@/components/ui/sheet";
 import { VerificationCreateFormCredentialItem } from "./verificationCreateFormCredentialItem";
+import { v4 as uuidv4 } from "uuid";
 
 export const attributeSchema = z.object({
   type: z.string(),
   value: z.string().min(1, "Required"),
   matchingData: z.string().min(1, "Required"),
 });
+
+export type AttributeType = z.infer<typeof attributeSchema>;
 
 const credentialSchema = z.object({
   attributes: z.array(attributeSchema),
@@ -111,7 +112,7 @@ export function VerificationCreateForm({
                 form={form}
                 i={i}
                 credentialsArray={credentialsArray}
-                key={i}
+                key={uuidv4()}
               />
             ))}
 

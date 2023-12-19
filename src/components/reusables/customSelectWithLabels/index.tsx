@@ -16,13 +16,14 @@ import {
 import { cn } from "@/lib/utils";
 import { SelectLabel } from "@radix-ui/react-select";
 import { FieldValues, Path, UseFormReturn } from "react-hook-form";
+import { v4 as uuidv4 } from "uuid";
 
 type CustomSelectWithLabelsProps<T extends FieldValues> = {
   form: UseFormReturn<T>;
   name: Path<T>;
   label: string;
   placeholder?: string;
-  items: { type: "label" | "item"; text: string }[];
+  items: { variant: "label" | "item"; text: string }[];
   mandatory?: boolean;
   className?: string;
   onValueChangeExtra?: () => void;
@@ -66,10 +67,10 @@ export function CustomSelectWithLabels<T extends FieldValues>({
             <SelectContent>
               <SelectGroup>
                 {items.map((item) =>
-                  item.type === "label" ? (
+                  item.variant === "label" ? (
                     <SelectLabel
                       className="text-cMediumGrey text-xs py-1.5 pl-8 pr-2 "
-                      key={item.text}
+                      key={uuidv4()}
                     >
                       {item.text}
                     </SelectLabel>
@@ -77,7 +78,7 @@ export function CustomSelectWithLabels<T extends FieldValues>({
                     <SelectItem
                       className="cursor-pointer"
                       value={item.text}
-                      key={item.text}
+                      key={uuidv4()}
                     >
                       {item.text}
                     </SelectItem>

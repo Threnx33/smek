@@ -10,6 +10,17 @@ import {
 } from "react-hook-form";
 import { z } from "zod";
 import { VerificationCreateSchema, attributeSchema } from "..";
+import { Select } from "@radix-ui/react-select";
+import {
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const subjectIDItems = [
   "Credential ID",
@@ -25,11 +36,25 @@ const subjectIDItems = [
   "Degree Type",
 ];
 
-const matchingData: { type: "label" | "item"; text: string }[] = [
-  { type: "label", text: "String, Date, Boolean or Number" },
-  { type: "item", text: "is equal to" },
-  { type: "item", text: "is not equal to" },
-  { type: "item", text: "exists" },
+const matchingData: { variant: "label" | "item"; text: string }[] = [
+  { variant: "label", text: "String, Date, Boolean or Number" },
+  { variant: "item", text: "is equal to" },
+  { variant: "item", text: "is not equal to" },
+  { variant: "item", text: "exists" },
+];
+
+const addAttributeItems: {
+  variant: "label" | "item";
+  value: string;
+  text: string;
+}[] = [
+  { variant: "label", value: "", text: "Subject Data" },
+  { variant: "item", value: "subjectID", text: "Subject ID" },
+  { variant: "item", value: "customAttribute", text: "Custom Attribute" },
+  { variant: "label", value: "", text: "Credential" },
+  { variant: "item", value: "credentialID", text: "Credential ID" },
+  { variant: "item", value: "credentialName", text: "Credential Name" },
+  { variant: "item", value: "credentialType", text: "Credential Type" },
 ];
 
 const myTypeItems = [
@@ -60,6 +85,11 @@ export function VerificationCreateFormCredentialItem<T extends FieldValues>({
   });
   type AttributeType = z.infer<typeof attributeSchema>;
 
+  const handleChange = (value: string) => {
+    const newEmptyAttribute = { type: value, value: "", matchingData: "" };
+    attributesArray.append(newEmptyAttribute);
+  };
+
   return (
     <div className="border rounded-lg px-4 py-3 mb-4" key={i}>
       <div className="flex">
@@ -78,26 +108,29 @@ export function VerificationCreateFormCredentialItem<T extends FieldValues>({
           const typedAttribute = attribute as unknown as AttributeType;
 
           return (
-            <div className="flex items-center space-x-3" key={j}>
-              {typedAttribute.type === "subjectID" && (
-                <CustomSelect
-                  className="w-1/2"
-                  form={form}
-                  name={`credentials.${i}.attributes.${j}.value` as Path<T>}
-                  label="Subject ID"
-                  items={subjectIDItems}
-                />
-              )}
-
-              {typedAttribute.type === "credentialType" && (
-                <CustomSelect
-                  className="w-1/2"
-                  form={form}
-                  name={`credentials.${i}.attributes.${j}.value` as Path<T>}
-                  label="Credential Type"
-                  items={[]}
-                />
-              )}
+            <div className="flex items-center space-x-3" key={uuidv4()}>
+              {(() => {
+                if (typedAttribute.type === "subjectID") {
+                  return (
+                    <CustomSelect
+                      className="w-1/2"
+                      form={form}
+                      name={`credentials.${i}.attributes.${j}.value` as Path<T>}
+                      label="Subject ID"
+                      items={subjectIDItems}
+                    />
+                  );
+                }
+                return (
+                  <CustomSelect
+                    className="w-1/2"
+                    form={form}
+                    name={`credentials.${i}.attributes.${j}.value` as Path<T>}
+                    label="Credential Type"
+                    items={[]}
+                  />
+                );
+              })()}
 
               <CustomSelectWithLabels
                 className="w-1/2"
@@ -125,6 +158,31 @@ export function VerificationCreateFormCredentialItem<T extends FieldValues>({
           label="MyType"
           items={myTypeItems}
         />
+
+        <div className={`flex flex-col mb-4 w-60`}>
+          <Select value="" onValueChange={handleChange}>
+            <SelectTrigger>
+              <SelectValue placeholder="Add attribute or group" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {addAttributeItems.map((item, j) => (
+                  <div key={uuidv4()}>
+                    {item.variant === "label" ? (
+                      <SelectLabel className="text-cMediumGrey text-xs py-1.5 pl-8 pr-2 ">
+                        {item.text}
+                      </SelectLabel>
+                    ) : (
+                      <SelectItem className="cursor-pointer" value={item.value}>
+                        {item.text}
+                      </SelectItem>
+                    )}
+                  </div>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
     </div>
   );
