@@ -9,24 +9,29 @@ import { ViewCreateBadgeTemplate } from "../views/viewBadges/viewBadgesTemplates
 import { BADGES_EARNERS_MENU_TABS } from "../views/viewBadges/viewBadgesEarners/badgesEarnersMenuTabs";
 import { BADGES_COLLECTION_MENU_TABS } from "../views/viewBadges/viewBadgesCollections/badgesCollectionMenuTabs";
 import { ANALYTICS_MENU_TABS } from "../views/viewAnalytics/analyticsMenuTabs";
+import { CERTIFICATES_MENU_TABS } from "../views/viewCertificates/certificatesMenuTabs";
+import { CERTIFICATES_TEMPLATE_MENU_TABS } from "../views/viewCertificates/viewCertificatesTemplates/badgesTemplateMenuTabs";
+import { CERTIFICATES_EARNERS_MENU_TABS } from "../views/viewCertificates/viewCertificatesEarners/badgesEarnersMenuTabs";
+import { CERTIFICATES_COLLECTION_MENU_TABS } from "../views/viewCertificates/viewCertificatesCollections/badgesCollectionMenuTabs";
 
 export function Router() {
-  const drawerRoutes = DRAWER_LIST_ITEMS.map((item) => (
-    <Route key={item.to} path={item.to} element={item.component} />
-  ));
-  const badgesMenuTabsRoutes = BADGES_MENU_TABS.map((item) => (
-    <Route key={item.to} path={item.to} element={item.component} />
-  ));
-  const badgesTemplateMenuTabsRoutes = BADGES_TEMPLATE_MENU_TABS.map((item) => (
-    <Route key={item.to} path={item.to} element={item.component} />
-  ));
-  const badgesEarnersMenuTabsRoutes = BADGES_EARNERS_MENU_TABS.map((item) => (
-    <Route key={item.to} path={item.to} element={item.component} />
-  ));
-  const badgesCollectionsMenuTabsRoutes = BADGES_COLLECTION_MENU_TABS.map(
-    (item) => <Route key={item.to} path={item.to} element={item.component} />
-  );
-  const analyticsMenuTabsRoutes = ANALYTICS_MENU_TABS.map((item) => (
+  const routesItems = [
+    ...DRAWER_LIST_ITEMS,
+
+    ...BADGES_MENU_TABS,
+    ...BADGES_TEMPLATE_MENU_TABS,
+    ...BADGES_EARNERS_MENU_TABS,
+    ...BADGES_COLLECTION_MENU_TABS,
+
+    ...ANALYTICS_MENU_TABS,
+
+    ...CERTIFICATES_MENU_TABS,
+    ...CERTIFICATES_TEMPLATE_MENU_TABS,
+    ...CERTIFICATES_EARNERS_MENU_TABS,
+    ...CERTIFICATES_COLLECTION_MENU_TABS,
+  ];
+
+  const routes = routesItems.map((item) => (
     <Route key={item.to} path={item.to} element={item.component} />
   ));
 
@@ -37,12 +42,7 @@ export function Router() {
         <Route path="/login" element={<ViewLogin />} />
         <Route path="/register" element={<ViewRegister />} />
         <Route path="/password-reset" element={<ViewPasswordReset />} />
-        {drawerRoutes}
-        {badgesMenuTabsRoutes}
-        {badgesTemplateMenuTabsRoutes}
-        {badgesEarnersMenuTabsRoutes}
-        {badgesCollectionsMenuTabsRoutes}
-        {analyticsMenuTabsRoutes}
+        {routes}
         <Route
           path="/badges/templates/create"
           element={<ViewCreateBadgeTemplate />}
