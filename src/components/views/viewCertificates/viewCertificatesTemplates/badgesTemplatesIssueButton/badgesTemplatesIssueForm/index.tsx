@@ -25,7 +25,7 @@ import { SheetClose } from "@/components/ui/sheet";
 
 const badgeTemplatesIssueSchema = z.object({
   issuerProfile: z.string(),
-  badge: z.string(),
+  certificate: z.string(),
   firstName: z.string().min(1, "Required."),
   middleName: z.string().optional(),
   lastName: z.string().min(1, "Rquired."),
@@ -107,7 +107,7 @@ export function BadgesTemplatesIssueForm({
 
   useEffect(() => {
     if (issuer) form.setValue("issuerProfile", issuer);
-    if (templateName) form.setValue("badge", templateName);
+    if (templateName) form.setValue("certificate", templateName);
   }, []);
 
   return (
@@ -126,9 +126,9 @@ export function BadgesTemplatesIssueForm({
           {!templateName && (
             <CustomSelect
               form={form}
-              name="badge"
-              label="Badge"
-              placeholder="Select badge to issue"
+              name="certificate"
+              label="Certificate"
+              placeholder="Select certificate to issue"
               items={BADGES}
             />
           )}

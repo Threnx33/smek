@@ -20,7 +20,7 @@ export function ViewBadgesEarners() {
   );
 
   return (
-    <TitleWithTabsWrap title="Badges" tabs={CERTIFICATES_MENU_TABS}>
+    <TitleWithTabsWrap title="Certificates" tabs={CERTIFICATES_MENU_TABS}>
       <div className="flex items-center mb-6">
         <SearchBarChip
           table={table}

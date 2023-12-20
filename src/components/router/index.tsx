@@ -13,6 +13,7 @@ import { CERTIFICATES_MENU_TABS } from "../views/viewCertificates/certificatesMe
 import { CERTIFICATES_TEMPLATE_MENU_TABS } from "../views/viewCertificates/viewCertificatesTemplates/badgesTemplateMenuTabs";
 import { CERTIFICATES_EARNERS_MENU_TABS } from "../views/viewCertificates/viewCertificatesEarners/badgesEarnersMenuTabs";
 import { CERTIFICATES_COLLECTION_MENU_TABS } from "../views/viewCertificates/viewCertificatesCollections/badgesCollectionMenuTabs";
+import { ViewCreateCertificateTemplate } from "../views/viewCertificates/viewCertificatesTemplates/viewCreateBadgeTemplate";
 
 export function Router() {
   const routesItems = [
@@ -46,6 +47,10 @@ export function Router() {
         <Route
           path="/badges/templates/create"
           element={<ViewCreateBadgeTemplate />}
+        />
+        <Route
+          path="/certificates/templates/create"
+          element={<ViewCreateCertificateTemplate />}
         />
       </Routes>
     </BrowserRouter>

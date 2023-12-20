@@ -59,7 +59,7 @@ const defaultValues: Partial<CreateBadgeTemplateSchema> = {
 
 type CreateBadgeTemplateSchema = z.infer<typeof createBadgeTemplateSchema>;
 
-export function ViewCreateBadgeTemplate() {
+export function ViewCreateCertificateTemplate() {
   const form = useForm<CreateBadgeTemplateSchema>({
     resolver: zodResolver(createBadgeTemplateSchema),
     defaultValues: defaultValues,

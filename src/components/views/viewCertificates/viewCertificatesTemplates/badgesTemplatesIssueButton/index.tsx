@@ -23,13 +23,15 @@ export function BadgesTemplatesIssueButton({
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="mr-3">Issue {!issuer && "Badge"}</Button>
+        <Button className="mr-3">Issue {!issuer && "Certificate"}</Button>
       </SheetTrigger>
       <SheetContent className="w-1/2 overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-bold text-2xl ">Issue Badge</SheetTitle>
+          <SheetTitle className="font-bold text-2xl ">
+            Issue Certificate
+          </SheetTitle>
           <SheetDescription className="font-semibold text-foreground text-xs">
-            Complete the information below to issue this badge.
+            Complete the information below to issue this certificate.
           </SheetDescription>
         </SheetHeader>
 
