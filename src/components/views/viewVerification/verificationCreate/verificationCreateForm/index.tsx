@@ -12,6 +12,7 @@ import { VerificationCreateFormCredentialItem } from "./verificationCreateFormCr
 import { v4 as uuidv4 } from "uuid";
 
 export const attributeSchema = z.object({
+  id: z.string(),
   type: z.string(),
   value: z.string().min(1, "Required"),
   matchingData: z.string().min(1, "Required"),
@@ -33,8 +34,8 @@ const verificationCreateSchema = z.object({
 const DEFAULT_CREDENTIALS = [
   {
     attributes: [
-      { type: "subjectID", value: "", matchingData: "" },
-      { type: "credentialType", value: "", matchingData: "" },
+      { id: uuidv4(), type: "subjectID", value: "", matchingData: "" },
+      { id: uuidv4(), type: "credentialType", value: "", matchingData: "" },
     ],
     myType: "",
   },
@@ -107,12 +108,12 @@ export function VerificationCreateForm({
               schema exactly.
             </div>
 
-            {credentialsArray.fields.map((_, i) => (
+            {credentialsArray.fields.map((credential, i) => (
               <VerificationCreateFormCredentialItem
                 form={form}
                 i={i}
                 credentialsArray={credentialsArray}
-                key={uuidv4()}
+                key={credential.id}
               />
             ))}
 

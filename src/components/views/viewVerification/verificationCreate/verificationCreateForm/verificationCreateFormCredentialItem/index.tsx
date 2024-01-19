@@ -19,7 +19,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const subjectIDItems = [
@@ -86,7 +85,12 @@ export function VerificationCreateFormCredentialItem<T extends FieldValues>({
   type AttributeType = z.infer<typeof attributeSchema>;
 
   const handleChange = (value: string) => {
-    const newEmptyAttribute = { type: value, value: "", matchingData: "" };
+    const newEmptyAttribute = {
+      id: uuidv4(),
+      type: value,
+      value: "",
+      matchingData: "",
+    };
     attributesArray.append(newEmptyAttribute);
   };
 
@@ -108,7 +112,7 @@ export function VerificationCreateFormCredentialItem<T extends FieldValues>({
           const typedAttribute = attribute as unknown as AttributeType;
 
           return (
-            <div className="flex items-center space-x-3" key={uuidv4()}>
+            <div className="flex items-center space-x-3" key={attribute.id}>
               {(() => {
                 if (typedAttribute.type === "subjectID") {
                   return (
