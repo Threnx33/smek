@@ -85,7 +85,7 @@ export function VerificationCreateFormCredentialItem<T extends FieldValues>({
   type AttributeType = z.infer<typeof attributeSchema>;
 
   const handleChange = (value: string) => {
-    const newEmptyAttribute = {
+    const newEmptyAttribute: any = {
       id: uuidv4(),
       type: value,
       value: "",

@@ -164,7 +164,7 @@ export const AnalyticsLineGraph = ({
           <div className="text-sm text-cMediumGrey">Total {title}</div>
         </div>
       </div>
-      <Line ref={chartRef} data={data} options={options} />
+      <Line ref={chartRef} data={data} options={options as any} />
     </div>
   );
 };

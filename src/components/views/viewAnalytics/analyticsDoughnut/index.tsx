@@ -119,12 +119,12 @@ export const AnalyticsDoughnut = () => {
         caretSize: 5,
         bodySpacing: 4,
         callbacks: {
-          title: function (context: any) {
+          title: function (context: any): string {
             if (context.length > 0) {
               const chart = chartRef.current;
               if (chart) {
                 const index = context[0].dataIndex;
-                return chart.data.labels?.at(index) || "";
+                return (chart.data.labels?.at(index) as string) || "";
               }
             }
             return "";

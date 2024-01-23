@@ -10,6 +10,7 @@ import {
 import { SelectLabel } from "@radix-ui/react-select";
 import { UseFieldArrayReturn } from "react-hook-form";
 import { VerificationCreateSchema } from "..";
+import { v4 as uuidv4 } from "uuid";
 
 type VerificationCreateFormSelectWithLabelsProps = {
   items: { type: "label" | "item"; text: string }[];
@@ -27,7 +28,12 @@ export function VerificationCreateFormSelectWithLabels({
   attributesArray,
 }: VerificationCreateFormSelectWithLabelsProps) {
   const handleChange = (value: string) => {
-    attributesArray.append({ type: value, value: "", matchingData: "" });
+    attributesArray.append({
+      id: uuidv4(),
+      type: value,
+      value: "",
+      matchingData: "",
+    });
   };
 
   return (
