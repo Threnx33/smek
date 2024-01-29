@@ -44,7 +44,9 @@ export function CustomSelect<T extends FieldValues>({
         <FormItem className={`flex flex-col mb-4 ${className}`}>
           <FormLabel>
             {label}
-            {mandatory && <span className="text-sm text-cRed">*</span>}
+            {mandatory && (
+              <span className="text-sm font-semibold text-cRed">*</span>
+            )}
           </FormLabel>
           <Select
             onValueChange={(e) => {

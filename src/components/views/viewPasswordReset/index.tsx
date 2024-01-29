@@ -7,8 +7,8 @@ export function ViewPasswordReset() {
   return (
     <>
       <AuthWrap>
-        <h2 className="text-2xl font-bold mb-6">Forgot password</h2>
-        <h2 className=" font-semibold mb-4">
+        <h2 className="text-2xl font-semibold mb-4">Forgot password</h2>
+        <h2 className=" font-normal mb-6">
           Enter email address, and we’ll send you and email with instructions
           for how to reset your password.
         </h2>

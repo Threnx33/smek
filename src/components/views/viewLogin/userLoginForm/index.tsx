@@ -91,13 +91,15 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
-                  <FormLabel>Rembember me</FormLabel>
+                  <FormLabel className="text-xs font-medium">
+                    Rembember me
+                  </FormLabel>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <Link to="/password-reset">
-              <TextMainWrap className="text-sm font-medium">
+              <TextMainWrap className="text-xs font-medium">
                 Forgot your password?
               </TextMainWrap>
             </Link>
@@ -115,7 +117,7 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs ">
-              <span className="bg-background px-2 text-sm font-medium">Or</span>
+              <span className="bg-background px-2 text-xs font-medium">Or</span>
             </div>
           </div>
         </form>

@@ -7,7 +7,7 @@ export function ViewLogin() {
   return (
     <>
       <AuthWrap>
-        <h2 className="text-2xl font-bold mb-6">Sign In</h2>
+        <h2 className="text-2xl font-semibold mb-6">Sign In</h2>
         <UserLoginForm />
         <p className="text-center mt-4 text-xs font-medium">
           Don't have an account?{" "}
@@ -17,7 +17,7 @@ export function ViewLogin() {
         </p>
         <div className="text-center mt-4">
           <Link to="/badges/templates">
-            <TextMainWrap>Enter</TextMainWrap>
+            <TextMainWrap className="text-xs font-medium">Enter</TextMainWrap>
           </Link>
         </div>
       </AuthWrap>

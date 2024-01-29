@@ -112,7 +112,6 @@ export function UserRegisterForm({
           />
 
           <CustomCheckbox
-            classNameLabel="text-sm font-medium"
             form={form}
             name="news"
             label="Send me occasional news and update on professional growth
@@ -131,7 +130,7 @@ export function UserRegisterForm({
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
-                  <span className="leading-[0.9rem]">
+                  <span className="text-sm font-semibold">
                     <FormLabel>I agree to the </FormLabel>
                     <TextMainWrap>Terms of Service</TextMainWrap>
                     <FormLabel> and </FormLabel>

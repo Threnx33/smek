@@ -7,7 +7,7 @@ export function ViewRegister() {
   return (
     <>
       <AuthWrap>
-        <h2 className="text-2xl font-bold mb-6">Create account</h2>
+        <h2 className="text-2xl font-semibold mb-6">Create account</h2>
         <UserRegisterForm />
         <p className="text-center mt-4 text-xs font-medium">
           Already have an account?{" "}

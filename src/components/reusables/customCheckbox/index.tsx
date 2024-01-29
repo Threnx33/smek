@@ -43,7 +43,7 @@ export function CustomCheckbox<T extends FieldValues>({
                 onCheckedChange={field.onChange}
               />
             </FormControl>
-            <FormLabel className={`font-normal ${classNameLabel}`}>
+            <FormLabel className={`text-sm font-medium ${classNameLabel}`}>
               {label}
               {mandatory && <span className=" text-cRed">*</span>}
             </FormLabel>
