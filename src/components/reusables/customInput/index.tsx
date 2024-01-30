@@ -36,7 +36,7 @@ export function CustomInput<T extends FieldValues>({
       name={name}
       render={({ field }) => (
         <FormItem className="flex flex-col mb-4">
-          <FormLabel className="text-sm font-medium">
+          <FormLabel className="">
             {label}
             {mandatory && <span className="text-cRed ">*</span>}
             {description && (

@@ -32,7 +32,7 @@ export function DrawerList() {
               alt={`${item.label} icon`}
             />
 
-            <span className="mx-3 font-semibold">{item.label}</span>
+            <span className="mx-3 font-medium">{item.label}</span>
           </Link>
         ))}
       </nav>

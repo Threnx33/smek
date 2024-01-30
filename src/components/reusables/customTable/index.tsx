@@ -29,7 +29,7 @@ export function CustomTable<TData>({
     <div className="flex flex-col flex-grow">
       {table.getRowModel().rows.length ? (
         <div>
-          <div className="mb-2 font-semibold">
+          <div className="mb-2 font-medium">
             <Table>
               <TableHeader className="bg-cLightGreyBg">
                 {table.getHeaderGroups().map((headerGroup) => (

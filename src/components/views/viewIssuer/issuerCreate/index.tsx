@@ -23,7 +23,7 @@ export function IssuerCreate() {
       </SheetTrigger>
       <SheetContent className="w-1/2 overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-bold text-2xl ">
+          <SheetTitle className="font-semibold text-2xl ">
             Create Issuer Profile
           </SheetTitle>
         </SheetHeader>

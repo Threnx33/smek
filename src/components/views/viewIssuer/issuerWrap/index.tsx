@@ -7,7 +7,7 @@ type IssuerWrapProps = {
 export function IssuerWrap({ children }: IssuerWrapProps) {
   return (
     <MainWrap>
-      <div className="text-2xl font-bold mb-2 select-none">
+      <div className="text-2xl font-semibold mb-2 select-none">
         Issuer Profiles (DIDs)
       </div>
       <div className=" mb-5 select-none w-7/12">
