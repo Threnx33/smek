@@ -23,7 +23,7 @@ export function ViewBadgesIssue() {
           </Button>
         </div>
       </div>
-      <div className="text-center font-medium text-sm flex justify-center mt-14">
+      <div className="text-center font-normal text-sm flex justify-center mt-14">
         <div className="w-9/12">
           Upload a comma delimited text file (.csv) of up to 5,000 rows to
           import a list of badge earners to skillquiver. Be sure your CSV file

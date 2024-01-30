@@ -28,7 +28,7 @@ export function BadgesTemplatesFilterButton<TData>({
       </SheetTrigger>
       <SheetContent className="w-1/2 overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-bold text-2xl ">Filters</SheetTitle>
+          <SheetTitle className="font-semibold text-2xl ">Filters</SheetTitle>
         </SheetHeader>
 
         <BadgesTemplatesFilterForm table={table} />

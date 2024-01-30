@@ -26,10 +26,10 @@ export function BadgesCollectionsCreate() {
       </SheetTrigger>
       <SheetContent className="w-1/2 overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-bold text-2xl ">
+          <SheetTitle className="font-semibold text-2xl ">
             Add Collection
           </SheetTitle>
-          <SheetDescription className="font-semibold text-foreground text-xs">
+          <SheetDescription className="font-normal text-foreground text-xs">
             Complete the information below to add collection.
           </SheetDescription>
         </SheetHeader>

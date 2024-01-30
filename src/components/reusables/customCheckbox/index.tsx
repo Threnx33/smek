@@ -33,9 +33,7 @@ export function CustomCheckbox<T extends FieldValues>({
       name={name}
       render={({ field }) => (
         <FormItem className={`mb-4 ${className}`}>
-          {title && (
-            <FormLabel className="text-sm font-semibold">{title}</FormLabel>
-          )}
+          {title && <FormLabel>{title}</FormLabel>}
           <div className="flex flex-row space-x-2 items-center">
             <FormControl>
               <Checkbox

@@ -27,7 +27,7 @@ export function BadgesCollectionWrap({ children }: BadgesCollectionWrapProps) {
 
   return (
     <MainWrap>
-      <div className="flex mb-5 items-center">
+      <div className="flex mb-5 items-center leading-none">
         <Link to="/badges/templates">
           <span className="text-cMediumGrey text-xs cursor-pointer">
             Badges
@@ -47,7 +47,7 @@ export function BadgesCollectionWrap({ children }: BadgesCollectionWrapProps) {
         <span className="text-xs"> {collection?.collection}</span>
       </div>
 
-      <div className="text-2xl font-bold mb-5 select-none">
+      <div className="text-2xl font-semibold mb-5 select-none">
         {collection?.collection}
       </div>
       <TabsChip

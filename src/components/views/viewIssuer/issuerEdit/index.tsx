@@ -6,7 +6,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
 import { IssuerEditForm } from "./issuerEditForm";
 import { Issue } from "../data";
 
@@ -28,7 +27,7 @@ export function IssuerEdit({ issue }: IssueEditProps) {
       </SheetTrigger>
       <SheetContent className="w-1/2 overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-bold text-2xl ">
+          <SheetTitle className="text-2xl font-semibold">
             Edit Issuer Profile
           </SheetTitle>
         </SheetHeader>

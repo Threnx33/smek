@@ -24,10 +24,10 @@ export function BadgesRecommendationsCreate() {
       </SheetTrigger>
       <SheetContent className="w-1/2 overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-bold text-2xl ">
+          <SheetTitle className="font-semibold text-2xl ">
             Add Recommendation
           </SheetTitle>
-          <SheetDescription className="font-semibold text-foreground text-xs">
+          <SheetDescription className="font-normal text-foreground text-xs">
             Complete the information below to add recommendation.
           </SheetDescription>
         </SheetHeader>

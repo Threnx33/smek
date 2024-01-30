@@ -21,7 +21,9 @@ export function ViewVerification() {
 
   return (
     <MainWrap>
-      <div className="text-2xl font-bold mb-5 select-none">Verification</div>
+      <div className="text-2xl font-semibold mb-5 select-none">
+        Verification
+      </div>
       <div className="bg-white flex flex-col flex-grow p-6 rounded">
         <div className="flex justify-between mb-6">
           <SearchBarChip

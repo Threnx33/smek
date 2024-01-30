@@ -124,7 +124,7 @@ export function ViewCreateBadgeTemplate() {
       <div className="flex flex-col items-center">
         <div className="flex flex-col w-7/12">
           <div className="flex justify-between">
-            <span className="text-2xl font-bold mb-5">
+            <span className="text-2xl font-semibold mb-5">
               Create Badge Template
             </span>
             <div className="space-x-2">
@@ -137,7 +137,7 @@ export function ViewCreateBadgeTemplate() {
           </div>
 
           <div className="bg-white p-7 rounded mb-6">
-            <div className="text-xl font-bold mb-5 ">Basics</div>
+            <div className="text-xl font-semibold mb-5 ">Basics</div>
             <div className="flex justify-between items-center mb-6">
               <img
                 className="w-60 h-60"
@@ -145,7 +145,7 @@ export function ViewCreateBadgeTemplate() {
                 alt="AddImageIcon"
               />
               <div className="px-10">
-                <div className="font-bold mb-2">Add Image</div>
+                <div className="font-semibold mb-2">Add Image</div>
                 <div className="text-sm mb-6">
                   Badge tempaltes must use images in png format, with dimensions
                   between 600x600 and 2048x2048 pixels. Or select from the
@@ -176,7 +176,7 @@ export function ViewCreateBadgeTemplate() {
                   className="mb-8"
                 />
 
-                <div className="text-lg font-bold">Earn This Badge</div>
+                <div className="text-lg font-semibold">Earn This Badge</div>
                 <div className="text-sm mb-2 ">
                   Display a button on this template that directly connects
                   skillquiver users with the opportunity to earn this badge.
@@ -189,7 +189,7 @@ export function ViewCreateBadgeTemplate() {
                   defaultValue={"true"}
                 />
 
-                <div className="text-lg font-bold">Attributes</div>
+                <div className="text-lg font-semibold">Attributes</div>
                 <div className="text-sm mb-4">
                   Attributes improve your badge’s overall discoverability, as
                   well as the likelihood it will be recommended to Skillquiver
@@ -233,7 +233,7 @@ export function ViewCreateBadgeTemplate() {
                   label="Display attributes on the public view of this badge"
                 />
 
-                <div className="text-lg font-bold mb-2">Criteria</div>
+                <div className="text-lg font-semibold mb-2">Criteria</div>
                 {criteriaFields.map((field, index) => (
                   <FormCardWrap className="flex flex-col" key={field.id}>
                     <CustomSelect
@@ -282,7 +282,7 @@ export function ViewCreateBadgeTemplate() {
                   <span>Add Criteria</span>
                 </Button>
 
-                <div className="text-lg font-bold mb-2">Skills</div>
+                <div className="text-lg font-semibold mb-2">Skills</div>
                 <FormCardWrap className=" mb-6">
                   <Label className="mb-2" htmlFor="skills">
                     Add skills
@@ -297,7 +297,7 @@ export function ViewCreateBadgeTemplate() {
 
                   <div className="mb-6">
                     {!skillFields.length ? (
-                      <div className="text-sm font-semibold">
+                      <div className="text-sm font-medium">
                         You must add at least 3 skills.
                       </div>
                     ) : (
@@ -306,7 +306,7 @@ export function ViewCreateBadgeTemplate() {
                           key={field.id}
                           className="inline-flex items-center m-1"
                         >
-                          <span className="border px-4 py-2 space-x-2 select-none text-sm font-semibold flex rounded-3xl bg-cLightGreyBg">
+                          <span className="border px-4 py-2 space-x-2 select-none text-sm flex rounded-3xl bg-cLightGreyBg">
                             <span>{field.skillName}</span>
                             <img
                               className="cursor-pointer"
@@ -320,7 +320,9 @@ export function ViewCreateBadgeTemplate() {
                     )}
                   </div>
 
-                  <div className="text-sm font-bold mb-1">Suggested Skills</div>
+                  <div className="text-sm font-semibold mb-1">
+                    Suggested Skills
+                  </div>
                   {suggestionFailed ? (
                     <>
                       <div className="text-xs text-cRed mb-1">
@@ -351,7 +353,7 @@ export function ViewCreateBadgeTemplate() {
                   </Button>
                 </FormCardWrap>
 
-                <div className="text-lg font-bold mb-2">Standards</div>
+                <div className="text-lg font-semibold mb-2">Standards</div>
                 {standardFields.map((field, index) => (
                   <FormCardWrap className="flex flex-col" key={field.id}>
                     <CustomInput

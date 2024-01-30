@@ -27,8 +27,10 @@ export function BadgesTemplatesIssueButton({
       </SheetTrigger>
       <SheetContent className="w-1/2 overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-bold text-2xl ">Issue Badge</SheetTitle>
-          <SheetDescription className="font-semibold text-foreground text-xs">
+          <SheetTitle className="text-2xl font-semibold">
+            Issue Badge
+          </SheetTitle>
+          <SheetDescription className="font-normal text-foreground text-xs">
             Complete the information below to issue this badge.
           </SheetDescription>
         </SheetHeader>

@@ -29,7 +29,7 @@ export function TitleWithTabsWrap({
 
   return (
     <MainWrap>
-      <div className="text-2xl font-bold mb-5 select-none">{title}</div>
+      <div className="text-2xl font-semibold mb-5 select-none">{title}</div>
       <TabsChip
         tabs={tabs}
         currentTab={currentTab}

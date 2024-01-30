@@ -18,7 +18,7 @@ export function TabsChip({ tabs, currentTab, setCurrentTab }: TabsChipProps) {
         {tabs.map((item) => (
           <Link key={item.label} to={item.to}>
             <span
-              className={`text-sm font-semibold cursor-pointer select-none ${
+              className={`text-sm font-medium cursor-pointer select-none ${
                 currentTab.label === item.label
                   ? "text-main  underline-offset-[1.1rem] underline decoration-2 "
                   : ""

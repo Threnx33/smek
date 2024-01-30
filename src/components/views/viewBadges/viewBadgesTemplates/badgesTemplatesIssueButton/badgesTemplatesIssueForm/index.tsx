@@ -134,7 +134,7 @@ export function BadgesTemplatesIssueForm({
           )}
 
           {!issuer && <Separator className="mt-2 mb-6" />}
-          <div className="text-sm font-bold flex justify-between mb-6">
+          <div className="text-sm font-semibold flex justify-between mb-6">
             <span>Earner Information</span>
             <img className="h-4 w-4" src="/arrowDown.svg" alt="ArrowDownIcon" />
           </div>
@@ -184,7 +184,7 @@ export function BadgesTemplatesIssueForm({
           )}
 
           <Separator className="mt-2 mb-6" />
-          <div className="text-sm font-bold flex justify-between mb-4">
+          <div className="text-sm font-semibold flex justify-between mb-4">
             <span>Badge Options</span>
             <img className="h-4 w-4" src="/arrowDown.svg" alt="ArrowDownIcon" />
           </div>
@@ -235,7 +235,7 @@ export function BadgesTemplatesIssueForm({
           />
 
           <Separator className="mt-2 mb-6" />
-          <div className="text-sm font-bold mb-4">
+          <div className="text-sm font-semibold mb-4">
             <span>Add evidence</span>
           </div>
 

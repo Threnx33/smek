@@ -23,7 +23,7 @@ export function VerificationCreate() {
       </SheetTrigger>
       <SheetContent className="min-w-[34rem] overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-bold text-2xl ">
+          <SheetTitle className="font-semibold text-2xl ">
             Create Verification Template
           </SheetTitle>
         </SheetHeader>

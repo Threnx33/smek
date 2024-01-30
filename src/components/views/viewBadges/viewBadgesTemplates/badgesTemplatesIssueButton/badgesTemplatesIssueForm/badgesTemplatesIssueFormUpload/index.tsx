@@ -34,7 +34,7 @@ export function BadgesTemplatesIssueFormUpload({
 
       {files.length > 0 && (
         <div>
-          <div className="text-sm font-semibold">Files</div>
+          <div className="text-sm font-medium">Files</div>
           <ul className="text-xs">{files}</ul>
         </div>
       )}

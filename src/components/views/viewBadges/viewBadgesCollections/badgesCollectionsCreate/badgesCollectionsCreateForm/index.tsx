@@ -103,7 +103,7 @@ export function BadgesCollectionsCreateForm({
               />
 
               <Separator className="mb-6" />
-              <div className=" font-bold">Visibility</div>
+              <div className="font-semibold">Visibility</div>
               <div className="text-sm mb-4">
                 Make your collection public for earners, or private for
                 administrative purposes.
@@ -118,7 +118,7 @@ export function BadgesCollectionsCreateForm({
               />
 
               <Separator className="mb-6" />
-              <div className=" font-bold">Templates</div>
+              <div className="font-semibold">Templates</div>
               <div className="text-sm mb-4">
                 Select the templates you would like to appear in this
                 collection.
