@@ -12,8 +12,8 @@ export function SearchBarChipTopbar({
   className,
 }: SearchBarChipTopbar) {
   return (
-    <div className={`flex border rounded-xl py-0.5 shadow-sm ${className}`}>
-      <button className="flex items-center px-4 self-stretch">
+    <div className={`flex rounded-xl border py-0.5 shadow-sm ${className}`}>
+      <button className="flex items-center self-stretch px-4">
         <img
           src="/searchNormal.svg"
           alt="searchNormalIcon"
@@ -22,7 +22,7 @@ export function SearchBarChipTopbar({
       </button>
       <Input
         type="text"
-        className="px-3 h-9 py-0 w-80 rounded-xl border-none"
+        className="min-w-80 h-9 rounded-xl border-none px-3 py-0"
         placeholder={placeholder}
         onChange={handleOnChange}
       />
