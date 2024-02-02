@@ -27,14 +27,14 @@ export function Drawer({ className }: DrawerProps) {
           <SheetTrigger asChild>
             <Button variant="outline" className=" mr-3">
               <img
-                className="h-6 w-6"
+                className="h-5 w-5"
                 src="/arrowDown.svg"
                 alt="arrowDownIcon"
               />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[16rem] p-0 overflow-auto">
-            <LogoChip className="flex flex-row justify-center align-middle mb-4 mt-12" />
+          <SheetContent side="left" className="w-[16rem] p-0">
+            <LogoChip className="flex flex-row justify-center align-middle mb-4 mt-10" />
             <DrawerList />
           </SheetContent>
         </Sheet>
