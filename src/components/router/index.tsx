@@ -12,7 +12,7 @@ import { ANALYTICS_MENU_TABS } from "../views/viewAnalytics/analyticsMenuTabs";
 import { CERTIFICATES_MENU_TABS } from "../views/viewCertificates/certificatesMenuTabs";
 import { CERTIFICATES_TEMPLATE_MENU_TABS } from "../views/viewCertificates/viewCertificatesTemplates/badgesTemplateMenuTabs";
 import { CERTIFICATES_EARNERS_MENU_TABS } from "../views/viewCertificates/viewCertificatesEarners/badgesEarnersMenuTabs";
-import { CERTIFICATES_COLLECTION_MENU_TABS } from "../views/viewCertificates/viewCertificatesCollections/badgesCollectionMenuTabs";
+import { CERTIFICATES_COLLECTION_MENU_TABS } from "../views/viewCertificates/viewCertificatesCollections/certificatesCollectionMenuTabs";
 import { ViewCreateCertificateTemplate } from "../views/viewCertificates/viewCertificatesTemplates/viewCreateBadgeTemplate";
 
 export function Router() {

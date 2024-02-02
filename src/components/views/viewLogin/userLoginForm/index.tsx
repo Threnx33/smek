@@ -79,7 +79,7 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
             label="Password"
             type="password"
           />
-          <div className="flex items-center justify-between ">
+          <div className="flex items-center space-between">
             <FormField
               control={form.control}
               name="rememberMe"
@@ -98,8 +98,8 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
                 </FormItem>
               )}
             />
-            <Link to="/password-reset">
-              <TextMainWrap className="text-xs font-medium">
+            <Link to="/password-reset" className="ml-auto text-right">
+              <TextMainWrap className="text-xs font-medium ">
                 Forgot your password?
               </TextMainWrap>
             </Link>

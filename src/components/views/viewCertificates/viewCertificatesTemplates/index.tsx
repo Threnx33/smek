@@ -20,7 +20,8 @@ export function ViewCertificatesTemplates() {
 
   const emptyText = (
     <div className="text-cMediumGrey">
-      No badge template created yet. Create your first badge template
+      No certificate template created yet. Create your first certificate
+      template
     </div>
   );
 
