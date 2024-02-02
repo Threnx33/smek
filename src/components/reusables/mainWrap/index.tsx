@@ -8,7 +8,7 @@ type MainWrapProps = {
 export function MainWrap({ children }: MainWrapProps) {
   return (
     <div className="flex flex-row">
-      <Drawer />
+      <Drawer className="hidden md:block" />
       <div className="w-full flex flex-col">
         <TopBar />
         <div className="flex flex-col h-full bg-cLightGreyBg px-6 py-4 ">

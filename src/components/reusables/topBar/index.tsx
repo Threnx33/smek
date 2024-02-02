@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NotificationCountChip } from "../notificationCountChip";
 import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
+import { Drawer } from "../drawer";
 
 const TopBar = () => {
   const [search, setSearch] = useState<string>();
@@ -12,6 +13,7 @@ const TopBar = () => {
 
   return (
     <div className="flex justify-between items-center p-4 shadow-sm w-full">
+      <Drawer className="md:hidden" />
       <SearchBarChipTopbar
         placeholder="Discover work, badges & skills"
         handleOnChange={handleOnSeachChange}
