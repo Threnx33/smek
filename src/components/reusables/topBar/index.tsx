@@ -14,6 +14,7 @@ const TopBar = () => {
   return (
     <div className="flex justify-between items-center p-4 shadow-sm w-full">
       <Drawer className="md:hidden" />
+
       <SearchBarChipTopbar
         placeholder="Discover work, badges & skills"
         handleOnChange={handleOnSeachChange}
