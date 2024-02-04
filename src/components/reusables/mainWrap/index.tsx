@@ -7,11 +7,11 @@ type MainWrapProps = {
 
 export function MainWrap({ children }: MainWrapProps) {
   return (
-    <div className="flex flex-row">
-      <Drawer className="hidden md:block" />
-      <div className="w-full flex flex-col">
+    <div className="flex min-h-screen flex-row">
+      <Drawer className="hidden lg:block" />
+      <div className="flex w-full flex-col">
         <TopBar />
-        <div className="flex flex-col h-full bg-cLightGreyBg px-6 py-4 ">
+        <div className="flex h-full flex-col bg-cLightGreyBg px-6 py-4 ">
           {children}
         </div>
       </div>

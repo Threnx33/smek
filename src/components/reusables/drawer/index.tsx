@@ -21,14 +21,14 @@ export function Drawer({ className }: DrawerProps) {
     <div className={className}>
       {/*Desktop drawer*/}
       <div className="min-h-full overflow-auto shadow-sm">
-        <div className="hidden min-h-screen min-w-[16rem] md:block">
+        <div className="hidden min-h-screen min-w-[16rem] lg:block">
           <LogoChip className="flex flex-row justify-center p-6 align-middle" />
           <DrawerList />
         </div>
       </div>
 
       {/*Mobile drawer*/}
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" className=" mr-3">

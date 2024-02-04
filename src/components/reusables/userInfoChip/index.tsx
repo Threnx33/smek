@@ -17,7 +17,7 @@ export function UserInfoChip({ className }: UserInfoChipProps) {
       <img
         src="/arrowSquareDown.svg"
         alt="ArrowSquareDownIcon"
-        className="mx-2 hidden h-5 w-5 md:block"
+        className="mx-2 hidden h-5 w-5 lg:block"
       />
     </div>
   );

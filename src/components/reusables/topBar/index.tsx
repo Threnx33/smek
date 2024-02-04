@@ -15,7 +15,7 @@ const TopBar = () => {
 
   return (
     <div className="flex w-full items-center p-4 shadow-sm">
-      <Drawer className="mx-2 md:hidden" />
+      <Drawer className="mx-2 lg:hidden" />
 
       <div className="flex w-full items-center justify-between">
         <SearchBarChipTopbar
@@ -23,7 +23,7 @@ const TopBar = () => {
           handleOnChange={handleOnSeachChange}
         />
 
-        <div className="hidden items-center md:flex">
+        <div className="hidden items-center lg:flex">
           <div className="relative cursor-pointer py-2">
             <img
               src="/calendar.svg"

@@ -1,39 +1,39 @@
 import { MainWrap } from "@/components/reusables/mainWrap";
 
 const dashboardTitleNumberCard = (title: string, number: string) => (
-  <div className="rounded-xl bg-white p-4 md:p-6">
-    <div className="mb-3 text-lg font-medium md:mb-5">{title}</div>
-    <div className="text-3xl font-normal md:text-5xl">{number}</div>
+  <div className="rounded-xl bg-white p-4 lg:p-6">
+    <div className="mb-3 text-lg font-medium lg:mb-5">{title}</div>
+    <div className="text-3xl font-normal lg:text-5xl">{number}</div>
   </div>
 );
 
 const dashboardVideoCard = () => (
-  <div className="h-64 rounded-xl bg-black p-4 md:h-[24rem] md:p-6"></div>
+  <div className="h-64 rounded-xl bg-black p-4 lg:h-[24rem] lg:p-6"></div>
 );
 
 const dashboardInformationCard = (title: string, description: string) => (
-  <div className="flex items-center space-x-4 rounded-xl bg-white p-4 md:space-x-6 md:p-6">
-    <div className="h-12 w-12 shrink-0 rounded-full bg-cLightGreyStroke md:h-16 md:w-16"></div>
+  <div className="flex items-center space-x-4 rounded-xl bg-white p-4 lg:space-x-6 lg:p-6">
+    <div className="h-12 w-12 shrink-0 rounded-full bg-cLightGreyStroke lg:h-16 lg:w-16"></div>
     <div className="flex flex-grow flex-col">
       <div className="mb-2 font-medium">{title}</div>
-      <div className="text-sm font-normal md:text-base">{description}</div>
+      <div className="text-sm font-normal lg:text-base">{description}</div>
     </div>
   </div>
 );
 
 const dashboardTitleCard = (title: string) => (
-  <div className="mb-4 select-none text-xl font-medium md:mb-6">{title}</div>
+  <div className="mb-4 select-none text-xl font-medium lg:mb-6">{title}</div>
 );
 
 export function ViewDashboard() {
   return (
     <MainWrap>
-      <div className="mb-4 select-none text-2xl font-semibold md:mb-6">
+      <div className="mb-4 select-none text-2xl font-semibold lg:mb-6">
         Dashboard
       </div>
 
       {/* Number cards section */}
-      <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-4">
+      <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         {dashboardTitleNumberCard("Issuer Profiles (DIDs)", "68")}
         {dashboardTitleNumberCard("Credentials", "390")}
         {dashboardTitleNumberCard("Templates", "390")}
@@ -51,7 +51,7 @@ export function ViewDashboard() {
       {dashboardTitleCard("Useful Informations")}
 
       {/* Information cards section */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {dashboardInformationCard(
           "Learn the basics of Verifiable Credentials",
           "This step-by-step guide will show you how to create issuer profiles and issue Verifiable Credentials.",

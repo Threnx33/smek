@@ -11,12 +11,12 @@ export function AuthSideSheet() {
   ];
 
   return (
-    <div className="hidden inset-0 text-xs font-medium w-5/12 bg-[url(/authImg.png)] bg-cover bg-no-repeat pl-12 pt-28 md:block">
+    <div className="inset-0 hidden w-5/12 bg-[url(/authImg.png)] bg-cover bg-no-repeat pl-12 pt-28 text-xs font-medium lg:block">
       <div className="absolute top-5">
         <LogoChip />
       </div>
       <div className="w-10/12">
-        <h1 className="text-3xl font-semibold mb-6">Level up your career</h1>
+        <h1 className="mb-6 text-3xl font-semibold">Level up your career</h1>
         <p>
           Join millions of professionals, recruiters, and employers on
           Skillquiver.
@@ -27,7 +27,7 @@ export function AuthSideSheet() {
             <img
               src="/tickCircle.svg"
               alt="TickCircleIcon"
-              className="h-5 w-5 mr-2"
+              className="mr-2 h-5 w-5"
             />
             {item}
           </div>
