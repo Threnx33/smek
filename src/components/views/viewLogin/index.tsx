@@ -7,16 +7,16 @@ export function ViewLogin() {
   return (
     <>
       <AuthWrap>
-        <h2 className="text-2xl font-semibold mb-6">Sign In</h2>
+        <h2 className="mb-6 text-2xl font-semibold">Sign In</h2>
         <UserLoginForm />
-        <p className="text-center mt-4 text-xs font-medium">
+        <p className="mt-4 text-center text-xs font-medium">
           Don't have an account?{" "}
           <Link to="/register">
             <TextMainWrap>Register</TextMainWrap>
           </Link>
         </p>
-        <div className="text-center mt-8">
-          <Link to="/badges/templates">
+        <div className="mt-8 text-center">
+          <Link to="/dashboard">
             <TextMainWrap className="text-xs font-medium">Enter</TextMainWrap>
           </Link>
         </div>

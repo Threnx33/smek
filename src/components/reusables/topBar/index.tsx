@@ -2,9 +2,11 @@ import { useState } from "react";
 import { NotificationCountChip } from "../notificationCountChip";
 import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
 import { Drawer } from "../drawer";
+import { UserInfoChip } from "../userInfoChip";
 
 const TopBar = () => {
   const [search, setSearch] = useState<string>();
+
   function handleOnSeachChange(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
     setSearch(e.target.value);
@@ -47,24 +49,7 @@ const TopBar = () => {
             <NotificationCountChip count={23} className="right-0 top-0" />
           </div>
 
-          <div className="flex cursor-pointer items-center">
-            <img
-              src="/avatar.png"
-              alt="AvatarIcon"
-              className="mx-2 h-10 w-10 rounded-full"
-            />
-            <div className="flex flex-col">
-              <span className="mx-2 text-sm font-semibold">Theo Edwards</span>
-              <span className="text-mediumGrey mx-2 text-sm">
-                Administrator
-              </span>
-            </div>
-            <img
-              src="/arrowSquareDown.svg"
-              alt="ArrowSquareDownIcon"
-              className="mx-2 h-5 w-5"
-            />
-          </div>
+          <UserInfoChip />
         </div>
       </div>
     </div>
