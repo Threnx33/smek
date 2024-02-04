@@ -12,7 +12,7 @@ const dashboardVideoCard = () => (
 );
 
 const dashboardInformationCard = (title: string, description: string) => (
-  <div className="flex items-center space-x-4 rounded-xl bg-white p-4 md:p-8">
+  <div className="flex items-center space-x-4 rounded-xl bg-white p-4 md:space-x-6 md:p-6">
     <div className="h-12 w-12 shrink-0 rounded-full bg-cLightGreyStroke md:h-16 md:w-16"></div>
     <div className="flex flex-grow flex-col">
       <div className="mb-2 font-medium">{title}</div>
