@@ -11,7 +11,7 @@ export function MainWrap({ children }: MainWrapProps) {
       <Drawer className="hidden lg:block" />
       <div className="flex w-full flex-col">
         <TopBar />
-        <div className="flex h-full flex-col bg-cLightGreyBg px-6 py-4 ">
+        <div className="flex h-full flex-col bg-cLightGreyBg px-3 py-2 md:px-6 md:py-4 ">
           {children}
         </div>
       </div>

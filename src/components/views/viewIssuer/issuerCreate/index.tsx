@@ -12,18 +12,18 @@ export function IssuerCreate() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="mr-3">
+        <Button className="flex items-center ">
           <img
-            className="h-5 w-5 mr-2"
+            className="h-5 w-5 md:mr-2"
             src="/addSquareWhite.svg"
             alt="addSquareWhiteIcon"
           />
-          Create Issuer Profile
+          <span className="hidden md:inline">Create Issuer Profile</span>
         </Button>
       </SheetTrigger>
       <SheetContent className="w-1/2 overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-semibold text-2xl ">
+          <SheetTitle className="text-2xl font-semibold ">
             Create Issuer Profile
           </SheetTitle>
         </SheetHeader>

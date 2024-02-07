@@ -26,11 +26,11 @@ export function CustomTable<TData>({
   const tableRows = table.getFilteredRowModel().rows.length;
 
   return (
-    <div className="flex flex-col flex-grow">
+    <div className="flex flex-grow flex-col">
       {table.getRowModel().rows.length ? (
         <div>
           <div className="mb-2 font-medium">
-            <Table>
+            <Table className="min-w-[40rem] overflow-auto">
               <TableHeader className="bg-cLightGreyBg">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <TableRow key={headerGroup.id}>
@@ -44,7 +44,7 @@ export function CustomTable<TData>({
                             ? null
                             : flexRender(
                                 header.column.columnDef.header,
-                                header.getContext()
+                                header.getContext(),
                               )}
                         </TableHead>
                       );
@@ -62,7 +62,7 @@ export function CustomTable<TData>({
                       <TableCell key={cell.id}>
                         {flexRender(
                           cell.column.columnDef.cell,
-                          cell.getContext()
+                          cell.getContext(),
                         )}
                       </TableCell>
                     ))}
@@ -98,8 +98,8 @@ export function CustomTable<TData>({
           </div>
         </div>
       ) : (
-        <div className="flex flex-grow justify-center items-center">
-          <div className="flex flex-col items-center w-6/12 ">
+        <div className="flex flex-grow items-center justify-center">
+          <div className="flex w-6/12 flex-col items-center ">
             <img
               className="mb-10"
               src={`/${emptyImgName}.png`}

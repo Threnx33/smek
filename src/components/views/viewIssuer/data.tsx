@@ -103,7 +103,7 @@ export const ISSUES_COLUMNS: ColumnDef<Issue>[] = [
       return (
         <span className="flex flex-row items-center ">
           <img
-            className="h-10 w-10 mr-3"
+            className="mr-3 h-10 w-10"
             src="/emptyCircle.png"
             alt="IssuerImage"
           />
@@ -115,6 +115,21 @@ export const ISSUES_COLUMNS: ColumnDef<Issue>[] = [
   {
     accessorKey: "DID",
     header: "DID",
+    cell: ({ getValue }) => {
+      const did = getValue() as string;
+      const truncatedDidLg = `${did.substring(0, 40)}...`;
+      const truncatedDidMd = `${did.substring(0, 20)}...`;
+      const truncatedDidSm = `${did.substring(0, 10)}...`;
+
+      return (
+        <>
+          <span className="hidden 2xl:inline">{did}</span>
+          <span className="hidden xl:inline 2xl:hidden">{truncatedDidLg}</span>
+          <span className="hidden md:inline xl:hidden">{truncatedDidMd}</span>
+          <span className="inline md:hidden">{truncatedDidSm}</span>
+        </>
+      );
+    },
   },
   {
     accessorKey: "credentialsIssued",

@@ -15,8 +15,8 @@ export function SearchBarChip<TData>({
   className,
 }: SearchBarChipProps<TData>) {
   return (
-    <div className={`flex border rounded-xl py-0.5 shadow-sm ${className}`}>
-      <button className="flex items-center px-4 self-stretch">
+    <div className={`flex rounded-xl border py-0.5 shadow-sm ${className}`}>
+      <button className="flex items-center self-stretch px-4">
         <img
           src="/searchNormal.svg"
           alt="searchNormalIcon"
@@ -25,7 +25,7 @@ export function SearchBarChip<TData>({
       </button>
       <Input
         type="text"
-        className="px-3 h-9 py-0 w-80 rounded-xl border-none"
+        className="h-9 w-60 rounded-xl border-none px-3 py-0 md:w-80"
         placeholder={placeholder}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           table.getColumn(searchBy)?.setFilterValue(e.target.value)
