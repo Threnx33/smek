@@ -31,9 +31,9 @@ export function Drawer({ className }: DrawerProps) {
       <div className="lg:hidden">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="outline" className=" mr-3">
+            <Button variant="outline" className="mr-3">
               <img
-                className="h-5 w-5"
+                className="h-4 w-4"
                 src="/arrowDown.svg"
                 alt="arrowDownIcon"
               />

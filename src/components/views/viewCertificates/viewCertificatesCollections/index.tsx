@@ -1,10 +1,10 @@
-import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
 import { BadgesCollectionsCreate } from "./badgesCollectionsCreate";
 import { COLLECTIONS, COLLECTIONS_COLUMNS } from "./data";
 import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
 import { CERTIFICATES_MENU_TABS } from "../certificatesMenuTabs";
+import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
 
 export function ViewBadgesCollections() {
   const table = useCustomTable({
@@ -13,19 +13,20 @@ export function ViewBadgesCollections() {
   });
 
   const emptyText = (
-    <div className="text-cMediumGrey text-center">
+    <div className="text-center text-cMediumGrey">
       No available history data to present. Check back later.
     </div>
   );
 
   return (
     <TitleWithTabsWrap title="Certificates" tabs={CERTIFICATES_MENU_TABS}>
-      <div className="flex justify-between mb-6">
-        <SearchBarChip
-          table={table}
+      <div className="mb-6 flex justify-between">
+        <SearchBarChipTopbar
+          handleOnChange={(e) =>
+            table.getColumn("collection")?.setFilterValue(e.target.value)
+          }
           className="mr-3"
           placeholder="Search collections"
-          searchBy="collection"
         />
         <div className="flex items-center">
           <BadgesCollectionsCreate />

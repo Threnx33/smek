@@ -1,4 +1,3 @@
-import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
 import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { Button } from "@/components/ui/button";
@@ -14,6 +13,7 @@ import { CERTIFICATES_MENU_TABS } from "../certificatesMenuTabs";
 import { BadgesTemplatesFilterButton } from "./badgesTemplatesFilter";
 import { BadgesTemplatesIssueButton } from "./badgesTemplatesIssueButton";
 import { TEMPLATES, TEMPLATES_COLUMNS } from "./data";
+import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
 
 export function ViewCertificatesTemplates() {
   const table = useCustomTable({ columns: TEMPLATES_COLUMNS, data: TEMPLATES });
@@ -27,13 +27,14 @@ export function ViewCertificatesTemplates() {
 
   return (
     <TitleWithTabsWrap title="Certificates" tabs={CERTIFICATES_MENU_TABS}>
-      <div className="flex justify-between mb-6">
+      <div className="mb-6 flex justify-between">
         <div className="flex items-center">
-          <SearchBarChip
-            table={table}
+          <SearchBarChipTopbar
+            handleOnChange={(e) =>
+              table.getColumn("templateName")?.setFilterValue(e.target.value)
+            }
             className="mr-3"
             placeholder="Search templates"
-            searchBy="templateName"
           />
           <BadgesTemplatesFilterButton table={table} />
         </div>
@@ -42,7 +43,7 @@ export function ViewCertificatesTemplates() {
           <Link to="create">
             <Button className="mr-3">
               <img
-                className="h-5 w-5 mr-2"
+                className="mr-2 h-5 w-5"
                 src="/addSquareWhite.svg"
                 alt="addSquareWhiteIcon"
               />
@@ -60,13 +61,13 @@ export function ViewCertificatesTemplates() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem>
-                <div className="flex space-x-2 pr-2 py-1">
+                <div className="flex space-x-2 py-1 pr-2">
                   <img className="h-5 w-5" src="/export.svg" alt="ExportIcon" />
                   <span>Export Template List</span>
                 </div>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <div className="flex space-x-2 pr-2 py-1">
+                <div className="flex space-x-2 py-1 pr-2">
                   <img
                     className="h-5 w-5"
                     src="/archive.svg"

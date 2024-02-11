@@ -1,4 +1,3 @@
-import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
 import { Button } from "@/components/ui/button";
@@ -12,6 +11,7 @@ import { BadgesRecommendationsCreate } from "./badgesRecommendationsCreate";
 import { RECOMMENDATIONS, RECOMMENDATIONS_COLUMNS } from "./data";
 import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
 import { BADGES_MENU_TABS } from "../badgesMenuTabs";
+import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
 
 export function ViewBadgesRecommendations() {
   const table = useCustomTable({
@@ -20,19 +20,20 @@ export function ViewBadgesRecommendations() {
   });
 
   const emptyText = (
-    <div className="text-cMediumGrey text-center">
+    <div className="text-center text-cMediumGrey">
       No available recommendations. Check back later.
     </div>
   );
 
   return (
     <TitleWithTabsWrap title="Badges" tabs={BADGES_MENU_TABS}>
-      <div className="flex justify-between mb-6">
-        <SearchBarChip
-          table={table}
+      <div className="mb-6 flex justify-between">
+        <SearchBarChipTopbar
+          handleOnChange={(e) =>
+            table.getColumn("templateName")?.setFilterValue(e.target.value)
+          }
           className="mr-3"
           placeholder="Search recommendations"
-          searchBy="templateName"
         />
         <div className="flex items-center">
           <BadgesRecommendationsCreate />
@@ -45,7 +46,7 @@ export function ViewBadgesRecommendations() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem>
-                <div className="flex space-x-2 pr-2 py-1">
+                <div className="flex space-x-2 py-1 pr-2">
                   <img className="h-5 w-5" src="/export.svg" alt="ExportIcon" />
                   <span>Export Recommendations List</span>
                 </div>

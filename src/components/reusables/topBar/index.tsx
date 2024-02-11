@@ -15,7 +15,7 @@ const TopBar = () => {
 
   return (
     <div className="flex w-full items-center px-2 py-4 shadow-sm md:px-4">
-      <Drawer className="md:mx-2 lg:hidden" />
+      <Drawer className="flex-shrink-0  lg:hidden" />
 
       <div className="flex w-full items-center justify-between">
         <SearchBarChipTopbar
