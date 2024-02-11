@@ -13,22 +13,33 @@ import { Table as ReactTable } from "@tanstack/react-table";
 
 type BadgesTemplatesFilterButtonProps<TData> = {
   table: ReactTable<TData>;
+  className?: string;
+  variant?: "desktop" | "mobile";
 };
 
 export function BadgesTemplatesFilterButton<TData>({
   table,
+  className,
+  variant,
 }: BadgesTemplatesFilterButtonProps<TData>) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline">
-          <img className="h-5 w-5 mr-2" src="/filter.svg" alt="FilterIcon" />
-          <span>Filters</span>
-        </Button>
+        {variant !== "mobile" ? (
+          <Button variant="outline" className={`${className}`}>
+            <img className="mr-2 h-5 w-5" src="/filter.svg" alt="FilterIcon" />
+            <span>Filters</span>
+          </Button>
+        ) : (
+          <div className="flex space-x-2 py-1 pr-2">
+            <img className="h-5 w-5" src="/filter.svg" alt="FilterIcon" />
+            <span>Filters</span>
+          </div>
+        )}
       </SheetTrigger>
       <SheetContent className="w-1/2 overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-semibold text-2xl ">Filters</SheetTitle>
+          <SheetTitle className="text-2xl font-semibold ">Filters</SheetTitle>
         </SheetHeader>
 
         <BadgesTemplatesFilterForm table={table} />

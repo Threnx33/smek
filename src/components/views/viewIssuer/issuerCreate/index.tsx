@@ -12,7 +12,7 @@ export function IssuerCreate() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="flex flex-shrink-0 items-center">
+        <Button className="flex shrink-0 items-center">
           <img
             className="h-5 w-5 md:mr-2"
             src="/addSquareWhite.svg"
