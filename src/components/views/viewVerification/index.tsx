@@ -4,7 +4,7 @@ import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
 import { VERIFICATIONS, VERIFICATIONS_COLUMNS } from "./data";
 import { MainWrap } from "@/components/reusables/mainWrap";
 import { VerificationCreate } from "./verificationCreate";
-import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
+import { SearchBarChip } from "@/components/reusables/searchBarChip";
 
 export function ViewVerification() {
   const table = useCustomTable({
@@ -26,7 +26,7 @@ export function ViewVerification() {
       </div>
       <div className="flex flex-grow flex-col rounded bg-white p-6">
         <div className="mb-6 flex justify-between">
-          <SearchBarChipTopbar
+          <SearchBarChip
             handleOnChange={(e) =>
               table.getColumn("collection")?.setFilterValue(e.target.value)
             }

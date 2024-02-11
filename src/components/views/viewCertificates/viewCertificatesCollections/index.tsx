@@ -4,7 +4,7 @@ import { BadgesCollectionsCreate } from "./badgesCollectionsCreate";
 import { COLLECTIONS, COLLECTIONS_COLUMNS } from "./data";
 import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
 import { CERTIFICATES_MENU_TABS } from "../certificatesMenuTabs";
-import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
+import { SearchBarChip } from "@/components/reusables/searchBarChip";
 
 export function ViewBadgesCollections() {
   const table = useCustomTable({
@@ -21,7 +21,7 @@ export function ViewBadgesCollections() {
   return (
     <TitleWithTabsWrap title="Certificates" tabs={CERTIFICATES_MENU_TABS}>
       <div className="mb-6 flex justify-between">
-        <SearchBarChipTopbar
+        <SearchBarChip
           handleOnChange={(e) =>
             table.getColumn("collection")?.setFilterValue(e.target.value)
           }

@@ -1,16 +1,16 @@
 import { Input } from "@/components/ui/input";
 
-type SearchBarChipTopbar = {
+type SearchBarChip = {
   placeholder: string;
   handleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
 };
 
-export function SearchBarChipTopbar({
+export function SearchBarChip({
   placeholder,
   handleOnChange,
   className,
-}: SearchBarChipTopbar) {
+}: SearchBarChip) {
   return (
     <div
       className={`flex rounded-xl border py-0.5 shadow-sm md:min-w-[22rem] ${className}`}

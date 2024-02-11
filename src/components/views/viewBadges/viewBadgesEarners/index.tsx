@@ -4,7 +4,7 @@ import { BadgesEarnersFilterButton } from "./badgesEarnersFilter";
 import { EARNERS, EARNERS_COLUMNS } from "./data";
 import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
 import { BADGES_MENU_TABS } from "../badgesMenuTabs";
-import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
+import { SearchBarChip } from "@/components/reusables/searchBarChip";
 
 export function ViewBadgesEarners() {
   const table = useCustomTable({ columns: EARNERS_COLUMNS, data: EARNERS });
@@ -22,7 +22,7 @@ export function ViewBadgesEarners() {
   return (
     <TitleWithTabsWrap title="Badges" tabs={BADGES_MENU_TABS}>
       <div className="mb-6 flex items-center">
-        <SearchBarChipTopbar
+        <SearchBarChip
           handleOnChange={(e) =>
             table.getColumn("name")?.setFilterValue(e.target.value)
           }

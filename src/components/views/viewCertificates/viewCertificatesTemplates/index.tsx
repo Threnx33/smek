@@ -13,7 +13,7 @@ import { CERTIFICATES_MENU_TABS } from "../certificatesMenuTabs";
 import { BadgesTemplatesFilterButton } from "./badgesTemplatesFilter";
 import { BadgesTemplatesIssueButton } from "./badgesTemplatesIssueButton";
 import { TEMPLATES, TEMPLATES_COLUMNS } from "./data";
-import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
+import { SearchBarChip } from "@/components/reusables/searchBarChip";
 
 export function ViewCertificatesTemplates() {
   const table = useCustomTable({ columns: TEMPLATES_COLUMNS, data: TEMPLATES });
@@ -29,7 +29,7 @@ export function ViewCertificatesTemplates() {
     <TitleWithTabsWrap title="Certificates" tabs={CERTIFICATES_MENU_TABS}>
       <div className="mb-6 flex justify-between">
         <div className="flex items-center">
-          <SearchBarChipTopbar
+          <SearchBarChip
             handleOnChange={(e) =>
               table.getColumn("templateName")?.setFilterValue(e.target.value)
             }

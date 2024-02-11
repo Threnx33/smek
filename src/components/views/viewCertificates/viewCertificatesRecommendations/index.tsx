@@ -11,7 +11,7 @@ import { BadgesRecommendationsCreate } from "./badgesRecommendationsCreate";
 import { RECOMMENDATIONS, RECOMMENDATIONS_COLUMNS } from "./data";
 import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
 import { CERTIFICATES_MENU_TABS } from "../certificatesMenuTabs";
-import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
+import { SearchBarChip } from "@/components/reusables/searchBarChip";
 
 export function ViewBadgesRecommendations() {
   const table = useCustomTable({
@@ -28,7 +28,7 @@ export function ViewBadgesRecommendations() {
   return (
     <TitleWithTabsWrap title="Certificates" tabs={CERTIFICATES_MENU_TABS}>
       <div className="mb-6 flex justify-between">
-        <SearchBarChipTopbar
+        <SearchBarChip
           handleOnChange={(e) =>
             table.getColumn("templateName")?.setFilterValue(e.target.value)
           }

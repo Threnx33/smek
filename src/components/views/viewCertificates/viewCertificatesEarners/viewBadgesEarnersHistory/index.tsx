@@ -2,7 +2,7 @@ import { CustomTable } from "@/components/reusables/customTable";
 import { TEMPLATE_HISTORIES, TEMPLATE_HISTORIES_COLUMNS } from "./data";
 import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { BadgesEarnerWrap } from "@/components/views/viewBadges/viewBadgesEarners/badgesEarnerWrap";
-import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
+import { SearchBarChip } from "@/components/reusables/searchBarChip";
 
 export function ViewBadgesEarnersHistory() {
   const table = useCustomTable({
@@ -19,7 +19,7 @@ export function ViewBadgesEarnersHistory() {
   return (
     <BadgesEarnerWrap>
       <div className="mb-6 flex justify-between">
-        <SearchBarChipTopbar
+        <SearchBarChip
           handleOnChange={(e) =>
             table.getColumn("updatedBy")?.setFilterValue(e.target.value)
           }

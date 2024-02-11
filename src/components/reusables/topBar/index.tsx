@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NotificationCountChip } from "../notificationCountChip";
-import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
+import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import { Drawer } from "../drawer";
 import { UserInfoChip } from "../userInfoChip";
 
@@ -18,7 +18,7 @@ const TopBar = () => {
       <Drawer className="flex-shrink-0  lg:hidden" />
 
       <div className="flex w-full items-center justify-between">
-        <SearchBarChipTopbar
+        <SearchBarChip
           placeholder="Discover work, badges & skills"
           handleOnChange={handleOnSeachChange}
         />

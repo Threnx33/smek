@@ -13,7 +13,7 @@ import { BadgesTemplatesFilterButton } from "./badgesTemplatesFilter";
 import { TEMPLATES, TEMPLATES_COLUMNS } from "./data";
 import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
 import { BADGES_MENU_TABS } from "../badgesMenuTabs";
-import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
+import { SearchBarChip } from "@/components/reusables/searchBarChip";
 
 export function ViewBadgesTemplates() {
   const table = useCustomTable({ columns: TEMPLATES_COLUMNS, data: TEMPLATES });
@@ -28,7 +28,7 @@ export function ViewBadgesTemplates() {
     <TitleWithTabsWrap title="Badges" tabs={BADGES_MENU_TABS}>
       <div className="mb-6 flex justify-between">
         <div className="flex items-center">
-          <SearchBarChipTopbar
+          <SearchBarChip
             handleOnChange={(e) =>
               table.getColumn("templateName")?.setFilterValue(e.target.value)
             }

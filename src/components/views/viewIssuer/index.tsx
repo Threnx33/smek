@@ -3,7 +3,7 @@ import { CustomTable } from "@/components/reusables/customTable";
 import { IssuerCreate } from "./issuerCreate";
 import { ISSUES, ISSUES_COLUMNS } from "./data";
 import { IssuerWrap } from "./issuerWrap";
-import { SearchBarChipTopbar } from "@/components/reusables/searchBarChipTopbar";
+import { SearchBarChip } from "@/components/reusables/searchBarChip";
 
 export function ViewIssuer() {
   const table = useCustomTable({
@@ -20,7 +20,7 @@ export function ViewIssuer() {
   return (
     <IssuerWrap>
       <div className="mb-6 flex justify-between">
-        <SearchBarChipTopbar
+        <SearchBarChip
           handleOnChange={(e) =>
             table.getColumn("profileName")?.setFilterValue(e.target.value)
           }
