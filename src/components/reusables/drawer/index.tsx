@@ -43,33 +43,35 @@ export function Drawer({ className }: DrawerProps) {
             <LogoChip className="mb-4 mt-10 flex flex-row justify-center align-middle" />
             <DrawerList />
 
-            <Separator />
-            <div className="flex flex-col">
-              <nav>
-                {mobileTopBarItems.map((item) => (
-                  <div
-                    key={item.label}
-                    className="relative m-2 flex cursor-pointer items-center rounded-lg px-4 py-4 hover:bg-accent"
-                  >
-                    <img
-                      src={`/${item.iconName}.svg`} // Replace with the correct path to the icon
-                      className="h-5 w-5"
-                      alt={`${item.label} icon`}
-                    />
-                    <span className="mx-3 font-medium">{item.label}</span>
-                    {item.notificationCount > 0 && (
-                      <NotificationCountChip
-                        count={item.notificationCount}
-                        className="absolute right-1"
+            <div className="md:hidden">
+              <Separator />
+              <div className="flex flex-col">
+                <nav>
+                  {mobileTopBarItems.map((item) => (
+                    <div
+                      key={item.label}
+                      className="relative m-2 flex cursor-pointer items-center rounded-lg px-4 py-4 hover:bg-accent"
+                    >
+                      <img
+                        src={`/${item.iconName}.svg`} // Replace with the correct path to the icon
+                        className="h-5 w-5"
+                        alt={`${item.label} icon`}
                       />
-                    )}
-                  </div>
-                ))}
-              </nav>
-            </div>
+                      <span className="mx-3 font-medium">{item.label}</span>
+                      {item.notificationCount > 0 && (
+                        <NotificationCountChip
+                          count={item.notificationCount}
+                          className="absolute right-1"
+                        />
+                      )}
+                    </div>
+                  ))}
+                </nav>
+              </div>
 
-            <Separator className="" />
-            <UserInfoChip className="m-2 rounded-lg px-4 py-4 hover:bg-accent" />
+              <Separator className="" />
+              <UserInfoChip className="m-2 rounded-lg px-4 py-4 hover:bg-accent" />
+            </div>
           </SheetContent>
         </Sheet>
       </div>
