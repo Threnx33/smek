@@ -7,14 +7,14 @@ type StatusChipProps = {
 export function StatusChip({ text }: StatusChipProps) {
   return (
     <span
-      className={`flex flex-row justify-start items-center w-[6.25rem] border-cLightGreyStroke rounded-lg py-1.5 px-2 leading-none border font-semibold ${
+      className={`flex w-[6.50rem] flex-row items-center justify-start rounded-lg border border-cLightGreyStroke py-1.5 pl-2 pr-2 font-semibold leading-none ${
         text === "Published" || text === "Accepted"
           ? "text-checked"
           : "text-cRed"
       }`}
     >
       <img
-        className="h-4 w-4 mr-1"
+        className="mr-1 h-4 w-4"
         src={
           text === "Published" || text === "Accepted"
             ? "/tickCircleGreen.svg"
@@ -22,7 +22,7 @@ export function StatusChip({ text }: StatusChipProps) {
         }
         alt="tickCircleIcon"
       />
-      {text}
+      <span>{text}</span>
     </span>
   );
 }

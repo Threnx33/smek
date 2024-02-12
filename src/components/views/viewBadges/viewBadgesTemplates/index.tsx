@@ -38,14 +38,14 @@ export function ViewBadgesTemplates() {
           />
           <BadgesTemplatesFilterButton
             table={table}
-            className="hidden lg:flex"
+            className="hidden xl:flex"
           />
         </div>
 
         <div className="flex items-center">
-          <BadgesTemplatesCreateButton className="hidden lg:flex" />
+          <BadgesTemplatesCreateButton className="hidden xl:flex" />
 
-          <BadgesTemplatesIssueButton className="hidden lg:flex" />
+          <BadgesTemplatesIssueButton className="hidden xl:flex" />
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -57,20 +57,20 @@ export function ViewBadgesTemplates() {
               <DropdownMenuItem>
                 <BadgesTemplatesFilterButton
                   table={table}
-                  className="lg:hidden"
+                  className="xl:hidden"
                   variant="mobile"
                 />
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <BadgesTemplatesCreateButton
                   variant="mobile"
-                  className="w-full lg:hidden"
+                  className="w-full xl:hidden"
                 />
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <BadgesTemplatesIssueButton
                   variant="mobile"
-                  className="lg:hidden"
+                  className="xl:hidden"
                 />
               </DropdownMenuItem>
               <DropdownMenuItem>
