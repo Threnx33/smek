@@ -12,18 +12,18 @@ export function VerificationCreate() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="mr-3">
+        <Button className="mr-3 shrink-0">
           <img
-            className="h-5 w-5 mr-2"
+            className="h-5 w-5 md:mr-2"
             src="/addSquareWhite.svg"
             alt="addSquareWhiteIcon"
           />
-          Create Verification Template
+          <span className="hidden md:flex">Create Verification Template</span>
         </Button>
       </SheetTrigger>
-      <SheetContent className="min-w-[34rem] overflow-auto">
+      <SheetContent className="w-full overflow-auto p-2 sm:min-w-[34rem] sm:p-6">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-semibold text-2xl ">
+          <SheetTitle className="text-2xl font-semibold ">
             Create Verification Template
           </SheetTitle>
         </SheetHeader>

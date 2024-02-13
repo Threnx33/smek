@@ -1,5 +1,5 @@
-import { ViewAnalyticsCertificates } from "../viewAnalyticsCredentials";
-import { ViewAnalyticsTemplates } from "../viewAnalyticsTemplates";
+import { ViewAnalyticsCertificates } from "../../viewAnalyticsCredentials";
+import { ViewAnalyticsTemplates } from "../../viewAnalyticsTemplates";
 
 export type TabType = {
   to: string;

@@ -95,14 +95,12 @@ export function VerificationCreateFormCredentialItem<T extends FieldValues>({
   };
 
   return (
-    <div className="border rounded-lg px-4 py-3 mb-4" key={i}>
-      <div className="flex">
-        <div className="text-sm mb-2">
-          All of the following conditions match
-        </div>
+    <div className="mb-4 rounded-lg border px-4 py-3" key={i}>
+      <div className="mb-2 flex">
+        <div className="text-sm">All of the following conditions match</div>
         <img
           onClick={() => credentialsArray.remove(i)}
-          className="h-4 w-4 ml-auto cursor-pointer"
+          className="ml-auto h-4 w-4 cursor-pointer"
           src="/closeCircle.svg"
           alt="CloseCircleIcon"
         />
@@ -163,7 +161,7 @@ export function VerificationCreateFormCredentialItem<T extends FieldValues>({
           items={myTypeItems}
         />
 
-        <div className={`flex flex-col mb-4 w-60`}>
+        <div className={`mb-4 flex w-60 flex-col`}>
           <Select value="" onValueChange={handleChange}>
             <SelectTrigger>
               <SelectValue placeholder="Add attribute or group" />
@@ -173,7 +171,7 @@ export function VerificationCreateFormCredentialItem<T extends FieldValues>({
                 {addAttributeItems.map((item, j) => (
                   <div key={uuidv4()}>
                     {item.variant === "label" ? (
-                      <SelectLabel className="text-cMediumGrey text-xs py-1.5 pl-8 pr-2 ">
+                      <SelectLabel className="py-1.5 pl-8 pr-2 text-xs text-cMediumGrey ">
                         {item.text}
                       </SelectLabel>
                     ) : (

@@ -1,21 +1,21 @@
 import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
-import { ANALYTICS_MENU_TABS } from "../analyticsMenuTabs";
+import { ANALYTICS_MENU_TABS } from "../sections/analyticsMenuTabs";
 import { Button } from "@/components/ui/button";
-import { AnalyticsDateTabsChip } from "../analyticsDateTabsChip";
-import { AnalyticsDoughnut } from "../analyticsDoughnut";
-import { AnalyticsTextChip } from "../analyticsTextChip";
-import { AnalyticsLineGraph } from "../analyticsLineGraph";
-import { AnalyticsFilterButton } from "../analyticsFilter";
+import { AnalyticsDateTabsChip } from "../sections/analyticsDateTabsChip";
+import { AnalyticsDoughnut } from "../sections/analyticsDoughnut";
+import { AnalyticsTextChip } from "../sections/analyticsTextChip";
+import { AnalyticsLineGraph } from "../sections/analyticsLineGraph";
+import { AnalyticsFilterButton } from "../sections/analyticsFilter";
 
 export function ViewAnalyticsCertificates() {
   return (
     <TitleWithTabsWrap title="Analytics" tabs={ANALYTICS_MENU_TABS}>
-      <div className="flex justify-between mb-6">
+      <div className="mb-6 flex justify-between">
         <div className="flex items-center space-x-2">
           <AnalyticsDateTabsChip />
           <Button variant="outline">
             <img
-              className="h-5 w-5 mr-2"
+              className="mr-2 h-5 w-5"
               src="/calendar.svg"
               alt="CalendarIcon"
             />
@@ -26,12 +26,12 @@ export function ViewAnalyticsCertificates() {
         <Button>Export</Button>
       </div>
 
-      <div className="flex mb-6">
-        <div className="p-4 border rounded-lg mr-4">
-          <div className="text-lg font-semibold mb-4">Credentials</div>
+      <div className="mb-6 flex">
+        <div className="mr-4 rounded-lg border p-4">
+          <div className="mb-4 text-lg font-semibold">Credentials</div>
           <AnalyticsDoughnut />
         </div>
-        <div className="flex flex-col flex-grow space-y-4">
+        <div className="flex flex-grow flex-col space-y-4">
           <div className="flex  space-x-4">
             <AnalyticsTextChip
               title="Acceptance Rate"

@@ -8,7 +8,7 @@ import { ViewPasswordReset } from "../views/viewPasswordReset";
 import { ViewCreateBadgeTemplate } from "../views/viewBadges/viewBadgesTemplates/viewCreateBadgeTemplate";
 import { BADGES_EARNERS_MENU_TABS } from "../views/viewBadges/viewBadgesEarners/badgesEarnersMenuTabs";
 import { BADGES_COLLECTION_MENU_TABS } from "../views/viewBadges/viewBadgesCollections/badgesCollectionMenuTabs";
-import { ANALYTICS_MENU_TABS } from "../views/viewAnalytics/analyticsMenuTabs";
+import { ANALYTICS_MENU_TABS } from "../views/viewAnalytics/sections/analyticsMenuTabs";
 import { CERTIFICATES_MENU_TABS } from "../views/viewCertificates/certificatesMenuTabs";
 import { CERTIFICATES_TEMPLATE_MENU_TABS } from "../views/viewCertificates/viewCertificatesTemplates/badgesTemplateMenuTabs";
 import { CERTIFICATES_EARNERS_MENU_TABS } from "../views/viewCertificates/viewCertificatesEarners/badgesEarnersMenuTabs";
