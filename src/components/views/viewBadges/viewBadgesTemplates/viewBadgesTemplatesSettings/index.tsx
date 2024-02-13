@@ -27,12 +27,14 @@ const SettingsSection = ({
   descriptionText: string;
   children: React.ReactNode;
 }) => (
-  <div className="flex ">
-    <div className="mb-4">
+  <div className="flex flex-col md:flex-row">
+    <div className="mb-4 mr-6">
       <div className="text-sm font-semibold">{titleText}</div>
       <div className="text-sm">{descriptionText}</div>
     </div>
-    <div className="ml-auto w-[34rem]">{children}</div>
+    <div className="flex-1 md:ml-auto md:w-[28rem] md:flex-none xl:w-[34rem]">
+      {children}
+    </div>
   </div>
 );
 
@@ -75,7 +77,7 @@ export function BadgesTemplateSettings() {
     const subscription = form.watch((value, { name }) => {
       if (name === "collections") {
         const updatedCollections = (value.collections || []).filter(
-          (item): item is string => !!item
+          (item): item is string => !!item,
         );
         setCollections(updatedCollections);
       }
@@ -155,7 +157,7 @@ export function BadgesTemplateSettings() {
   ];
 
   const handleRecommendationEnter = (
-    e: React.KeyboardEvent<HTMLInputElement>
+    e: React.KeyboardEvent<HTMLInputElement>,
   ) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -180,7 +182,7 @@ export function BadgesTemplateSettings() {
             />
           </SettingsSection>
 
-          <Separator className="mt-2 mb-6" />
+          <Separator className="mb-6 mt-2" />
           <SettingsSection
             titleText="Collections"
             descriptionText="Add this template to an existing collection."
@@ -197,9 +199,9 @@ export function BadgesTemplateSettings() {
                   collections.map((item) => (
                     <div
                       key={item}
-                      className="inline-flex items-center mr-2 mb-2"
+                      className="mb-2 mr-2 inline-flex items-center"
                     >
-                      <span className="border px-4 py-2 space-x-2 select-none text-sm font-medium flex rounded-3xl ">
+                      <span className="flex select-none space-x-2 rounded-3xl border px-4 py-2 text-sm font-medium ">
                         <span>{item}</span>
                         <img
                           className="cursor-pointer"
@@ -209,8 +211,8 @@ export function BadgesTemplateSettings() {
                               form
                                 .getValues("collections")
                                 .filter(
-                                  (collectionItem) => collectionItem !== item
-                                )
+                                  (collectionItem) => collectionItem !== item,
+                                ),
                             )
                           }
                           src="/closeCircle.svg"
@@ -220,7 +222,7 @@ export function BadgesTemplateSettings() {
                     </div>
                   ))
                 ) : (
-                  <div className="text-sm text-cMediumGrey mb-4">
+                  <div className="mb-4 text-sm text-cMediumGrey">
                     This template has not been added to any collections.
                   </div>
                 )}
@@ -228,14 +230,14 @@ export function BadgesTemplateSettings() {
             </div>
           </SettingsSection>
 
-          <Separator className="mt-2 mb-6" />
+          <Separator className="mb-6 mt-2" />
           <SettingsSection
             titleText="Collections"
             descriptionText="Add this template to an existing collection."
           >
             <Input
               id="skills"
-              className="border mb-4"
+              className="mb-4 border"
               type="text"
               placeholder="Recommendations"
               onKeyDown={(e) => handleRecommendationEnter(e)}
@@ -245,15 +247,15 @@ export function BadgesTemplateSettings() {
                 recommendations.map((item) => (
                   <div
                     key={item}
-                    className="inline-flex items-center mr-2 mb-2"
+                    className="mb-2 mr-2 inline-flex items-center"
                   >
-                    <span className="border px-4 py-2 space-x-2 select-none text-sm font-medium flex rounded-3xl ">
+                    <span className="flex select-none space-x-2 rounded-3xl border px-4 py-2 text-sm font-medium ">
                       <span>{item}</span>
                       <img
                         className="cursor-pointer"
                         onClick={() =>
                           setRecommendations(
-                            recommendations.filter((x) => x !== item)
+                            recommendations.filter((x) => x !== item),
                           )
                         }
                         src="/closeCircle.svg"
@@ -263,14 +265,14 @@ export function BadgesTemplateSettings() {
                   </div>
                 ))
               ) : (
-                <div className="text-sm text-cMediumGrey mb-4">
+                <div className="mb-4 text-sm text-cMediumGrey">
                   No recommendations have been added to this template.
                 </div>
               )}
             </div>
           </SettingsSection>
 
-          <Separator className="mt-2 mb-6" />
+          <Separator className="mb-6 mt-2" />
           <SettingsSection
             titleText="Publish + Download"
             descriptionText="Allow earners to manage their credential."
@@ -283,7 +285,7 @@ export function BadgesTemplateSettings() {
             />
           </SettingsSection>
 
-          <Separator className="mt-2 mb-6" />
+          <Separator className="mb-6 mt-2" />
           <SettingsSection
             titleText="Template Default Expiration"
             descriptionText="Set a default expiration for badges issued from this template."
@@ -302,7 +304,7 @@ export function BadgesTemplateSettings() {
             </Select>
           </SettingsSection>
 
-          <Separator className="mt-2 mb-6" />
+          <Separator className="mb-6 mt-2" />
           <SettingsSection
             titleText="Expiration Notifications"
             descriptionText="Send message to your earners who have badges expiring in 60 days."
@@ -315,7 +317,7 @@ export function BadgesTemplateSettings() {
             />
           </SettingsSection>
 
-          <Separator className="mt-2 mb-6" />
+          <Separator className="mb-6 mt-2" />
           <SettingsSection
             titleText="Duplicates"
             descriptionText="Allow earners to receive multiple credentials from this template."

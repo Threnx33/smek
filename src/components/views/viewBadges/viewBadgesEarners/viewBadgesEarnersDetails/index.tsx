@@ -17,7 +17,7 @@ export function ViewBadgesEarnersDetails() {
   const earner = useSelector((state: RootState) => state.page.earner);
 
   const headerText = (text: string) => (
-    <div className="bg-cLightGreyBg text-cMediumGrey px-5 py-3 rounded-xl mb-4 ">
+    <div className="mb-4 rounded-xl bg-cLightGreyBg px-5 py-3 text-cMediumGrey ">
       {text}
     </div>
   );
@@ -25,22 +25,26 @@ export function ViewBadgesEarnersDetails() {
   return (
     <BadgesEarnerWrap>
       <div className="flex flex-col text-sm">
-        <div className="ml-auto flex items-center space-x-2 mb-6">
+        <div className="mb-3 ml-auto flex items-center space-x-2 xl:mb-6">
           <Button>Revoke</Button>
           <Button>Replace</Button>
           <Button>Delete</Button>
         </div>
 
-        <div className="flex">
-          <img className="h-72 w-72 mx-14" src="/badge.png" alt="BadgeImage" />
-          <div className="flex flex-col w-full">
+        <div className="flex flex-col items-center xl:flex-row xl:items-start">
+          <img
+            className="mb-4 h-52 w-52 sm:h-72 sm:w-72 xl:mx-14"
+            src="/badge.png"
+            alt="BadgeImage"
+          />
+          <div className="flex w-full flex-col">
             {headerText("Details")}
             <div className="mb-4">
               The Foundations of Leadership - International badge is issued to
               students in Latin America who have completed the Fundamentos de
               Liderazgo 96-hour course.
             </div>
-            <div className="flex space-x-6 mb-6">
+            <div className="mb-6 flex space-x-6">
               <div className="flex flex-col space-y-2 text-cMediumGrey">
                 <span>Issued by:</span>
                 <span>Issued to:</span>
@@ -65,11 +69,11 @@ export function ViewBadgesEarnersDetails() {
             </div>
 
             {headerText("Skills")}
-            <div className="space-y-2 mb-6">
+            <div className="mb-6 space-y-2">
               {BADGES_DETAILS_SKILLS.map((item) => (
                 <div
                   key={item}
-                  className="inline-flex items-center mr-3 px-5 py-3 border rounded-full"
+                  className="mr-3 inline-flex items-center rounded-full border px-5 py-3"
                 >
                   {item}
                 </div>
@@ -77,7 +81,7 @@ export function ViewBadgesEarnersDetails() {
             </div>
 
             {headerText("Details")}
-            <div className="flex space-x-6 mb-6">
+            <div className="mb-6 flex space-x-6">
               <div className="flex flex-col space-y-2 text-cMediumGrey">
                 <span>Type:</span>
                 <span>Level:</span>

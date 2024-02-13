@@ -17,7 +17,7 @@ export function BadgesCollectionWrap({ children }: BadgesCollectionWrapProps) {
 
   function getInitialTab() {
     const newTab = BADGES_COLLECTION_MENU_TABS.find(
-      (tab) => tab.to === location.pathname
+      (tab) => tab.to === location.pathname,
     );
     if (newTab) {
       return newTab;
@@ -27,27 +27,27 @@ export function BadgesCollectionWrap({ children }: BadgesCollectionWrapProps) {
 
   return (
     <MainWrap>
-      <div className="flex mb-5 items-center leading-none">
+      <div className="mb-5 flex items-center leading-none">
         <Link to="/badges/templates">
-          <span className="text-cMediumGrey text-xs cursor-pointer">
+          <span className="cursor-pointer text-xs text-cMediumGrey">
             Badges
           </span>
         </Link>
-        <span className="text-cMediumGrey text-xs ">
+        <span className="text-xs text-cMediumGrey ">
           &nbsp;&nbsp;{">"}&nbsp;&nbsp;
         </span>
         <Link to="/badges/collections">
-          <span className="text-cMediumGrey text-xs cursor-pointer">
+          <span className="cursor-pointer text-xs text-cMediumGrey">
             Collections
           </span>
         </Link>
-        <span className="text-cMediumGrey text-xs ">
+        <span className="text-xs text-cMediumGrey ">
           &nbsp;&nbsp;{">"}&nbsp;&nbsp;
         </span>
         <span className="text-xs"> {collection?.collection}</span>
       </div>
 
-      <div className="text-2xl font-semibold mb-5 select-none">
+      <div className="mb-5 select-none text-2xl font-semibold">
         {collection?.collection}
       </div>
       <TabsChip
@@ -55,7 +55,7 @@ export function BadgesCollectionWrap({ children }: BadgesCollectionWrapProps) {
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
       />
-      <div className="bg-white flex flex-col flex-grow p-6 rounded">
+      <div className="flex flex-grow flex-col rounded bg-white p-3 sm:p-6">
         {children}
       </div>
     </MainWrap>

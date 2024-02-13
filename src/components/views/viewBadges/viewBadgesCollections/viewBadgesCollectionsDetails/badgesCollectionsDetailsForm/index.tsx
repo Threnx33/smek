@@ -60,7 +60,7 @@ export function BadgesCollectionsDetailsForm({
     <div className={className} {...props}>
       <Form {...form}>
         <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="flex flex-col w-8/12 mb-6">
+          <div className="mb-6 flex flex-col md:w-8/12">
             <CustomInput
               form={form}
               name="collectionName"
@@ -82,7 +82,7 @@ export function BadgesCollectionsDetailsForm({
 
             <Separator className="mb-6" />
             <div className="font-semibold">Visibility</div>
-            <div className="text-sm mb-4">
+            <div className="mb-4 text-sm">
               Make your collection public for earners, or private for
               administrative purposes.
             </div>
@@ -97,7 +97,7 @@ export function BadgesCollectionsDetailsForm({
 
             <Separator className="mb-6" />
             <div className="font-semibold">Templates</div>
-            <div className="text-sm mb-4">
+            <div className="mb-4 text-sm">
               Select the templates you would like to appear in this collection.
             </div>
             <CustomSelect

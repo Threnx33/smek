@@ -7,15 +7,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { COUNTRIES } from "@/components/constants/values";
-import { cn } from "@/lib/utils";
 
 export function ViewBadgesTemplatesInsights() {
   return (
     <BadgesTemplateWrap>
-      <div className="flex flex-col flex-grow">
-        <div className="ml-auto flex items-center mb-6">
-          <span className="font-medium w-fit mr-10">Show results for</span>
-          <div className="w-80 mr-4">
+      <div className="flex flex-grow flex-col">
+        <div className="mb-6 ml-auto flex items-center">
+          <span className="mr-10 hidden w-fit font-medium xl:flex">
+            Show results for
+          </span>
+          <div className="mr-2 sm:mr-4 md:min-w-[20rem]">
             <Select>
               <SelectTrigger id="countries">
                 <SelectValue placeholder="Select Country" />
@@ -29,7 +30,7 @@ export function ViewBadgesTemplatesInsights() {
               </SelectContent>
             </Select>
           </div>
-          <div className="w-80">
+          <div className="md:min-w-[20rem]">
             <Select>
               <SelectTrigger id="countries">
                 <SelectValue placeholder="Select State" />
@@ -44,13 +45,13 @@ export function ViewBadgesTemplatesInsights() {
             </Select>
           </div>
         </div>
-        <div className="flex flex-col flex-grow justify-center items-center">
+        <div className="flex flex-grow flex-col items-center justify-center">
           <img
             className="mb-10"
             src="/emptyIllustration.png"
             alt="emptyIllustrationImage"
           />
-          <div className="text-cMediumGrey text-center">
+          <div className="text-center text-cMediumGrey">
             No analytics available for United States at this time.
           </div>
         </div>

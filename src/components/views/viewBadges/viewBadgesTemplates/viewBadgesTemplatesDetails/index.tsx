@@ -46,7 +46,7 @@ export function ViewBadgesTemplatesDetails() {
   return (
     <BadgesTemplateWrap>
       <div className="flex flex-col text-sm">
-        <div className="items-cente mb-2 ml-auto flex xl:mb-6">
+        <div className="mb-3 ml-auto flex items-center xl:mb-6">
           <BadgesTemplatesIssueButton
             templateName={template?.templateName}
             issuer="Skillquiver"
