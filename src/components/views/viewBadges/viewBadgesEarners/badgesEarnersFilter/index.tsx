@@ -21,14 +21,18 @@ export function BadgesEarnersFilterButton<TData>({
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline">
-          <img className="h-5 w-5 mr-2" src="/filter.svg" alt="FilterIcon" />
-          <span>Filters</span>
+        <Button variant="outline" className="ml-auto shrink-0 xl:ml-0">
+          <img
+            className="h-5 w-5 xl:mr-2 "
+            src="/filter.svg"
+            alt="FilterIcon"
+          />
+          <span className="hidden xl:flex">Filters</span>
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-1/2 overflow-auto">
+      <SheetContent className="overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-semibold text-2xl ">Filters</SheetTitle>
+          <SheetTitle className="text-2xl font-semibold ">Filters</SheetTitle>
         </SheetHeader>
         <BadgesEarnersFilterForm table={table} />
       </SheetContent>

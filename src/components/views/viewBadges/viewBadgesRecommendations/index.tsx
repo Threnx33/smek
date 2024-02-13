@@ -36,15 +36,21 @@ export function ViewBadgesRecommendations() {
           placeholder="Search recommendations"
         />
         <div className="flex items-center">
-          <BadgesRecommendationsCreate />
+          <BadgesRecommendationsCreate className="hidden xl:flex" />
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="px-3">
+              <Button variant="outline" className="shrink-0 px-3">
                 <img className="h-5 w-5" src="/dots.svg" alt="DotsIcon" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
+              <DropdownMenuItem>
+                <BadgesRecommendationsCreate
+                  className="xl:hidden"
+                  variant="mobile"
+                />
+              </DropdownMenuItem>
               <DropdownMenuItem>
                 <div className="flex space-x-2 py-1 pr-2">
                   <img className="h-5 w-5" src="/export.svg" alt="ExportIcon" />

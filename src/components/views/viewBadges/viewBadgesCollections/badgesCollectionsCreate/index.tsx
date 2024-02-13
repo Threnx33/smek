@@ -15,21 +15,21 @@ export function BadgesCollectionsCreate() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="mr-3">
+        <Button className="mr-3 shrink-0">
           <img
-            className="h-5 w-5 mr-2"
+            className="h-5 w-5 xl:mr-2"
             src="/addSquareWhite.svg"
             alt="addSquareWhiteIcon"
           />
-          Create Collection
+          <span className="hidden xl:flex">Create Collection</span>
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-1/2 overflow-auto">
+      <SheetContent className="overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-semibold text-2xl ">
+          <SheetTitle className="text-2xl font-semibold ">
             Add Collection
           </SheetTitle>
-          <SheetDescription className="font-normal text-foreground text-xs">
+          <SheetDescription className="text-xs font-normal text-foreground">
             Complete the information below to add collection.
           </SheetDescription>
         </SheetHeader>

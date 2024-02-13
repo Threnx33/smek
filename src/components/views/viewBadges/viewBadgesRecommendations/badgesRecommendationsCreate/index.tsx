@@ -9,25 +9,44 @@ import {
 } from "@/components/ui/sheet";
 import { BadgesRecommendationsCreateForm } from "./badgesRecommendationsCreateForm";
 
-export function BadgesRecommendationsCreate() {
+type BadgesRecommendationsCreateProps = {
+  className?: string;
+  variant?: "desktop" | "mobile";
+};
+
+export function BadgesRecommendationsCreate({
+  className,
+  variant,
+}: BadgesRecommendationsCreateProps) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="mr-3">
-          <img
-            className="h-5 w-5 mr-2"
-            src="/addSquareWhite.svg"
-            alt="addSquareWhiteIcon"
-          />
-          Create Recommendation
-        </Button>
+        {variant !== "mobile" ? (
+          <Button className={`mr-3 ${className}`}>
+            <img
+              className="mr-2 h-5 w-5"
+              src="/addSquareWhite.svg"
+              alt="addSquareWhiteIcon"
+            />
+            Create Recommendation
+          </Button>
+        ) : (
+          <div className="flex space-x-2 py-1 pr-2">
+            <img
+              className="mr-2 h-5 w-5"
+              src="/addSquare.svg"
+              alt="addSquareIcon"
+            />
+            Create Recommendation
+          </div>
+        )}
       </SheetTrigger>
       <SheetContent className="w-1/2 overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-semibold text-2xl ">
+          <SheetTitle className="text-2xl font-semibold ">
             Add Recommendation
           </SheetTitle>
-          <SheetDescription className="font-normal text-foreground text-xs">
+          <SheetDescription className="text-xs font-normal text-foreground">
             Complete the information below to add recommendation.
           </SheetDescription>
         </SheetHeader>
