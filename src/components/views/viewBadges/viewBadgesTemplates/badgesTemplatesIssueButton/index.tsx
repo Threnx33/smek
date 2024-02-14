@@ -44,7 +44,7 @@ export function BadgesTemplatesIssueButton({
           )}
         </div>
       </SheetTrigger>
-      <SheetContent className="w-1/2 overflow-auto">
+      <SheetContent className="w-full overflow-auto p-2 sm:p-6">
         <SheetHeader className="mb-6">
           <SheetTitle className="text-2xl font-semibold">
             Issue Badge

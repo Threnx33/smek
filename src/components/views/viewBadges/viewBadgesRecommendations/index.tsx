@@ -45,11 +45,8 @@ export function ViewBadgesRecommendations() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>
-                <BadgesRecommendationsCreate
-                  className="xl:hidden"
-                  variant="mobile"
-                />
+              <DropdownMenuItem className="xl:hidden">
+                <BadgesRecommendationsCreate variant="mobile" />
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <div className="flex space-x-2 py-1 pr-2">

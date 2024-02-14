@@ -18,7 +18,7 @@ export function ViewAnalyticsCertificates() {
   return (
     <TitleWithTabsWrap title="Analytics" tabs={ANALYTICS_MENU_TABS}>
       <div className="mb-4 flex items-center xl:mb-6">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center xl:space-x-2">
           <AnalyticsDateTabsChip />
           <Button variant="outline" className="hidden xl:flex">
             <img
@@ -44,13 +44,10 @@ export function ViewAnalyticsCertificates() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem>
-              <AnalyticsFilterButton variant="mobile" className="xl:hidden" />
+              <AnalyticsFilterButton variant="mobile" />
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <AnalyticsExportButton
-                variant="mobile"
-                className="ml-auto hidden xl:flex"
-              />
+              <AnalyticsExportButton variant="mobile" />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

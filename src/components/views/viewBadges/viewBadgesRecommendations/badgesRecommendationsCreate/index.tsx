@@ -41,7 +41,7 @@ export function BadgesRecommendationsCreate({
           </div>
         )}
       </SheetTrigger>
-      <SheetContent className="w-1/2 overflow-auto">
+      <SheetContent className="w-full overflow-auto sm:w-auto">
         <SheetHeader className="mb-6">
           <SheetTitle className="text-2xl font-semibold ">
             Add Recommendation

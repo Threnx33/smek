@@ -24,7 +24,7 @@ export function BadgesCollectionsCreate() {
           <span className="hidden xl:flex">Create Collection</span>
         </Button>
       </SheetTrigger>
-      <SheetContent className="overflow-auto">
+      <SheetContent className="w-full overflow-auto sm:w-auto">
         <SheetHeader className="mb-6">
           <SheetTitle className="text-2xl font-semibold ">
             Add Collection

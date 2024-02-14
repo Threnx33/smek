@@ -21,7 +21,7 @@ export function IssuerCreate() {
           <span className="hidden md:inline">Create Issuer Profile</span>
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-1/2 overflow-auto">
+      <SheetContent className="w-full overflow-auto">
         <SheetHeader className="mb-6">
           <SheetTitle className="text-2xl font-semibold ">
             Create Issuer Profile

@@ -36,7 +36,7 @@ export function ViewBadgesIssue() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="shrink-0 px-3">
+              <Button variant="outline" className="shrink-0 px-3 xl:hidden">
                 <img className="h-5 w-5" src="/dots.svg" alt="DotsIcon" />
               </Button>
             </DropdownMenuTrigger>

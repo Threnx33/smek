@@ -54,24 +54,14 @@ export function ViewBadgesTemplates() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>
-                <BadgesTemplatesFilterButton
-                  table={table}
-                  className="xl:hidden"
-                  variant="mobile"
-                />
+              <DropdownMenuItem className="xl:hidden">
+                <BadgesTemplatesFilterButton table={table} variant="mobile" />
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <BadgesTemplatesCreateButton
-                  variant="mobile"
-                  className="w-full xl:hidden"
-                />
+              <DropdownMenuItem className="xl:hidden">
+                <BadgesTemplatesCreateButton variant="mobile" />
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <BadgesTemplatesIssueButton
-                  variant="mobile"
-                  className="xl:hidden"
-                />
+              <DropdownMenuItem className="xl:hidden">
+                <BadgesTemplatesIssueButton variant="mobile" />
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <div className="flex space-x-2 py-1 pr-2">

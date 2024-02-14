@@ -25,7 +25,7 @@ export function IssuerEdit({ issue }: IssueEditProps) {
           Update DID
         </DropdownMenuItem>
       </SheetTrigger>
-      <SheetContent className="w-1/2 overflow-auto">
+      <SheetContent className="w-full overflow-auto">
         <SheetHeader className="mb-6">
           <SheetTitle className="text-2xl font-semibold">
             Edit Issuer Profile

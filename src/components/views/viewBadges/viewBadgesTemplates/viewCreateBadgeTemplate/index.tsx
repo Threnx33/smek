@@ -15,6 +15,13 @@ import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { z } from "zod";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import CreateBadgeTemplateButtons from "./CreateBadgeTemplateButtons";
 
 const criteriaSchema = z.object({
   criteriaType: z.string(),
@@ -122,38 +129,34 @@ export function ViewCreateBadgeTemplate() {
   return (
     <MainWrap>
       <div className="flex flex-col items-center">
-        <div className="flex flex-col w-7/12">
+        <div className="flex flex-col xl:w-9/12">
           <div className="flex justify-between">
-            <span className="text-2xl font-semibold mb-5">
+            <span className="mb-5 text-2xl font-semibold">
               Create Badge Template
             </span>
-            <div className="space-x-2">
-              <Link to="/badges/templates">
-                <Button variant="outline">Cancel</Button>
-              </Link>
-              <Button variant="outline">Save as draft</Button>
-              <Button>Publish template</Button>
-            </div>
+            <CreateBadgeTemplateButtons />
           </div>
 
-          <div className="bg-white p-7 rounded mb-6">
-            <div className="text-xl font-semibold mb-5 ">Basics</div>
-            <div className="flex justify-between items-center mb-6">
+          <div className="mb-6 rounded bg-white p-4 md:p-7">
+            <div className="mb-5 text-xl font-semibold">Basics</div>
+            <div className="mb-6 flex flex-col items-start justify-between md:flex-row md:items-center">
               <img
-                className="w-60 h-60"
+                className="mb-2 h-60 w-60 md:mb-0"
                 src="/addImage.png"
                 alt="AddImageIcon"
               />
-              <div className="px-10">
-                <div className="font-semibold mb-2">Add Image</div>
-                <div className="text-sm mb-6">
+              <div className="md:px-10">
+                <div className="mb-2 font-semibold">Add Image</div>
+                <div className="mb-4 text-sm md:mb-6">
                   Badge tempaltes must use images in png format, with dimensions
                   between 600x600 and 2048x2048 pixels. Or select from the
                   templates you created on designer.
                 </div>
-                <div className="flex space-x-3">
-                  <Button variant="outline">Upload Image</Button>
-                  <Button variant="outline">
+                <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-2 sm:space-y-0 md:space-x-3">
+                  <Button variant="outline" className="w-fit">
+                    Upload Image
+                  </Button>
+                  <Button variant="outline" className="w-fit">
                     Select from design templates
                   </Button>
                 </div>
@@ -177,7 +180,7 @@ export function ViewCreateBadgeTemplate() {
                 />
 
                 <div className="text-lg font-semibold">Earn This Badge</div>
-                <div className="text-sm mb-2 ">
+                <div className="mb-2 text-sm ">
                   Display a button on this template that directly connects
                   skillquiver users with the opportunity to earn this badge.
                 </div>
@@ -190,7 +193,7 @@ export function ViewCreateBadgeTemplate() {
                 />
 
                 <div className="text-lg font-semibold">Attributes</div>
-                <div className="text-sm mb-4">
+                <div className="mb-4 text-sm">
                   Attributes improve your badge’s overall discoverability, as
                   well as the likelihood it will be recommended to Skillquiver
                   users. Learn more about attributes{" "}
@@ -233,7 +236,7 @@ export function ViewCreateBadgeTemplate() {
                   label="Display attributes on the public view of this badge"
                 />
 
-                <div className="text-lg font-semibold mb-2">Criteria</div>
+                <div className="mb-2 text-lg font-semibold">Criteria</div>
                 {criteriaFields.map((field, index) => (
                   <FormCardWrap className="flex flex-col" key={field.id}>
                     <CustomSelect
@@ -260,7 +263,7 @@ export function ViewCreateBadgeTemplate() {
                       <Button
                         type="button"
                         variant="ghost"
-                        className="ml-auto text-cRed hover:text-cRed-accent hover:bg-background"
+                        className="ml-auto text-cRed hover:bg-background hover:text-cRed-accent"
                         onClick={() => removeCriteria(index)}
                       >
                         Remove Criteria
@@ -270,26 +273,26 @@ export function ViewCreateBadgeTemplate() {
                 ))}
                 <Button
                   type="button"
-                  className="ml-auto mb-6"
+                  className="mb-6 ml-auto"
                   variant="outline"
                   onClick={() => addCriteria()}
                 >
                   <img
-                    className="h-5 w-5 mr-2"
+                    className="mr-2 h-5 w-5"
                     src="/addSquare.svg"
                     alt="AddSquareIcon"
                   />
                   <span>Add Criteria</span>
                 </Button>
 
-                <div className="text-lg font-semibold mb-2">Skills</div>
+                <div className="mb-2 text-lg font-semibold">Skills</div>
                 <FormCardWrap className=" mb-6">
                   <Label className="mb-2" htmlFor="skills">
                     Add skills
                   </Label>
                   <Input
                     id="skills"
-                    className="border p-2 mb-2"
+                    className="mb-2 border p-2"
                     type="text"
                     placeholder="Type in skills"
                     onKeyDown={(e) => handleSkillEnter(e)}
@@ -304,10 +307,13 @@ export function ViewCreateBadgeTemplate() {
                       skillFields.map((field, index) => (
                         <div
                           key={field.id}
-                          className="inline-flex items-center m-1"
+                          className="m-1 inline-flex items-center"
                         >
-                          <span className="border px-4 py-2 space-x-2 select-none text-sm flex rounded-3xl bg-cLightGreyBg">
-                            <span>{field.skillName}</span>
+                          <span className="flex select-none space-x-2 rounded-3xl border bg-cLightGreyBg px-4 py-2 text-sm">
+                            <span>
+                              {field.skillName.substring(0, 13) +
+                                (field.skillName.length > 13 ? "..." : "")}
+                            </span>
                             <img
                               className="cursor-pointer"
                               onClick={() => removeSkill(index)}
@@ -320,22 +326,22 @@ export function ViewCreateBadgeTemplate() {
                     )}
                   </div>
 
-                  <div className="text-sm font-semibold mb-1">
+                  <div className="mb-1 text-sm font-semibold">
                     Suggested Skills
                   </div>
                   {suggestionFailed ? (
                     <>
-                      <div className="text-xs text-cRed mb-1">
+                      <div className="mb-1 text-xs text-cRed">
                         We couldn't find any skills for your template. This is
                         usually due to a lack of data. Try updating your
                         template description.
                       </div>
-                      <TextMainWrap className="text-xs block mb-4">
+                      <TextMainWrap className="mb-4 block text-xs">
                         Need help?
                       </TextMainWrap>
                     </>
                   ) : (
-                    <div className="text-sm mb-4">
+                    <div className="mb-4 text-sm">
                       Skillquiver can generate a list of skills based on your
                       template's description and earning criteria. Using these
                       skills ensures your credential connects to meaningful
@@ -353,7 +359,7 @@ export function ViewCreateBadgeTemplate() {
                   </Button>
                 </FormCardWrap>
 
-                <div className="text-lg font-semibold mb-2">Standards</div>
+                <div className="mb-2 text-lg font-semibold">Standards</div>
                 {standardFields.map((field, index) => (
                   <FormCardWrap className="flex flex-col" key={field.id}>
                     <CustomInput
@@ -379,7 +385,7 @@ export function ViewCreateBadgeTemplate() {
                       <Button
                         type="button"
                         variant="ghost"
-                        className="ml-auto text-cRed hover:text-cRed-accent hover:bg-background"
+                        className="ml-auto text-cRed hover:bg-background hover:text-cRed-accent"
                         onClick={() => removeStandards(index)}
                       >
                         Remove Standard
@@ -389,12 +395,12 @@ export function ViewCreateBadgeTemplate() {
                 ))}
                 <Button
                   type="button"
-                  className="ml-auto mb-6"
+                  className="mb-6 ml-auto"
                   variant="outline"
                   onClick={() => addStandard()}
                 >
                   <img
-                    className="h-5 w-5 mr-2"
+                    className="mr-2 h-5 w-5"
                     src="/addSquare.svg"
                     alt="AddSquareIcon"
                   />
@@ -404,12 +410,8 @@ export function ViewCreateBadgeTemplate() {
             </Form>
           </div>
 
-          <div className="ml-auto space-x-2 mb-6">
-            <Link to="/badges/templates">
-              <Button variant="outline">Cancel</Button>
-            </Link>
-            <Button variant="outline">Save as draft</Button>
-            <Button>Publish template</Button>
+          <div className="mb-6 ml-auto space-x-2">
+            <CreateBadgeTemplateButtons />
           </div>
         </div>
       </div>
