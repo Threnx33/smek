@@ -72,7 +72,7 @@ export const AnalyticsDoughnut = () => {
     afterDatasetsDraw(
       chart: ChartJS<"doughnut">,
       args: any,
-      options: CenterNumberPluginOptions
+      options: CenterNumberPluginOptions,
     ) {
       if (!options.enabled) return;
       const {
@@ -143,19 +143,19 @@ export const AnalyticsDoughnut = () => {
   };
 
   return (
-    <div className="flex space-x-12 px-8 py-4">
-      <div className="h-52 w-52">
+    <div className="flex flex-col items-center sm:flex-row sm:space-x-12">
+      <div className="mb-6 h-52 w-52 sm:mb-0">
         <Doughnut ref={chartRef} data={data} options={options} />
       </div>
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between gap-4 sm:items-start">
         {legendItems.map((item, index) => (
           <div key={index} className="flex ">
             <span
               style={{ backgroundColor: item.color }}
-              className={` w-1 h-full rounded-full inline-block mr-4`}
+              className={`h-fill mr-4 inline-block w-1 rounded-full`}
             ></span>
             <div className="flex flex-col ">
-              <div className="text-cMediumGrey text-xs font-medium ">
+              <div className="text-xs font-medium text-cMediumGrey ">
                 {item.label}
               </div>
               <div className="text-xl font-semibold">{item.data}</div>

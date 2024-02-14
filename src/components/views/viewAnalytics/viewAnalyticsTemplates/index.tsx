@@ -6,14 +6,21 @@ import { AnalyticsDoughnut } from "../sections/analyticsDoughnut";
 import { AnalyticsTextChip } from "../sections/analyticsTextChip";
 import { AnalyticsLineGraph } from "../sections/analyticsLineGraph";
 import { AnalyticsFilterButton } from "../sections/analyticsFilter";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { AnalyticsExportButton } from "../sections/analyticsExportButton";
 
 export function ViewAnalyticsTemplates() {
   return (
     <TitleWithTabsWrap title="Analytics" tabs={ANALYTICS_MENU_TABS}>
-      <div className="mb-6 flex justify-between">
+      <div className="mb-4 flex items-center xl:mb-6">
         <div className="flex items-center space-x-2">
           <AnalyticsDateTabsChip />
-          <Button variant="outline">
+          <Button variant="outline" className="hidden xl:flex">
             <img
               className="mr-2 h-5 w-5"
               src="/calendar.svg"
@@ -21,41 +28,60 @@ export function ViewAnalyticsTemplates() {
             />
             <span>Custom date</span>
           </Button>
-          <AnalyticsFilterButton />
+          <AnalyticsFilterButton className="hidden xl:flex" />
         </div>
-        <Button>Export</Button>
+
+        <AnalyticsExportButton className="ml-auto hidden xl:flex" />
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="outline"
+              className="ml-auto shrink-0 px-3 xl:hidden"
+            >
+              <img className="h-5 w-5" src="/dots.svg" alt="DotsIcon" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem>
+              <AnalyticsFilterButton variant="mobile" className="xl:hidden" />
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <AnalyticsExportButton
+                variant="mobile"
+                className="ml-auto hidden xl:flex"
+              />
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
-      <div className="mb-6 flex">
-        <div className="mr-4 rounded-lg border p-4">
+      <div className="mb-6 grid grid-cols-1 gap-4 xl:grid-cols-[auto_1fr]">
+        <div className="flex flex-col items-center rounded-lg border p-2 sm:items-start sm:p-4">
           <div className="mb-4 text-lg font-semibold">Credentials</div>
           <AnalyticsDoughnut />
         </div>
-        <div className="flex flex-grow flex-col space-y-4">
-          <div className="flex  space-x-4">
-            <AnalyticsTextChip
-              title="Acceptance Rate"
-              percentage="100%"
-              average="67%"
-            />
-            <AnalyticsTextChip
-              title="Share Rate"
-              percentage="57%"
-              average="47%"
-            />
-          </div>
-          <div className="flex space-x-4">
-            <AnalyticsTextChip
-              title="Views per Share"
-              percentage="1.08"
-              average="3.28"
-            />
-            <AnalyticsTextChip
-              title="Clicks per View"
-              percentage="0.31"
-              average="0.98"
-            />
-          </div>
+        <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+          <AnalyticsTextChip
+            title="Acceptance Rate"
+            percentage="100%"
+            average="67%"
+          />
+          <AnalyticsTextChip
+            title="Share Rate"
+            percentage="57%"
+            average="47%"
+          />
+          <AnalyticsTextChip
+            title="Views per Share"
+            percentage="1.08"
+            average="3.28"
+          />
+          <AnalyticsTextChip
+            title="Clicks per View"
+            percentage="0.31"
+            average="0.98"
+          />
         </div>
       </div>
 

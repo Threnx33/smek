@@ -8,18 +8,33 @@ import {
 } from "@/components/ui/sheet";
 import { AnalyticsFilterForm } from "./analyticsFilterForm";
 
-export function AnalyticsFilterButton() {
+interface AnalyticsFilterButtonProps {
+  className?: string;
+  variant?: "desktop" | "mobile";
+}
+
+export function AnalyticsFilterButton({
+  className,
+  variant,
+}: AnalyticsFilterButtonProps) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline">
-          <img className="h-5 w-5 mr-2" src="/filter.svg" alt="FilterIcon" />
-          <span>Filters</span>
-        </Button>
+        {variant !== "mobile" ? (
+          <Button variant="outline" className={`${className}`}>
+            <img className="mr-2 h-5 w-5" src="/filter.svg" alt="FilterIcon" />
+            <span>Filters</span>
+          </Button>
+        ) : (
+          <div className="flex space-x-2 py-1 pr-2">
+            <img className="mr-2 h-5 w-5" src="/filter.svg" alt="FilterIcon" />
+            <span>Filters</span>
+          </div>
+        )}
       </SheetTrigger>
       <SheetContent className="w-1/2 overflow-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="font-bold text-2xl ">Filters</SheetTitle>
+          <SheetTitle className="text-2xl font-bold ">Filters</SheetTitle>
         </SheetHeader>
 
         <AnalyticsFilterForm />

@@ -29,13 +29,13 @@ export function TitleWithTabsWrap({
 
   return (
     <MainWrap>
-      <div className="text-2xl font-semibold mb-5 select-none">{title}</div>
+      <div className="mb-5 select-none text-2xl font-semibold">{title}</div>
       <TabsChip
         tabs={tabs}
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
       />
-      <div className="bg-white flex flex-col flex-grow p-6 rounded">
+      <div className="flex flex-grow flex-col rounded bg-white p-3 sm:p-6">
         {children}
       </div>
     </MainWrap>

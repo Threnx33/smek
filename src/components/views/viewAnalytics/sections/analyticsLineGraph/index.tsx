@@ -27,7 +27,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Filler,
-  Legend
+  Legend,
 );
 
 export const AnalyticsLineGraph = ({
@@ -149,9 +149,9 @@ export const AnalyticsLineGraph = ({
   };
 
   return (
-    <div className="h-[26rem] border rounded-lg p-4 pb-16 mb-6">
-      <div className="header flex justify-between items-ceter">
-        <div className="text-xl font-semibold flex items-center">
+    <div className="mb-6 h-[26rem] w-full rounded-lg border p-2 pb-14 sm:p-4 sm:pb-16">
+      <div className="header items-ceter flex justify-between">
+        <div className="flex items-center text-xl font-semibold">
           <span className="mr-2">{title}</span>
           <img
             className="h-5 w-5 cursor-pointer"
@@ -159,8 +159,8 @@ export const AnalyticsLineGraph = ({
             alt="InfoCircleImage"
           />
         </div>
-        <div className="flex flex-col items-end mr-4 space-y-0 ">
-          <div className="font-bold text-lg">{total}</div>
+        <div className="flex flex-col items-end space-y-0 ">
+          <div className="text-lg font-bold">{total}</div>
           <div className="text-sm text-cMediumGrey">Total {title}</div>
         </div>
       </div>
