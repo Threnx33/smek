@@ -18,10 +18,10 @@ import { z } from "zod";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import CreateBadgeTemplateButtons from "./CreateBadgeTemplateButtons";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 const criteriaSchema = z.object({
   criteriaType: z.string(),

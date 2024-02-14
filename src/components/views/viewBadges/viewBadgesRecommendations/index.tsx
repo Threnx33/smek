@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { BadgesRecommendationsCreate } from "./badgesRecommendationsCreate";
@@ -12,6 +11,7 @@ import { RECOMMENDATIONS, RECOMMENDATIONS_COLUMNS } from "./data";
 import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
 import { BADGES_MENU_TABS } from "../badgesMenuTabs";
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 export function ViewBadgesRecommendations() {
   const table = useCustomTable({
@@ -45,15 +45,15 @@ export function ViewBadgesRecommendations() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem className="xl:hidden">
+              <DropdownMenuItemNoPropagation className="xl:hidden">
                 <BadgesRecommendationsCreate variant="mobile" />
-              </DropdownMenuItem>
-              <DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
+              <DropdownMenuItemNoPropagation>
                 <div className="flex space-x-2 py-1 pr-2">
                   <img className="h-5 w-5" src="/export.svg" alt="ExportIcon" />
                   <span>Export Recommendations List</span>
                 </div>
-              </DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

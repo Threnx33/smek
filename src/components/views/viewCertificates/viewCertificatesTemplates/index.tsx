@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
@@ -14,6 +13,7 @@ import { BadgesTemplatesFilterButton } from "./badgesTemplatesFilter";
 import { BadgesTemplatesIssueButton } from "./badgesTemplatesIssueButton";
 import { TEMPLATES, TEMPLATES_COLUMNS } from "./data";
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 export function ViewCertificatesTemplates() {
   const table = useCustomTable({ columns: TEMPLATES_COLUMNS, data: TEMPLATES });
@@ -60,13 +60,13 @@ export function ViewCertificatesTemplates() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>
+              <DropdownMenuItemNoPropagation>
                 <div className="flex space-x-2 py-1 pr-2">
                   <img className="h-5 w-5" src="/export.svg" alt="ExportIcon" />
                   <span>Export Template List</span>
                 </div>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
+              <DropdownMenuItemNoPropagation>
                 <div className="flex space-x-2 py-1 pr-2">
                   <img
                     className="h-5 w-5"
@@ -75,7 +75,7 @@ export function ViewCertificatesTemplates() {
                   />
                   <span>View Archived Templates</span>
                 </div>
-              </DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

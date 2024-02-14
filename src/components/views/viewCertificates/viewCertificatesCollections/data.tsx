@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -15,6 +14,7 @@ import { VisibilityType } from "@/components/constants/types";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCollection } from "@/redux/pageSlice";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 export type Collection = {
   id: string;
@@ -98,18 +98,18 @@ export const COLLECTIONS_COLUMNS: ColumnDef<Collection>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <Link to="details">
-              <DropdownMenuItem
+              <DropdownMenuItemNoPropagation
                 onClick={() => dispatch(setCollection(collection))}
               >
                 Details
-              </DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
             </Link>
             <Link to="history">
-              <DropdownMenuItem
+              <DropdownMenuItemNoPropagation
                 onClick={() => dispatch(setCollection(collection))}
               >
                 History
-              </DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
             </Link>
           </DropdownMenuContent>
         </DropdownMenu>

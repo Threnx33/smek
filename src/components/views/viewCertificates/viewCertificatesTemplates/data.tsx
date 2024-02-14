@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -15,6 +14,7 @@ import { HeaderSortButton } from "@/components/reusables/headerSortButton";
 import { Link } from "react-router-dom";
 import { setTemplate } from "@/redux/pageSlice";
 import { useDispatch } from "react-redux";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 export type Template = {
   id: string;
@@ -127,7 +127,7 @@ export const TEMPLATES_COLUMNS: ColumnDef<Template>[] = [
       return (
         <span className="flex flex-row items-center ">
           <img
-            className="h-10 w-10 mr-3"
+            className="mr-3 h-10 w-10"
             src={row.original.imgSrc}
             alt="TemplateImage"
           />
@@ -177,24 +177,32 @@ export const TEMPLATES_COLUMNS: ColumnDef<Template>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <Link to="details">
-              <DropdownMenuItem onClick={() => dispatch(setTemplate(template))}>
+              <DropdownMenuItemNoPropagation
+                onClick={() => dispatch(setTemplate(template))}
+              >
                 Details
-              </DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
             </Link>
             <Link to="insights">
-              <DropdownMenuItem onClick={() => dispatch(setTemplate(template))}>
+              <DropdownMenuItemNoPropagation
+                onClick={() => dispatch(setTemplate(template))}
+              >
                 Insights
-              </DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
             </Link>
             <Link to="settings">
-              <DropdownMenuItem onClick={() => dispatch(setTemplate(template))}>
+              <DropdownMenuItemNoPropagation
+                onClick={() => dispatch(setTemplate(template))}
+              >
                 Settings
-              </DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
             </Link>{" "}
             <Link to="history">
-              <DropdownMenuItem onClick={() => dispatch(setTemplate(template))}>
+              <DropdownMenuItemNoPropagation
+                onClick={() => dispatch(setTemplate(template))}
+              >
                 History
-              </DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
             </Link>
           </DropdownMenuContent>
         </DropdownMenu>

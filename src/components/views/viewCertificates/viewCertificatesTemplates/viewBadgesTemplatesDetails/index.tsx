@@ -3,13 +3,13 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
 import { BadgesTemplatesIssueButton } from "../badgesTemplatesIssueButton";
 import { TextMainWrap } from "@/components/reusables/textMainWrap";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 const BADGES_DETAILS_MORE_BUTTON = [
   { label: "Edit", img: "edit" },
@@ -38,7 +38,7 @@ export function ViewBadgesTemplatesDetails() {
   const template = useSelector((state: RootState) => state.page.template);
 
   const headerText = (text: string) => (
-    <div className="bg-cLightGreyBg text-cMediumGrey px-5 py-3 rounded-xl mb-4 ">
+    <div className="mb-4 rounded-xl bg-cLightGreyBg px-5 py-3 text-cMediumGrey ">
       {text}
     </div>
   );
@@ -46,7 +46,7 @@ export function ViewBadgesTemplatesDetails() {
   return (
     <BadgesTemplateWrap>
       <div className="flex flex-col text-sm">
-        <div className="ml-auto flex items-center mb-6">
+        <div className="mb-6 ml-auto flex items-center">
           <BadgesTemplatesIssueButton
             templateName={template?.templateName}
             issuer="Skillquiver"
@@ -60,8 +60,8 @@ export function ViewBadgesTemplatesDetails() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               {BADGES_DETAILS_MORE_BUTTON.map((item) => (
-                <DropdownMenuItem key={item.label}>
-                  <div className="flex space-x-2 pr-2 py-1">
+                <DropdownMenuItemNoPropagation key={item.label}>
+                  <div className="flex space-x-2 py-1 pr-2">
                     <img
                       className="h-5 w-5"
                       src={`/${item.img}.svg`}
@@ -69,7 +69,7 @@ export function ViewBadgesTemplatesDetails() {
                     />
                     <span>{item.label}</span>
                   </div>
-                </DropdownMenuItem>
+                </DropdownMenuItemNoPropagation>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
@@ -77,13 +77,13 @@ export function ViewBadgesTemplatesDetails() {
 
         <div className="flex">
           <img
-            className="h-72 w-72 mx-14"
+            className="mx-14 h-72 w-72"
             src={template?.imgSrc}
             alt="BadgeImage"
           />
-          <div className="flex flex-col w-full">
+          <div className="flex w-full flex-col">
             {headerText("Badge Details")}
-            <div className="flex space-x-6 mb-4">
+            <div className="mb-4 flex space-x-6">
               <div className="flex flex-col space-y-2 text-cMediumGrey">
                 <span>Template ID:</span>
                 <span>Issued by:</span>
@@ -101,11 +101,11 @@ export function ViewBadgesTemplatesDetails() {
             <TextMainWrap className="mb-6">Learn more</TextMainWrap>
 
             {headerText("Badge Attributes")}
-            <div className="space-y-2 mb-6">
+            <div className="mb-6 space-y-2">
               {BADGES_DETAILS_ATTRIBUTES.map((item) => (
                 <div
                   key={item.label}
-                  className="inline-flex items-center space-x-2 mr-3 px-5 py-3 border rounded-full"
+                  className="mr-3 inline-flex items-center space-x-2 rounded-full border px-5 py-3"
                 >
                   <img
                     className="h-5 w-5"
@@ -118,11 +118,11 @@ export function ViewBadgesTemplatesDetails() {
             </div>
 
             {headerText("Skills")}
-            <div className="space-y-2 mb-6">
+            <div className="mb-6 space-y-2">
               {BADGES_DETAILS_SKILLS.map((item) => (
                 <div
                   key={item}
-                  className="inline-flex items-center mr-3 px-5 py-3 border rounded-full"
+                  className="mr-3 inline-flex items-center rounded-full border px-5 py-3"
                 >
                   {item}
                 </div>

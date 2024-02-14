@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -17,6 +16,7 @@ import { HeaderSortButton } from "@/components/reusables/headerSortButton";
 import { Link } from "react-router-dom";
 import { setEarner } from "@/redux/pageSlice";
 import { useDispatch } from "react-redux";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 export type Earner = {
   id: string;
@@ -159,14 +159,18 @@ export const EARNERS_COLUMNS: ColumnDef<Earner>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <Link to="details">
-              <DropdownMenuItem onClick={() => dispatch(setEarner(earner))}>
+              <DropdownMenuItemNoPropagation
+                onClick={() => dispatch(setEarner(earner))}
+              >
                 Details
-              </DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
             </Link>
             <Link to="history">
-              <DropdownMenuItem onClick={() => dispatch(setEarner(earner))}>
+              <DropdownMenuItemNoPropagation
+                onClick={() => dispatch(setEarner(earner))}
+              >
                 History
-              </DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
             </Link>
           </DropdownMenuContent>
         </DropdownMenu>

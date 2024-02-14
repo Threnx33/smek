@@ -9,10 +9,10 @@ import { AnalyticsFilterButton } from "../sections/analyticsFilter";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { AnalyticsExportButton } from "../sections/analyticsExportButton";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 export function ViewAnalyticsTemplates() {
   return (
@@ -43,15 +43,15 @@ export function ViewAnalyticsTemplates() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>
+            <DropdownMenuItemNoPropagation>
               <AnalyticsFilterButton variant="mobile" className="xl:hidden" />
-            </DropdownMenuItem>
-            <DropdownMenuItem>
+            </DropdownMenuItemNoPropagation>
+            <DropdownMenuItemNoPropagation>
               <AnalyticsExportButton
                 variant="mobile"
                 className="ml-auto hidden xl:flex"
               />
-            </DropdownMenuItem>
+            </DropdownMenuItemNoPropagation>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

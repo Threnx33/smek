@@ -5,9 +5,9 @@ import { BADGES_MENU_TABS } from "../badgesMenuTabs";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 export function ViewBadgesIssue() {
   return (
@@ -41,7 +41,7 @@ export function ViewBadgesIssue() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>
+              <DropdownMenuItemNoPropagation>
                 <div className="flex space-x-2 py-1 pr-2">
                   <img
                     className="mr-2 h-5 w-5 "
@@ -50,8 +50,8 @@ export function ViewBadgesIssue() {
                   />
                   Download CSV Template
                 </div>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
+              <DropdownMenuItemNoPropagation>
                 <div className="flex space-x-2 py-1 pr-2">
                   <img
                     className="mr-2 h-5 w-5"
@@ -60,7 +60,7 @@ export function ViewBadgesIssue() {
                   />
                   Upload CSV
                 </div>
-              </DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

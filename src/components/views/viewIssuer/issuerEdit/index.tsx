@@ -5,9 +5,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { IssuerEditForm } from "./issuerEditForm";
 import { Issue } from "../data";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 type IssueEditProps = {
   issue: Issue;
@@ -17,13 +17,7 @@ export function IssuerEdit({ issue }: IssueEditProps) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <DropdownMenuItem
-          onSelect={(e) => {
-            e.preventDefault();
-          }}
-        >
-          Update DID
-        </DropdownMenuItem>
+        <span>Update DID</span>
       </SheetTrigger>
       <SheetContent className="w-full overflow-auto">
         <SheetHeader className="mb-6">

@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { formatDate } from "@/components/utility/dateFormat";
 import { IssuerEdit } from "./issuerEdit";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 export type Issue = {
   id: string;
@@ -155,9 +155,15 @@ export const ISSUES_COLUMNS: ColumnDef<Issue>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <IssuerEdit issue={issue} />
-            <DropdownMenuItem>Export DID</DropdownMenuItem>
-            <DropdownMenuItem>Delete DID</DropdownMenuItem>
+            <DropdownMenuItemNoPropagation>
+              <IssuerEdit issue={issue} />
+            </DropdownMenuItemNoPropagation>
+            <DropdownMenuItemNoPropagation>
+              Export DID
+            </DropdownMenuItemNoPropagation>
+            <DropdownMenuItemNoPropagation>
+              Delete DID
+            </DropdownMenuItemNoPropagation>
           </DropdownMenuContent>
         </DropdownMenu>
       );

@@ -2,10 +2,10 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 export default function CreateBadgeTemplateButtons() {
   return (
@@ -25,11 +25,15 @@ export default function CreateBadgeTemplateButtons() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem>
+          <DropdownMenuItemNoPropagation>
             <Link to="/badges/templates">Cancel</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>Save as draft</DropdownMenuItem>
-          <DropdownMenuItem>Publish template</DropdownMenuItem>
+          </DropdownMenuItemNoPropagation>
+          <DropdownMenuItemNoPropagation>
+            Save as draft
+          </DropdownMenuItemNoPropagation>
+          <DropdownMenuItemNoPropagation>
+            Publish template
+          </DropdownMenuItemNoPropagation>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

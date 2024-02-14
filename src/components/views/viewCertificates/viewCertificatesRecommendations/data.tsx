@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -14,6 +13,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Status, StatusChip } from "@/components/reusables/statusChip";
 import { formatDate } from "@/components/utility/dateFormat";
 import { HeaderSortButton } from "@/components/reusables/headerSortButton";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 type Recommendation = {
   id: string;
@@ -154,14 +154,18 @@ export const RECOMMENDATIONS_COLUMNS: ColumnDef<Recommendation>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
+            <DropdownMenuItemNoPropagation
               onClick={() => navigator.clipboard.writeText(payment.id)}
             >
               Do something
-            </DropdownMenuItem>
+            </DropdownMenuItemNoPropagation>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Do something2</DropdownMenuItem>
-            <DropdownMenuItem>Do something3</DropdownMenuItem>
+            <DropdownMenuItemNoPropagation>
+              Do something2
+            </DropdownMenuItemNoPropagation>
+            <DropdownMenuItemNoPropagation>
+              Do something3
+            </DropdownMenuItemNoPropagation>
           </DropdownMenuContent>
         </DropdownMenu>
       );

@@ -3,13 +3,13 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
 import { BadgesTemplatesIssueButton } from "../badgesTemplatesIssueButton";
 import { TextMainWrap } from "@/components/reusables/textMainWrap";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 const BADGES_DETAILS_MORE_BUTTON = [
   { label: "Edit", img: "edit" },
@@ -60,7 +60,7 @@ export function ViewBadgesTemplatesDetails() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               {BADGES_DETAILS_MORE_BUTTON.map((item) => (
-                <DropdownMenuItem key={item.label}>
+                <DropdownMenuItemNoPropagation key={item.label}>
                   <div className="flex space-x-2 py-1 pr-2">
                     <img
                       className="h-5 w-5"
@@ -69,7 +69,7 @@ export function ViewBadgesTemplatesDetails() {
                     />
                     <span>{item.label}</span>
                   </div>
-                </DropdownMenuItem>
+                </DropdownMenuItemNoPropagation>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>

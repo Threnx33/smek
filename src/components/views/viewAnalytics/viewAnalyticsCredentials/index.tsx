@@ -9,10 +9,10 @@ import { AnalyticsFilterButton } from "../sections/analyticsFilter";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { AnalyticsExportButton } from "../sections/analyticsExportButton";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 export function ViewAnalyticsCertificates() {
   return (
@@ -43,12 +43,12 @@ export function ViewAnalyticsCertificates() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>
+            <DropdownMenuItemNoPropagation>
               <AnalyticsFilterButton variant="mobile" />
-            </DropdownMenuItem>
-            <DropdownMenuItem>
+            </DropdownMenuItemNoPropagation>
+            <DropdownMenuItemNoPropagation>
               <AnalyticsExportButton variant="mobile" />
-            </DropdownMenuItem>
+            </DropdownMenuItemNoPropagation>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
