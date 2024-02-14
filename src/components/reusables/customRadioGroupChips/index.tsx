@@ -49,8 +49,8 @@ export function CustomCheckboxChips<T extends FieldValues>({
                       <FormLabel
                         htmlFor={checkboxId}
                         className={cn(
-                          "flex flex-row items-start mr-2 border border-cLightGrey rounded-lg p-3 space-x-3 space-y-0 cursor-pointer ",
-                          isChecked && "border-checked"
+                          "border-cLightGrey mr-2 flex cursor-pointer flex-row items-start space-x-3 space-y-0 rounded-lg border p-3 ",
+                          isChecked && "border-checked",
                         )}
                       >
                         <FormControl>
@@ -59,7 +59,7 @@ export function CustomCheckboxChips<T extends FieldValues>({
                             className={cn(
                               "rounded-full",
                               isChecked &&
-                                "bg-checked border-checked data-[state=checked]:text-white"
+                                "border-checked bg-checked data-[state=checked]:text-white",
                             )}
                             checked={field.value?.includes(item.value)}
                             onCheckedChange={(checked) => {
@@ -67,8 +67,8 @@ export function CustomCheckboxChips<T extends FieldValues>({
                                 ? field.onChange([...field.value, item.value])
                                 : field.onChange(
                                     field.value?.filter(
-                                      (value: string) => value !== item.value
-                                    )
+                                      (value: string) => value !== item.value,
+                                    ),
                                   );
                             }}
                           />
@@ -77,7 +77,7 @@ export function CustomCheckboxChips<T extends FieldValues>({
                           htmlFor={checkboxId}
                           className={cn(
                             "cursor-pointer font-normal",
-                            isChecked && "text-checked"
+                            isChecked && "text-checked",
                           )}
                         >
                           {item.label}

@@ -25,6 +25,10 @@ export function ViewBadgesTemplates() {
     </div>
   );
 
+  const toggleDropdown = (e: Event) => {
+    e.preventDefault();
+  };
+
   return (
     <TitleWithTabsWrap title="Badges" tabs={BADGES_MENU_TABS}>
       <div className="mb-6 flex justify-between">
@@ -54,7 +58,12 @@ export function ViewBadgesTemplates() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem className="xl:hidden">
+              <DropdownMenuItem
+                onSelect={(e) => {
+                  e.preventDefault();
+                }}
+                className="xl:hidden"
+              >
                 <BadgesTemplatesFilterButton table={table} variant="mobile" />
               </DropdownMenuItem>
               <DropdownMenuItem className="xl:hidden">
