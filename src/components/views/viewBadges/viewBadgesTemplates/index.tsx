@@ -15,6 +15,7 @@ import { TitleWithTabsWrap } from "@/components/reusables/titleWithTabsWrap";
 import { BADGES_MENU_TABS } from "../badgesMenuTabs";
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
 import BadgesTemplatesCreateButton from "./badgesTemplatesCreateButton";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 export function ViewBadgesTemplates() {
   const table = useCustomTable({ columns: TEMPLATES_COLUMNS, data: TEMPLATES });
@@ -58,27 +59,22 @@ export function ViewBadgesTemplates() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem
-                onSelect={(e) => {
-                  e.preventDefault();
-                }}
-                className="xl:hidden"
-              >
+              <DropdownMenuItemNoPropagation className="xl:hidden">
                 <BadgesTemplatesFilterButton table={table} variant="mobile" />
-              </DropdownMenuItem>
-              <DropdownMenuItem className="xl:hidden">
+              </DropdownMenuItemNoPropagation>
+              <DropdownMenuItemNoPropagation className="xl:hidden">
                 <BadgesTemplatesCreateButton variant="mobile" />
-              </DropdownMenuItem>
-              <DropdownMenuItem className="xl:hidden">
+              </DropdownMenuItemNoPropagation>
+              <DropdownMenuItemNoPropagation className="xl:hidden">
                 <BadgesTemplatesIssueButton variant="mobile" />
-              </DropdownMenuItem>
-              <DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
+              <DropdownMenuItemNoPropagation>
                 <div className="flex space-x-2 py-1 pr-2">
                   <img className="h-5 w-5" src="/export.svg" alt="ExportIcon" />
                   <span>Export Template List</span>
                 </div>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
+              <DropdownMenuItemNoPropagation>
                 <div className="flex space-x-2 py-1 pr-2">
                   <img
                     className="h-5 w-5"
@@ -87,7 +83,7 @@ export function ViewBadgesTemplates() {
                   />
                   <span>View Archived Templates</span>
                 </div>
-              </DropdownMenuItem>
+              </DropdownMenuItemNoPropagation>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
