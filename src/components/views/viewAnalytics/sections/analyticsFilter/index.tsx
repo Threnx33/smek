@@ -32,7 +32,7 @@ export function AnalyticsFilterButton({
           </div>
         )}
       </SheetTrigger>
-      <SheetContent className="w-1/2 overflow-auto">
+      <SheetContent className="overflow-auto">
         <SheetHeader className="mb-6">
           <SheetTitle className="text-2xl font-bold ">Filters</SheetTitle>
         </SheetHeader>
