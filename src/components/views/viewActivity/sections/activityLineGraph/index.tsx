@@ -31,7 +31,7 @@ ChartJS.register(
   Legend,
 );
 
-export const AnalyticsLineGraph = ({
+export const ActivityLineGraph = ({
   title,
   total,
   dataValues,
@@ -152,20 +152,16 @@ export const AnalyticsLineGraph = ({
 
   return (
     <div
-      className={`${className} mb-6 h-[26rem] w-full rounded-lg border p-2 pb-14 sm:p-4 sm:pb-16 `}
+      className={` mb-6 h-[26rem] w-full rounded-lg border p-2 pb-14 sm:p-4 sm:pb-16 ${className}`}
     >
-      <div className="header flex items-center justify-between">
-        <div className="flex items-center text-xl font-semibold">
+      <div className="header items-ceter flex justify-between">
+        <div className="mb-2 flex items-center text-xl font-semibold">
           <span className="mr-2">{title}</span>
           <img
             className="h-5 w-5 cursor-pointer"
             src="/infoCircle.svg"
             alt="InfoCircleImage"
           />
-        </div>
-        <div className="flex flex-col items-end space-y-0 ">
-          <div className="text-lg font-bold">{total}</div>
-          <div className="text-sm text-cMediumGrey">Total {title}</div>
         </div>
       </div>
       <Line ref={chartRef} data={data} options={options as any} />

@@ -1,3 +1,4 @@
+import { ViewActivity } from "@/components/views/viewActivity";
 import { ViewAnalyticsCertificates } from "@/components/views/viewAnalytics/viewAnalyticsCredentials";
 import { ViewBadgesTemplates } from "@/components/views/viewBadges/viewBadgesTemplates";
 import { ViewCertificatesTemplates } from "@/components/views/viewCertificates/viewCertificatesTemplates";
@@ -83,7 +84,7 @@ export const DRAWER_LIST_ITEMS = [
     iconName: "activity",
     label: "Activity",
     to: "/activity",
-    component: <ViewAnalyticsCertificates />,
+    component: <ViewActivity />,
   },
   {
     iconName: "support",

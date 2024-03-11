@@ -34,3 +34,9 @@ export function formatTime(date: Date): string {
   const strTime = hours + ":" + minutes + " " + ampm;
   return strTime;
 }
+
+export function formatDateTime(date: Date): string {
+  const formattedDate = formatDate(date);
+  const formattedTime = formatTime(date);
+  return `${formattedDate} ${formattedTime}`;
+}

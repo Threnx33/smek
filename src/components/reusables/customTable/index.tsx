@@ -15,6 +15,8 @@ interface CustomTableProps<TData> {
   emptyImgName: string;
   emptyText: ReactNode;
   noSelections?: boolean;
+  noNextPrev?: boolean;
+  className?: string;
 }
 
 export function CustomTable<TData>({
@@ -22,14 +24,16 @@ export function CustomTable<TData>({
   emptyImgName,
   emptyText,
   noSelections,
+  noNextPrev,
+  className,
 }: CustomTableProps<TData>) {
   const tableRows = table.getFilteredRowModel().rows.length;
 
   return (
-    <div className="flex flex-grow flex-col">
+    <div className={`flex flex-grow flex-col ${className}`}>
       {table.getRowModel().rows.length ? (
-        <div>
-          <div className="mb-2 font-medium">
+        <div className="">
+          <div className={`font-medium ${noNextPrev ? "" : "mb-2"} `}>
             <Table className="min-w-[40rem] overflow-auto">
               <TableHeader className="bg-cLightGreyBg">
                 {table.getHeaderGroups().map((headerGroup) => (
@@ -72,30 +76,32 @@ export function CustomTable<TData>({
             </Table>
           </div>
 
-          <div className="flex items-center justify-end space-x-2 ">
-            {!noSelections && (
-              <div className="flex-1 text-sm text-muted-foreground">
-                {table.getFilteredSelectedRowModel().rows.length} of {tableRows}{" "}
-                row{tableRows > 1 && "s"} selected.
-              </div>
-            )}
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}
-            >
-              Previous
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}
-            >
-              Next
-            </Button>
-          </div>
+          {!noNextPrev && (
+            <div className="flex items-center justify-end space-x-2 ">
+              {!noSelections && (
+                <div className="flex-1 text-sm text-muted-foreground">
+                  {table.getFilteredSelectedRowModel().rows.length} of{" "}
+                  {tableRows} row{tableRows > 1 && "s"} selected.
+                </div>
+              )}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => table.previousPage()}
+                disabled={!table.getCanPreviousPage()}
+              >
+                Previous
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => table.nextPage()}
+                disabled={!table.getCanNextPage()}
+              >
+                Next
+              </Button>
+            </div>
+          )}
         </div>
       ) : (
         <div className="flex flex-grow items-center justify-center">
