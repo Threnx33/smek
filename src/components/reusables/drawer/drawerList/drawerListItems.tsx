@@ -43,6 +43,18 @@ export const DRAWER_LIST_ITEMS = [
     component: <ViewVerification />,
   },
   {
+    iconName: "jobBoard",
+    label: "Job Board",
+    to: "/job-board",
+    component: <ViewBadgesTemplates />,
+  },
+  {
+    iconName: "academy",
+    label: "Academy",
+    to: "/academy",
+    component: <ViewBadgesTemplates />,
+  },
+  {
     iconName: "analytics",
     label: "Analytics",
     to: "/analytics/certificates",
@@ -53,6 +65,25 @@ export const DRAWER_LIST_ITEMS = [
     label: "Preferences",
     to: "/preferences",
     component: <ViewBadgesTemplates />,
+  },
+  {
+    iconName: "planAndBilling",
+    label: "Plan & Billing",
+    to: "/plan-and-billing",
+    component: <ViewBadgesTemplates />,
+  },
+  {
+    iconName: "developer",
+    label: "Developer",
+    to: "/developer",
+    component: <ViewBadgesTemplates />,
+  },
+
+  {
+    iconName: "activity",
+    label: "Activity",
+    to: "/activity",
+    component: <ViewAnalyticsCertificates />,
   },
   {
     iconName: "support",
