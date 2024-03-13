@@ -4,6 +4,7 @@ import { ViewBadgesTemplates } from "@/components/views/viewBadges/viewBadgesTem
 import { ViewCertificatesTemplates } from "@/components/views/viewCertificates/viewCertificatesTemplates";
 import { ViewDashboard } from "@/components/views/viewDashboard";
 import { ViewIssuer } from "@/components/views/viewIssuer";
+import { ViewPlanAndBilling } from "@/components/views/viewPlanAndBilling";
 import { ViewVerification } from "@/components/views/viewVerification";
 
 export const DRAWER_LIST_ITEMS = [
@@ -71,7 +72,7 @@ export const DRAWER_LIST_ITEMS = [
     iconName: "planAndBilling",
     label: "Plan & Billing",
     to: "/plan-and-billing",
-    component: <ViewBadgesTemplates />,
+    component: <ViewPlanAndBilling />,
   },
   {
     iconName: "developer",
