@@ -12,7 +12,7 @@ export function UserInfoChip({ className }: UserInfoChipProps) {
       />
       <div className="mx-2 flex flex-col">
         <span className="text-sm font-semibold">Theo Edwards</span>
-        <span className="text-mediumGrey text-sm">Administrator</span>
+        <span className="text-sm text-cMediumGrey">Administrator</span>
       </div>
       <img
         src="/arrowSquareDown.svg"
