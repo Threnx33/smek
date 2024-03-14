@@ -16,7 +16,7 @@ export default function TitleHeaderButtonCard({
       <div className="header flex items-center justify-between">
         <div className="flex w-4/12 flex-col">
           <div className="mb-1 text-sm font-semibold">{title}</div>
-          <div className="text-sm ">{header}</div>
+          <div className="text-xs ">{header}</div>
         </div>
 
         <Button variant="destructive">{buttonText}</Button>

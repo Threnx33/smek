@@ -15,6 +15,7 @@ import {
   DropdownMenuSeparator,
   Separator,
 } from "@radix-ui/react-dropdown-menu";
+import { Link, useNavigate } from "react-router-dom";
 
 const TopBar = () => {
   const [search, setSearch] = useState<string>();
@@ -86,25 +87,31 @@ const TopBar = () => {
 
             <DropdownMenuItemNoPropagation>
               <div className="flex space-x-2 px-2 py-1">
-                <img className="h-5 w-5" src="setting.svg" alt="SettingsIcon" />
+                <img
+                  className="h-5 w-5"
+                  src="/setting.svg"
+                  alt="SettingsIcon"
+                />
                 <span>Settings</span>
               </div>
             </DropdownMenuItemNoPropagation>
 
             <DropdownMenuItemNoPropagation>
-              <div className="flex space-x-2 px-2 py-1">
-                <img
-                  className="h-5 w-5"
-                  src="peopleBlack.svg"
-                  alt="PeopleIcon"
-                />
-                <span>Team settings</span>
-              </div>
+              <Link to="/preferences/team-preferences">
+                <div className="flex space-x-2 px-2 py-1">
+                  <img
+                    className="h-5 w-5"
+                    src="/peopleBlack.svg"
+                    alt="PeopleIcon"
+                  />
+                  <span>Team settings</span>
+                </div>
+              </Link>
             </DropdownMenuItemNoPropagation>
 
             <DropdownMenuItemNoPropagation>
               <div className="flex space-x-2 px-2 py-1">
-                <img className="h-5 w-5" src="logout.svg" alt="LogoutIcon" />
+                <img className="h-5 w-5" src="/logout.svg" alt="LogoutIcon" />
                 <span>Sign out</span>
               </div>
             </DropdownMenuItemNoPropagation>

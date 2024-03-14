@@ -5,7 +5,7 @@ import { ViewCertificatesTemplates } from "@/components/views/viewCertificates/v
 import { ViewDashboard } from "@/components/views/viewDashboard";
 import { ViewIssuer } from "@/components/views/viewIssuer";
 import { ViewPlanAndBilling } from "@/components/views/viewPlanAndBilling";
-import { ViewPreferences } from "@/components/views/viewPreferences";
+import { ViewPreferences } from "@/components/views/viewPreferences/preferences";
 import { ViewSupport } from "@/components/views/viewSupport";
 import { ViewVerification } from "@/components/views/viewVerification";
 

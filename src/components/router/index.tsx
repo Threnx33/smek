@@ -14,6 +14,7 @@ import { CERTIFICATES_TEMPLATE_MENU_TABS } from "../views/viewCertificates/viewC
 import { CERTIFICATES_EARNERS_MENU_TABS } from "../views/viewCertificates/viewCertificatesEarners/badgesEarnersMenuTabs";
 import { CERTIFICATES_COLLECTION_MENU_TABS } from "../views/viewCertificates/viewCertificatesCollections/certificatesCollectionMenuTabs";
 import { ViewCreateCertificateTemplate } from "../views/viewCertificates/viewCertificatesTemplates/viewCreateBadgeTemplate";
+import { ViewTeamPreferences } from "../views/viewPreferences/teamPreferences";
 
 export function Router() {
   const routesItems = [
@@ -51,6 +52,10 @@ export function Router() {
         <Route
           path="/certificates/templates/create"
           element={<ViewCreateCertificateTemplate />}
+        />
+        <Route
+          path="/preferences/team-preferences"
+          element={<ViewTeamPreferences />}
         />
       </Routes>
     </BrowserRouter>

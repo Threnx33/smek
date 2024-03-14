@@ -24,6 +24,7 @@ type CustomSelectProps<T extends FieldValues> = {
   mandatory?: boolean;
   className?: string;
   onValueChangeExtra?: () => void;
+  defaultValue?: string;
 };
 
 export function CustomSelect<T extends FieldValues>({
@@ -35,13 +36,14 @@ export function CustomSelect<T extends FieldValues>({
   mandatory,
   className,
   onValueChangeExtra,
+  defaultValue,
 }: CustomSelectProps<T>) {
   return (
     <FormField
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem className={`flex flex-col mb-4 ${className}`}>
+        <FormItem className={`mb-4 flex flex-col ${className}`}>
           <FormLabel>
             {label}
             {mandatory && (
@@ -49,6 +51,7 @@ export function CustomSelect<T extends FieldValues>({
             )}
           </FormLabel>
           <Select
+            defaultValue={defaultValue}
             onValueChange={(e) => {
               field.onChange(e);
               if (onValueChangeExtra) {
