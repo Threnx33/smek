@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ActivityLineGraph } from "./sections/activityLineGraph";
 import { ActivityTable } from "./sections/activityTable";
 import { ActivityWrapper } from "./sections/activityWrapper";
+import TitleHeaderButtonCard from "@/components/reusables/titleHeaderButtonCard";
 
 export function ViewActivity() {
   return (
@@ -16,19 +17,11 @@ export function ViewActivity() {
 
       <ActivityTable />
 
-      <div className={`mb-[2rem] w-full rounded-lg border p-6 `}>
-        <div className="header flex items-center justify-between">
-          <div className="flex w-4/12 flex-col">
-            <div className="mb-1 text-sm font-semibold">Test Mode Data</div>
-            <div className="text-sm ">
-              Clear all of your test data in one click, useful for testing or
-              when the chain resets
-            </div>
-          </div>
-
-          <Button variant="destructive">Delete all test data</Button>
-        </div>
-      </div>
+      <TitleHeaderButtonCard
+        title="Test Mode Data"
+        header=" Clear all of your test data in one click, useful for testing or when the chain resets"
+        buttonText="Delete all test data"
+      />
     </ActivityWrapper>
   );
 }

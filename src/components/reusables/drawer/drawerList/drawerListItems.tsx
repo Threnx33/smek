@@ -5,6 +5,7 @@ import { ViewCertificatesTemplates } from "@/components/views/viewCertificates/v
 import { ViewDashboard } from "@/components/views/viewDashboard";
 import { ViewIssuer } from "@/components/views/viewIssuer";
 import { ViewPlanAndBilling } from "@/components/views/viewPlanAndBilling";
+import { ViewPreferences } from "@/components/views/viewPreferences";
 import { ViewSupport } from "@/components/views/viewSupport";
 import { ViewVerification } from "@/components/views/viewVerification";
 
@@ -63,12 +64,7 @@ export const DRAWER_LIST_ITEMS = [
     to: "/analytics/certificates",
     component: <ViewAnalyticsCertificates />,
   },
-  {
-    iconName: "preferences",
-    label: "Preferences",
-    to: "/preferences",
-    component: <ViewBadgesTemplates />,
-  },
+
   {
     iconName: "planAndBilling",
     label: "Plan & Billing",
@@ -87,6 +83,12 @@ export const DRAWER_LIST_ITEMS = [
     label: "Activity",
     to: "/activity",
     component: <ViewActivity />,
+  },
+  {
+    iconName: "preferences",
+    label: "Preferences",
+    to: "/preferences",
+    component: <ViewPreferences />,
   },
   {
     iconName: "support",

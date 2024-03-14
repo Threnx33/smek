@@ -82,7 +82,7 @@ export function ViewPlanAndBilling() {
 
   return (
     <MainWrap>
-      <Tabs defaultValue="monthly">
+      <Tabs defaultValue="monthly" className="flex flex-grow flex-col">
         <div className="flex">
           <div>
             <div className="mb-2 select-none text-2xl font-semibold">

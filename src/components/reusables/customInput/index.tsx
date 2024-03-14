@@ -1,4 +1,3 @@
-import React from "react";
 import {
   FormControl,
   FormField,
@@ -12,7 +11,7 @@ import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 type CustomInputProps<T extends FieldValues> = {
   form: UseFormReturn<T>;
   name: Path<T>; //keyof T | string
-  label: string;
+  label?: string;
   type: string;
   description?: string;
   defaultValue?: string;
@@ -35,14 +34,16 @@ export function CustomInput<T extends FieldValues>({
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem className="flex flex-col mb-4">
-          <FormLabel className="">
-            {label}
-            {mandatory && <span className="text-cRed ">*</span>}
-            {description && (
-              <div className="mt-1 text-sm font-normal">{description}</div>
-            )}
-          </FormLabel>
+        <FormItem className="mb-4 flex flex-col">
+          {label && (
+            <FormLabel className="">
+              {label}
+              {mandatory && <span className="text-cRed ">*</span>}
+              {description && (
+                <div className="mt-1 text-sm font-normal">{description}</div>
+              )}
+            </FormLabel>
+          )}
           <FormControl>
             <Input
               type={type}
