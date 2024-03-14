@@ -1,34 +1,78 @@
-import { Button } from "@/components/ui/button";
-import { ActivityLineGraph } from "./sections/activityLineGraph";
-import { ActivityTable } from "./sections/activityTable";
-import { ActivityWrapper } from "./sections/activityWrapper";
+import { TitleHeaderWrap } from "@/components/reusables/titleHeaderWrap";
 
-export function ViewActivity() {
+type GridItemProps = {
+  title: string;
+  description: string;
+  iconSrc: string;
+};
+
+const GridItem: React.FC<GridItemProps> = ({ title, description, iconSrc }) => {
   return (
-    <ActivityWrapper>
-      <ActivityLineGraph
-        className="mb-[2rem]"
-        title="Transaction History"
-        total=""
-        dataValues={[10, 15, 20, 15, 9, 14, 30, 18, 20, 14, 18, 10, 45]} // These values should come from your data
-        step={10}
-      />
-
-      <ActivityTable />
-
-      <div className={`mb-[2rem] w-full rounded-lg border p-6 `}>
-        <div className="header flex items-center justify-between">
-          <div className="flex w-4/12 flex-col">
-            <div className="mb-1 text-sm font-semibold">Test Mode Data</div>
-            <div className="text-sm ">
-              Clear all of your test data in one click, useful for testing or
-              when the chain resets
-            </div>
-          </div>
-
-          <Button variant="destructive">Delete all test data</Button>
-        </div>
+    <div className="flex flex-col items-center space-y-4 rounded-lg border bg-white p-8 text-center">
+      <div className="bg-cBlueGraph flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full p-3">
+        <img src={iconSrc} alt="icon" className="h-8 w-8" />
       </div>
-    </ActivityWrapper>
+      <div className="font-semibold">{title}</div>
+      <div className="text-sm text-cMediumGrey">{description}</div>
+    </div>
+  );
+};
+
+export function ViewSupport() {
+  const items = [
+    {
+      title: "Getting Started",
+      description:
+        "Visit our API documentation to learn more about how to get started",
+      iconSrc: "book",
+    },
+    {
+      title: "Account Settings",
+      description:
+        "Visit our API documentation to learn more about how to get started",
+      iconSrc: "userSquare",
+    },
+    {
+      title: "FAQ",
+      description:
+        "Visit our API documentation to learn more about how to get started",
+      iconSrc: "note2",
+    },
+    {
+      title: "Community",
+      description:
+        "Visit our API documentation to learn more about how to get started",
+      iconSrc: "people",
+    },
+    {
+      title: "Documentation",
+      description:
+        "Visit our API documentation to learn more about how to get started",
+      iconSrc: "book2",
+    },
+    {
+      title: "Contact Support",
+      description:
+        "Visit our API documentation to learn more about how to get started",
+      iconSrc: "messages",
+    },
+  ];
+
+  return (
+    <TitleHeaderWrap
+      title="Need help? We’ve got your back"
+      header="Perhaps you can find the answers in our collections"
+    >
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {items.map((item, index) => (
+          <GridItem
+            key={index}
+            title={item.title}
+            description={item.description}
+            iconSrc={"/" + item.iconSrc + ".svg"}
+          />
+        ))}
+      </div>
+    </TitleHeaderWrap>
   );
 }

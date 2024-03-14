@@ -5,6 +5,7 @@ import { ViewCertificatesTemplates } from "@/components/views/viewCertificates/v
 import { ViewDashboard } from "@/components/views/viewDashboard";
 import { ViewIssuer } from "@/components/views/viewIssuer";
 import { ViewPlanAndBilling } from "@/components/views/viewPlanAndBilling";
+import { ViewSupport } from "@/components/views/viewSupport";
 import { ViewVerification } from "@/components/views/viewVerification";
 
 export const DRAWER_LIST_ITEMS = [
@@ -91,6 +92,6 @@ export const DRAWER_LIST_ITEMS = [
     iconName: "support",
     label: "Support",
     to: "/support",
-    component: <ViewBadgesTemplates />,
+    component: <ViewSupport />,
   },
 ];
