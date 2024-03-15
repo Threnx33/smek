@@ -15,6 +15,8 @@ import { CERTIFICATES_EARNERS_MENU_TABS } from "../views/viewCertificates/viewCe
 import { CERTIFICATES_COLLECTION_MENU_TABS } from "../views/viewCertificates/viewCertificatesCollections/certificatesCollectionMenuTabs";
 import { ViewCreateCertificateTemplate } from "../views/viewCertificates/viewCertificatesTemplates/viewCreateBadgeTemplate";
 import { ViewTeamPreferences } from "../views/viewPreferences/teamPreferences";
+import { ViewWebHooks } from "../views/viewDeveloper/webHooks";
+import { ViewDocumentation } from "../views/viewDeveloper/documentation";
 
 export function Router() {
   const routesItems = [
@@ -44,7 +46,9 @@ export function Router() {
         <Route path="/login" element={<ViewLogin />} />
         <Route path="/register" element={<ViewRegister />} />
         <Route path="/password-reset" element={<ViewPasswordReset />} />
+
         {routes}
+
         <Route
           path="/badges/templates/create"
           element={<ViewCreateBadgeTemplate />}
@@ -56,6 +60,11 @@ export function Router() {
         <Route
           path="/preferences/team-preferences"
           element={<ViewTeamPreferences />}
+        />
+        <Route path="/developer/web-hooks" element={<ViewWebHooks />} />
+        <Route
+          path="/developer/documentation"
+          element={<ViewDocumentation />}
         />
       </Routes>
     </BrowserRouter>

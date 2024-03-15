@@ -2,7 +2,7 @@ import { MainWrap } from "@/components/reusables/mainWrap";
 import { TextMainWrap } from "@/components/reusables/textMainWrap";
 
 type TitleHeaderWrapProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   title: string;
   header?: string;
 };

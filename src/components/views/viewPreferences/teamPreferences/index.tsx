@@ -27,13 +27,15 @@ export function ViewTeamPreferences() {
         </Button>
       </div>
       <div className="flex flex-grow flex-col rounded bg-white p-3 sm:p-6">
-        <SearchBarChip
-          handleOnChange={(e) =>
-            table.getColumn("templateName")?.setFilterValue(e.target.value)
-          }
-          className="mb-4"
-          placeholder="Search templates"
-        />
+        <div className="flex">
+          <SearchBarChip
+            handleOnChange={(e) =>
+              table.getColumn("name")?.setFilterValue(e.target.value)
+            }
+            className="mb-4"
+            placeholder="Search name"
+          />
+        </div>
         <CustomTable
           table={table}
           emptyImgName="emptyTemplates"

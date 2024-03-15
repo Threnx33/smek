@@ -3,6 +3,9 @@ import { ViewAnalyticsCertificates } from "@/components/views/viewAnalytics/view
 import { ViewBadgesTemplates } from "@/components/views/viewBadges/viewBadgesTemplates";
 import { ViewCertificatesTemplates } from "@/components/views/viewCertificates/viewCertificatesTemplates";
 import { ViewDashboard } from "@/components/views/viewDashboard";
+import { ViewApiKeys } from "@/components/views/viewDeveloper/apiKeys";
+import { ViewDocumentation } from "@/components/views/viewDeveloper/documentation";
+import { ViewWebHooks } from "@/components/views/viewDeveloper/webHooks";
 import { ViewIssuer } from "@/components/views/viewIssuer";
 import { ViewPlanAndBilling } from "@/components/views/viewPlanAndBilling";
 import { ViewPreferences } from "@/components/views/viewPreferences/preferences";
@@ -64,7 +67,6 @@ export const DRAWER_LIST_ITEMS = [
     to: "/analytics/certificates",
     component: <ViewAnalyticsCertificates />,
   },
-
   {
     iconName: "planAndBilling",
     label: "Plan & Billing",
@@ -74,10 +76,9 @@ export const DRAWER_LIST_ITEMS = [
   {
     iconName: "developer",
     label: "Developer",
-    to: "/developer",
-    component: <ViewBadgesTemplates />,
+    to: "/developer/api-keys",
+    component: <ViewApiKeys />,
   },
-
   {
     iconName: "activity",
     label: "Activity",
