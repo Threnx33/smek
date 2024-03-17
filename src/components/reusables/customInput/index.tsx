@@ -17,6 +17,7 @@ type CustomInputProps<T extends FieldValues> = {
   defaultValue?: string;
   placeholder?: string;
   mandatory?: boolean;
+  className?: string;
 };
 
 export function CustomInput<T extends FieldValues>({
@@ -28,13 +29,14 @@ export function CustomInput<T extends FieldValues>({
   defaultValue,
   placeholder,
   mandatory,
+  className,
 }: CustomInputProps<T>) {
   return (
     <FormField
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem className="mb-4 flex flex-col">
+        <FormItem className={`mb-4 flex flex-col ${className}`}>
           {label && (
             <FormLabel className="">
               {label}

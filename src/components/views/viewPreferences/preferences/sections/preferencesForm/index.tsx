@@ -15,8 +15,8 @@ const PreferencesSection = ({
   descriptionText: string;
   children: React.ReactNode;
 }) => (
-  <div className="mb-8 flex flex-col md:flex-row">
-    <div className="mr-6">
+  <div className="mb-0 flex flex-col md:mb-8 md:flex-row">
+    <div className="mb-4 md:mb-0 md:mr-6">
       <div className="text-sm font-semibold">{titleText}</div>
       <div className="text-sm">{descriptionText}</div>
     </div>
@@ -58,11 +58,11 @@ export function PreferencesForm() {
           <img
             src="/avatar.png"
             alt="AvatarIcon"
-            className="ml-auto h-16 w-16 rounded-full"
+            className="mb-2 h-16 w-16 rounded-full md:mb-0 md:ml-auto"
           />
         </PreferencesSection>
 
-        <Separator className="mb-8" />
+        <Separator className="mb-4 md:mb-8" />
         <PreferencesSection
           titleText="Account Name"
           descriptionText="Your account name is used in emails and for display in Skillquiver Certs, it is not public"
@@ -70,12 +70,17 @@ export function PreferencesForm() {
           <CustomInput form={form} name="name" type="text" />
         </PreferencesSection>
 
-        <Separator className="mb-8" />
+        <Separator className="mb-4 md:mb-8" />
         <PreferencesSection
           titleText="Account Email"
           descriptionText="This is used for sign in and communication, to change it please contact support."
         >
-          <CustomInput form={form} name="email" type="text" />
+          <CustomInput
+            className="mb-8 md:mb-4"
+            form={form}
+            name="email"
+            type="text"
+          />
         </PreferencesSection>
 
         <TitleHeaderButtonCard

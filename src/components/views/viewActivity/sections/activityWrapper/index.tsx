@@ -9,7 +9,7 @@ export function ActivityWrapper({ children }: ActivityWrapperProps) {
   return (
     <MainWrap>
       <div className="mb-2 select-none text-2xl font-semibold">Activity</div>
-      <div className=" mb-5 w-7/12 select-none">
+      <div className=" mb-5 select-none md:w-7/12">
         This page shows a historical list of credential issuance events and
         blockchain transactions, such as DIDs, anchoring, and revocation.
         <div>

@@ -30,40 +30,41 @@ const TopBar = () => {
     <div className="flex w-full items-center px-2 py-4 shadow-sm md:px-4">
       <Drawer className="shrink-0 lg:hidden" />
 
-      <div className="flex w-full items-center justify-between">
+      <div className="flex w-full items-center">
         <SearchBarChip
           placeholder="Discover work, badges & skills"
           handleOnChange={handleOnSeachChange}
         />
+        <div className="ml-auto hidden items-center md:flex">
+          <div className="relative cursor-pointer py-2">
+            <img
+              src="/calendar.svg"
+              alt="calendarIcon"
+              className="mx-3 h-5 w-5"
+            />
+          </div>
+          <div className="relative cursor-pointer py-2">
+            <img
+              src="/sms.svg"
+              alt="smsIcon"
+              className="mx-3 h-5 w-5 cursor-pointer "
+            />
+            <NotificationCountChip count={8} className="right-0 top-0" />
+          </div>
+
+          <div className="relative mr-3 cursor-pointer py-2 ">
+            <img
+              src="/notification.svg"
+              alt="notificationIcon"
+              className="mx-3 h-5 w-5 cursor-pointer"
+            />
+            <NotificationCountChip count={23} className="right-0 top-0" />
+          </div>
+        </div>
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <div className="hidden items-center md:flex">
-              <div className="relative cursor-pointer py-2">
-                <img
-                  src="/calendar.svg"
-                  alt="calendarIcon"
-                  className="mx-3 h-5 w-5"
-                />
-              </div>
-              <div className="relative cursor-pointer py-2">
-                <img
-                  src="/sms.svg"
-                  alt="smsIcon"
-                  className="mx-3 h-5 w-5 cursor-pointer "
-                />
-                <NotificationCountChip count={8} className="right-0 top-0" />
-              </div>
-
-              <div className="relative mr-3 cursor-pointer py-2 ">
-                <img
-                  src="/notification.svg"
-                  alt="notificationIcon"
-                  className="mx-3 h-5 w-5 cursor-pointer"
-                />
-                <NotificationCountChip count={23} className="right-0 top-0" />
-              </div>
-
               <UserInfoChip />
             </div>
           </DropdownMenuTrigger>

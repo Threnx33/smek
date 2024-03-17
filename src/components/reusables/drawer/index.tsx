@@ -5,6 +5,13 @@ import { Button } from "@/components/ui/button";
 import { UserInfoChip } from "../userInfoChip";
 import { Separator } from "@/components/ui/separator";
 import { NotificationCountChip } from "../notificationCountChip";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { DropdownMenuItemNoPropagation } from "../dropdownMenuItemNoPropagation";
+import { Link } from "react-router-dom";
 
 type DrawerProps = {
   className?: string;
@@ -70,7 +77,69 @@ export function Drawer({ className }: DrawerProps) {
               </div>
 
               <Separator className="" />
-              <UserInfoChip className="m-2 rounded-lg px-4 py-4 hover:bg-accent" />
+
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <div>
+                    <UserInfoChip className="m-2 rounded-lg px-4 py-4 hover:bg-accent" />
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItemNoPropagation>
+                    <div className={`px- flex cursor-pointer items-center`}>
+                      <img
+                        src="/avatar.png"
+                        alt="AvatarIcon"
+                        className="h-10 w-10 rounded-full"
+                      />
+                      <div className="mx-2 flex flex-col">
+                        <span className="text-sm font-semibold">
+                          Theo Edwards
+                        </span>
+                        <span className="text-xs text-cMediumGrey">
+                          theoedwards@gmail.com
+                        </span>
+                      </div>
+                    </div>
+                  </DropdownMenuItemNoPropagation>
+                  <Separator />
+
+                  <DropdownMenuItemNoPropagation>
+                    <div className="flex space-x-2 px-2 py-1">
+                      <img
+                        className="h-5 w-5"
+                        src="/setting.svg"
+                        alt="SettingsIcon"
+                      />
+                      <span>Settings</span>
+                    </div>
+                  </DropdownMenuItemNoPropagation>
+
+                  <DropdownMenuItemNoPropagation>
+                    <Link to="/preferences/team-preferences">
+                      <div className="flex space-x-2 px-2 py-1">
+                        <img
+                          className="h-5 w-5"
+                          src="/peopleBlack.svg"
+                          alt="PeopleIcon"
+                        />
+                        <span>Team settings</span>
+                      </div>
+                    </Link>
+                  </DropdownMenuItemNoPropagation>
+
+                  <DropdownMenuItemNoPropagation>
+                    <div className="flex space-x-2 px-2 py-1">
+                      <img
+                        className="h-5 w-5"
+                        src="/logout.svg"
+                        alt="LogoutIcon"
+                      />
+                      <span>Sign out</span>
+                    </div>
+                  </DropdownMenuItemNoPropagation>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </SheetContent>
         </Sheet>

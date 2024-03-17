@@ -78,6 +78,20 @@ export const DRAWER_LIST_ITEMS = [
     label: "Developer",
     to: "/developer/api-keys",
     component: <ViewApiKeys />,
+    subItems: [
+      {
+        label: "API Keys",
+        to: "/developer/api-keys",
+      },
+      {
+        label: "Web Hooks",
+        to: "/developer/web-hooks",
+      },
+      {
+        label: "Documentation",
+        to: "/developer/documentation",
+      },
+    ],
   },
   {
     iconName: "activity",

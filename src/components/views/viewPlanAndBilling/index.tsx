@@ -15,6 +15,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { TextMainWrap } from "@/components/reusables/textMainWrap";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
 
 interface PlanCardProps {
   title: string;
@@ -88,31 +95,61 @@ export function ViewPlanAndBilling() {
             <div className="mb-2 select-none text-2xl font-semibold">
               Plan & Billing
             </div>
-            <div className=" mb-5 w-7/12 select-none">
+            <div className=" mb-5 w-10/12 select-none xl:w-8/12">
               Select any plans that fits your needs. We have plan selections for
               smaller or larger organizations
             </div>
           </div>
           <TabsList className="ml-auto">
-            <TabsTrigger
-              onClick={() => setCurrentTab("monthly")}
-              value="monthly"
-              className={`min-w-[11rem] rounded-l-lg`}
-            >
-              Monthly
-            </TabsTrigger>
-            <TabsTrigger
-              onClick={() => setCurrentTab("yearly")}
-              value="yearly"
-              className={`min-w-[11rem] rounded-r-lg `}
-            >
-              Yearly (Save 10%)
-            </TabsTrigger>
+            <div className="hidden md:flex">
+              <TabsTrigger
+                onClick={() => setCurrentTab("monthly")}
+                value="monthly"
+                className={`min-w-[11rem] rounded-l-lg`}
+              >
+                Monthly
+              </TabsTrigger>
+              <TabsTrigger
+                onClick={() => setCurrentTab("yearly")}
+                value="yearly"
+                className={`min-w-[11rem] rounded-r-lg `}
+              >
+                Yearly (Save 10%)
+              </TabsTrigger>
+            </div>
+            <div className="shrink-0 md:hidden">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="ml-auto shrink-0 px-3 xl:hidden"
+                  >
+                    <img className="h-5 w-5" src="/dots.svg" alt="DotsIcon" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="flex flex-col">
+                  <TabsTrigger
+                    onClick={() => setCurrentTab("monthly")}
+                    value="monthly"
+                    className={`min-w-[11rem] border-none`}
+                  >
+                    Monthly
+                  </TabsTrigger>
+                  <TabsTrigger
+                    onClick={() => setCurrentTab("yearly")}
+                    value="yearly"
+                    className={`min-w-[11rem] border-none`}
+                  >
+                    Yearly (Save 10%)
+                  </TabsTrigger>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </TabsList>
         </div>
         <div className="flex flex-grow flex-col rounded bg-white p-3 sm:p-6">
           <TabsContent value="yearly" className="mb-6">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               <PlanCard
                 title="Free Trial"
                 commitment="Try our features for free with a 14-day trial on our testing environment and assess whether they meet your requirements"
@@ -178,7 +215,7 @@ export function ViewPlanAndBilling() {
             </div>
           </TabsContent>
           <TabsContent value="monthly" className="mb-6">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 2xl:grid-cols-4">
               <PlanCard
                 title="Free Trial"
                 commitment="Try our features for free with a 14-day trial on our testing environment and assess whether they meet your requirements"

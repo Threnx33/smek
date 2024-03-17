@@ -56,6 +56,21 @@ export const ACTIVITY_COLUMNS: ColumnDef<Activity>[] = [
   {
     accessorKey: "link",
     header: "Link",
+    cell: ({ getValue }) => {
+      const link = getValue() as string;
+      const truncatedLinkLg = `${link.substring(0, 40)}...`;
+      const truncatedLinkMd = `${link.substring(0, 20)}...`;
+      const truncatedLinkSm = `${link.substring(0, 10)}...`;
+
+      return (
+        <>
+          <span className="hidden 2xl:inline">{link}</span>
+          <span className="hidden xl:inline 2xl:hidden">{truncatedLinkLg}</span>
+          <span className="hidden md:inline xl:hidden">{truncatedLinkMd}</span>
+          <span className="inline md:hidden">{truncatedLinkSm}</span>
+        </>
+      );
+    },
   },
   {
     id: "actions",
@@ -64,7 +79,7 @@ export const ACTIVITY_COLUMNS: ColumnDef<Activity>[] = [
     cell: ({ getValue }) => {
       return (
         <img
-          className="h-4 w-4"
+          className="min-h-[1rem] min-w-[1rem]"
           src={getValue() ? "/tickCircleGreen.svg" : "/tickCircleRed.svg"}
           alt="tickCircleIcon"
         />
