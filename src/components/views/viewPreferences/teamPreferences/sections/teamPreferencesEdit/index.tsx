@@ -29,7 +29,7 @@ export function TeamPreferencesEdit<TData>({
       <SheetTrigger asChild>
         <div>Edit</div>
       </SheetTrigger>
-      <SheetContent className=" overflow-auto">
+      <SheetContent className="w-full overflow-auto">
         <SheetHeader className="mb-6">
           <SheetTitle className="text-2xl font-semibold ">
             Invite Members

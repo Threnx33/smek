@@ -15,7 +15,7 @@ export function TitleHeaderWrap({
   return (
     <MainWrap>
       <div className="mb-2 select-none text-2xl font-semibold">{title}</div>
-      <div className=" mb-5 w-7/12 select-none">{header}</div>
+      <div className=" mb-5 w-11/12 select-none md:w-7/12">{header}</div>
       <div className="flex flex-grow flex-col rounded bg-white p-3 sm:p-6">
         {children}
       </div>

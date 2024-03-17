@@ -9,7 +9,7 @@ import { WebHookCreate } from "./sections/webHookCreate";
 export function ViewWebHooks() {
   const table = useCustomTable({ columns: TEAMS_COLUMNS, data: TEAMS });
   const emptyText = (
-    <div className=" flex flex-col items-center justify-center gap-2">
+    <div className=" flex flex-col items-center justify-center gap-2 text-center">
       <div className="font-medium">Create your first Webhook Endpoint</div>
       <div className="mb-4 text-cMediumGrey">
         Visit our API documentation to learn more about how to get started

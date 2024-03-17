@@ -17,13 +17,20 @@ export function ViewTeamPreferences() {
           <div className="mb-2 select-none text-2xl font-semibold">
             Team Preference
           </div>
-          <div className=" mb-5 w-7/12 select-none">
+          <div className=" mb-5 w-11/12 select-none xl:w-7/12">
             Learn about <TextMainWrap>team management</TextMainWrap> and{" "}
             <TextMainWrap>adding roles</TextMainWrap>
           </div>
         </div>
         <Button className="ml-auto" type="submit">
-          Invite team member
+          <div className="hidden md:flex">Invite team member</div>
+          <div className="md:hidden">
+            <img
+              src="/addSquareWhite.svg"
+              alt="AddIcon"
+              className="h-5 w-5 shrink-0"
+            />
+          </div>
         </Button>
       </div>
       <div className="flex flex-grow flex-col rounded bg-white p-3 sm:p-6">
