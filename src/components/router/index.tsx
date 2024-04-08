@@ -20,6 +20,7 @@ import { ViewRegister } from "../views/viewRegister";
 import { ViewSchemaCreate } from "../views/viewSchema/schemaCreate/schemaCreatePage";
 import { ViewSelectSchema } from "../views/viewSchema/selectSchema";
 import { ViewSelectDesign } from "../views/viewSchema/selectSchemaDesign";
+import { ViewSchemaAddReceipt } from "../views/viewSchema/addReceipt";
 
 export function Router() {
   const routesItems = [
@@ -47,6 +48,7 @@ export function Router() {
       <>
         <Route path="/schema/schema-select" element={<ViewSelectSchema />} />
         <Route path="/schema/design-select" element={<ViewSelectDesign />} />
+        <Route path="/schema/add-receipt" element={<ViewSchemaAddReceipt />} />
       </>
     );
   }
