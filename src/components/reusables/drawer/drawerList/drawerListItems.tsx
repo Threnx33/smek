@@ -9,6 +9,7 @@ import { ViewWebHooks } from "@/components/views/viewDeveloper/webHooks";
 import { ViewIssuer } from "@/components/views/viewIssuer";
 import { ViewPlanAndBilling } from "@/components/views/viewPlanAndBilling";
 import { ViewPreferences } from "@/components/views/viewPreferences/preferences";
+import { ViewSchema } from "@/components/views/viewSchema";
 import { ViewSupport } from "@/components/views/viewSupport";
 import { ViewVerification } from "@/components/views/viewVerification";
 
@@ -110,5 +111,11 @@ export const DRAWER_LIST_ITEMS = [
     label: "Support",
     to: "/support",
     component: <ViewSupport />,
+  },
+  {
+    iconName: "certificates",
+    label: "Schema",
+    to: "/schema",
+    component: <ViewSchema />,
   },
 ];

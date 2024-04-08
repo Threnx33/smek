@@ -1,22 +1,25 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ViewLogin } from "@/components/views/viewLogin";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { DRAWER_LIST_ITEMS } from "../reusables/drawer/drawerList/drawerListItems";
-import { BADGES_MENU_TABS } from "../views/viewBadges/badgesMenuTabs";
-import { BADGES_TEMPLATE_MENU_TABS } from "../views/viewBadges/viewBadgesTemplates/badgesTemplateMenuTabs";
-import { ViewRegister } from "../views/viewRegister";
-import { ViewPasswordReset } from "../views/viewPasswordReset";
-import { ViewCreateBadgeTemplate } from "../views/viewBadges/viewBadgesTemplates/viewCreateBadgeTemplate";
-import { BADGES_EARNERS_MENU_TABS } from "../views/viewBadges/viewBadgesEarners/badgesEarnersMenuTabs";
-import { BADGES_COLLECTION_MENU_TABS } from "../views/viewBadges/viewBadgesCollections/badgesCollectionMenuTabs";
 import { ANALYTICS_MENU_TABS } from "../views/viewAnalytics/sections/analyticsMenuTabs";
+import { BADGES_MENU_TABS } from "../views/viewBadges/badgesMenuTabs";
+import { BADGES_COLLECTION_MENU_TABS } from "../views/viewBadges/viewBadgesCollections/badgesCollectionMenuTabs";
+import { BADGES_EARNERS_MENU_TABS } from "../views/viewBadges/viewBadgesEarners/badgesEarnersMenuTabs";
+import { BADGES_TEMPLATE_MENU_TABS } from "../views/viewBadges/viewBadgesTemplates/badgesTemplateMenuTabs";
+import { ViewCreateBadgeTemplate } from "../views/viewBadges/viewBadgesTemplates/viewCreateBadgeTemplate";
 import { CERTIFICATES_MENU_TABS } from "../views/viewCertificates/certificatesMenuTabs";
-import { CERTIFICATES_TEMPLATE_MENU_TABS } from "../views/viewCertificates/viewCertificatesTemplates/badgesTemplateMenuTabs";
-import { CERTIFICATES_EARNERS_MENU_TABS } from "../views/viewCertificates/viewCertificatesEarners/badgesEarnersMenuTabs";
 import { CERTIFICATES_COLLECTION_MENU_TABS } from "../views/viewCertificates/viewCertificatesCollections/certificatesCollectionMenuTabs";
+import { CERTIFICATES_EARNERS_MENU_TABS } from "../views/viewCertificates/viewCertificatesEarners/badgesEarnersMenuTabs";
+import { CERTIFICATES_TEMPLATE_MENU_TABS } from "../views/viewCertificates/viewCertificatesTemplates/badgesTemplateMenuTabs";
 import { ViewCreateCertificateTemplate } from "../views/viewCertificates/viewCertificatesTemplates/viewCreateBadgeTemplate";
-import { ViewTeamPreferences } from "../views/viewPreferences/teamPreferences";
-import { ViewWebHooks } from "../views/viewDeveloper/webHooks";
 import { ViewDocumentation } from "../views/viewDeveloper/documentation";
+import { ViewWebHooks } from "../views/viewDeveloper/webHooks";
+import { ViewPasswordReset } from "../views/viewPasswordReset";
+import { ViewTeamPreferences } from "../views/viewPreferences/teamPreferences";
+import { ViewRegister } from "../views/viewRegister";
+import { ViewSchemaCreate } from "../views/viewSchema/schemaCreate/schemaCreatePage";
+import { ViewSelectSchema } from "../views/viewSchema/selectSchema";
+import { ViewSelectDesign } from "../views/viewSchema/selectSchemaDesign";
 
 export function Router() {
   const routesItems = [
@@ -38,6 +41,15 @@ export function Router() {
   const routes = routesItems.map((item) => (
     <Route key={item.to} path={item.to} element={item.component} />
   ));
+
+  function routesToDelete() {
+    return (
+      <>
+        <Route path="/schema/schema-select" element={<ViewSelectSchema />} />
+        <Route path="/schema/design-select" element={<ViewSelectDesign />} />
+      </>
+    );
+  }
 
   return (
     <BrowserRouter>
@@ -66,6 +78,9 @@ export function Router() {
           path="/developer/documentation"
           element={<ViewDocumentation />}
         />
+        <Route path="/schema/create" element={<ViewSchemaCreate />} />
+
+        {routesToDelete()}
       </Routes>
     </BrowserRouter>
   );

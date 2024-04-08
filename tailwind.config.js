@@ -83,6 +83,9 @@ module.exports = {
         cBlueGraph: {
           DEFAULT: "hsl(var(--c-blue-graph))",
         },
+        cWhiteGrey: {
+          DEFAULT: "hsl(var(--c-white-grey))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
