@@ -21,6 +21,7 @@ import { ViewSchemaCreate } from "../views/viewSchema/schemaCreate/schemaCreateP
 import { ViewSelectSchema } from "../views/viewSchema/selectSchema";
 import { ViewSelectDesign } from "../views/viewSchema/selectSchemaDesign";
 import { ViewSchemaAddReceipt } from "../views/viewSchema/addReceipt";
+import { ViewSchemaTabs } from "../views/viewSchema/schemaTabs";
 
 export function Router() {
   const routesItems = [
@@ -46,6 +47,7 @@ export function Router() {
   function routesToDelete() {
     return (
       <>
+        <Route path="/schema/tabs" element={<ViewSchemaTabs />} />
         <Route path="/schema/schema-select" element={<ViewSelectSchema />} />
         <Route path="/schema/design-select" element={<ViewSelectDesign />} />
         <Route path="/schema/add-receipt" element={<ViewSchemaAddReceipt />} />

@@ -16,7 +16,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
 }) => {
   return (
     <div className="flex flex-col items-center justify-center rounded-xl ">
-      <div className="bg-cWhiteGrey flex w-full justify-center rounded-t-xl p-3">
+      <div className="flex w-full justify-center rounded-t-xl bg-cWhiteGrey p-3">
         <img className="" src={imageUrl} alt="Design" />
       </div>
       <div className="w-full rounded-b-xl bg-white px-6 py-4 text-center">
@@ -29,7 +29,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
 
 const CertificateDropzone = () => {
   return (
-    <div className="bg-cWhiteGrey flex flex-col items-center justify-center rounded-xl border-2 border-dashed">
+    <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed bg-cWhiteGrey">
       <div className=" flex w-full justify-center rounded-t-xl ">
         <img className="mb-3" src="/addCircle.svg" alt="Design" />
       </div>
@@ -77,7 +77,7 @@ const CertificateGrid: React.FC = () => {
 
 export function ViewSelectDesign() {
   return (
-    <MainWrap>
+    <>
       <div className="mb-2 select-none text-2xl font-semibold">
         Select a Design
       </div>
@@ -86,6 +86,6 @@ export function ViewSelectDesign() {
         credentials. Alternatively, you can proceed without a design.
       </div>
       <CertificateGrid />
-    </MainWrap>
+    </>
   );
 }

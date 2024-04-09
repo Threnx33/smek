@@ -34,7 +34,7 @@ export function CustomCheckbox<T extends FieldValues>({
       render={({ field }) => (
         <FormItem className={`mb-4 ${className}`}>
           {title && <FormLabel>{title}</FormLabel>}
-          <div className="flex flex-row space-x-2 items-center">
+          <div className="flex flex-row items-center space-x-2">
             <FormControl>
               <Checkbox
                 checked={field.value}

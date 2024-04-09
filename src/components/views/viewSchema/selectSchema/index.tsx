@@ -18,25 +18,32 @@ export function ViewSelectSchema() {
   );
 
   return (
-    <TitleHeaderWrap
-      title="Select a Credential Schema"
-      header="A schema is like a template for credential that issuers and verifiers use. It includes specific credential attributes such as name, license number, issue date etc."
-    >
-      <div className="mb-6 flex justify-between">
-        <SearchBarChip
-          handleOnChange={(e) =>
-            table.getColumn("name")?.setFilterValue(e.target.value)
-          }
-          className="mr-3"
-          placeholder="Search schema"
+    <>
+      <div className="mb-2 select-none text-2xl font-semibold">
+        Select a Credential Schema
+      </div>
+      <div className=" mb-5 w-11/12 select-none md:w-7/12">
+        A schema is like a template for credential that issuers and verifiers
+        use. It includes specific credential attributes such as name, license
+        number, issue date etc.
+      </div>
+      <div className="flex flex-grow flex-col rounded bg-white p-3 sm:p-6">
+        <div className="mb-6 flex justify-between">
+          <SearchBarChip
+            handleOnChange={(e) =>
+              table.getColumn("name")?.setFilterValue(e.target.value)
+            }
+            className="mr-3"
+            placeholder="Search schema"
+          />
+        </div>
+
+        <CustomTable
+          table={table}
+          emptyImgName="addFiles"
+          emptyText={emptyText}
         />
       </div>
-
-      <CustomTable
-        table={table}
-        emptyImgName="addFiles"
-        emptyText={emptyText}
-      />
-    </TitleHeaderWrap>
+    </>
   );
 }

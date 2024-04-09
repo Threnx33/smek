@@ -3,7 +3,7 @@ import { SchemaAddReceiptForm } from "./schemaAddReceiptForm";
 
 export function ViewSchemaAddReceipt() {
   return (
-    <MainWrap>
+    <>
       <div className="mb-2 select-none text-2xl font-semibold">
         Add Recipients
       </div>
@@ -13,6 +13,6 @@ export function ViewSchemaAddReceipt() {
       <div className="flex flex-grow flex-col  p-3 sm:p-6">
         <SchemaAddReceiptForm />
       </div>
-    </MainWrap>
+    </>
   );
 }

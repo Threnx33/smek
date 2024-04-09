@@ -6,8 +6,9 @@ import { Switch } from "@/components/ui/switch";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { SchemaAddReceiptCreateButton } from "../schemaAddReceiptCreate";
 
-const SwitchSection = ({
+export const SwitchSection = ({
   title,
   description,
   information,
@@ -68,7 +69,7 @@ export function SchemaAddReceiptForm() {
             Add credential recipients to start seing list of data here
           </div>
           <div className="flex flex-col gap-2 md:flex-row">
-            <Button variant="outline">Add manually</Button>
+            <SchemaAddReceiptCreateButton />
             <Button>Import Spreadsheet</Button>
           </div>
         </div>

@@ -22,6 +22,7 @@ type CustomCalendarProps<T extends FieldValues> = {
   label: string;
   disabledFunction?: (date: Date) => boolean;
   mandatory?: boolean;
+  className?: string;
 };
 
 export function CustomCalendar<T extends FieldValues>({
@@ -30,13 +31,14 @@ export function CustomCalendar<T extends FieldValues>({
   label,
   disabledFunction,
   mandatory,
+  className,
 }: CustomCalendarProps<T>) {
   return (
     <FormField
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem className="flex flex-col mb-4">
+        <FormItem className={`mb-4 flex flex-col ${className}`}>
           <FormLabel>
             {label} {mandatory && <span className=" text-cRed">*</span>}
           </FormLabel>
@@ -47,13 +49,13 @@ export function CustomCalendar<T extends FieldValues>({
                   variant={"outline"}
                   className={cn(
                     "flex  justify-start font-normal",
-                    !field.value && "opacity-50"
+                    !field.value && "opacity-50",
                   )}
                 >
                   <img
                     src="/calendar.svg"
                     alt="CalendarIcon"
-                    className="h-4 w-4  mr-2"
+                    className="mr-2 h-4  w-4"
                   />
                   {field.value ? (
                     format(field.value, "PPP")
@@ -63,7 +65,7 @@ export function CustomCalendar<T extends FieldValues>({
                   <img
                     src="/arrowDown.svg"
                     alt="ArrowDownIcon"
-                    className="h-4 w-4 ml-auto"
+                    className="ml-auto h-4 w-4"
                   />
                 </Button>
               </FormControl>
