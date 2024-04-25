@@ -3,6 +3,7 @@ import { ViewAnalyticsCertificates } from "@/components/views/viewAnalytics/view
 import { ViewBadgesTemplates } from "@/components/views/viewBadges/viewBadgesTemplates";
 import { ViewCertificatesTemplates } from "@/components/views/viewCertificates/viewCertificatesTemplates";
 import { ViewDashboard } from "@/components/views/viewDashboard";
+import ViewDesigner from "@/components/views/viewDesigner";
 import { ViewApiKeys } from "@/components/views/viewDeveloper/apiKeys";
 import { ViewDocumentation } from "@/components/views/viewDeveloper/documentation";
 import { ViewWebHooks } from "@/components/views/viewDeveloper/webHooks";
@@ -42,7 +43,7 @@ export const DRAWER_LIST_ITEMS = [
     iconName: "designer",
     label: "Designer",
     to: "/designer",
-    component: <ViewBadgesTemplates />,
+    component: <ViewDesigner />,
   },
   {
     iconName: "verification",
