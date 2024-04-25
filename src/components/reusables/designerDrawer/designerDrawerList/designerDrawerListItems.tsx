@@ -1,24 +1,26 @@
-import ViewDesigner from "@/components/views/viewDesigner";
+import ViewDesignerElements from "@/components/views/viewDesigner/viewDesignerElements";
+import ViewDesignerTemplates from "@/components/views/viewDesigner/viewDesignerTemplate";
+import ViewDesigner from "@/components/views/viewDesigner/viewDesignerTemplate";
 import { Category2, ColorsSquare, Setting2, Shapes } from "iconsax-react";
 
 export const DESIGNER_DRAWER_LIST_ITEMS = [
   {
-    icon: <Category2 />,
+    iconName: "category-2",
     to: "/designer/templates",
-    component: <ViewDesigner />,
+    component: <ViewDesignerTemplates />,
   },
   {
-    icon: <Shapes />,
+    iconName: "shapes",
     to: "/designer/elements",
-    component: <ViewDesigner />,
+    component: <ViewDesignerElements />,
   },
   {
-    icon: <ColorsSquare />,
+    iconName: "colors-square",
     to: "/designer/edit",
     component: <ViewDesigner />,
   },
   {
-    icon: <Setting2 />,
+    iconName: "setting-2",
     to: "/designer/settings",
     component: <ViewDesigner />,
   },
