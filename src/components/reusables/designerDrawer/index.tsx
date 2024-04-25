@@ -27,7 +27,7 @@ export function DesignerDrawer({ className }: DesignerDrawerProps) {
   return (
     <div className={className}>
       {/*Desktop drawer*/}
-      <div className="min-h-full overflow-auto shadow-sm">
+      <div className="shadow-r-sm min-h-full overflow-auto border-r-[0.5px]">
         <div className="hidden min-h-screen lg:block">
           <DesignerDrawerList />
         </div>

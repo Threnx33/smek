@@ -14,8 +14,14 @@ export function DesignerDrawerList() {
 
   const getBasePath = (path: string) => {
     const segments = path.split("/");
-    return segments.length > 1 ? `/${segments[1]}` : "/";
+    return segments.length > 1 ? `/${segments.splice(1).join("/")}` : "/";
   };
+
+  console.log(
+    "d",
+    getBasePath(location.pathname),
+    location.pathname.split("/").splice(1),
+  );
 
   return (
     <div className="flex flex-col">
@@ -25,7 +31,7 @@ export function DesignerDrawerList() {
             <Link
               to={item.to}
               className={`m-2 flex items-center rounded-lg px-4 py-4 ${
-                getBasePath(location.pathname) === getBasePath(item.to)
+                getBasePath(location.pathname) === item.to
                   ? "bg-main text-white hover:bg-main-accent"
                   : "hover:bg-accent"
               }`}
