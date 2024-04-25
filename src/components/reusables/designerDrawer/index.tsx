@@ -28,8 +28,7 @@ export function DesignerDrawer({ className }: DesignerDrawerProps) {
     <div className={className}>
       {/*Desktop drawer*/}
       <div className="min-h-full overflow-auto shadow-sm">
-        <div className="hidden min-h-screen min-w-[16rem] lg:block">
-          <LogoChip className="flex flex-row justify-center p-6 align-middle" />
+        <div className="hidden min-h-screen lg:block">
           <DesignerDrawerList />
         </div>
       </div>

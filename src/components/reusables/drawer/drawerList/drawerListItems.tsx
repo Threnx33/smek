@@ -42,7 +42,7 @@ export const DRAWER_LIST_ITEMS = [
   {
     iconName: "designer",
     label: "Designer",
-    to: "/designer",
+    to: "/designer/templates",
     component: <ViewDesigner />,
   },
   {

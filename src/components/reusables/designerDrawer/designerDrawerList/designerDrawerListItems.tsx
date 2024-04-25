@@ -1,28 +1,25 @@
-import { ViewBadgesTemplates } from "@/components/views/viewBadges/viewBadgesTemplates";
-import { ViewCertificatesTemplates } from "@/components/views/viewCertificates/viewCertificatesTemplates";
-import { ViewDashboard } from "@/components/views/viewDashboard";
-import { ViewIssuer } from "@/components/views/viewIssuer";
-import { Category2, ColorsSquare, Settings, Shapes } from "iconsax-react";
+import ViewDesigner from "@/components/views/viewDesigner";
+import { Category2, ColorsSquare, Setting2, Shapes } from "iconsax-react";
 
 export const DESIGNER_DRAWER_LIST_ITEMS = [
   {
     icon: <Category2 />,
-    to: "templates",
-    component: <ViewDashboard />,
+    to: "/designer/templates",
+    component: <ViewDesigner />,
   },
   {
     icon: <Shapes />,
-    to: "elements",
-    component: <ViewIssuer />,
+    to: "/designer/elements",
+    component: <ViewDesigner />,
   },
   {
     icon: <ColorsSquare />,
-    to: "edit",
-    component: <ViewBadgesTemplates />,
+    to: "/designer/edit",
+    component: <ViewDesigner />,
   },
   {
-    icon: <Settings />,
-    to: "settings",
-    component: <ViewCertificatesTemplates />,
+    icon: <Setting2 />,
+    to: "/designer/settings",
+    component: <ViewDesigner />,
   },
 ];

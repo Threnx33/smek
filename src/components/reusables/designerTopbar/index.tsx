@@ -17,7 +17,8 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { Link, useNavigate } from "react-router-dom";
 import { DesignerDrawer } from "../designerDrawer";
-import { Undo2 } from "lucide-react";
+import { Redo, Redo2, Undo, Undo2 } from "lucide-react";
+import { ArrowLeft } from "iconsax-react";
 
 export const DesignerTopbar = () => {
   const [search, setSearch] = useState<string>();
@@ -31,33 +32,16 @@ export const DesignerTopbar = () => {
   return (
     <div className="flex w-full items-center px-2 py-4 shadow-sm md:px-4">
       {/* <DesignerDrawer className="shrink-0 lg:hidden" /> */}
-
-      <div className="flex w-full items-center">
+      <div className="flex w-full items-center gap-4 px-1.5">
+        <ArrowLeft className="h-5 w-5 cursor-pointer" />
         <SearchBarChip
-          placeholder="Discover work, badges & skills"
+          placeholder="Enter design name"
           handleOnChange={handleOnSeachChange}
         />
-        <div className="ml-auto flex items-center">
-          <div className="relative cursor-pointer py-2">
-            <Undo2 />
-          </div>
-          <div className="relative cursor-pointer py-2">
-            <img
-              src="/sms.svg"
-              alt="smsIcon"
-              className="mx-3 h-5 w-5 cursor-pointer "
-            />
-            <NotificationCountChip count={8} className="right-0 top-0" />
-          </div>
-
-          <div className="relative mr-3 cursor-pointer py-2 ">
-            <img
-              src="/notification.svg"
-              alt="notificationIcon"
-              className="mx-3 h-5 w-5 cursor-pointer"
-            />
-            <NotificationCountChip count={23} className="right-0 top-0" />
-          </div>
+        <div className="ml-auto flex items-center gap-4">
+          <Undo2 className="h-5 w-5 cursor-pointer text-cMediumGrey" />
+          <Redo2 className="h-5 w-5 cursor-pointer text-cMediumGrey" />
+          <Button>Save design</Button>
         </div>
       </div>
     </div>

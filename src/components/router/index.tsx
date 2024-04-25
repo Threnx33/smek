@@ -22,6 +22,7 @@ import { ViewSelectSchema } from "../views/viewSchema/selectSchema";
 import { ViewSelectDesign } from "../views/viewSchema/selectSchemaDesign";
 import { ViewSchemaAddReceipt } from "../views/viewSchema/addReceipt";
 import { ViewSchemaTabs } from "../views/viewSchema/schemaTabs";
+import { DESIGNER_DRAWER_LIST_ITEMS } from "../reusables/designerDrawer/designerDrawerList/designerDrawerListItems";
 
 export function Router() {
   const routesItems = [
@@ -38,6 +39,8 @@ export function Router() {
     ...CERTIFICATES_TEMPLATE_MENU_TABS,
     ...CERTIFICATES_EARNERS_MENU_TABS,
     ...CERTIFICATES_COLLECTION_MENU_TABS,
+
+    ...DESIGNER_DRAWER_LIST_ITEMS,
   ];
 
   const routes = routesItems.map((item) => (
