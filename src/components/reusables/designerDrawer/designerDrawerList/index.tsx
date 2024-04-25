@@ -1,8 +1,6 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { DESIGNER_DRAWER_LIST_ITEMS } from "./designerDrawerListItems";
-import { cloneElement, useState } from "react";
-import ReactComponent from "/arrowSquareDown.svg";
-import { IconButton } from "@mui/material";
 
 type OpenSections = { [key: string]: boolean };
 
@@ -23,9 +21,12 @@ export function DesignerDrawerList() {
       <nav className="mt-2">
         {DESIGNER_DRAWER_LIST_ITEMS.map((item) => {
           const active = getBasePath(location.pathname) === item.to;
-
+          console.log(
+            item.iconName,
+            `/designer/designerDrawerIcons/${active ? "accent" : "simple"}/${item.iconName}.svg`,
+          );
           return (
-            <div key={item.to}>
+            <div key={item.to} className="">
               <Link
                 to={item.to}
                 className={`m-2 flex items-center rounded-lg px-4 py-4 ${

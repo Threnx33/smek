@@ -58,8 +58,8 @@ export default function ViewDesignerTemplates() {
   return (
     <div className="flex min-h-screen flex-col">
       <DesignerTopbar />
-      <div className="flex flex-row">
-        <DesignerDrawer className="hidden lg:block" />
+      <div className="grow-1 flex flex-row">
+        <DesignerDrawer className="hidden lg:flex" />
         <DesignerDrawerExtendWrap>
           {designerDrawerExtendedItems.map((section, i) => (
             <div className="flex flex-col" key={section.title}>
@@ -68,8 +68,12 @@ export default function ViewDesignerTemplates() {
             </div>
           ))}
         </DesignerDrawerExtendWrap>
-        <div className="flex flex-grow flex-col bg-cLightGreyBg px-3 py-2 md:px-6 md:py-4">
-          da
+        <div className="shrink-1 flex h-full  flex-col items-center justify-center bg-cLightGreyBg p-3 md:p-14">
+          <img
+            className="h-[629px] w-[445px]"
+            src="/designer/templates-port.png"
+            alt="Designer Icon"
+          />
         </div>
       </div>
     </div>

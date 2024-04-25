@@ -17,11 +17,11 @@ export const DESIGNER_DRAWER_LIST_ITEMS = [
   {
     iconName: "colors-square",
     to: "/designer/edit",
-    component: <ViewDesigner />,
+    component: <ViewDesignerTemplates />,
   },
   {
     iconName: "setting-2",
     to: "/designer/settings",
-    component: <ViewDesigner />,
+    component: <ViewDesignerTemplates />,
   },
 ];

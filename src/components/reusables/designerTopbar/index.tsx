@@ -33,14 +33,14 @@ export const DesignerTopbar = () => {
     <div className="shadow-b-sm flex w-full items-center border-b-[0.5px] px-2 py-4 md:px-4">
       {/* <DesignerDrawer className="shrink-0 lg:hidden" /> */}
       <div className="flex w-full items-center gap-4 px-1.5">
-        <ArrowLeft className="h-5 w-5 cursor-pointer" />
+        <ArrowLeft className="h-[1.25rem] w-[1.25rem] cursor-pointer" />
         <SearchBarChip
           placeholder="Enter design name"
           handleOnChange={handleOnSeachChange}
         />
         <div className="ml-auto flex items-center gap-4">
-          <Undo2 className="h-5 w-5 cursor-pointer text-cMediumGrey" />
-          <Redo2 className="h-5 w-5 cursor-pointer text-cMediumGrey" />
+          <Undo2 className="h-[1.25rem] w-[1.25rem] cursor-pointer text-cMediumGrey" />
+          <Redo2 className="w-4.5 m[1.25rem] h-[1.25rem] cursor-pointer text-cMediumGrey" />
           <Button>Save design</Button>
         </div>
       </div>

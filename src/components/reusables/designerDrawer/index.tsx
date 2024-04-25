@@ -25,12 +25,10 @@ export function DesignerDrawer({ className }: DesignerDrawerProps) {
   // ];
 
   return (
-    <div className={className}>
+    <div className={`min-h-full ${className}`}>
       {/*Desktop drawer*/}
-      <div className="shadow-r-sm min-h-full overflow-auto border-r-[0.5px]">
-        <div className="hidden min-h-screen lg:block">
-          <DesignerDrawerList />
-        </div>
+      <div className="shadow-r-sm hidden min-h-full border-r-[0.5px] lg:flex">
+        <DesignerDrawerList />
       </div>
 
       {/*Mobile drawer*/}
