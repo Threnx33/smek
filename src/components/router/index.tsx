@@ -18,9 +18,9 @@ import { ViewPasswordReset } from "../views/viewPasswordReset";
 import { ViewTeamPreferences } from "../views/viewPreferences/teamPreferences";
 import { ViewRegister } from "../views/viewRegister";
 import { ViewSchemaCreate } from "../views/viewSchema/schemaCreate/schemaCreatePage";
-import { ViewSelectSchema } from "../views/viewSchema/selectSchema";
-import { ViewSelectDesign } from "../views/viewSchema/selectSchemaDesign";
-import { ViewSchemaAddReceipt } from "../views/viewSchema/addReceipt";
+import { ViewSelectSchema } from "../views/viewSchema/schemaTabs/selectSchema";
+import { ViewSelectDesign } from "../views/viewSchema/schemaTabs/selectSchemaDesign";
+import { ViewSchemaAddReceipt } from "../views/viewSchema/schemaTabs/addReceipt";
 import { ViewSchemaTabs } from "../views/viewSchema/schemaTabs";
 import { DESIGNER_DRAWER_LIST_ITEMS } from "../reusables/designerDrawer/designerDrawerList/designerDrawerListItems";
 
@@ -46,17 +46,6 @@ export function Router() {
   const routes = routesItems.map((item) => (
     <Route key={item.to} path={item.to} element={item.component} />
   ));
-
-  function routesToDelete() {
-    return (
-      <>
-        <Route path="/schema/tabs" element={<ViewSchemaTabs />} />
-        <Route path="/schema/schema-select" element={<ViewSelectSchema />} />
-        <Route path="/schema/design-select" element={<ViewSelectDesign />} />
-        <Route path="/schema/add-receipt" element={<ViewSchemaAddReceipt />} />
-      </>
-    );
-  }
 
   return (
     <BrowserRouter>
@@ -86,8 +75,7 @@ export function Router() {
           element={<ViewDocumentation />}
         />
         <Route path="/schema/create" element={<ViewSchemaCreate />} />
-
-        {routesToDelete()}
+        <Route path="/schema/tabs" element={<ViewSchemaTabs />} />
       </Routes>
     </BrowserRouter>
   );

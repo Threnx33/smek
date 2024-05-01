@@ -5,6 +5,7 @@ import { Form } from "@/components/ui/form";
 import { Separator } from "@/components/ui/separator";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 const SchemaSection = ({
@@ -48,6 +49,7 @@ export function SchemaCreateForm() {
   async function onSubmit(data: SchemaCreateFormSchema) {
     console.log(data);
   }
+  const navigate = useNavigate();
 
   return (
     <Form {...form}>
@@ -57,7 +59,7 @@ export function SchemaCreateForm() {
           descriptionText="The schema name is used to derive the “type” field in the credential. It is visible to everyone who views the credential."
         >
           <CustomInput
-            className="w-full "
+            className="w-full"
             form={form}
             name="description"
             type="text"
@@ -85,7 +87,9 @@ export function SchemaCreateForm() {
             </div>
             <div className="flex gap-2">
               <Button variant="outline">Import JSON Schema</Button>
-              <Button>Create Manually</Button>
+              <Button onClick={() => navigate("/schema/tabs")}>
+                Create Manually
+              </Button>
             </div>
           </div>
         </SchemaSection>

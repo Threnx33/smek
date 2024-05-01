@@ -1,7 +1,7 @@
 import { useCustomTable } from "@/components/reusables/useCustomTable";
 import { CustomTable } from "@/components/reusables/customTable";
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
-import { SCHEMAS, SCHEMAS_COLUMNS } from "../data";
+import { SCHEMAS, SCHEMAS_COLUMNS } from "../../data";
 import { TitleHeaderWrap } from "@/components/reusables/titleHeaderWrap";
 
 export function ViewSelectSchema() {

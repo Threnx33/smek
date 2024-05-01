@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { ViewSelectSchema } from "../selectSchema";
-import { ViewSelectDesign } from "../selectSchemaDesign";
-import { ViewSchemaAddReceipt } from "../addReceipt";
+import { ViewSelectSchema } from "./selectSchema";
+import { ViewSelectDesign } from "./selectSchemaDesign";
+import { ViewSchemaAddReceipt } from "./addReceipt";
 import { MainWrap } from "@/components/reusables/mainWrap";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";

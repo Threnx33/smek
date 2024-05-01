@@ -20,7 +20,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
         <img className="" src={imageUrl} alt="Design" />
       </div>
       <div className="w-full rounded-b-xl bg-white px-6 py-4 text-center">
-        <div className="mb-2  font-semibold">{title}</div>
+        <div className="mb-2  flex-nowrap font-semibold">{title}</div>
         <p className="text-sm text-cMediumGrey">{date}</p>
       </div>
     </div>
@@ -49,12 +49,12 @@ const CertificateGrid: React.FC = () => {
     {
       title: "School Certificate",
       date: "10/19/2023",
-      imageUrl: "/design1.png",
+      imageUrl: "/schema/design1.png",
     },
     {
       title: "Employment Certificate",
       date: "10/26/2023",
-      imageUrl: "/design2.png",
+      imageUrl: "/schema/design2.png",
     },
   ];
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
