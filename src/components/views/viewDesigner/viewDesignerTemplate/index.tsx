@@ -71,7 +71,7 @@ export default function ViewDesignerTemplates() {
         <div className="shrink-1 flex h-full  flex-col items-center justify-center bg-cLightGreyBg p-3 md:p-14">
           <img
             className="h-[629px] w-[445px]"
-            src="/designer/templates-port.png"
+            src="/designer/templateImages/template5.png"
             alt="Designer Icon"
           />
         </div>
