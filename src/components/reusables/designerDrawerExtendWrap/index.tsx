@@ -14,7 +14,7 @@ export function DesignerDrawerExtendWrap({
   return (
     <div className={className}>
       {/*Desktop drawer*/}
-      <div className="shadow-r-sm min-h-full min-w-[16rem] overflow-auto border-r-[0.5px]">
+      <div className="shadow-r-sm min-h-full w-[18rem] overflow-auto border-r-[0.5px]">
         <div className="hidden min-h-full p-6 lg:block">{children}</div>
       </div>
 

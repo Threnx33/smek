@@ -31,7 +31,7 @@ export const DesignerTopbar = () => {
   }
 
   return (
-    <div className="shadow-b-sm flex w-full items-center border-b-[0.5px] px-2 py-4 md:px-4">
+    <div className="shadow-b-sm min-w-screen flex items-center border-b-[0.5px] px-2 py-4 md:px-4">
       {/* <DesignerDrawer className="shrink-0 lg:hidden" /> */}
       <div className="flex w-full items-center gap-4 px-1.5">
         <ArrowLeft

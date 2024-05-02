@@ -133,8 +133,8 @@ export function BadgesTemplatesIssueForm({
             />
           )}
 
-          {!issuer && <Separator className="mt-2 mb-6" />}
-          <div className="text-sm font-bold flex justify-between mb-6">
+          {!issuer && <Separator className="mb-6 mt-2" />}
+          <div className="mb-6 flex justify-between text-sm font-bold">
             <span>Earner Information</span>
             <img className="h-4 w-4" src="/arrowDown.svg" alt="ArrowDownIcon" />
           </div>
@@ -183,8 +183,8 @@ export function BadgesTemplatesIssueForm({
             />
           )}
 
-          <Separator className="mt-2 mb-6" />
-          <div className="text-sm font-bold flex justify-between mb-4">
+          <Separator className="mb-6 mt-2" />
+          <div className="mb-4 flex justify-between text-sm font-bold">
             <span>Badge Options</span>
             <img className="h-4 w-4" src="/arrowDown.svg" alt="ArrowDownIcon" />
           </div>
@@ -196,7 +196,7 @@ export function BadgesTemplatesIssueForm({
             label="Suppress Skillquiver email notifications"
           />
 
-          <Separator className="mt-2 mb-6" />
+          <Separator className="mb-6 mt-2" />
 
           <CustomSelect
             form={form}
@@ -234,8 +234,8 @@ export function BadgesTemplatesIssueForm({
             type="text"
           />
 
-          <Separator className="mt-2 mb-6" />
-          <div className="text-sm font-bold mb-4">
+          <Separator className="mb-6 mt-2" />
+          <div className="mb-4 text-sm font-bold">
             <span>Add evidence</span>
           </div>
 
@@ -247,7 +247,7 @@ export function BadgesTemplatesIssueForm({
               className="p-3"
             >
               <img
-                className="h-5 w-5 mr-0.5"
+                className="mr-0.5 h-5 w-5"
                 src="/link.svg"
                 alt="exportIcon"
               />
@@ -259,7 +259,7 @@ export function BadgesTemplatesIssueForm({
               variant="outline"
               className="p-3"
             >
-              <img className="h-5 w-5 mr-0.5" src="/text.svg" alt="textIcon" />
+              <img className="mr-0.5 h-5 w-5" src="/text.svg" alt="textIcon" />
               Text
             </Button>
             <Button
@@ -269,7 +269,7 @@ export function BadgesTemplatesIssueForm({
               className="p-3"
             >
               <img
-                className="h-5 w-5 mr-0.5"
+                className="mr-0.5 h-5 w-5"
                 src="/export.svg"
                 alt="exportIcon"
               />
@@ -282,7 +282,7 @@ export function BadgesTemplatesIssueForm({
               className="p-2"
             >
               <img
-                className="h-5 w-5 mr-0.5"
+                className="mr-0.5 h-5 w-5"
                 src="/personalCard.svg"
                 alt="PersonalCardIcon"
               />
@@ -294,7 +294,7 @@ export function BadgesTemplatesIssueForm({
               variant="outline"
               className="p-2.5"
             >
-              <img className="h-5 w-5 mr-0.5" src="/dots.svg" alt="dotsIcon" />
+              <img className="mr-0.5 h-5 w-5" src="/dots.svg" alt="dotsIcon" />
             </Button>
           </div>
 

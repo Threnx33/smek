@@ -21,10 +21,7 @@ export function DesignerDrawerList() {
       <nav className="mt-2">
         {DESIGNER_DRAWER_LIST_ITEMS.map((item) => {
           const active = getBasePath(location.pathname) === item.to;
-          console.log(
-            item.iconName,
-            `/designer/designerDrawerIcons/${active ? "accent" : "simple"}/${item.iconName}.svg`,
-          );
+
           return (
             <div key={item.to} className="">
               <Link
