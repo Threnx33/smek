@@ -2,6 +2,7 @@ import { DesignerDrawer } from "@/components/reusables/designerDrawer";
 import { DesignerDrawerExtendWrap } from "@/components/reusables/designerDrawerExtendWrap";
 import { DesignerTopbar } from "@/components/reusables/designerTopbar";
 import { Separator } from "@/components/ui/separator";
+import ViewDesignerMainWrap from "../viewDesignerMainWrap";
 
 const designerDrawerExtendedItems: DesignerDrawerExtendedSectionProps[] = [
   {
@@ -56,26 +57,23 @@ const DesignerDrawerExtendSection = ({
 
 export default function ViewDesignerTemplates() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <DesignerTopbar />
-      <div className="grow-1 flex flex-row">
-        <DesignerDrawer className="hidden lg:flex" />
-        <DesignerDrawerExtendWrap>
-          {designerDrawerExtendedItems.map((section, i) => (
-            <div className="flex flex-col" key={section.title}>
-              {i !== 0 && <Separator className="my-6" />}
-              <DesignerDrawerExtendSection key={section.title} {...section} />
-            </div>
-          ))}
-        </DesignerDrawerExtendWrap>
-        <div className="shrink-1 flex h-full  flex-col items-center justify-center bg-cLightGreyBg p-3 md:p-14">
-          <img
-            className="h-[629px] w-[445px]"
-            src="/designer/templateImages/template5.png"
-            alt="Designer Icon"
-          />
-        </div>
+    <ViewDesignerMainWrap>
+      <DesignerDrawerExtendWrap>
+        <div className="text-lg font-semibold">Templates</div>
+        {designerDrawerExtendedItems.map((section, i) => (
+          <div className="flex flex-col" key={section.title}>
+            {i !== 0 && <Separator className="my-6" />}
+            <DesignerDrawerExtendSection key={section.title} {...section} />
+          </div>
+        ))}
+      </DesignerDrawerExtendWrap>
+      <div className="shrink-1 flex h-full  flex-col items-center justify-center bg-cLightGreyBg p-3 md:p-14">
+        <img
+          className="h-[629px] w-[445px]"
+          src="/designer/templateImages/template5.png"
+          alt="Designer Icon"
+        />
       </div>
-    </div>
+    </ViewDesignerMainWrap>
   );
 }

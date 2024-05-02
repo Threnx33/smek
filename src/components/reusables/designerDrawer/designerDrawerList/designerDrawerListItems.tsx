@@ -1,6 +1,8 @@
+import ViewDesignerAttributes from "@/components/views/viewDesigner/viewDesignerAttributes";
 import ViewDesignerElements from "@/components/views/viewDesigner/viewDesignerElements";
-import ViewDesignerTemplates from "@/components/views/viewDesigner/viewDesignerTemplate";
-import ViewDesigner from "@/components/views/viewDesigner/viewDesignerTemplate";
+import ViewDesignerSettings from "@/components/views/viewDesigner/viewDesignerSettings";
+import ViewDesignerTemplates from "@/components/views/viewDesigner/viewDesignerTemplates";
+import ViewDesigner from "@/components/views/viewDesigner/viewDesignerTemplates";
 import { Category2, ColorsSquare, Setting2, Shapes } from "iconsax-react";
 
 export const DESIGNER_DRAWER_LIST_ITEMS = [
@@ -16,12 +18,12 @@ export const DESIGNER_DRAWER_LIST_ITEMS = [
   },
   {
     iconName: "colors-square",
-    to: "/designer/edit",
-    component: <ViewDesignerTemplates />,
+    to: "/designer/attributes",
+    component: <ViewDesignerAttributes />,
   },
   {
     iconName: "setting-2",
     to: "/designer/settings",
-    component: <ViewDesignerTemplates />,
+    component: <ViewDesignerSettings />,
   },
 ];
