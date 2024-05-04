@@ -39,8 +39,8 @@ const DesignerDrawerExtendSection = ({
     <div className="flex flex-col gap-6">
       <div className="font-semibold">{title}</div>
       <div className="flex flex-col gap-5">
-        {items.map((item) => (
-          <div key={item.label} className="flex items-center gap-3">
+        {items.map((item, i) => (
+          <div key={i} className="flex items-center gap-3">
             <img
               className="h-5 w-5"
               src={`/designer/designerTemplates/${item.iconName}.svg`}
@@ -60,7 +60,7 @@ export default function ViewDesignerElements() {
       <DesignerDrawerExtendWrap className="">
         <div className="text-lg font-semibold">Elements</div>
         {designerDrawerExtendedItems.map((section, i) => (
-          <div className="flex flex-col" key={section.title}>
+          <div className="flex flex-col" key={i}>
             {i !== 0 && <Separator className="my-6" />}
             <DesignerDrawerExtendSection key={section.title} {...section} />
           </div>
@@ -69,7 +69,7 @@ export default function ViewDesignerElements() {
       <div className="flex min-h-full flex-grow flex-col items-center bg-cLightGreyBg p-3 md:p-14">
         <img
           className="h-[590px] w-[480px]"
-          src="/designer/templateImages/template5.png"
+          src="/designer/templateImages/portraitWhite.png"
           alt="Designer Icon"
         />
       </div>

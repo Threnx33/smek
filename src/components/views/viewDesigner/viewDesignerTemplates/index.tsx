@@ -12,6 +12,7 @@ export default function ViewDesignerTemplates() {
   const [selectedTemplate, setSelectedTemplate] = useState(
     "/designer/templateImages/landscapeContent1.png",
   );
+  const [nrOfTemplatesToShow, setNrOfTemplatesToShow] = useState(4);
 
   return (
     <ViewDesignerMainWrap>
@@ -48,7 +49,7 @@ export default function ViewDesignerTemplates() {
           </TabsList>
 
           <TabsContent value="a4Landscape" className=" flex flex-col gap-2.5">
-            {[...Array(5)].map((_, i) => {
+            {[...Array(nrOfTemplatesToShow)].map((_, i) => {
               const imgSrc =
                 i === 0
                   ? `/designer/templateImages/landscapeWhite.png`
@@ -68,11 +69,24 @@ export default function ViewDesignerTemplates() {
                 </div>
               );
             })}
-            <Button variant="outline">See all landscape templates</Button>
+            <Button
+              onClick={() => {
+                if (nrOfTemplatesToShow === 4) {
+                  setNrOfTemplatesToShow(6);
+                } else {
+                  setNrOfTemplatesToShow(4);
+                }
+              }}
+              variant="outline"
+            >
+              {nrOfTemplatesToShow === 4
+                ? "See all landscape templates"
+                : "See less landscape templates"}
+            </Button>
           </TabsContent>
 
           <TabsContent value="a4Portrait" className=" flex flex-col gap-2.5">
-            {[...Array(5)].map((_, i) => {
+            {[...Array(nrOfTemplatesToShow)].map((_, i) => {
               const imgSrc =
                 i === 0
                   ? `/designer/templateImages/portraitWhite.png`
@@ -92,7 +106,20 @@ export default function ViewDesignerTemplates() {
                 </div>
               );
             })}
-            <Button variant="outline">See all portrait templates</Button>
+            <Button
+              onClick={() => {
+                if (nrOfTemplatesToShow === 4) {
+                  setNrOfTemplatesToShow(6);
+                } else {
+                  setNrOfTemplatesToShow(4);
+                }
+              }}
+              variant="outline"
+            >
+              {nrOfTemplatesToShow === 4
+                ? "See all portrait templates"
+                : "See less portrait templates"}
+            </Button>
           </TabsContent>
         </Tabs>
 

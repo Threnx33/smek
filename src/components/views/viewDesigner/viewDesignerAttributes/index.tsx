@@ -85,7 +85,7 @@ export default function ViewDesignerAttributes() {
       <div className="flex min-h-full flex-grow flex-col items-center bg-cLightGreyBg p-3 md:p-14">
         <img
           className="h-[590px] w-[480px]"
-          src="/designer/templateImages/template5.png"
+          src="/designer/templateImages/portraitWhite.png"
           alt="Designer Icon"
         />
       </div>
