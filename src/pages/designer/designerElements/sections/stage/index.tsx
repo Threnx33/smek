@@ -399,18 +399,18 @@ export const StageComponent: React.FC = () => {
         stageRef={stageRef}
         updateElementImage={updateElementImage}
       />
-      {selectedElement && (
+      {selectedElement && stageRef.current && (
         <div
           className="flex"
           style={{
             position: "absolute",
             left:
-              stageRef.current!.container()!.offsetLeft +
+              stageRef.current.container().offsetLeft +
               selectedElement.x +
               selectedElement.width +
               30,
             top:
-              stageRef.current!.container()!.offsetTop +
+              stageRef.current.container().offsetTop +
               selectedElement.y +
               selectedElement.height / 2,
             transform: `translate(-50%, -50%)`,
