@@ -5,8 +5,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea";
+import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 
 type CustomTextareaProps<T extends FieldValues> = {
   form: UseFormReturn<T>;

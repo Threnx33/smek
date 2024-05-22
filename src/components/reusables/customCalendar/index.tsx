@@ -12,7 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
+import { cn } from "@/components/utils/utils";
 import { format } from "date-fns";
 import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 
@@ -49,7 +49,7 @@ export function CustomCalendar<T extends FieldValues>({
                   variant={"outline"}
                   className={cn(
                     "flex  justify-start font-normal",
-                    !field.value && "opacity-50",
+                    !field.value && "opacity-50"
                   )}
                 >
                   <img

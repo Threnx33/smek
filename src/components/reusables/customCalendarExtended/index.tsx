@@ -12,7 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
+import { cn } from "@/components/utils/utils";
 import { format } from "date-fns";
 import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 

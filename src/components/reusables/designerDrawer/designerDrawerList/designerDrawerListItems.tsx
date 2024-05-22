@@ -1,29 +1,27 @@
-import ViewDesignerAttributes from "@/components/views/viewDesigner/viewDesignerAttributes";
-import ViewDesignerElements from "@/components/views/viewDesigner/viewDesignerElements";
-import ViewDesignerSettings from "@/components/views/viewDesigner/viewDesignerSettings";
-import ViewDesignerTemplates from "@/components/views/viewDesigner/viewDesignerTemplates";
-import ViewDesigner from "@/components/views/viewDesigner/viewDesignerTemplates";
-import { Category2, ColorsSquare, Setting2, Shapes } from "iconsax-react";
+import DesignerAttributes from "@/pages/designer/designerAttributes";
+import DesignerElements from "@/pages/designer/designerElements";
+import DesignerSettings from "@/pages/designer/designerSettings";
+import DesignerTemplates from "@/pages/designer/designerTemplates";
 
 export const DESIGNER_DRAWER_LIST_ITEMS = [
   {
     iconName: "category-2",
     to: "/designer/templates",
-    component: <ViewDesignerTemplates />,
+    component: <DesignerTemplates />,
   },
   {
     iconName: "shapes",
     to: "/designer/elements",
-    component: <ViewDesignerElements />,
+    component: <DesignerElements />,
   },
   {
     iconName: "colors-square",
     to: "/designer/attributes",
-    component: <ViewDesignerAttributes />,
+    component: <DesignerAttributes />,
   },
   {
     iconName: "setting-2",
     to: "/designer/settings",
-    component: <ViewDesignerSettings />,
+    component: <DesignerSettings />,
   },
 ];
