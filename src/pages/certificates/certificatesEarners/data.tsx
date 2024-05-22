@@ -16,7 +16,7 @@ import { setEarner } from "@/redux/reducers/page";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-export type Earner = {
+export type EarnerCertificates = {
   id: string;
   name: string;
   certificateName: string;
@@ -25,7 +25,7 @@ export type Earner = {
   certificateStatus: Status;
 };
 
-export const EARNERS: Earner[] = [
+export const EARNERS: EarnerCertificates[] = [
   {
     id: "728ed52f",
     name: "Acuna Quintana, Lainer",
@@ -93,7 +93,7 @@ export const EARNERS: Earner[] = [
   },
 ];
 
-export const EARNERS_COLUMNS: ColumnDef<Earner>[] = [
+export const EARNERS_COLUMNS: ColumnDef<EarnerCertificates>[] = [
   {
     id: "select",
     header: ({ table }) => (

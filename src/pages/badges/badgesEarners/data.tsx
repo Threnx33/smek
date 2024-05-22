@@ -16,7 +16,7 @@ import { setEarner } from "@/redux/reducers/page";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-export type Earner = {
+export type EarnerBadges = {
   id: string;
   name: string;
   badgeName: string;
@@ -25,7 +25,7 @@ export type Earner = {
   badgeStatus: Status;
 };
 
-export const EARNERS: Earner[] = [
+export const EARNERS: EarnerBadges[] = [
   {
     id: "728ed52f",
     name: "Acuna Quintana, Lainer",
@@ -93,7 +93,7 @@ export const EARNERS: Earner[] = [
   },
 ];
 
-export const EARNERS_COLUMNS: ColumnDef<Earner>[] = [
+export const EARNERS_COLUMNS: ColumnDef<EarnerBadges>[] = [
   {
     id: "select",
     header: ({ table }) => (
