@@ -1,5 +1,5 @@
 import { SearchBarChip } from "@/components/reusables/searchBarChip";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { setPrintCanvas } from "@/redux/reducers/designer";
@@ -18,20 +18,32 @@ export const DesignerTopbar = ({ drawer }: DesignerTopbarProps) => {
   const [search, setSearch] = useState<string>();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [debounceUndoRedo, setDebounceUndoRedo] = useState(false);
 
   function handleOnSeachChange(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
     setSearch(e.target.value);
   }
 
+  useEffect(() => {
+    if (debounceUndoRedo) {
+      const timer = setTimeout(() => {
+        setDebounceUndoRedo(false);
+      }, 150);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [debounceUndoRedo]);
+
   return (
     <div className="shadow-b-sm min-w-screen flex items-center border-b-[0.5px] px-2 py-4 md:px-4">
       {/* <DesignerDrawer className="shrink-0 lg:hidden" /> */}
-      <div className="flex w-full items-center gap-2 md:gap-4 px-1.5">
+      <div className="flex w-full items-center gap-2 px-1.5 md:gap-4">
         <div className="xl:hidden">{drawer}</div>
 
         <ArrowLeft
-          className={`h-5 w-5 cursor-pointer hidden xl:block`}
+          className={`hidden h-5 w-5 cursor-pointer xl:block`}
           onClick={() => navigate("/dashboard")}
         />
 
@@ -43,11 +55,19 @@ export const DesignerTopbar = ({ drawer }: DesignerTopbarProps) => {
 
         <div className="ml-auto flex items-center gap-2 md:gap-4">
           <Undo2
-            onClick={() => dispatch(undo())}
+            onClick={() => {
+              if (debounceUndoRedo) return;
+              setDebounceUndoRedo(true);
+              dispatch(undo());
+            }}
             className="h-5 w-5 cursor-pointer "
           />
           <Redo2
-            onClick={() => dispatch(redo())}
+            onClick={() => {
+              if (debounceUndoRedo) return;
+              setDebounceUndoRedo(true);
+              dispatch(redo());
+            }}
             className="h-5 w-5 cursor-pointer "
           />
           <div

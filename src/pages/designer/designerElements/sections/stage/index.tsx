@@ -47,7 +47,13 @@ export const StageComponent: React.FC = () => {
     printCanvas,
   } = useSelector((state: RootState) => state.designer);
   const [dragStartXY, setDragStartXY] = useState({ x: 0, y: 0 });
-  const [transformStart, setTransformStart] = useState({ w: 0, h: 0, r: 0 });
+  const [transformStart, setTransformStart] = useState({
+    x: 0,
+    y: 0,
+    w: 0,
+    h: 0,
+    r: 0,
+  });
 
   const textProps = useSelector((state: RootState) => state.richText);
   const { actionToDo } = useSelector((state: RootState) => state.history);
@@ -67,6 +73,8 @@ export const StageComponent: React.FC = () => {
           );
           break;
         case "update":
+          dispatch(setSelectedElement(null));
+          dispatch(setEditingElement(null));
           const element = { ...actionToDo.value };
 
           if (element.isText) await updateElementImage(element);
@@ -74,8 +82,6 @@ export const StageComponent: React.FC = () => {
           const newElements = elements.map((el) =>
             el.id === element.id ? element : el,
           );
-          dispatch(setSelectedElement(null));
-          dispatch(setEditingElement(null));
           dispatch(setElements(newElements));
           break;
       }
@@ -313,6 +319,8 @@ export const StageComponent: React.FC = () => {
                   const node = e.target;
                   if (!el.isText) {
                     setTransformStart({
+                      x: node.x(),
+                      y: node.y(),
                       w: node.width(),
                       h: node.height(),
                       r: node.rotation(),
@@ -322,18 +330,13 @@ export const StageComponent: React.FC = () => {
                 onTransform={(e) => {
                   const node = e.target;
                   if (!el.isText) {
-                    const width = node.width() * node.scaleX();
-                    const height = node.height() * node.scaleY();
-                    const x = node.x();
-                    const y = node.y();
-                    const rotation = node.rotation();
                     const newElement = {
                       ...el,
-                      x,
-                      y,
-                      width,
-                      height,
-                      rotation,
+                      x: node.x(),
+                      y: node.y(),
+                      width: node.width() * node.scaleX(),
+                      height: node.height() * node.scaleY(),
+                      rotation: node.rotation(),
                     };
                     node.scaleX(1);
                     node.scaleY(1);
@@ -348,17 +351,29 @@ export const StageComponent: React.FC = () => {
                   }
                 }}
                 onTransformEnd={(e) => {
+                  if (!selectedElement) return;
+                  const node = e.target;
                   const oldElement = {
                     ...el,
+                    x: transformStart.x,
+                    y: transformStart.y,
+                    rotation: transformStart.r,
                     width: transformStart.w,
                     height: transformStart.h,
-                    rotation: transformStart.r,
+                  };
+                  const newElement = {
+                    ...selectedElement,
+                    x: node.x(),
+                    y: node.y(),
+                    width: node.width(),
+                    height: node.height(),
+                    rotation: node.rotation(),
                   };
 
                   dispatch(
                     pushAction({
                       undo: { actionType: "update", value: oldElement },
-                      redo: { actionType: "update", value: selectedElement! },
+                      redo: { actionType: "update", value: newElement },
                     }),
                   );
                 }}
