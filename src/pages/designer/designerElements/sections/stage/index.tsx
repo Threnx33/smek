@@ -60,11 +60,11 @@ export const StageComponent: React.FC = () => {
           dispatch(setElements([...elements, actionToDo.value]));
           break;
         case "delete":
-          dispatch(
-            setElements(elements.filter((el) => el.id !== actionToDo.value))
-          );
           dispatch(setSelectedElement(null));
           dispatch(setEditingElement(null));
+          dispatch(
+            setElements(elements.filter((el) => el.id !== actionToDo.value)),
+          );
           break;
         case "update":
           const element = { ...actionToDo.value };
@@ -72,11 +72,11 @@ export const StageComponent: React.FC = () => {
           if (element.isText) await updateElementImage(element);
 
           const newElements = elements.map((el) =>
-            el.id === element.id ? element : el
+            el.id === element.id ? element : el,
           );
-          dispatch(setElements(newElements));
           dispatch(setSelectedElement(null));
           dispatch(setEditingElement(null));
+          dispatch(setElements(newElements));
           break;
       }
       dispatch(setActionToDo(null));
@@ -104,7 +104,7 @@ export const StageComponent: React.FC = () => {
       addElement(
         canvasToAdd.isText,
         canvasToAdd.fontSize || "",
-        canvasToAdd.imageUrl || ""
+        canvasToAdd.imageUrl || "",
       );
       dispatch(resetCanvasToAdd());
     }
@@ -164,7 +164,7 @@ export const StageComponent: React.FC = () => {
   const addElement = async (
     isText: boolean,
     fontSize: string,
-    imageUrl: string
+    imageUrl: string,
   ) => {
     let width = 150;
     let height = 0;
@@ -211,7 +211,7 @@ export const StageComponent: React.FC = () => {
       pushAction({
         undo: { actionType: "delete", value: newElement.id },
         redo: { actionType: "add", value: newElement },
-      })
+      }),
     );
   };
 
@@ -291,9 +291,9 @@ export const StageComponent: React.FC = () => {
                   dispatch(
                     setElements(
                       elements.map((item) =>
-                        item.id === el.id ? newElement : item
-                      )
-                    )
+                        item.id === el.id ? newElement : item,
+                      ),
+                    ),
                   );
                 }}
                 onDragEnd={(e) => {
@@ -306,7 +306,7 @@ export const StageComponent: React.FC = () => {
                     pushAction({
                       undo: { actionType: "update", value: oldElement },
                       redo: { actionType: "update", value: selectedElement! },
-                    })
+                    }),
                   );
                 }}
                 onTransformStart={(e) => {
@@ -340,9 +340,9 @@ export const StageComponent: React.FC = () => {
                     dispatch(
                       setElements(
                         elements.map((item) =>
-                          item.id === el.id ? newElement : item
-                        )
-                      )
+                          item.id === el.id ? newElement : item,
+                        ),
+                      ),
                     );
                     dispatch(setSelectedElement(newElement));
                   }
@@ -359,7 +359,7 @@ export const StageComponent: React.FC = () => {
                     pushAction({
                       undo: { actionType: "update", value: oldElement },
                       redo: { actionType: "update", value: selectedElement! },
-                    })
+                    }),
                   );
                 }}
                 onMouseEnter={(e) => {
@@ -418,10 +418,10 @@ export const StageComponent: React.FC = () => {
           }}
         >
           <div
-            className="bg-black p-2 rounded-full cursor-pointer"
+            className="cursor-pointer rounded-full bg-black p-2"
             onClick={() => {
               const newElements = elements.filter(
-                (el) => el.id !== selectedElement.id
+                (el) => el.id !== selectedElement.id,
               );
               dispatch(setSelectedElement(null));
               dispatch(setElements(newElements));
@@ -430,7 +430,7 @@ export const StageComponent: React.FC = () => {
                 pushAction({
                   undo: { actionType: "add", value: selectedElement },
                   redo: { actionType: "delete", value: selectedElement.id },
-                })
+                }),
               );
             }}
           >
