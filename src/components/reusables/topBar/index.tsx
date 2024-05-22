@@ -5,16 +5,12 @@ import { NotificationCountChip } from "../notificationCountChip";
 import { UserInfoChip } from "../userInfoChip";
 
 import { DropdownMenuItemNoPropagation } from "@/components/reusables/dropdownMenuItemNoPropagation";
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  DropdownMenuSeparator,
-  Separator,
-} from "@radix-ui/react-dropdown-menu";
+import { Separator } from "@radix-ui/react-dropdown-menu";
 import { Link, useNavigate } from "react-router-dom";
 
 const TopBar = () => {
@@ -23,8 +19,8 @@ const TopBar = () => {
   function handleOnSeachChange(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
     setSearch(e.target.value);
-    console.log(search);
   }
+  const navigate = useNavigate();
 
   return (
     <div className="flex w-full items-center px-2 py-4 shadow-sm md:px-4">
@@ -111,7 +107,10 @@ const TopBar = () => {
             </DropdownMenuItemNoPropagation>
 
             <DropdownMenuItemNoPropagation>
-              <div className="flex space-x-2 px-2 py-1">
+              <div
+                onClick={() => navigate("/login")}
+                className="flex space-x-2 px-2 py-1"
+              >
                 <img className="h-5 w-5" src="/logout.svg" alt="LogoutIcon" />
                 <span>Sign out</span>
               </div>

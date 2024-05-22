@@ -1,8 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import {
-  TabType,
-  TabsType,
-} from "@/components/views/viewBadges/badgesMenuTabs";
+import { TabType, TabsType } from "@/pages/badges/badgesMenuTabs";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
@@ -13,8 +10,7 @@ type TabsChipProps = {
 };
 
 export function TabsChip({ tabs, currentTab, setCurrentTab }: TabsChipProps) {
-  const ref = useRef<HTMLAnchorElement>(null); // Create a ref
-
+  const ref = useRef<HTMLAnchorElement>(null);
   useEffect(() => {
     if (ref.current) {
       ref.current.scrollIntoView({

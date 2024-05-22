@@ -19,4 +19,7 @@ export default defineConfig({
     sourcemap: false, // or false, if you don't want source maps for production
     // ...other options
   },
+  optimizeDeps: {
+    exclude: ["js-big-decimal"],
+  },
 });

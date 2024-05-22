@@ -1,4 +1,3 @@
-import { ModeToggle } from "@/components/mode-toggle";
 import { AuthSideSheet } from "../authSideSheet";
 
 type AuthWrapProps = {

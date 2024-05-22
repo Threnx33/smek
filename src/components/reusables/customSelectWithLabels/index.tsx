@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
+import { cn } from "@/components/utils/utils";
 import { SelectLabel } from "@radix-ui/react-select";
 import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";

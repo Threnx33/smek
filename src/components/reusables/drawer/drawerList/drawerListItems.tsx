@@ -1,84 +1,83 @@
-import { ViewActivity } from "@/components/views/viewActivity";
-import { ViewAnalyticsCertificates } from "@/components/views/viewAnalytics/viewAnalyticsCredentials";
-import { ViewBadgesTemplates } from "@/components/views/viewBadges/viewBadgesTemplates";
-import { ViewCertificatesTemplates } from "@/components/views/viewCertificates/viewCertificatesTemplates";
-import { ViewDashboard } from "@/components/views/viewDashboard";
-import { ViewApiKeys } from "@/components/views/viewDeveloper/apiKeys";
-import { ViewDocumentation } from "@/components/views/viewDeveloper/documentation";
-import { ViewWebHooks } from "@/components/views/viewDeveloper/webHooks";
-import { ViewIssuer } from "@/components/views/viewIssuer";
-import { ViewPlanAndBilling } from "@/components/views/viewPlanAndBilling";
-import { ViewPreferences } from "@/components/views/viewPreferences/preferences";
-import { ViewSchema } from "@/components/views/viewSchema";
-import { ViewSupport } from "@/components/views/viewSupport";
-import { ViewVerification } from "@/components/views/viewVerification";
+import { Activity } from "@/pages/activity";
+import { AnalyticsCertificates } from "@/pages/analytics/analyticsCertificates";
+import { BadgesTemplates } from "@/pages/badges/badgesTemplates";
+import { CertificatesTemplates } from "@/pages/certificates/certificatesTemplates";
+import { Dashboard } from "@/pages/dashboard";
+import Designer from "@/pages/designer/designerTemplates";
+import { ApiKeys } from "@/pages/developer/apiKeys";
+import { Issuer } from "@/pages/issuer";
+import { PlanAndBilling } from "@/pages/planAndBilling";
+import { Preferences } from "@/pages/preferences/preferences";
+import { Schema } from "@/pages/schema";
+import { Support } from "@/pages/support";
+import { Verification } from "@/pages/verification";
 
 export const DRAWER_LIST_ITEMS = [
   {
     iconName: "dashboard",
     label: "Dashboard",
     to: "/dashboard",
-    component: <ViewDashboard />,
+    component: <Dashboard />,
   },
   {
     iconName: "issuerProfiles",
     label: "Issuer Profiles",
     to: "/issuer-profiles",
-    component: <ViewIssuer />,
+    component: <Issuer />,
   },
   {
     iconName: "badges",
     label: "Badges",
     to: "/badges/templates",
-    component: <ViewBadgesTemplates />,
+    component: <BadgesTemplates />,
   },
   {
     iconName: "certificates",
     label: "Certificates",
     to: "/certificates",
-    component: <ViewCertificatesTemplates />,
+    component: <CertificatesTemplates />,
   },
   {
     iconName: "designer",
     label: "Designer",
-    to: "/designer",
-    component: <ViewBadgesTemplates />,
+    to: "/designer/templates",
+    component: <Designer />,
   },
   {
     iconName: "verification",
     label: "Verification",
     to: "/verification",
-    component: <ViewVerification />,
+    component: <Verification />,
   },
   {
     iconName: "jobBoard",
     label: "Job Board",
     to: "/job-board",
-    component: <ViewBadgesTemplates />,
+    component: <BadgesTemplates />,
   },
   {
     iconName: "academy",
     label: "Academy",
     to: "/academy",
-    component: <ViewBadgesTemplates />,
+    component: <BadgesTemplates />,
   },
   {
     iconName: "analytics",
     label: "Analytics",
     to: "/analytics/certificates",
-    component: <ViewAnalyticsCertificates />,
+    component: <AnalyticsCertificates />,
   },
   {
     iconName: "planAndBilling",
     label: "Plan & Billing",
     to: "/plan-and-billing",
-    component: <ViewPlanAndBilling />,
+    component: <PlanAndBilling />,
   },
   {
     iconName: "developer",
     label: "Developer",
     to: "/developer/api-keys",
-    component: <ViewApiKeys />,
+    component: <ApiKeys />,
     subItems: [
       {
         label: "API Keys",
@@ -98,24 +97,24 @@ export const DRAWER_LIST_ITEMS = [
     iconName: "activity",
     label: "Activity",
     to: "/activity",
-    component: <ViewActivity />,
+    component: <Activity />,
   },
   {
     iconName: "preferences",
     label: "Preferences",
     to: "/preferences",
-    component: <ViewPreferences />,
+    component: <Preferences />,
   },
   {
     iconName: "support",
     label: "Support",
     to: "/support",
-    component: <ViewSupport />,
+    component: <Support />,
   },
   {
     iconName: "certificates",
     label: "Schema",
     to: "/schema",
-    component: <ViewSchema />,
+    component: <Schema />,
   },
 ];

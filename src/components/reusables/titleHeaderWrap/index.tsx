@@ -1,5 +1,4 @@
 import { MainWrap } from "@/components/reusables/mainWrap";
-import { TextMainWrap } from "@/components/reusables/textMainWrap";
 
 type TitleHeaderWrapProps = {
   children?: React.ReactNode;

@@ -1,0 +1,113 @@
+{
+  "hash": "dbfb0b38",
+  "browserHash": "66719e51",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "41a38f8d",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "a5db58db",
+      "needsInterop": true
+    },
+    "react-redux": {
+      "src": "../../node_modules/react-redux/es/index.js",
+      "file": "react-redux.js",
+      "fileHash": "4d98df05",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "4b92e838",
+      "needsInterop": false
+    },
+    "@reduxjs/toolkit": {
+      "src": "../../node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js",
+      "file": "@reduxjs_toolkit.js",
+      "fileHash": "a36ce950",
+      "needsInterop": false
+    },
+    "redux": {
+      "src": "../../node_modules/redux/es/redux.js",
+      "file": "redux.js",
+      "fileHash": "da25e5cc",
+      "needsInterop": false
+    },
+    "lucide-react": {
+      "src": "../../node_modules/lucide-react/dist/esm/lucide-react.js",
+      "file": "lucide-react.js",
+      "fileHash": "3d45a67f",
+      "needsInterop": false
+    },
+    "@hookform/resolvers/zod": {
+      "src": "../../node_modules/@hookform/resolvers/zod/dist/zod.mjs",
+      "file": "@hookform_resolvers_zod.js",
+      "fileHash": "a590b9db",
+      "needsInterop": false
+    },
+    "react-hook-form": {
+      "src": "../../node_modules/react-hook-form/dist/index.esm.mjs",
+      "file": "react-hook-form.js",
+      "fileHash": "6269f5aa",
+      "needsInterop": false
+    },
+    "zod": {
+      "src": "../../node_modules/zod/lib/index.mjs",
+      "file": "zod.js",
+      "fileHash": "b05c3f44",
+      "needsInterop": false
+    },
+    "@tanstack/react-table": {
+      "src": "../../node_modules/@tanstack/react-table/build/lib/index.mjs",
+      "file": "@tanstack_react-table.js",
+      "fileHash": "b6c3cedd",
+      "needsInterop": false
+    },
+    "react-dropzone": {
+      "src": "../../node_modules/react-dropzone/dist/es/index.js",
+      "file": "react-dropzone.js",
+      "fileHash": "ae9405f3",
+      "needsInterop": false
+    },
+    "chart.js": {
+      "src": "../../node_modules/chart.js/dist/chart.js",
+      "file": "chart__js.js",
+      "fileHash": "1b69d67b",
+      "needsInterop": false
+    },
+    "react-chartjs-2": {
+      "src": "../../node_modules/react-chartjs-2/dist/index.js",
+      "file": "react-chartjs-2.js",
+      "fileHash": "b24f2545",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-LZC3DOIZ": {
+      "file": "chunk-LZC3DOIZ.js"
+    },
+    "chunk-4NM3FW5T": {
+      "file": "chunk-4NM3FW5T.js"
+    },
+    "chunk-DHHPCNXU": {
+      "file": "chunk-DHHPCNXU.js"
+    },
+    "chunk-MYQBNMBW": {
+      "file": "chunk-MYQBNMBW.js"
+    },
+    "chunk-CRAAD5A4": {
+      "file": "chunk-CRAAD5A4.js"
+    },
+    "chunk-MA2WHGMY": {
+      "file": "chunk-MA2WHGMY.js"
+    },
+    "chunk-ZC22LKFR": {
+      "file": "chunk-ZC22LKFR.js"
+    }
+  }
+}
