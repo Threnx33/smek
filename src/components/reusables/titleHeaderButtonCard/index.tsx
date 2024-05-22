@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Trash } from "iconsax-react";
 
 type TitleHeaderButtonCardProps = {
   title: string;
@@ -22,7 +23,7 @@ export default function TitleHeaderButtonCard({
         <Button variant="destructive">
           <div className="hidden md:flex">{buttonText}</div>
           <div className="shrink-0 md:hidden">
-            <img className="h-5 w-5" src="trash.svg" alt="TrashIcon" />
+            <Trash className="h-5 w-5" color="white" />
           </div>
         </Button>
       </div>

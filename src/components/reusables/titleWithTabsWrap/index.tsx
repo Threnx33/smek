@@ -1,9 +1,6 @@
-import { useState } from "react";
 import { TabsChip } from "@/components/reusables/tabsChip";
-import {
-  TabType,
-  TabsType,
-} from "@/components/views/viewBadges/badgesMenuTabs";
+import { TabType, TabsType } from "@/pages/badges/badgesMenuTabs";
+import { useState } from "react";
 import { MainWrap } from "../mainWrap";
 
 type TitleWithTabsWrapProps = {
